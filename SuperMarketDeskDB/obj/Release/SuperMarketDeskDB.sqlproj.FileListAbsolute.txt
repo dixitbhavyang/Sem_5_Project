@@ -1,0 +1,9 @@
+C:\Users\C.E.H V10\Documents\GitHub\Sem_5_Project\SuperMarketDeskDB\bin\Release\SuperMarketDeskDB.dacpac
+C:\Users\C.E.H V10\Documents\GitHub\Sem_5_Project\SuperMarketDeskDB\bin\Release\SuperMarketDeskDB.dll
+C:\Users\C.E.H V10\Documents\GitHub\Sem_5_Project\SuperMarketDeskDB\bin\Release\SuperMarketDeskDB.pdb
+C:\Users\C.E.H V10\Documents\GitHub\Sem_5_Project\SuperMarketDeskDB\obj\Release\Model.xml
+C:\Users\C.E.H V10\Documents\GitHub\Sem_5_Project\SuperMarketDeskDB\obj\Release\refactor.xml
+C:\Users\C.E.H V10\Documents\GitHub\Sem_5_Project\SuperMarketDeskDB\obj\Release\postdeploy.sql
+C:\Users\C.E.H V10\Documents\GitHub\Sem_5_Project\SuperMarketDeskDB\obj\Release\predeploy.sql
+C:\Users\C.E.H V10\Documents\GitHub\Sem_5_Project\SuperMarketDeskDB\obj\Release\SuperMarketDeskDB.dll
+C:\Users\C.E.H V10\Documents\GitHub\Sem_5_Project\SuperMarketDeskDB\obj\Release\SuperMarketDeskDB.pdb
