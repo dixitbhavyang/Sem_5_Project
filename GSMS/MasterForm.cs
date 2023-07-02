@@ -19,8 +19,7 @@ namespace GSMS
         SqlDataReader dr;
         DataTable dt = new DataTable();
         SqlDataAdapter da;
-        public static int userId = 0;
-        int gender;
+        public static int userId, companyId;
         public MasterForm()
         {
             InitializeComponent();
@@ -162,6 +161,30 @@ namespace GSMS
             gridviewcompany.AutoSizeColumnsMode = GridViewAutoSizeColumnsMode.Fill;
             gridviewcompany.ShowGroupedColumns = true;
         }
+        private void getUserId()
+        {
+            userId = 0;
+            for (int i = 0; i < gridviewusers.Rows.Count; i++)
+            {
+                if (gridviewusers.Rows[i].IsSelected)
+                {
+                    //MessageBox.Show(radGridView1.Rows[i].Cells["Id"].Value.ToString());
+                    userId = Convert.ToInt32(gridviewusers.Rows[i].Cells["Id"].Value);
+                }
+            }
+        }
+        private void getCompanyId()
+        {
+            companyId = 0;
+            for (int i = 0; i < gridviewcompany.Rows.Count; i++)
+            {
+                if (gridviewcompany.Rows[i].IsSelected)
+                {
+                    //MessageBox.Show(radGridView1.Rows[i].Cells["Id"].Value.ToString());
+                    companyId = Convert.ToInt32(gridviewcompany.Rows[i].Cells["Id"].Value);
+                }
+            }
+        }
         private void Form1_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'superMarketMS_ProjectDataSet.Users' table. You can move, or remove it, as needed.
@@ -182,19 +205,6 @@ namespace GSMS
             UsersForm uf = new UsersForm();
             uf.ShowDialog();
             getUserRecords();
-        }
-
-        private void getUserId()
-        {
-            userId = 0;
-            for (int i = 0; i < gridviewusers.Rows.Count; i++)
-            {
-                if (gridviewusers.Rows[i].IsSelected)
-                {
-                    //MessageBox.Show(radGridView1.Rows[i].Cells["Id"].Value.ToString());
-                    userId = Convert.ToInt32(gridviewusers.Rows[i].Cells["Id"].Value);
-                }
-            }
         }
         private void btnedituser_Click(object sender, EventArgs e)
         {
@@ -241,58 +251,83 @@ namespace GSMS
         private void btndeleteuser_Click(object sender, EventArgs e)
         {
             getUserId();
-            cmd = new SqlCommand("EDIT_USER", con);
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@ID", userId);
-            dr = cmd.ExecuteReader();
-            if (dr.HasRows)
+            if (userId > 0)
             {
-                DialogResult result = MessageBox.Show("Do you want to Delete ?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (result == DialogResult.Yes)
+                dr.Close();
+                cmd = new SqlCommand("EDIT_USER", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@ID", userId);
+                dr = cmd.ExecuteReader();
+                if (dr.HasRows)
                 {
-                    dr.Close();
-                    cmd = new SqlCommand("DELETE_USER", con);
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@ID", userId);
-                    int c = cmd.ExecuteNonQuery();
-                    if (c > 0)
+                    DialogResult result = MessageBox.Show("Do you want to Delete ?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (result == DialogResult.Yes)
                     {
-                        MessageBox.Show("User Deleted");
+                        dr.Close();
+                        cmd = new SqlCommand("DELETE_USER", con);
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@ID", userId);
+                        cmd.ExecuteNonQuery();
                         getUserRecords();
                     }
                 }
+                dr.Close();
             }
             userId = 0;
-            dr.Close();
         }
 
         private void btncompanyadd_Click(object sender, EventArgs e)
         {
             CompanyForm cf = new CompanyForm();
             cf.ShowDialog();
-            if (cf.DialogResult == DialogResult.Yes)
+        }
+
+        private void btncompanydelete_Click(object sender, EventArgs e)
+        {
+            getCompanyId();
+            if (companyId > 0)
             {
-                cmd = new SqlCommand("INSERT_COMPANY", con);
+                cmd = new SqlCommand("EDIT_COMPANY", con);
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@NAME", cf.txtcompanyname.Text);
-                cmd.Parameters.AddWithValue("@SHORTNAME", cf.txtshortname.Text);
-                cmd.Parameters.AddWithValue("@CREATEDDATE", DateTime.Now.ToString("MM/dd/yyyy hh:mm:ss tt"));
-                cmd.Parameters.AddWithValue("@CREATEDBY", LoginForm.loggedInUserId);
-                cmd.Parameters.AddWithValue("@UPDATEDDATE", DateTime.Now.ToString("MM/dd/yyyy hh:mm:ss tt"));
-                cmd.Parameters.AddWithValue("@UPDATEDBY", LoginForm.loggedInUserId);
-                cmd.Parameters.AddWithValue("@ADDRESS", cf.txtaddress.Text);
-                int i = cmd.ExecuteNonQuery();
-                if (i > 0)
+                cmd.Parameters.AddWithValue("@id", companyId);
+                dr = cmd.ExecuteReader();
+                if (dr.HasRows)
                 {
-                    MessageBox.Show("Company Inserted");
-                    getCompanyRecords();
+                    DialogResult result = MessageBox.Show("Do you want to Delete ?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (result == DialogResult.Yes)
+                    {
+                        dr.Close();
+                        cmd = new SqlCommand("DELETE_COMPANY", con);
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@id", companyId);
+                        cmd.ExecuteNonQuery();
+                        getCompanyRecords();
+                    }
                 }
+                dr.Close();
             }
+            companyId = 0;
         }
 
         private void btncompanyedit_Click(object sender, EventArgs e)
         {
+            getCompanyId();
+            if (companyId > 0)
+            {
+                dt.Clear();
+                cmd = new SqlCommand("EDIT_COMPANY", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@ID", companyId);
+                da = new SqlDataAdapter(cmd);
+                da.Fill(dt);
 
+                CompanyForm cf = new CompanyForm();
+                cf.txtcompanyname.Text = dt.Rows[0].Field<string>("Name").ToString();
+                cf.txtshortname.Text = dt.Rows[0].Field<string>("ShortName").ToString();
+                cf.txtaddress.Text = dt.Rows[0].Field<string>("Address").ToString();
+                cf.ShowDialog();
+                getCompanyRecords();
+            }
         }
     }
 }
