@@ -14,6 +14,8 @@ namespace GSMS
 {
     public partial class UsersForm : Telerik.WinControls.UI.RadForm
     {
+        SqlConnection con = new SqlConnection(Connection.connectionString());
+        SqlCommand cmd;
         public string role = "";
         public UsersForm()
         {
@@ -115,11 +117,68 @@ namespace GSMS
                 epgender.Clear();
                 eprole.Clear();
                 role = dropdownrole.SelectedItem.ToString();
-                btnadduser.DialogResult = DialogResult.Yes;
-                //Close();
+
+                con.Open();
+                int gender = 1;
+
+                if (MasterForm.userId > 0)
+                {
+                    cmd = new SqlCommand("UPDATE_USER", con);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@ID", MasterForm.userId);
+                    cmd.Parameters.AddWithValue("@FNAME", txtfirstname.Text);
+                    cmd.Parameters.AddWithValue("@LNAME", txtlastname.Text);
+                    cmd.Parameters.AddWithValue("@UNAME", txtusername.Text);
+                    cmd.Parameters.AddWithValue("@PASSWORD", txtpassword.Text);
+                    cmd.Parameters.AddWithValue("@PHONENO", txtcontactnumber.Text);
+                    cmd.Parameters.AddWithValue("@EMAIL", txtmail.Text);
+                    if (rdbfemale.IsChecked)
+                    {
+                        gender = 0;
+                    }
+                    cmd.Parameters.AddWithValue("@GENDER", gender);
+                    cmd.Parameters.AddWithValue("@CITY", txtcity.Text);
+                    cmd.Parameters.AddWithValue("@UPDATEDDATE", DateTime.Now.ToString("MM/dd/yyyy hh:mm:ss tt"));
+                    cmd.Parameters.AddWithValue("@UPDATEDBY", LoginForm.loggedInUserId);
+                    cmd.Parameters.AddWithValue("@ROLE", role);
+                    int u = cmd.ExecuteNonQuery();
+                    //if (u > 0)
+                    //{
+                    //    MessageBox.Show("User Updated", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //}
+                }
+                else
+                {
+                    cmd = new SqlCommand("INSERT_USER", con);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@FNAME", txtfirstname.Text);
+                    cmd.Parameters.AddWithValue("@LNAME", txtlastname.Text);
+                    cmd.Parameters.AddWithValue("@UNAME", txtusername.Text);
+                    cmd.Parameters.AddWithValue("@PASSWORD", txtpassword.Text);
+                    cmd.Parameters.AddWithValue("@PHONENO", txtcontactnumber.Text);
+                    cmd.Parameters.AddWithValue("@EMAIL", txtmail.Text);
+                    if (rdbfemale.IsChecked)
+                    {
+                        gender = 0;
+                    }
+                    cmd.Parameters.AddWithValue("@GENDER", gender);
+                    cmd.Parameters.AddWithValue("@CREATEDDATE", DateTime.Now.ToString("MM/dd/yyyy hh:mm:ss tt"));
+                    cmd.Parameters.AddWithValue("@CREATEDBY", LoginForm.loggedInUserId);
+                    cmd.Parameters.AddWithValue("@UPDATEDDATE", DateTime.Now.ToString("MM/dd/yyyy hh:mm:ss tt"));
+                    cmd.Parameters.AddWithValue("@UPDATEDBY", LoginForm.loggedInUserId);
+                    cmd.Parameters.AddWithValue("@ROLE", role);
+                    cmd.Parameters.AddWithValue("@CITY", txtcity.Text);
+                    int i = cmd.ExecuteNonQuery();
+                    //if (i > 0)
+                    //{
+                    //    MessageBox.Show("User Inserted", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //}
+                }
             }
-            //Hide();
+            con.Close();
+            Close();
         }
+
 
         private void UsersForm_Load(object sender, EventArgs e)
         {

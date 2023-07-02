@@ -181,36 +181,7 @@ namespace GSMS
         {
             UsersForm uf = new UsersForm();
             uf.ShowDialog();
-            if (uf.DialogResult != DialogResult.Cancel)
-            {
-                //MessageBox.Show(uf.txtfirstname.Text);
-                cmd = new SqlCommand("INSERT_USER", con);
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@FNAME", uf.txtfirstname.Text);
-                cmd.Parameters.AddWithValue("@LNAME", uf.txtlastname.Text);
-                cmd.Parameters.AddWithValue("@UNAME", uf.txtusername.Text);
-                cmd.Parameters.AddWithValue("@PASSWORD", uf.txtpassword.Text);
-                cmd.Parameters.AddWithValue("@PHONENO", uf.txtcontactnumber.Text);
-                cmd.Parameters.AddWithValue("@EMAIL", uf.txtmail.Text);
-                if (uf.rdbfemale.IsChecked)
-                {
-                    gender = 0;
-                }
-                else { gender = 1; }
-                cmd.Parameters.AddWithValue("@GENDER", gender);
-                cmd.Parameters.AddWithValue("@CREATEDDATE", DateTime.Now.ToString("MM/dd/yyyy hh:mm:ss tt"));
-                cmd.Parameters.AddWithValue("@CREATEDBY", LoginForm.loggedInUserId);
-                cmd.Parameters.AddWithValue("@UPDATEDDATE", DateTime.Now.ToString("MM/dd/yyyy hh:mm:ss tt"));
-                cmd.Parameters.AddWithValue("@UPDATEDBY", LoginForm.loggedInUserId);
-                cmd.Parameters.AddWithValue("@ROLE", uf.role);
-                cmd.Parameters.AddWithValue("@CITY", uf.txtcity.Text);
-                int i = cmd.ExecuteNonQuery();
-                if (i > 0) { }
-                {
-                    MessageBox.Show("User Inserted");
-                    getUserRecords();
-                }
-            }
+            getUserRecords();
         }
 
         private void getUserId()
@@ -262,34 +233,7 @@ namespace GSMS
                     uf.dropdownrole.SelectedIndex = 1;
                 }
                 uf.ShowDialog();
-                if (uf.DialogResult == DialogResult.Yes)
-                {
-                    cmd = new SqlCommand("UPDATE_USER", con);
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@ID", userId);
-                    cmd.Parameters.AddWithValue("@FNAME", uf.txtfirstname.Text);
-                    cmd.Parameters.AddWithValue("@LNAME", uf.txtlastname.Text);
-                    cmd.Parameters.AddWithValue("@UNAME", uf.txtusername.Text);
-                    cmd.Parameters.AddWithValue("@PASSWORD", uf.txtpassword.Text);
-                    cmd.Parameters.AddWithValue("@PHONENO", uf.txtcontactnumber.Text);
-                    cmd.Parameters.AddWithValue("@EMAIL", uf.txtmail.Text);
-                    if (uf.rdbfemale.IsChecked)
-                    {
-                        gender = 0;
-                    }
-                    else { gender = 1; }
-                    cmd.Parameters.AddWithValue("@GENDER", gender);
-                    cmd.Parameters.AddWithValue("@CITY", uf.txtcity.Text);
-                    cmd.Parameters.AddWithValue("@UPDATEDDATE", DateTime.Now.ToString("MM/dd/yyyy hh:mm:ss tt"));
-                    cmd.Parameters.AddWithValue("@UPDATEDBY", LoginForm.loggedInUserId);
-                    cmd.Parameters.AddWithValue("@ROLE", uf.role);
-                    int i = cmd.ExecuteNonQuery();
-                    if (i > 0) { }
-                    {
-                        MessageBox.Show("User Updated");
-                        getUserRecords();
-                    }
-                }
+                getUserRecords();
             }
             userId = 0;
         }
