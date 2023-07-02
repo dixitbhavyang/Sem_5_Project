@@ -1,0 +1,15 @@
+C:\Users\C.E.H V10\Documents\GitHub\MVC\GSMS\GSMS\bin\Debug\GSMS.exe.config
+C:\Users\C.E.H V10\Documents\GitHub\MVC\GSMS\GSMS\bin\Debug\GSMS.exe
+C:\Users\C.E.H V10\Documents\GitHub\MVC\GSMS\GSMS\bin\Debug\GSMS.pdb
+C:\Users\C.E.H V10\Documents\GitHub\MVC\GSMS\GSMS\bin\Debug\ComponentFactory.Krypton.Toolkit.dll
+C:\Users\C.E.H V10\Documents\GitHub\MVC\GSMS\GSMS\bin\Debug\ComponentFactory.Krypton.Toolkit.pdb
+C:\Users\C.E.H V10\Documents\GitHub\MVC\GSMS\GSMS\obj\Debug\GSMS.csprojResolveAssemblyReference.cache
+C:\Users\C.E.H V10\Documents\GitHub\MVC\GSMS\GSMS\obj\Debug\GSMS.LogInForm.resources
+C:\Users\C.E.H V10\Documents\GitHub\MVC\GSMS\GSMS\obj\Debug\GSMS.Properties.Resources.resources
+C:\Users\C.E.H V10\Documents\GitHub\MVC\GSMS\GSMS\obj\Debug\GSMS.SplashScreen.resources
+C:\Users\C.E.H V10\Documents\GitHub\MVC\GSMS\GSMS\obj\Debug\GSMS.csproj.GenerateResource.Cache
+C:\Users\C.E.H V10\Documents\GitHub\MVC\GSMS\GSMS\obj\Debug\GSMS.exe
+C:\Users\C.E.H V10\Documents\GitHub\MVC\GSMS\GSMS\obj\Debug\GSMS.pdb
+C:\Users\C.E.H V10\Documents\GitHub\MVC\GSMS\GSMS\bin\Debug\ComponentFactory.Krypton.Navigator.dll
+C:\Users\C.E.H V10\Documents\GitHub\MVC\GSMS\GSMS\bin\Debug\ComponentFactory.Krypton.Navigator.pdb
+C:\Users\C.E.H V10\Documents\GitHub\MVC\GSMS\GSMS\obj\Debug\GSMS.HomeForm.resources

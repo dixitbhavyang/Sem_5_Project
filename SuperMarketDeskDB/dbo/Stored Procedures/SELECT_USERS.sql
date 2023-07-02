@@ -1,0 +1,5 @@
+﻿CREATE PROC [dbo].[SELECT_USERS]
+AS
+BEGIN
+SELECT *FROM Users WHERE [Status]=1;
+END
