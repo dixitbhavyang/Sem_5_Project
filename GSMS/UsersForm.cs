@@ -22,6 +22,37 @@ namespace GSMS
             InitializeComponent();
         }
 
+        private void executeQuery(string query)
+        {
+            int gender = 1;
+            cmd = new SqlCommand(query, con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            if (MasterForm.userId > 0)
+            {
+                cmd.Parameters.AddWithValue("@ID", MasterForm.userId);
+            }
+            else
+            {
+                cmd.Parameters.AddWithValue("@CREATEDBY", LoginForm.loggedInUserId);
+                cmd.Parameters.AddWithValue("@UPDATEDDATE", DateTime.Now.ToString("MM/dd/yyyy hh:mm:ss tt"));
+            }
+            cmd.Parameters.AddWithValue("@FNAME", txtfirstname.Text);
+            cmd.Parameters.AddWithValue("@LNAME", txtlastname.Text);
+            cmd.Parameters.AddWithValue("@UNAME", txtusername.Text);
+            cmd.Parameters.AddWithValue("@PASSWORD", txtpassword.Text);
+            cmd.Parameters.AddWithValue("@PHONENO", txtcontactnumber.Text);
+            cmd.Parameters.AddWithValue("@EMAIL", txtmail.Text);
+            if (rdbfemale.IsChecked)
+            {
+                gender = 0;
+            }
+            cmd.Parameters.AddWithValue("@GENDER", gender);
+            cmd.Parameters.AddWithValue("@UPDATEDDATE", DateTime.Now.ToString("MM/dd/yyyy hh:mm:ss tt"));
+            cmd.Parameters.AddWithValue("@UPDATEDBY", LoginForm.loggedInUserId);
+            cmd.Parameters.AddWithValue("@ROLE", role);
+            cmd.Parameters.AddWithValue("@CITY", txtcity.Text);
+            cmd.ExecuteNonQuery();
+        }
         private void btnadduser_Click(object sender, EventArgs e)
         {
             role = "";
@@ -119,63 +150,14 @@ namespace GSMS
                 role = dropdownrole.SelectedItem.ToString();
 
                 con.Open();
-                int gender = 1;
-
+                string query = "INSERT_USER";
                 if (MasterForm.userId > 0)
                 {
-                    cmd = new SqlCommand("UPDATE_USER", con);
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@ID", MasterForm.userId);
-                    cmd.Parameters.AddWithValue("@FNAME", txtfirstname.Text);
-                    cmd.Parameters.AddWithValue("@LNAME", txtlastname.Text);
-                    cmd.Parameters.AddWithValue("@UNAME", txtusername.Text);
-                    cmd.Parameters.AddWithValue("@PASSWORD", txtpassword.Text);
-                    cmd.Parameters.AddWithValue("@PHONENO", txtcontactnumber.Text);
-                    cmd.Parameters.AddWithValue("@EMAIL", txtmail.Text);
-                    if (rdbfemale.IsChecked)
-                    {
-                        gender = 0;
-                    }
-                    cmd.Parameters.AddWithValue("@GENDER", gender);
-                    cmd.Parameters.AddWithValue("@CITY", txtcity.Text);
-                    cmd.Parameters.AddWithValue("@UPDATEDDATE", DateTime.Now.ToString("MM/dd/yyyy hh:mm:ss tt"));
-                    cmd.Parameters.AddWithValue("@UPDATEDBY", LoginForm.loggedInUserId);
-                    cmd.Parameters.AddWithValue("@ROLE", role);
-                    int u = cmd.ExecuteNonQuery();
-                    //if (u > 0)
-                    //{
-                    //    MessageBox.Show("User Updated", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    //}
+                    query = "UPDATE_USER";
                 }
-                else
-                {
-                    cmd = new SqlCommand("INSERT_USER", con);
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@FNAME", txtfirstname.Text);
-                    cmd.Parameters.AddWithValue("@LNAME", txtlastname.Text);
-                    cmd.Parameters.AddWithValue("@UNAME", txtusername.Text);
-                    cmd.Parameters.AddWithValue("@PASSWORD", txtpassword.Text);
-                    cmd.Parameters.AddWithValue("@PHONENO", txtcontactnumber.Text);
-                    cmd.Parameters.AddWithValue("@EMAIL", txtmail.Text);
-                    if (rdbfemale.IsChecked)
-                    {
-                        gender = 0;
-                    }
-                    cmd.Parameters.AddWithValue("@GENDER", gender);
-                    cmd.Parameters.AddWithValue("@CREATEDDATE", DateTime.Now.ToString("MM/dd/yyyy hh:mm:ss tt"));
-                    cmd.Parameters.AddWithValue("@CREATEDBY", LoginForm.loggedInUserId);
-                    cmd.Parameters.AddWithValue("@UPDATEDDATE", DateTime.Now.ToString("MM/dd/yyyy hh:mm:ss tt"));
-                    cmd.Parameters.AddWithValue("@UPDATEDBY", LoginForm.loggedInUserId);
-                    cmd.Parameters.AddWithValue("@ROLE", role);
-                    cmd.Parameters.AddWithValue("@CITY", txtcity.Text);
-                    int i = cmd.ExecuteNonQuery();
-                    //if (i > 0)
-                    //{
-                    //    MessageBox.Show("User Inserted", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    //}
-                }
+                executeQuery(query);
+                con.Close();
             }
-            con.Close();
             Close();
         }
 
