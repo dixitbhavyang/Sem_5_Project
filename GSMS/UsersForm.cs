@@ -22,7 +22,7 @@ namespace GSMS
             InitializeComponent();
         }
 
-        private void executeQuery(string query)
+        private void perfomOperation(string query)
         {
             int gender = 1;
             cmd = new SqlCommand(query, con);
@@ -33,8 +33,8 @@ namespace GSMS
             }
             else
             {
+                cmd.Parameters.AddWithValue("@CREATEDDATE", DateTime.Now.ToString("MM/dd/yyyy hh:mm:ss tt"));
                 cmd.Parameters.AddWithValue("@CREATEDBY", LoginForm.loggedInUserId);
-                cmd.Parameters.AddWithValue("@UPDATEDDATE", DateTime.Now.ToString("MM/dd/yyyy hh:mm:ss tt"));
             }
             cmd.Parameters.AddWithValue("@FNAME", txtfirstname.Text);
             cmd.Parameters.AddWithValue("@LNAME", txtlastname.Text);
@@ -155,7 +155,7 @@ namespace GSMS
                 {
                     query = "UPDATE_USER";
                 }
-                executeQuery(query);
+                perfomOperation(query);
                 con.Close();
             }
             Close();
