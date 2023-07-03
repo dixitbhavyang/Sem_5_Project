@@ -346,6 +346,12 @@ namespace GSMS
             }
         }
 
+        private void btncategoryadd_Click(object sender, EventArgs e)
+        {
+            CategoryForm cf = new CategoryForm();
+            cf.ShowDialog();
+        }
+
         private void btncompanyedit_Click(object sender, EventArgs e)
         {
 

@@ -82,5 +82,6 @@
     <Build Include="dbo\Stored Procedures\EDIT_COMPANY.sql" />
     <Build Include="dbo\Stored Procedures\DELETE_USER_1.sql" />
     <Build Include="dbo\Stored Procedures\DELETE_COMPANY.sql" />
+    <Build Include="dbo\Stored Procedures\UPDATE_COMPANY.sql" />
   </ItemGroup>
 </Project>
