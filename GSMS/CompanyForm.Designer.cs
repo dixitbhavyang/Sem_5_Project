@@ -84,14 +84,24 @@
             // 
             this.btnaddcomapny.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.tableLayoutPanel1.SetColumnSpan(this.btnaddcomapny, 2);
+<<<<<<< Updated upstream
+=======
+            this.btnaddcomapny.Cursor = System.Windows.Forms.Cursors.Hand;
+>>>>>>> Stashed changes
             this.btnaddcomapny.Location = new System.Drawing.Point(141, 263);
             this.btnaddcomapny.Name = "btnaddcomapny";
             this.btnaddcomapny.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue;
             this.btnaddcomapny.Size = new System.Drawing.Size(105, 31);
             this.btnaddcomapny.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+<<<<<<< Updated upstream
             this.btnaddcomapny.TabIndex = 3;
             this.btnaddcomapny.Values.Text = "Add Comapny";
             this.btnaddcomapny.Click += new System.EventHandler(this.btnaddcomapny_Click);
+=======
+            this.btnaddcomapny.TabIndex = 15;
+            this.btnaddcomapny.Values.Text = "Add Comapny";
+            this.btnaddcomapny.Click += new System.EventHandler(this.btnaddcomapny_Click_2);
+>>>>>>> Stashed changes
             // 
             // kryptonLabel3
             // 
