@@ -29,13 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Telerik.WinControls.UI.RadListDataItem radListDataItem1 = new Telerik.WinControls.UI.RadListDataItem();
-            Telerik.WinControls.UI.RadListDataItem radListDataItem2 = new Telerik.WinControls.UI.RadListDataItem();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UsersForm));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.kryptonLabel11 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
-            this.dropdownrole = new Telerik.WinControls.UI.RadDropDownList();
-            this.btnadduser = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.kryptonLabel8 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.txtcity = new Telerik.WinControls.UI.RadTextBox();
             this.kryptonLabel7 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
@@ -55,6 +51,8 @@
             this.txtlastname = new Telerik.WinControls.UI.RadTextBox();
             this.txtfirstname = new Telerik.WinControls.UI.RadTextBox();
             this.radPictureBox1 = new Telerik.WinControls.UI.RadPictureBox();
+            this.btnadduser = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.dropdownrole = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
             this.materialBlueGreyTheme1 = new Telerik.WinControls.Themes.MaterialBlueGreyTheme();
             this.crystalTheme1 = new Telerik.WinControls.Themes.CrystalTheme();
             this.visualStudio2022LightTheme1 = new Telerik.WinControls.Themes.VisualStudio2022LightTheme();
@@ -70,7 +68,6 @@
             this.edpcreateddate = new System.Windows.Forms.ErrorProvider(this.components);
             this.eprole = new System.Windows.Forms.ErrorProvider(this.components);
             this.tableLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dropdownrole)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtcity)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.rdbfemale)).BeginInit();
@@ -82,6 +79,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtlastname)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtfirstname)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radPictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dropdownrole)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.epfirstname)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.eplastname)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.epusername)).BeginInit();
@@ -98,16 +96,11 @@
             // 
             // tableLayoutPanel1
             // 
-            this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel1.BackColor = System.Drawing.Color.White;
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38.59649F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 61.40351F));
             this.tableLayoutPanel1.Controls.Add(this.kryptonLabel11, 0, 9);
-            this.tableLayoutPanel1.Controls.Add(this.dropdownrole, 1, 9);
-            this.tableLayoutPanel1.Controls.Add(this.btnadduser, 0, 10);
             this.tableLayoutPanel1.Controls.Add(this.kryptonLabel8, 0, 8);
             this.tableLayoutPanel1.Controls.Add(this.txtcity, 1, 8);
             this.tableLayoutPanel1.Controls.Add(this.kryptonLabel7, 0, 7);
@@ -125,9 +118,12 @@
             this.tableLayoutPanel1.Controls.Add(this.txtlastname, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.txtfirstname, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.radPictureBox1, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.btnadduser, 1, 10);
+            this.tableLayoutPanel1.Controls.Add(this.dropdownrole, 1, 9);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.MaximumSize = new System.Drawing.Size(399, 608);
-            this.tableLayoutPanel1.MinimumSize = new System.Drawing.Size(399, 608);
+            this.tableLayoutPanel1.MaximumSize = new System.Drawing.Size(399, 563);
+            this.tableLayoutPanel1.MinimumSize = new System.Drawing.Size(399, 563);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 11;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 253F));
@@ -141,7 +137,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(399, 608);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(399, 563);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // kryptonLabel11
@@ -153,39 +149,6 @@
             this.kryptonLabel11.Size = new System.Drawing.Size(43, 20);
             this.kryptonLabel11.TabIndex = 1;
             this.kryptonLabel11.Values.Text = "Role :";
-            // 
-            // dropdownrole
-            // 
-            this.dropdownrole.DropDownAnimationEnabled = true;
-            this.dropdownrole.DropDownSizingMode = Telerik.WinControls.UI.SizingMode.UpDown;
-            this.dropdownrole.DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList;
-            radListDataItem1.Text = "Admin";
-            radListDataItem2.Text = "User";
-            this.dropdownrole.Items.Add(radListDataItem1);
-            this.dropdownrole.Items.Add(radListDataItem2);
-            this.dropdownrole.Location = new System.Drawing.Point(156, 496);
-            this.dropdownrole.Name = "dropdownrole";
-            this.dropdownrole.SelectNextOnDoubleClick = true;
-            this.dropdownrole.Size = new System.Drawing.Size(196, 22);
-            this.dropdownrole.SortStyle = Telerik.WinControls.Enumerations.SortStyle.Ascending;
-            this.dropdownrole.TabIndex = 10;
-            this.dropdownrole.Text = "Select Role";
-            this.dropdownrole.ThemeName = "VisualStudio2022Light";
-            ((Telerik.WinControls.UI.RadDropDownListElement)(this.dropdownrole.GetChildAt(0))).DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList;
-            ((Telerik.WinControls.UI.RadDropDownListElement)(this.dropdownrole.GetChildAt(0))).Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            // 
-            // btnadduser
-            // 
-            this.btnadduser.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.tableLayoutPanel1.SetColumnSpan(this.btnadduser, 2);
-            this.btnadduser.Location = new System.Drawing.Point(147, 526);
-            this.btnadduser.Name = "btnadduser";
-            this.btnadduser.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue;
-            this.btnadduser.Size = new System.Drawing.Size(105, 31);
-            this.btnadduser.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnadduser.TabIndex = 11;
-            this.btnadduser.Values.Text = "Add User";
-            this.btnadduser.Click += new System.EventHandler(this.btnadduser_Click);
             // 
             // kryptonLabel8
             // 
@@ -379,6 +342,32 @@
             this.radPictureBox1.TabIndex = 12;
             this.radPictureBox1.ThemeName = "MaterialBlueGrey";
             // 
+            // btnadduser
+            // 
+            this.btnadduser.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.btnadduser.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnadduser.Location = new System.Drawing.Point(156, 531);
+            this.btnadduser.Name = "btnadduser";
+            this.btnadduser.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue;
+            this.btnadduser.Size = new System.Drawing.Size(105, 24);
+            this.btnadduser.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnadduser.TabIndex = 11;
+            this.btnadduser.Values.Text = "Add User";
+            this.btnadduser.Click += new System.EventHandler(this.btnadduser_Click);
+            // 
+            // dropdownrole
+            // 
+            this.dropdownrole.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.dropdownrole.DropDownWidth = 196;
+            this.dropdownrole.Items.AddRange(new object[] {
+            "Admin\t",
+            "User"});
+            this.dropdownrole.Location = new System.Drawing.Point(156, 496);
+            this.dropdownrole.Name = "dropdownrole";
+            this.dropdownrole.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue;
+            this.dropdownrole.Size = new System.Drawing.Size(196, 21);
+            this.dropdownrole.TabIndex = 13;
+            // 
             // epfirstname
             // 
             this.epfirstname.ContainerControl = this;
@@ -447,7 +436,6 @@
             this.Load += new System.EventHandler(this.UsersForm_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dropdownrole)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtcity)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -460,6 +448,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtlastname)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtfirstname)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radPictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dropdownrole)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.epfirstname)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.eplastname)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.epusername)).EndInit();
@@ -502,7 +491,6 @@
         public Telerik.WinControls.UI.RadRadioButton rdbmale;
         public Telerik.WinControls.UI.RadTextBox txtcity;
         public ComponentFactory.Krypton.Toolkit.KryptonButton btnadduser;
-        public Telerik.WinControls.UI.RadDropDownList dropdownrole;
         private System.Windows.Forms.ErrorProvider epfirstname;
         private System.Windows.Forms.ErrorProvider eplastname;
         private System.Windows.Forms.ErrorProvider epusername;
@@ -515,5 +503,6 @@
         private System.Windows.Forms.ErrorProvider edpcreateddate;
         private System.Windows.Forms.ErrorProvider eprole;
         private Telerik.WinControls.UI.RadPictureBox radPictureBox1;
+        public ComponentFactory.Krypton.Toolkit.KryptonComboBox dropdownrole;
     }
 }

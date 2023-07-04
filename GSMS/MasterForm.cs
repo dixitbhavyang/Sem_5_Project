@@ -162,19 +162,77 @@ namespace GSMS
             gridviewcompany.AutoSizeColumnsMode = GridViewAutoSizeColumnsMode.Fill;
             gridviewcompany.ShowGroupedColumns = true;
         }
+
+        private void getCategoryRecords()
+        {
+            string query = "EXEC SELECT_CATEGORIES";
+
+            da = new SqlDataAdapter(query, con);
+            dt.Clear();
+            da.Fill(dt);
+
+            gridviewcategory.Columns.Clear();
+            gridviewcategory.Rows.Clear();
+
+            gridviewcategory.Columns.Add("Id");
+            gridviewcategory.Columns[0].IsVisible = false;
+            gridviewcategory.Columns.Add("Category Name");
+            gridviewcategory.Columns.Add("Short Name");
+            gridviewcategory.Columns.Add("Created Date");
+            gridviewcategory.Columns.Add("Created By");
+            gridviewcategory.Columns.Add("Updated Date");
+            gridviewcategory.Columns.Add("Updated By");
+            gridviewcategory.Columns.Add("Company");
+            gridviewcategory.Columns.Add("Status");
+
+            for (int i = 0; i < gridviewcategory.Columns.Count; i++)
+            {
+                gridviewcategory.Columns[i].TextAlignment = ContentAlignment.MiddleCenter;
+            }
+
+            foreach (DataRow row in dt.Rows)
+            {
+                string status = "";
+                GridViewDataRowInfo rowInfo = new GridViewDataRowInfo(this.gridviewcategory.MasterView);
+                rowInfo.Cells[0].Value = row["Id"].ToString();
+                rowInfo.Cells[1].Value = row["Name"].ToString();
+                rowInfo.Cells[2].Value = row["ShortName"].ToString();
+                rowInfo.Cells[3].Value = Convert.ToDateTime(row["CreatedDate"]).ToString("dd/MMM/yyyy hh:mm:ss tt");
+                rowInfo.Cells[4].Value = row["Created By"].ToString();
+                rowInfo.Cells[5].Value = Convert.ToDateTime(row["UpdatedDate"]).ToString("dd/MMM/yyyy hh:mm:ss tt");
+                rowInfo.Cells[6].Value = row["Updated By"].ToString();
+                rowInfo.Cells[7].Value = row["Company"].ToString();
+                if (Convert.ToInt32(row["Status"]) == 1)
+                {
+                    status = "Active";
+                }
+                else
+                {
+                    status = "Not Active";
+                }
+                rowInfo.Cells[8].Value = status;
+
+                gridviewcategory.Rows.Add(rowInfo);
+            }
+            gridviewcategory.AutoSizeRows = true;
+            gridviewcategory.BestFitColumns();
+            gridviewcategory.AutoSizeColumnsMode = GridViewAutoSizeColumnsMode.Fill;
+            gridviewcategory.ShowGroupedColumns = true;
+        }
         private void Form1_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'superMarketMS_ProjectDataSet.Users' table. You can move, or remove it, as needed.
             if (LoginForm.usertype == "Admin")
             {
-                btnedituser.Enabled = btndeleteuser.Enabled = btncompanyedit.Enabled = btncompanydelete.Enabled = true;
+                btnedituser.Enabled = btndeleteuser.Enabled = btncompanyedit.Enabled = btncompanydelete.Enabled = btncategoryedit.Enabled = btncategorydelete.Enabled = true;
             }
             else
             {
-                btnedituser.Enabled = btndeleteuser.Enabled = btncompanyedit.Enabled = btncompanydelete.Enabled = false;
+                btnedituser.Enabled = btndeleteuser.Enabled = btncompanyedit.Enabled = btncompanydelete.Enabled = btncategoryedit.Enabled = btncategorydelete.Enabled = false;
             }
             getUserRecords();
             getCompanyRecords();
+            getCategoryRecords();
         }
 
         private void radButton1_Click(object sender, EventArgs e)
@@ -346,9 +404,11 @@ namespace GSMS
             }
         }
 
-        private void btncompanyedit_Click(object sender, EventArgs e)
+        private void btncategoryadd_Click(object sender, EventArgs e)
         {
-
+            CategoryForm cf = new CategoryForm();
+            cf.ShowDialog();
         }
+        
     }
 }
