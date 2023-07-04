@@ -185,6 +185,7 @@ namespace GSMS
                     companyId = Convert.ToInt32(gridviewcompany.Rows[i].Cells["Id"].Value);
                 }
             }
+        }
 
 
         private void getCategoryRecords()

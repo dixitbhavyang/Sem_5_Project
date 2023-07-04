@@ -86,5 +86,6 @@ namespace GSMS
             }
             else { btnaddcomapny.Text = "Add Company"; }
         }
+        
     }
 }

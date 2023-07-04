@@ -349,10 +349,10 @@
             this.btnadduser.Location = new System.Drawing.Point(156, 531);
             this.btnadduser.Name = "btnadduser";
             this.btnadduser.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue;
-            this.btnadduser.Size = new System.Drawing.Size(105, 24);
+            this.btnadduser.Size = new System.Drawing.Size(90, 24);
             this.btnadduser.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnadduser.TabIndex = 11;
-            this.btnadduser.Values.Text = "Add User";
+            this.btnadduser.Values.Text = "Add";
             this.btnadduser.Click += new System.EventHandler(this.btnadduser_Click);
             // 
             // dropdownrole

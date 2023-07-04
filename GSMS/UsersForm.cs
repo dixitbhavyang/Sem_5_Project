@@ -168,6 +168,7 @@ namespace GSMS
             {
                 btnadduser.Text = "Update";
             }
+            else { btnadduser.Text = "Add"; }
         }
     }
 }

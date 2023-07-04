@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MasterForm));
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition1 = new Telerik.WinControls.UI.TableViewDefinition();
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition2 = new Telerik.WinControls.UI.TableViewDefinition();
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition3 = new Telerik.WinControls.UI.TableViewDefinition();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition4 = new Telerik.WinControls.UI.TableViewDefinition();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition5 = new Telerik.WinControls.UI.TableViewDefinition();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition6 = new Telerik.WinControls.UI.TableViewDefinition();
             this.materialBlueGreyTheme1 = new Telerik.WinControls.Themes.MaterialBlueGreyTheme();
             this.office2019GrayTheme1 = new Telerik.WinControls.Themes.Office2019GrayTheme();
             this.visualStudio2012LightTheme1 = new Telerik.WinControls.Themes.VisualStudio2012LightTheme();
@@ -205,7 +205,7 @@
             this.gridviewcategory.MasterTemplate.CaseSensitive = true;
             this.gridviewcategory.MasterTemplate.PageSize = 5;
             this.gridviewcategory.MasterTemplate.ShowGroupedColumns = true;
-            this.gridviewcategory.MasterTemplate.ViewDefinition = tableViewDefinition1;
+            this.gridviewcategory.MasterTemplate.ViewDefinition = tableViewDefinition4;
             this.gridviewcategory.Name = "gridviewcategory";
             this.gridviewcategory.Padding = new System.Windows.Forms.Padding(1);
             this.gridviewcategory.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -213,7 +213,6 @@
             this.gridviewcategory.TabIndex = 12;
             this.gridviewcategory.ThemeName = "MaterialBlueGrey";
             this.gridviewcategory.TitleText = "List of Users";
-            
             // 
             // btncategorydelete
             // 
@@ -314,7 +313,7 @@
             this.gridviewcompany.MasterTemplate.CaseSensitive = true;
             this.gridviewcompany.MasterTemplate.PageSize = 5;
             this.gridviewcompany.MasterTemplate.ShowGroupedColumns = true;
-            this.gridviewcompany.MasterTemplate.ViewDefinition = tableViewDefinition2;
+            this.gridviewcompany.MasterTemplate.ViewDefinition = tableViewDefinition5;
             this.gridviewcompany.Name = "gridviewcompany";
             this.gridviewcompany.Padding = new System.Windows.Forms.Padding(1);
             this.gridviewcompany.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -409,7 +408,7 @@
             this.gridviewusers.MasterTemplate.CaseSensitive = true;
             this.gridviewusers.MasterTemplate.PageSize = 5;
             this.gridviewusers.MasterTemplate.ShowGroupedColumns = true;
-            this.gridviewusers.MasterTemplate.ViewDefinition = tableViewDefinition3;
+            this.gridviewusers.MasterTemplate.ViewDefinition = tableViewDefinition6;
             this.gridviewusers.Name = "gridviewusers";
             this.gridviewusers.Padding = new System.Windows.Forms.Padding(1);
             this.gridviewusers.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -497,7 +496,7 @@
             this.radPageView1.ItemSizeMode = ((Telerik.WinControls.UI.PageViewItemSizeMode)((Telerik.WinControls.UI.PageViewItemSizeMode.EqualWidth | Telerik.WinControls.UI.PageViewItemSizeMode.EqualHeight)));
             this.radPageView1.Location = new System.Drawing.Point(0, 0);
             this.radPageView1.Name = "radPageView1";
-            this.radPageView1.SelectedPage = this.pagecategory;
+            this.radPageView1.SelectedPage = this.pagecompany;
             this.radPageView1.Size = new System.Drawing.Size(1283, 598);
             this.radPageView1.TabIndex = 0;
             this.radPageView1.ThemeName = "Office2019Gray";
@@ -511,7 +510,7 @@
             ((Telerik.WinControls.UI.RadPageViewNavigationViewElement)(this.radPageView1.GetChildAt(0))).ItemSizeMode = ((Telerik.WinControls.UI.PageViewItemSizeMode)((Telerik.WinControls.UI.PageViewItemSizeMode.EqualWidth | Telerik.WinControls.UI.PageViewItemSizeMode.EqualHeight)));
             ((Telerik.WinControls.UI.RadPageViewNavigationViewElement)(this.radPageView1.GetChildAt(0))).Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             ((Telerik.WinControls.UI.NavigationViewHeaderElement)(this.radPageView1.GetChildAt(0).GetChildAt(2))).ClipText = false;
-            ((Telerik.WinControls.UI.NavigationViewHeaderElement)(this.radPageView1.GetChildAt(0).GetChildAt(2))).Text = "Categories";
+            ((Telerik.WinControls.UI.NavigationViewHeaderElement)(this.radPageView1.GetChildAt(0).GetChildAt(2))).Text = "Companies";
             ((Telerik.WinControls.UI.NavigationViewHeaderElement)(this.radPageView1.GetChildAt(0).GetChildAt(2))).Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             ((Telerik.WinControls.UI.NavigationViewHeaderElement)(this.radPageView1.GetChildAt(0).GetChildAt(2))).CustomFontSize = 20F;
             ((Telerik.WinControls.UI.NavigationViewHeaderElement)(this.radPageView1.GetChildAt(0).GetChildAt(2))).Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);

@@ -40,10 +40,10 @@
             this.txtcompanyname = new Telerik.WinControls.UI.RadTextBox();
             this.radPictureBox1 = new Telerik.WinControls.UI.RadPictureBox();
             this.txtaddress = new Telerik.WinControls.UI.RadTextBoxControl();
+            this.btnaddcomapny = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.erpcompanyname = new System.Windows.Forms.ErrorProvider(this.components);
             this.erpshortname = new System.Windows.Forms.ErrorProvider(this.components);
             this.erpaddress = new System.Windows.Forms.ErrorProvider(this.components);
-            this.btnaddcomapny = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtshortname)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtcompanyname)).BeginInit();
@@ -76,43 +76,11 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 36F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 36F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 64F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 36F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 8F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 48F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(388, 299);
             this.tableLayoutPanel1.TabIndex = 4;
             // 
-            // btnaddcomapny
-            // 
-
-            this.btnaddcomapny.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.tableLayoutPanel1.SetColumnSpan(this.btnaddcomapny, 2);
-
-            this.btnaddcomapny.Cursor = System.Windows.Forms.Cursors.Hand;
-
-            this.btnaddcomapny.Location = new System.Drawing.Point(141, 263);
-
-            this.btnaddcomapny.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.btnaddcomapny.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnaddcomapny.Location = new System.Drawing.Point(150, 267);
-
-            this.btnaddcomapny.Name = "btnaddcomapny";
-            this.btnaddcomapny.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue;
-            this.btnaddcomapny.Size = new System.Drawing.Size(105, 24);
-            this.btnaddcomapny.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-
-            this.btnaddcomapny.TabIndex = 3;
-            this.btnaddcomapny.Values.Text = "Add Comapny";
-            this.btnaddcomapny.Click += new System.EventHandler(this.btnaddcomapny_Click);
-            this.btnaddcomapny.TabIndex = 15;
-            this.btnaddcomapny.Values.Text = "Add Comapny";
-            this.btnaddcomapny.Click += new System.EventHandler(this.btnaddcomapny_Click_2);
-
-            this.btnaddcomapny.TabIndex = 3;
-            this.btnaddcomapny.Values.Text = "Add Comapny";
-            this.btnaddcomapny.Click += new System.EventHandler(this.btnaddcomapny_Click);
-
-            // 
-
             // kryptonLabel3
             // 
             this.kryptonLabel3.Anchor = System.Windows.Forms.AnchorStyles.Right;
@@ -139,7 +107,7 @@
             this.txtshortname.Location = new System.Drawing.Point(150, 166);
             this.txtshortname.Name = "txtshortname";
             this.txtshortname.ShowClearButton = true;
-            this.txtshortname.Size = new System.Drawing.Size(204, 24);
+            this.txtshortname.Size = new System.Drawing.Size(141, 24);
             this.txtshortname.TabIndex = 1;
             this.txtshortname.ThemeName = "Crystal";
             // 
@@ -159,7 +127,7 @@
             this.txtcompanyname.Location = new System.Drawing.Point(150, 130);
             this.txtcompanyname.Name = "txtcompanyname";
             this.txtcompanyname.ShowClearButton = true;
-            this.txtcompanyname.Size = new System.Drawing.Size(204, 24);
+            this.txtcompanyname.Size = new System.Drawing.Size(141, 24);
             this.txtcompanyname.TabIndex = 0;
             this.txtcompanyname.ThemeName = "Crystal";
             // 
@@ -182,6 +150,19 @@
             this.txtaddress.TabIndex = 2;
             this.txtaddress.ThemeName = "Crystal";
             // 
+            // btnaddcomapny
+            // 
+            this.btnaddcomapny.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.btnaddcomapny.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnaddcomapny.Location = new System.Drawing.Point(150, 267);
+            this.btnaddcomapny.Name = "btnaddcomapny";
+            this.btnaddcomapny.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue;
+            this.btnaddcomapny.Size = new System.Drawing.Size(90, 24);
+            this.btnaddcomapny.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnaddcomapny.TabIndex = 3;
+            this.btnaddcomapny.Values.Text = "Add";
+            this.btnaddcomapny.Click += new System.EventHandler(this.btnaddcomapny_Click_2);
+            // 
             // erpcompanyname
             // 
             this.erpcompanyname.ContainerControl = this;
@@ -193,20 +174,6 @@
             // erpaddress
             // 
             this.erpaddress.ContainerControl = this;
-            // 
-            // btnaddcomapny
-            // 
-            this.btnaddcomapny.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.tableLayoutPanel1.SetColumnSpan(this.btnaddcomapny, 2);
-            this.btnaddcomapny.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnaddcomapny.Location = new System.Drawing.Point(141, 263);
-            this.btnaddcomapny.Name = "btnaddcomapny";
-            this.btnaddcomapny.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue;
-            this.btnaddcomapny.Size = new System.Drawing.Size(105, 31);
-            this.btnaddcomapny.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnaddcomapny.TabIndex = 15;
-            this.btnaddcomapny.Values.Text = "Add Comapny";
-            this.btnaddcomapny.Click += new System.EventHandler(this.btnaddcomapny_Click_2);
             // 
             // CompanyForm
             // 
@@ -253,9 +220,9 @@
         private System.Windows.Forms.ErrorProvider erpcompanyname;
         private System.Windows.Forms.ErrorProvider erpshortname;
         private System.Windows.Forms.ErrorProvider erpaddress;
-        private ComponentFactory.Krypton.Toolkit.KryptonButton btnaddcomapny;
         public Telerik.WinControls.UI.RadTextBox txtcompanyname;
         public Telerik.WinControls.UI.RadTextBox txtshortname;
         public Telerik.WinControls.UI.RadTextBoxControl txtaddress;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton btnaddcomapny;
     }
 }
