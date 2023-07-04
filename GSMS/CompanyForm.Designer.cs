@@ -60,7 +60,6 @@
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 37.8866F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62.1134F));
-            this.tableLayoutPanel1.Controls.Add(this.btnaddcomapny, 0, 4);
             this.tableLayoutPanel1.Controls.Add(this.kryptonLabel3, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.kryptonLabel2, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.txtshortname, 1, 2);
@@ -68,6 +67,7 @@
             this.tableLayoutPanel1.Controls.Add(this.txtcompanyname, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.radPictureBox1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.txtaddress, 1, 3);
+            this.tableLayoutPanel1.Controls.Add(this.btnaddcomapny, 1, 4);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -77,31 +77,22 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 36F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 64F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 36F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(388, 299);
             this.tableLayoutPanel1.TabIndex = 4;
             // 
             // btnaddcomapny
             // 
-            this.btnaddcomapny.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.tableLayoutPanel1.SetColumnSpan(this.btnaddcomapny, 2);
-<<<<<<< Updated upstream
-=======
+            this.btnaddcomapny.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.btnaddcomapny.Cursor = System.Windows.Forms.Cursors.Hand;
->>>>>>> Stashed changes
-            this.btnaddcomapny.Location = new System.Drawing.Point(141, 263);
+            this.btnaddcomapny.Location = new System.Drawing.Point(150, 267);
             this.btnaddcomapny.Name = "btnaddcomapny";
             this.btnaddcomapny.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue;
-            this.btnaddcomapny.Size = new System.Drawing.Size(105, 31);
+            this.btnaddcomapny.Size = new System.Drawing.Size(105, 24);
             this.btnaddcomapny.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-<<<<<<< Updated upstream
             this.btnaddcomapny.TabIndex = 3;
             this.btnaddcomapny.Values.Text = "Add Comapny";
             this.btnaddcomapny.Click += new System.EventHandler(this.btnaddcomapny_Click);
-=======
-            this.btnaddcomapny.TabIndex = 15;
-            this.btnaddcomapny.Values.Text = "Add Comapny";
-            this.btnaddcomapny.Click += new System.EventHandler(this.btnaddcomapny_Click_2);
->>>>>>> Stashed changes
             // 
             // kryptonLabel3
             // 
