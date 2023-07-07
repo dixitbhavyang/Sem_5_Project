@@ -83,5 +83,10 @@
     <Build Include="dbo\Stored Procedures\DELETE_USER_1.sql" />
     <Build Include="dbo\Stored Procedures\DELETE_COMPANY.sql" />
     <Build Include="dbo\Stored Procedures\UPDATE_COMPANY.sql" />
+    <Build Include="dbo\Stored Procedures\UPDATE_CATEGORY.sql" />
+    <Build Include="dbo\Stored Procedures\SELECT_CATEGORIES.sql" />
+    <Build Include="dbo\Stored Procedures\INSERT_CATEGORY.sql" />
+    <Build Include="dbo\Stored Procedures\EDIT_CATEGORY.sql" />
+    <Build Include="dbo\Stored Procedures\DELETE_CATEGORY.sql" />
   </ItemGroup>
 </Project>
