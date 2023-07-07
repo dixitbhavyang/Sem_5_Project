@@ -157,8 +157,8 @@ namespace GSMS
                 }
                 perfomOperation(query);
                 con.Close();
+                Close();
             }
-            Close();
         }
 
 

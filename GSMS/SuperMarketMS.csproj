@@ -257,12 +257,26 @@
     <Content Include="Content\CSS\font-awesome.css" />
     <Content Include="Content\CSS\font-awesome.min.css" />
     <Content Include="Content\Fonts\fontawesome-webfont.svg" />
+    <None Include="Resources\5538772_2827397.jpg" />
+    <None Include="Resources\add %285%29.png" />
+    <None Include="Resources\write.png" />
+    <None Include="Resources\menu.png" />
+    <None Include="Images\pencil %281%29.png" />
+    <None Include="Images\vecteezy_unlock-personal-password-account-security_.jpg" />
+    <None Include="Images\4565.jpg" />
+    <None Include="Images\35976.jpg" />
+    <None Include="Images\add %283%29.png" />
+    <None Include="Images\add %284%29.png" />
+    <None Include="Images\delete %283%29.png" />
+    <None Include="Images\delete-user %281%29.png" />
+    <None Include="Images\edit %286%29.png" />
     <Content Include="Images\icons8-badge-20.png" />
     <Content Include="Images\icons8-bill-20 %281%29.png" />
     <Content Include="Images\icons8-broadcasting-20.png" />
     <Content Include="Images\icons8-customers-20 %281%29.png" />
     <Content Include="Images\icons8-group-of-companies-20.png" />
     <Content Include="Images\icons8-home-20.png" />
+    <None Include="Images\icons8-login-16 %281%29.png" />
     <Content Include="Images\icons8-sales-20 %281%29.png" />
     <Content Include="Images\icons8-settings-20 %282%29.png" />
     <Content Include="Images\icons8-similar-items-20.png" />
@@ -282,6 +296,7 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

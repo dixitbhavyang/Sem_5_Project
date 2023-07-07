@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Telerik.WinControls.UI;
 using System.Data.SqlClient;
+using Telerik.WinControls;
 
 namespace GSMS
 {
@@ -19,7 +20,7 @@ namespace GSMS
         SqlDataReader dr;
         DataTable dt = new DataTable();
         SqlDataAdapter da;
-        public static int userId, companyId;
+        public static int userId, companyId, categoryId;
         public MasterForm()
         {
             InitializeComponent();
@@ -62,7 +63,7 @@ namespace GSMS
 
             foreach (DataRow item in dt.Rows)
             {
-                string gender = "Male", status = "Active";
+                string gender = "Female", status = "Not Active";
                 GridViewDataRowInfo rowInfo = new GridViewDataRowInfo(this.gridviewusers.MasterView);
                 //rowInfo.Cells[0].Value = item["FirstName"].ToString();
                 rowInfo.Cells[0].Value = item["Id"].ToString();
@@ -72,9 +73,9 @@ namespace GSMS
                 rowInfo.Cells[4].Value = item["Password"].ToString();
                 rowInfo.Cells[5].Value = item["ContactNo"].ToString();
                 rowInfo.Cells[6].Value = item["Email"].ToString();
-                if (item["Gender"].ToString() == "0")
+                if (Convert.ToBoolean(item["Gender"]))
                 {
-                    gender = "Female";
+                    gender = "Male";
                 }
                 rowInfo.Cells[7].Value = gender;
                 rowInfo.Cells[8].Value = item["City"].ToString();
@@ -83,9 +84,9 @@ namespace GSMS
                 rowInfo.Cells[11].Value = Convert.ToDateTime(item["UpdatedDate"]).ToString("dd/MMM/yyyy hh:mm:ss tt");
                 rowInfo.Cells[12].Value = item["Updated By"].ToString();
                 rowInfo.Cells[13].Value = item["Role"].ToString();
-                if (item["Status"].ToString() == "0")
+                if (Convert.ToBoolean(item["Status"]))
                 {
-                    status = "Not Active";
+                    status = "Active";
                 }
                 rowInfo.Cells[14].Value = status;
                 if (item["LastLogIn"] != DBNull.Value)
@@ -98,7 +99,7 @@ namespace GSMS
                 gridviewusers.Rows.Add(rowInfo);
             }
 
-            gridviewusers.AutoSizeRows = true;
+            //gridviewusers.AutoSizeRows = true;
             gridviewusers.BestFitColumns();
             gridviewusers.AutoSizeColumnsMode = GridViewAutoSizeColumnsMode.Fill;
             gridviewusers.ShowGroupedColumns = true;
@@ -156,7 +157,7 @@ namespace GSMS
 
                 gridviewcompany.Rows.Add(rowInfo);
             }
-            gridviewcompany.AutoSizeRows = true;
+            //gridviewcompany.AutoSizeRows = true;
             gridviewcompany.BestFitColumns();
             gridviewcompany.AutoSizeColumnsMode = GridViewAutoSizeColumnsMode.Fill;
             gridviewcompany.ShowGroupedColumns = true;
@@ -186,8 +187,18 @@ namespace GSMS
                 }
             }
         }
-
-
+        private void getCategoryId()
+        {
+            categoryId = 0;
+            for (int i = 0; i < gridviewcategory.Rows.Count; i++)
+            {
+                if (gridviewcategory.Rows[i].IsSelected)
+                {
+                    //MessageBox.Show(radGridView1.Rows[i].Cells["Id"].Value.ToString());
+                    categoryId = Convert.ToInt32(gridviewcategory.Rows[i].Cells["Id"].Value);
+                }
+            }
+        }
         private void getCategoryRecords()
         {
             string query = "EXEC SELECT_CATEGORIES";
@@ -239,7 +250,7 @@ namespace GSMS
 
                 gridviewcategory.Rows.Add(rowInfo);
             }
-            gridviewcategory.AutoSizeRows = true;
+            //gridviewcategory.AutoSizeRows = true;
             gridviewcategory.BestFitColumns();
             gridviewcategory.AutoSizeColumnsMode = GridViewAutoSizeColumnsMode.Fill;
             gridviewcategory.ShowGroupedColumns = true;
@@ -270,70 +281,63 @@ namespace GSMS
         private void btnedituser_Click(object sender, EventArgs e)
         {
             getUserId();
-            if (userId > 0)
-            {
-                dt.Clear();
-                cmd = new SqlCommand("EDIT_USER", con);
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@ID", userId);
-                da = new SqlDataAdapter(cmd);
-                da.Fill(dt);
+            dt.Clear();
+            cmd = new SqlCommand("EDIT_USER", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@ID", userId);
+            da = new SqlDataAdapter(cmd);
+            da.Fill(dt);
 
-                UsersForm uf = new UsersForm();
-                uf.txtfirstname.Text = dt.Rows[0].ItemArray[1].ToString();
-                uf.txtlastname.Text = dt.Rows[0].ItemArray[2].ToString();
-                uf.txtusername.Text = dt.Rows[0].ItemArray[3].ToString();
-                uf.txtpassword.Text = dt.Rows[0].ItemArray[4].ToString();
-                uf.txtcontactnumber.Text = dt.Rows[0].ItemArray[5].ToString();
-                uf.txtmail.Text = dt.Rows[0].ItemArray[6].ToString();
-                if (dt.Rows[0].ItemArray[7].ToString() == "0")
-                {
-                    uf.rdbfemale.IsChecked = true;
-                }
-                else
-                {
-                    uf.rdbmale.IsChecked = true;
-                }
-                uf.txtcity.Text = dt.Rows[0].ItemArray[8].ToString();
-                if (dt.Rows[0].ItemArray[13].ToString() == "Admin")
-                {
-                    uf.dropdownrole.SelectedIndex = 0;
-                }
-                else
-                {
-                    uf.dropdownrole.SelectedIndex = 1;
-                }
-                uf.ShowDialog();
-                getUserRecords();
+            UsersForm uf = new UsersForm();
+            uf.txtfirstname.Text = dt.Rows[0].ItemArray[1].ToString();
+            uf.txtlastname.Text = dt.Rows[0].ItemArray[2].ToString();
+            uf.txtusername.Text = dt.Rows[0].ItemArray[3].ToString();
+            uf.txtpassword.Text = dt.Rows[0].ItemArray[4].ToString();
+            uf.txtcontactnumber.Text = dt.Rows[0].ItemArray[5].ToString();
+            uf.txtmail.Text = dt.Rows[0].ItemArray[6].ToString();
+            if (dt.Rows[0].ItemArray[7].ToString() == "0")
+            {
+                uf.rdbfemale.IsChecked = true;
             }
+            else
+            {
+                uf.rdbmale.IsChecked = true;
+            }
+            uf.txtcity.Text = dt.Rows[0].ItemArray[8].ToString();
+            if (dt.Rows[0].ItemArray[13].ToString() == "Admin")
+            {
+                uf.dropdownrole.SelectedIndex = 0;
+            }
+            else
+            {
+                uf.dropdownrole.SelectedIndex = 1;
+            }
+            uf.ShowDialog();
+            getUserRecords();
             userId = 0;
         }
 
         private void btndeleteuser_Click(object sender, EventArgs e)
         {
             getUserId();
-            if (userId > 0)
+            cmd = new SqlCommand("EDIT_USER", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@ID", userId);
+            dr = cmd.ExecuteReader();
+            if (dr.HasRows)
             {
-                dr.Close();
-                cmd = new SqlCommand("EDIT_USER", con);
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@ID", userId);
-                dr = cmd.ExecuteReader();
-                if (dr.HasRows)
+                DialogResult result = MessageBox.Show("Do you want to Delete ?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
                 {
-                    DialogResult result = MessageBox.Show("Do you want to Delete ?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                    if (result == DialogResult.Yes)
-                    {
-                        dr.Close();
-                        cmd = new SqlCommand("DELETE_USER", con);
-                        cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.Parameters.AddWithValue("@ID", userId);
-                        cmd.ExecuteNonQuery();
-                        getUserRecords();
-                    }
+                    dr.Close();
+                    cmd = new SqlCommand("DELETE_USER", con);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@ID", userId);
+                    cmd.ExecuteNonQuery();
+                    getUserRecords();
                 }
-                dr.Close();
             }
+            dr.Close();
             userId = 0;
         }
 
@@ -341,60 +345,183 @@ namespace GSMS
         {
             CompanyForm cf = new CompanyForm();
             cf.ShowDialog();
+            getCompanyRecords();
         }
 
         private void btncompanydelete_Click(object sender, EventArgs e)
         {
             getCompanyId();
-            if (companyId > 0)
+
+            cmd = new SqlCommand("EDIT_COMPANY", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@id", companyId);
+            dr = cmd.ExecuteReader();
+
+            if (dr.HasRows)
             {
-                cmd = new SqlCommand("EDIT_COMPANY", con);
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@id", companyId);
-                dr = cmd.ExecuteReader();
-                if (dr.HasRows)
+                DialogResult result = MessageBox.Show("Do you want to Delete ?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
                 {
-                    DialogResult result = MessageBox.Show("Do you want to Delete ?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                    if (result == DialogResult.Yes)
+                    cmd = new SqlCommand("DELETE_COMPANY", con);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@id", companyId);
+                    dr.Close();
+                    dr = cmd.ExecuteReader();
+                    if (dr.HasRows)
                     {
-                        dr.Close();
-                        cmd = new SqlCommand("DELETE_COMPANY", con);
-                        cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.Parameters.AddWithValue("@id", companyId);
-                        cmd.ExecuteNonQuery();
+                        string categories = "";
+                        while (dr.Read())
+                        {
+                            categories += "\n" + dr.GetString(0);
+                        }
+                        MessageBox.Show("It Cannot be deleted because it hase Categories : " + categories, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
                         getCompanyRecords();
                     }
+                    dr.Close();
                 }
-                dr.Close();
             }
+            dr.Close();
             companyId = 0;
+        }
+
+        private void btncategoryedit_Click(object sender, EventArgs e)
+        {
+            getCategoryId();
+            dt.Clear();
+            cmd = new SqlCommand("EDIT_CATEGORY", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@ID", categoryId);
+            da = new SqlDataAdapter(cmd);
+            da.Fill(dt);
+            if (dt.Rows.Count > 0)
+            {
+                CategoryForm cf = new CategoryForm();
+                companyId = dt.Rows[0].Field<Int32>("CompanyId");
+                cf.txtcategoryname.Text = dt.Rows[0].Field<String>("Name");
+                cf.txtshortname.Text = dt.Rows[0].Field<String>("ShortName");
+                cf.ShowDialog();
+                getCategoryRecords();
+            }
+        }
+
+        private void gridviewcategory_SelectionChanged(object sender, EventArgs e)
+        {
+            bool isSelected = false;
+            for (int i = 0; i < gridviewcategory.Rows.Count; i++)
+            {
+                if (gridviewcategory.Rows[i].IsSelected)
+                {
+                    isSelected = true;
+                }
+            }
+            if (isSelected)
+            {
+                btncategorydelete.Enabled = btncategoryedit.Enabled = true;
+            }
+            else { btncategorydelete.Enabled = btncategoryedit.Enabled = false; }
+        }
+
+        private void gridviewcompany_SelectionChanged(object sender, EventArgs e)
+        {
+            bool isSelected = false;
+            for (int i = 0; i < gridviewcompany.Rows.Count; i++)
+            {
+                if (gridviewcompany.Rows[i].IsSelected)
+                {
+                    isSelected = true;
+                }
+            }
+            if (isSelected)
+            {
+                btncompanydelete.Enabled = btncompanyedit.Enabled = true;
+            }
+            else { btncompanydelete.Enabled = btncompanyedit.Enabled = false; }
+        }
+
+        private void gridviewusers_SelectionChanged(object sender, EventArgs e)
+        {
+            bool isSelected = false;
+            for (int i = 0; i < gridviewusers.Rows.Count; i++)
+            {
+                if (gridviewusers.Rows[i].IsSelected)
+                {
+                    isSelected = true;
+                }
+            }
+            if (isSelected)
+            {
+                btnedituser.Enabled = btndeleteuser.Enabled = true;
+            }
+            else { btnedituser.Enabled = btndeleteuser.Enabled = false; }
+        }
+
+        private void btncategorydelete_Click(object sender, EventArgs e)
+        {
+            getCategoryId();
+            cmd = new SqlCommand("EDIT_CATEGORY", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@ID", categoryId);
+            dr = cmd.ExecuteReader();
+            if (dr.HasRows)
+            {
+                DialogResult res = MessageBox.Show("Do You wnat to Delete ?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (res == DialogResult.Yes)
+                {
+                    dr.Close();
+                    cmd = new SqlCommand("DELETE_CATEGORY", con);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@ID", categoryId);
+                    dr = cmd.ExecuteReader();
+                    if (dr.HasRows)
+                    {
+                        string items = "";
+                        while (dr.Read())
+                        {
+                            items += "\n " + dr.GetString(1);
+                        }
+                        MessageBox.Show("You cannot Delete this Category because it has Items : " + items, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        dr.Close();
+                        getCategoryRecords();
+                    }
+                    dr.Close();
+                }
+            }
+            dr.Close();
+            categoryId = 0;
         }
 
         private void btncategoryadd_Click(object sender, EventArgs e)
         {
             CategoryForm cf = new CategoryForm();
             cf.ShowDialog();
+            getCategoryRecords();
         }
 
 
         private void btncompanyedit_Click(object sender, EventArgs e)
         {
             getCompanyId();
-            if (companyId > 0)
+            dt.Clear();
+            cmd = new SqlCommand("EDIT_COMPANY", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@ID", companyId);
+            da = new SqlDataAdapter(cmd);
+            da.Fill(dt);
+            if (dt.Rows.Count > 0)
             {
-                dt.Clear();
-                cmd = new SqlCommand("EDIT_COMPANY", con);
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@ID", companyId);
-                da = new SqlDataAdapter(cmd);
-                da.Fill(dt);
-
                 CompanyForm cf = new CompanyForm();
                 cf.txtcompanyname.Text = dt.Rows[0].Field<string>("Name").ToString();
                 cf.txtshortname.Text = dt.Rows[0].Field<string>("ShortName").ToString();
                 cf.txtaddress.Text = dt.Rows[0].Field<string>("Address").ToString();
                 cf.ShowDialog();
                 getCompanyRecords();
+                companyId = 0;
             }
         }
 

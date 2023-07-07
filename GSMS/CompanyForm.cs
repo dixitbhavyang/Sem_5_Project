@@ -84,7 +84,7 @@ namespace GSMS
             {
                 btnaddcomapny.Text = "Update";
             }
-            else { btnaddcomapny.Text = "Add Company"; }
+            else { btnaddcomapny.Text = "Add"; }
         }
         
     }

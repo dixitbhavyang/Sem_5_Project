@@ -82,7 +82,7 @@
             this.radPictureBox1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.tableLayoutPanel1.SetColumnSpan(this.radPictureBox1, 2);
             this.radPictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.radPictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("radPictureBox1.Image")));
+            this.radPictureBox1.Image = global::GSMS.Properties.Resources.LoginFormImage;
             this.radPictureBox1.ImageAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.radPictureBox1.Location = new System.Drawing.Point(3, 3);
             this.radPictureBox1.Name = "radPictureBox1";
@@ -127,7 +127,7 @@
             this.btnlogin.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.tableLayoutPanel1.SetColumnSpan(this.btnlogin, 2);
             this.btnlogin.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnlogin.Image = ((System.Drawing.Image)(resources.GetObject("btnlogin.Image")));
+            this.btnlogin.Image = global::GSMS.Properties.Resources.LogInIcon;
             this.btnlogin.Location = new System.Drawing.Point(95, 296);
             this.btnlogin.Name = "btnlogin";
             this.btnlogin.Size = new System.Drawing.Size(81, 32);
@@ -168,7 +168,7 @@
             this.RootElement.ApplyShapeToControl = true;
             this.RootElement.MaxSize = new System.Drawing.Size(280, 369);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = " Log In";
+            this.Text = " LogIn";
             this.ThemeName = "Fluent";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();

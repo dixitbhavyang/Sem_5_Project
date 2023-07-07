@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UsersForm));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.kryptonLabel11 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.kryptonLabel8 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
@@ -50,7 +49,6 @@
             this.txtusername = new Telerik.WinControls.UI.RadTextBox();
             this.txtlastname = new Telerik.WinControls.UI.RadTextBox();
             this.txtfirstname = new Telerik.WinControls.UI.RadTextBox();
-            this.radPictureBox1 = new Telerik.WinControls.UI.RadPictureBox();
             this.btnadduser = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.dropdownrole = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
             this.materialBlueGreyTheme1 = new Telerik.WinControls.Themes.MaterialBlueGreyTheme();
@@ -67,6 +65,7 @@
             this.epstatus = new System.Windows.Forms.ErrorProvider(this.components);
             this.edpcreateddate = new System.Windows.Forms.ErrorProvider(this.components);
             this.eprole = new System.Windows.Forms.ErrorProvider(this.components);
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtcity)).BeginInit();
             this.panel1.SuspendLayout();
@@ -78,7 +77,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtusername)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtlastname)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtfirstname)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radPictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dropdownrole)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.epfirstname)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.eplastname)).BeginInit();
@@ -91,6 +89,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.epstatus)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.edpcreateddate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.eprole)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
             // 
@@ -117,9 +116,9 @@
             this.tableLayoutPanel1.Controls.Add(this.txtusername, 1, 3);
             this.tableLayoutPanel1.Controls.Add(this.txtlastname, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.txtfirstname, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.radPictureBox1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.btnadduser, 1, 10);
             this.tableLayoutPanel1.Controls.Add(this.dropdownrole, 1, 9);
+            this.tableLayoutPanel1.Controls.Add(this.pictureBox1, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.MaximumSize = new System.Drawing.Size(399, 563);
@@ -196,17 +195,20 @@
             this.rdbfemale.Name = "rdbfemale";
             this.rdbfemale.Size = new System.Drawing.Size(57, 18);
             this.rdbfemale.TabIndex = 7;
+            this.rdbfemale.TabStop = false;
             this.rdbfemale.Text = "Female";
             this.rdbfemale.ThemeName = "Fluent";
             // 
             // rdbmale
             // 
+            this.rdbmale.CheckState = System.Windows.Forms.CheckState.Checked;
             this.rdbmale.Location = new System.Drawing.Point(3, 3);
             this.rdbmale.Name = "rdbmale";
             this.rdbmale.Size = new System.Drawing.Size(46, 18);
             this.rdbmale.TabIndex = 6;
             this.rdbmale.Text = "Male";
             this.rdbmale.ThemeName = "Fluent";
+            this.rdbmale.ToggleState = Telerik.WinControls.Enumerations.ToggleState.On;
             // 
             // kryptonLabel6
             // 
@@ -331,25 +333,14 @@
             this.txtfirstname.TabIndex = 0;
             this.txtfirstname.ThemeName = "Crystal";
             // 
-            // radPictureBox1
-            // 
-            this.radPictureBox1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.tableLayoutPanel1.SetColumnSpan(this.radPictureBox1, 2);
-            this.radPictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("radPictureBox1.Image")));
-            this.radPictureBox1.Location = new System.Drawing.Point(3, 3);
-            this.radPictureBox1.Name = "radPictureBox1";
-            this.radPictureBox1.Size = new System.Drawing.Size(393, 247);
-            this.radPictureBox1.TabIndex = 12;
-            this.radPictureBox1.ThemeName = "MaterialBlueGrey";
-            // 
             // btnadduser
             // 
             this.btnadduser.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.btnadduser.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnadduser.Location = new System.Drawing.Point(156, 531);
+            this.btnadduser.Location = new System.Drawing.Point(156, 530);
             this.btnadduser.Name = "btnadduser";
             this.btnadduser.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue;
-            this.btnadduser.Size = new System.Drawing.Size(90, 24);
+            this.btnadduser.Size = new System.Drawing.Size(100, 25);
             this.btnadduser.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnadduser.TabIndex = 11;
             this.btnadduser.Values.Text = "Add";
@@ -412,6 +403,18 @@
             // 
             this.eprole.ContainerControl = this;
             // 
+            // pictureBox1
+            // 
+            this.tableLayoutPanel1.SetColumnSpan(this.pictureBox1, 2);
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox1.Image = global::GSMS.Properties.Resources.UsersFormImage;
+            this.pictureBox1.Location = new System.Drawing.Point(3, 3);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(393, 247);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 14;
+            this.pictureBox1.TabStop = false;
+            // 
             // UsersForm
             // 
             this.AcceptButton = this.btnadduser;
@@ -447,7 +450,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtusername)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtlastname)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtfirstname)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radPictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dropdownrole)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.epfirstname)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.eplastname)).EndInit();
@@ -460,6 +462,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.epstatus)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.edpcreateddate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.eprole)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);
 
@@ -502,7 +505,7 @@
         private System.Windows.Forms.ErrorProvider epstatus;
         private System.Windows.Forms.ErrorProvider edpcreateddate;
         private System.Windows.Forms.ErrorProvider eprole;
-        private Telerik.WinControls.UI.RadPictureBox radPictureBox1;
         public ComponentFactory.Krypton.Toolkit.KryptonComboBox dropdownrole;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

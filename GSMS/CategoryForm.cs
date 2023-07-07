@@ -17,6 +17,7 @@ namespace GSMS
     public partial class CategoryForm : RadForm
     {
         SqlConnection con = new SqlConnection(Connection.connectionString());
+        SqlCommand cmd;
         SqlDataAdapter da;
         DataTable dt = new DataTable();
         public CategoryForm()
@@ -24,7 +25,28 @@ namespace GSMS
             InitializeComponent();
         }
 
-
+        private void perfomOperation(string query)
+        {
+            cmd = new SqlCommand(query, con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            if (MasterForm.categoryId > 0)
+            {
+                cmd.Parameters.AddWithValue("@ID", MasterForm.categoryId);
+            }
+            else
+            {
+                cmd.Parameters.AddWithValue("@CREATEDDATE", DateTime.Now.ToString("MM/dd/yyyy hh:mm:ss tt"));
+                cmd.Parameters.AddWithValue("CREATEDBY", LoginForm.loggedInUserId);
+            }
+            cmd.Parameters.AddWithValue("@COMPANY_ID", drpselectcompany.SelectedValue);
+            cmd.Parameters.AddWithValue("@NAME", txtcategoryname.Text);
+            cmd.Parameters.AddWithValue("@SHORTNAME", txtshortname.Text);
+            cmd.Parameters.AddWithValue("@UPDATEDDATE", DateTime.Now.ToString("MM/dd/yyyy hh:mm:ss tt"));
+            cmd.Parameters.AddWithValue("UPDATEDBY", LoginForm.loggedInUserId);
+            con.Open();
+            cmd.ExecuteNonQuery();
+            con.Close();
+        }
 
         private void getCompanies()
         {
@@ -47,6 +69,23 @@ namespace GSMS
         private void CategoryForm_Load(object sender, EventArgs e)
         {
             getCompanies();
+            if (MasterForm.categoryId > 0)
+            {
+                btnaddcomapny.Text = "Update";
+                drpselectcompany.SelectedValue = MasterForm.companyId;
+            }
+            else { btnaddcomapny.Text = "Add"; }
+        }
+
+        private void btnaddcomapny_Click(object sender, EventArgs e)
+        {
+            string query = "INSERT_CATEGORY";
+            if (MasterForm.categoryId > 0)
+            {
+                query = "UPDATE_CATEGORY";
+            }
+            perfomOperation(query);
+            Close();
         }
     }
 }
