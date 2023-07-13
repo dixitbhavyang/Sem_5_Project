@@ -11,6 +11,7 @@ using Telerik.WinControls.UI;
 using System.Data.SqlClient;
 using System.Windows.Controls;
 using System.Windows.Documents;
+using System.Drawing.Drawing2D;
 
 namespace GSMS
 {
@@ -24,7 +25,6 @@ namespace GSMS
         {
             InitializeComponent();
         }
-
         private void perfomOperation(string query)
         {
             cmd = new SqlCommand(query, con);
@@ -54,38 +54,69 @@ namespace GSMS
             source.Clear();
             dt.Clear();
 
-            da = new SqlDataAdapter("EXEC SELECT_COMPANIES", con);
+            da = new SqlDataAdapter("EXEC SELECT_ACTIVE_COMPANIES", con);
             da.Fill(dt);
 
-            foreach (DataRow row in dt.Rows)
+            if (dt.Rows.Count > 0)
             {
-                source.Add(Convert.ToInt32(row.ItemArray[0]), row.ItemArray[1].ToString());
-            }
+                foreach (DataRow row in dt.Rows)
+                {
+                    source.Add(Convert.ToInt32(row.ItemArray[0]), row.ItemArray[1].ToString());
+                }
 
-            drpselectcompany.DataSource = new BindingSource(source, null);
-            drpselectcompany.DisplayMember = "Value";
-            drpselectcompany.ValueMember = "Key";
+                drpselectcompany.DataSource = new BindingSource(source, null);
+                drpselectcompany.DisplayMember = "Value";
+                drpselectcompany.ValueMember = "Key";
+            }
         }
         private void CategoryForm_Load(object sender, EventArgs e)
         {
             getCompanies();
             if (MasterForm.categoryId > 0)
             {
-                btnaddcomapny.Text = "Update";
+                btnaddcategory.Text = "Update";
                 drpselectcompany.SelectedValue = MasterForm.companyId;
             }
-            else { btnaddcomapny.Text = "Add"; }
+            else { btnaddcategory.Text = "Add"; }
         }
 
         private void btnaddcomapny_Click(object sender, EventArgs e)
         {
-            string query = "INSERT_CATEGORY";
-            if (MasterForm.categoryId > 0)
+            if (drpselectcompany.SelectedIndex < 0)
             {
-                query = "UPDATE_CATEGORY";
+                erpcomapny.SetError(drpselectcompany, "Please Select Comapny");
+                drpselectcompany.Focus();
             }
-            perfomOperation(query);
-            Close();
+            else if (String.IsNullOrEmpty(txtcategoryname.Text))
+            {
+                validatorForTextBoxes.ClearErrorStatus(txtshortname);
+                erpcomapny.Clear();
+
+                validatorForTextBoxes.Validate(txtcategoryname);
+                txtcategoryname.Focus();
+            }
+            else if (String.IsNullOrEmpty(txtshortname.Text))
+            {
+                validatorForTextBoxes.ClearErrorStatus(txtcategoryname);
+                erpcomapny.Clear();
+
+                validatorForTextBoxes.Validate(txtshortname);
+                txtshortname.Focus();
+            }
+            else
+            {
+                erpcomapny.Clear();
+                validatorForTextBoxes.ClearErrorStatus(txtcategoryname);
+                validatorForTextBoxes.ClearErrorStatus(txtshortname);
+
+                string query = "INSERT_CATEGORY";
+                if (MasterForm.categoryId > 0)
+                {
+                    query = "UPDATE_CATEGORY";
+                }
+                perfomOperation(query);
+                Close();
+            }
         }
     }
 }
