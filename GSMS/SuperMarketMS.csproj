@@ -134,6 +134,12 @@
     <Compile Include="CompanyForm.Designer.cs">
       <DependentUpon>CompanyForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ItemForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ItemForm.Designer.cs">
+      <DependentUpon>ItemForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="MasterForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -173,6 +179,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CompanyForm.resx">
       <DependentUpon>CompanyForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemForm.resx">
+      <DependentUpon>ItemForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MasterForm.resx">
       <DependentUpon>MasterForm.cs</DependentUpon>
@@ -257,6 +266,8 @@
     <Content Include="Content\CSS\font-awesome.css" />
     <Content Include="Content\CSS\font-awesome.min.css" />
     <Content Include="Content\Fonts\fontawesome-webfont.svg" />
+    <None Include="Resources\13749522_2007.i504.004..isometric supermarket infographics.jpg" />
+    <None Include="Resources\14449322_5464026.jpg" />
     <None Include="Resources\5538772_2827397.jpg" />
     <None Include="Resources\add %285%29.png" />
     <None Include="Resources\write.png" />
