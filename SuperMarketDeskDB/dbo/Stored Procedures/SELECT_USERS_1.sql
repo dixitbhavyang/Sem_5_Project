@@ -7,5 +7,5 @@ U1.UpdatedDate, U2.Username "Updated By",
 U1.[Role], U1.[Status], U1.LastLogIn 
 FROM Users AS "U1"
 JOIN Users "U2" ON U1.UpdatedBy = U2.Id
-JOIN Users "U3" ON U1.CreatedBy = U3.Id WHERE U1.[Status]=1
+JOIN Users "U3" ON U1.CreatedBy = U3.Id
 END
