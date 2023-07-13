@@ -256,6 +256,72 @@ namespace GSMS
             gridviewcategory.ShowGroupedColumns = true;
 
         }
+
+        private void getItemRecords()
+        {
+            string query = "EXEC SELECT_ITEMS";
+
+            da = new SqlDataAdapter(query, con);
+            dt.Clear();
+            da.Fill(dt);
+
+            gridviewitem.Columns.Clear();
+            gridviewitem.Rows.Clear();
+
+            gridviewitem.Columns.Add("Id");
+            gridviewitem.Columns[0].IsVisible = false;
+            gridviewitem.Columns.Add("Item Name");
+            gridviewitem.Columns.Add("Short Name");
+            gridviewitem.Columns.Add("Price");
+            gridviewitem.Columns.Add("Discount");
+            gridviewitem.Columns.Add("Tax");
+            gridviewitem.Columns.Add("Expiry Date");
+            gridviewitem.Columns.Add("Category");
+            gridviewitem.Columns.Add("Created Date");
+            gridviewitem.Columns.Add("Created By");
+            gridviewitem.Columns.Add("Updated Date");
+            gridviewitem.Columns.Add("Updated By");
+            gridviewitem.Columns.Add("Status");
+
+            for (int i = 0; i < gridviewitem.Columns.Count; i++)
+            {
+                gridviewitem.Columns[i].TextAlignment = ContentAlignment.MiddleCenter;
+            }
+
+            foreach (DataRow row in dt.Rows)
+            {
+                string status = "";
+                GridViewDataRowInfo rowInfo = new GridViewDataRowInfo(this.gridviewitem.MasterView);
+                rowInfo.Cells[0].Value = row["Id"].ToString();
+                rowInfo.Cells[1].Value = row["Name"].ToString();
+                rowInfo.Cells[2].Value = row["ShortName"].ToString();
+                rowInfo.Cells[3].Value = row["Price"].ToString();
+                rowInfo.Cells[4].Value = row["Discount"].ToString();
+                rowInfo.Cells[5].Value = row["Tax"].ToString();
+                rowInfo.Cells[6].Value = Convert.ToDateTime(row["ExpiryDate"]).ToString("dd/MMM/yyyy hh:mm:ss tt");
+                rowInfo.Cells[7].Value = row["Category"].ToString();
+                rowInfo.Cells[8].Value = Convert.ToDateTime(row["CreatedDate"]).ToString("dd/MMM/yyyy hh:mm:ss tt");
+                rowInfo.Cells[9].Value = row["Created By"].ToString();
+                rowInfo.Cells[10].Value = Convert.ToDateTime(row["UpdatedDate"]).ToString("dd/MMM/yyyy hh:mm:ss tt");
+                rowInfo.Cells[11].Value = row["Updated By"].ToString();
+                if (Convert.ToInt32(row["Status"]) == 1)
+                {
+                    status = "Active";
+                }
+                else
+                {
+                    status = "Not Active";
+                }
+                rowInfo.Cells[12].Value = status;
+
+                gridviewitem.Rows.Add(rowInfo);
+            }
+            //gridviewitem.AutoSizeRows = true;
+            gridviewitem.BestFitColumns();
+            gridviewitem.AutoSizeColumnsMode = GridViewAutoSizeColumnsMode.Fill;
+            gridviewitem.ShowGroupedColumns = true;
+
+        }
         private void Form1_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'superMarketMS_ProjectDataSet.Users' table. You can move, or remove it, as needed.
@@ -270,6 +336,7 @@ namespace GSMS
             getUserRecords();
             getCompanyRecords();
             getCategoryRecords();
+            getItemRecords();
         }
 
         private void radButton1_Click(object sender, EventArgs e)
@@ -374,10 +441,11 @@ namespace GSMS
                         {
                             categories += "\n" + dr.GetString(0);
                         }
-                        MessageBox.Show("It Cannot be deleted because it hase Categories : " + categories, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("It Cannot be deleted because it has Categories : " + categories, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
                     {
+                        dr.Close();
                         getCompanyRecords();
                     }
                     dr.Close();
