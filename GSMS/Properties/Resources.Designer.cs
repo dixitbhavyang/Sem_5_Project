@@ -203,6 +203,16 @@ namespace GSMS.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap ItemFormImage {
+            get {
+                object obj = ResourceManager.GetObject("ItemFormImage", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap ItemsIcon {
             get {
                 object obj = ResourceManager.GetObject("ItemsIcon", resourceCulture);
@@ -246,6 +256,16 @@ namespace GSMS.Properties {
         internal static System.Drawing.Bitmap SettingsIcon {
             get {
                 object obj = ResourceManager.GetObject("SettingsIcon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap SplashScreenImage {
+            get {
+                object obj = ResourceManager.GetObject("SplashScreenImage", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
