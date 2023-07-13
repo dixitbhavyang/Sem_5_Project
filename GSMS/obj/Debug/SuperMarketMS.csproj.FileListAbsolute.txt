@@ -186,3 +186,4 @@ C:\Users\C.E.H V10\Documents\GitHub\Sem_5_Project\GSMS\obj\Debug\SuperMarketMS.c
 C:\Users\C.E.H V10\Documents\GitHub\Sem_5_Project\GSMS\obj\Debug\GSMS.exe.licenses
 C:\Users\C.E.H V10\Documents\GitHub\Sem_5_Project\GSMS\obj\Debug\GSMS.exe
 C:\Users\C.E.H V10\Documents\GitHub\Sem_5_Project\GSMS\obj\Debug\GSMS.pdb
+C:\Users\C.E.H V10\Documents\GitHub\Sem_5_Project\GSMS\obj\Debug\GSMS.ItemForm.resources

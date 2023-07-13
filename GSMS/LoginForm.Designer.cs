@@ -56,13 +56,14 @@
             this.tableLayoutPanel1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.tableLayoutPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 6.617647F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 93.38235F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 3.308824F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 96.69118F));
+            this.tableLayoutPanel1.Controls.Add(this.txtpassword, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.radPictureBox1, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.txtpassword, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.txtusername, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.btnlogin, 0, 4);
             this.tableLayoutPanel1.Controls.Add(this.chkshowpassword, 1, 3);
+            this.tableLayoutPanel1.Controls.Add(this.txtusername, 1, 1);
+            this.tableLayoutPanel1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -81,6 +82,7 @@
             this.radPictureBox1.AllowPanelAnimations = false;
             this.radPictureBox1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.tableLayoutPanel1.SetColumnSpan(this.radPictureBox1, 2);
+            this.radPictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.radPictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.radPictureBox1.Image = global::GSMS.Properties.Resources.LoginFormImage;
             this.radPictureBox1.ImageAlignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -92,28 +94,28 @@
             // 
             // txtpassword
             // 
-            this.txtpassword.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.tableLayoutPanel1.SetColumnSpan(this.txtpassword, 2);
+            this.txtpassword.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.txtpassword.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtpassword.EmbeddedLabelText = "Enter Password";
             this.txtpassword.ForeColor = System.Drawing.Color.Black;
-            this.txtpassword.Location = new System.Drawing.Point(9, 230);
+            this.txtpassword.Location = new System.Drawing.Point(12, 230);
             this.txtpassword.Name = "txtpassword";
             this.txtpassword.NullText = "Password";
             this.txtpassword.PasswordChar = '●';
             this.txtpassword.ShowClearButton = true;
             this.txtpassword.ShowNullText = true;
-            this.txtpassword.Size = new System.Drawing.Size(254, 35);
+            this.txtpassword.Size = new System.Drawing.Size(254, 36);
             this.txtpassword.TabIndex = 1;
             this.txtpassword.ThemeName = "MaterialBlueGrey";
             this.txtpassword.UseSystemPasswordChar = true;
             // 
             // txtusername
             // 
-            this.txtusername.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.tableLayoutPanel1.SetColumnSpan(this.txtusername, 2);
+            this.txtusername.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.txtusername.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtusername.EmbeddedLabelText = "Please Enter Username";
             this.txtusername.ForeColor = System.Drawing.Color.Black;
-            this.txtusername.Location = new System.Drawing.Point(9, 185);
+            this.txtusername.Location = new System.Drawing.Point(12, 186);
             this.txtusername.Name = "txtusername";
             this.txtusername.NullText = "Username";
             this.txtusername.ShowClearButton = true;
@@ -126,6 +128,7 @@
             // 
             this.btnlogin.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.tableLayoutPanel1.SetColumnSpan(this.btnlogin, 2);
+            this.btnlogin.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnlogin.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnlogin.Image = global::GSMS.Properties.Resources.LogInIcon;
             this.btnlogin.Location = new System.Drawing.Point(95, 296);
@@ -139,14 +142,15 @@
             // 
             // chkshowpassword
             // 
+            this.chkshowpassword.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.chkshowpassword.Cursor = System.Windows.Forms.Cursors.Hand;
             this.chkshowpassword.DisplayStyle = Telerik.WinControls.DisplayStyle.Text;
-            this.chkshowpassword.Location = new System.Drawing.Point(21, 271);
+            this.chkshowpassword.Location = new System.Drawing.Point(12, 271);
             this.chkshowpassword.Name = "chkshowpassword";
-            this.chkshowpassword.Size = new System.Drawing.Size(128, 19);
+            this.chkshowpassword.Size = new System.Drawing.Size(98, 18);
             this.chkshowpassword.TabIndex = 2;
-            this.chkshowpassword.Text = "Show Password";
-            this.chkshowpassword.ThemeName = "MaterialBlueGrey";
+            this.chkshowpassword.Text = " Show Password";
+            this.chkshowpassword.ThemeName = "Office2010Silver";
             this.chkshowpassword.ToggleStateChanged += new Telerik.WinControls.UI.StateChangedEventHandler(this.radCheckBox1_ToggleStateChanged);
             // 
             // LoginForm
