@@ -58,97 +58,142 @@ namespace GSMS
             role = "";
             if (String.IsNullOrEmpty(txtfirstname.Text))
             {
-                epfirstname.SetError(txtfirstname, "It cannot be Empty");
+                validatorForTextBoxes.ClearErrorStatus(txtlastname);
+                validatorForTextBoxes.ClearErrorStatus(txtusername);
+                validatorForTextBoxes.ClearErrorStatus(txtpassword);
+                validatorForTextBoxes.ClearErrorStatus(txtcontactnumber);
+                validatorForTextBoxes.ClearErrorStatus(txtmail);
+                validatorForTextBoxes.ClearErrorStatus(txtcity);
+                epgender.Clear();
+                eprole.Clear();
+
+                validatorForTextBoxes.Validate(txtfirstname);
                 txtfirstname.Focus();
             }
             else if (String.IsNullOrEmpty(txtlastname.Text))
             {
-                epfirstname.Clear();
-                eplastname.SetError(txtlastname, "It cannot be Empty");
+                validatorForTextBoxes.ClearErrorStatus(txtfirstname);
+                validatorForTextBoxes.ClearErrorStatus(txtusername);
+                validatorForTextBoxes.ClearErrorStatus(txtpassword);
+                validatorForTextBoxes.ClearErrorStatus(txtcontactnumber);
+                validatorForTextBoxes.ClearErrorStatus(txtmail);
+                validatorForTextBoxes.ClearErrorStatus(txtcity);
+                epgender.Clear();
+                eprole.Clear();
+
+                validatorForTextBoxes.Validate(txtlastname);
                 txtlastname.Focus();
             }
             else if (String.IsNullOrEmpty(txtusername.Text))
             {
-                epfirstname.Clear();
-                eplastname.Clear();
-                epusername.SetError(txtusername, "It cannot be Empty");
+                validatorForTextBoxes.ClearErrorStatus(txtfirstname);
+                validatorForTextBoxes.ClearErrorStatus(txtlastname);
+                validatorForTextBoxes.ClearErrorStatus(txtpassword);
+                validatorForTextBoxes.ClearErrorStatus(txtcontactnumber);
+                validatorForTextBoxes.ClearErrorStatus(txtmail);
+                validatorForTextBoxes.ClearErrorStatus(txtcity);
+                epgender.Clear();
+                eprole.Clear();
+
+                validatorForTextBoxes.Validate(txtusername);
                 txtusername.Focus();
             }
             else if (String.IsNullOrEmpty(txtpassword.Text))
             {
-                epfirstname.Clear();
-                eplastname.Clear();
-                epusername.Clear();
-                eppassword.SetError(txtpassword, "It cannot be Empty");
+                validatorForTextBoxes.ClearErrorStatus(txtfirstname);
+                validatorForTextBoxes.ClearErrorStatus(txtlastname);
+                validatorForTextBoxes.ClearErrorStatus(txtusername);
+                validatorForTextBoxes.ClearErrorStatus(txtcontactnumber);
+                validatorForTextBoxes.ClearErrorStatus(txtmail);
+                validatorForTextBoxes.ClearErrorStatus(txtcity);
+                epgender.Clear();
+                eprole.Clear();
+
+                validatorForTextBoxes.Validate(txtpassword);
                 txtpassword.Focus();
             }
             else if (String.IsNullOrEmpty(txtcontactnumber.Text))
             {
-                epfirstname.Clear();
-                eplastname.Clear();
-                epusername.Clear();
-                eppassword.Clear();
-                epcontactnumber.SetError(txtcontactnumber, "It cannot be Empty");
+                validatorForTextBoxes.ClearErrorStatus(txtfirstname);
+                validatorForTextBoxes.ClearErrorStatus(txtlastname);
+                validatorForTextBoxes.ClearErrorStatus(txtusername);
+                validatorForTextBoxes.ClearErrorStatus(txtpassword);
+                validatorForTextBoxes.ClearErrorStatus(txtmail);
+                validatorForTextBoxes.ClearErrorStatus(txtcity);
+                epgender.Clear();
+                eprole.Clear();
+
+                validatorForTextBoxes.Validate(txtcontactnumber);
                 txtcontactnumber.Focus();
             }
             else if (String.IsNullOrEmpty(txtmail.Text))
             {
-                epfirstname.Clear();
-                eplastname.Clear();
-                epusername.Clear();
-                eppassword.Clear();
-                epcontactnumber.Clear();
-                epmail.SetError(txtmail, "It cannot be Empty");
+                validatorForTextBoxes.ClearErrorStatus(txtfirstname);
+                validatorForTextBoxes.ClearErrorStatus(txtlastname);
+                validatorForTextBoxes.ClearErrorStatus(txtusername);
+                validatorForTextBoxes.ClearErrorStatus(txtpassword);
+                validatorForTextBoxes.ClearErrorStatus(txtcontactnumber);
+                validatorForTextBoxes.ClearErrorStatus(txtcity);
+                epgender.Clear();
+                eprole.Clear();
+
+                validatorForTextBoxes.Validate(txtmail);
                 txtmail.Focus();
             }
             else if (String.IsNullOrEmpty(txtcity.Text))
             {
-                epfirstname.Clear();
-                eplastname.Clear();
-                epusername.Clear();
-                eppassword.Clear();
-                epcontactnumber.Clear();
-                epmail.Clear();
-                epcity.SetError(txtcity, "It cannot be Empty");
+                validatorForTextBoxes.ClearErrorStatus(txtfirstname);
+                validatorForTextBoxes.ClearErrorStatus(txtlastname);
+                validatorForTextBoxes.ClearErrorStatus(txtusername);
+                validatorForTextBoxes.ClearErrorStatus(txtpassword);
+                validatorForTextBoxes.ClearErrorStatus(txtcontactnumber);
+                validatorForTextBoxes.ClearErrorStatus(txtmail);
+                epgender.Clear();
+                eprole.Clear();
+
+                validatorForTextBoxes.Validate(txtcity);
                 txtcity.Focus();
             }
             else if (rdbmale.IsChecked == false && rdbfemale.IsChecked == false)
             {
-                epfirstname.Clear();
-                eplastname.Clear();
-                epusername.Clear();
-                eppassword.Clear();
-                epcontactnumber.Clear();
-                epmail.Clear();
-                epcity.Clear();
+                validatorForTextBoxes.ClearErrorStatus(txtfirstname);
+                validatorForTextBoxes.ClearErrorStatus(txtlastname);
+                validatorForTextBoxes.ClearErrorStatus(txtusername);
+                validatorForTextBoxes.ClearErrorStatus(txtpassword);
+                validatorForTextBoxes.ClearErrorStatus(txtcontactnumber);
+                validatorForTextBoxes.ClearErrorStatus(txtmail);
+                validatorForTextBoxes.ClearErrorStatus(txtcity);
+                eprole.Clear();
+
                 epgender.SetError(panel1, "Please select Gender");
             }
             else if (dropdownrole.SelectedIndex < 0)
             {
-                epfirstname.Clear();
-                eplastname.Clear();
-                epusername.Clear();
-                eppassword.Clear();
-                epcontactnumber.Clear();
-                epmail.Clear();
-                epcity.Clear(); epgender.Clear();
+                validatorForTextBoxes.ClearErrorStatus(txtfirstname);
+                validatorForTextBoxes.ClearErrorStatus(txtlastname);
+                validatorForTextBoxes.ClearErrorStatus(txtusername);
+                validatorForTextBoxes.ClearErrorStatus(txtpassword);
+                validatorForTextBoxes.ClearErrorStatus(txtcontactnumber);
+                validatorForTextBoxes.ClearErrorStatus(txtmail);
+                validatorForTextBoxes.ClearErrorStatus(txtcity);
+                epgender.Clear();
+
                 eprole.SetError(dropdownrole, "Please Select a Role");
                 dropdownrole.Focus();
             }
             else
             {
-                epfirstname.Clear();
-                epfirstname.Clear();
-                eplastname.Clear();
-                epusername.Clear();
-                eppassword.Clear();
-                epcontactnumber.Clear();
-                epmail.Clear();
-                epcity.Clear();
+                validatorForTextBoxes.ClearErrorStatus(txtfirstname);
+                validatorForTextBoxes.ClearErrorStatus(txtlastname);
+                validatorForTextBoxes.ClearErrorStatus(txtusername);
+                validatorForTextBoxes.ClearErrorStatus(txtpassword);
+                validatorForTextBoxes.ClearErrorStatus(txtcontactnumber);
+                validatorForTextBoxes.ClearErrorStatus(txtmail);
+                validatorForTextBoxes.ClearErrorStatus(txtcity);
                 epgender.Clear();
                 eprole.Clear();
-                role = dropdownrole.SelectedItem.ToString();
 
+                role = dropdownrole.SelectedItem.ToString();
                 con.Open();
                 string query = "INSERT_USER";
                 if (MasterForm.userId > 0)
@@ -169,6 +214,10 @@ namespace GSMS
                 btnadduser.Text = "Update";
             }
             else { btnadduser.Text = "Add"; }
+        }
+
+        private void radValidationProvider1_ControlValidation(object sender, RadValidationEventArgs e)
+        {
         }
     }
 }

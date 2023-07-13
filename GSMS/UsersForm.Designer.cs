@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            Telerik.WinControls.UI.RadValidationRule radValidationRule1 = new Telerik.WinControls.UI.RadValidationRule();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.kryptonLabel11 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.kryptonLabel8 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
@@ -51,21 +52,14 @@
             this.txtfirstname = new Telerik.WinControls.UI.RadTextBox();
             this.btnadduser = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.dropdownrole = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.materialBlueGreyTheme1 = new Telerik.WinControls.Themes.MaterialBlueGreyTheme();
             this.crystalTheme1 = new Telerik.WinControls.Themes.CrystalTheme();
             this.visualStudio2022LightTheme1 = new Telerik.WinControls.Themes.VisualStudio2022LightTheme();
-            this.epfirstname = new System.Windows.Forms.ErrorProvider(this.components);
-            this.eplastname = new System.Windows.Forms.ErrorProvider(this.components);
-            this.epusername = new System.Windows.Forms.ErrorProvider(this.components);
-            this.eppassword = new System.Windows.Forms.ErrorProvider(this.components);
-            this.epcontactnumber = new System.Windows.Forms.ErrorProvider(this.components);
-            this.epmail = new System.Windows.Forms.ErrorProvider(this.components);
             this.epgender = new System.Windows.Forms.ErrorProvider(this.components);
-            this.epcity = new System.Windows.Forms.ErrorProvider(this.components);
-            this.epstatus = new System.Windows.Forms.ErrorProvider(this.components);
             this.edpcreateddate = new System.Windows.Forms.ErrorProvider(this.components);
             this.eprole = new System.Windows.Forms.ErrorProvider(this.components);
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.validatorForTextBoxes = new Telerik.WinControls.UI.RadValidationProvider(this.components);
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtcity)).BeginInit();
             this.panel1.SuspendLayout();
@@ -78,18 +72,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtlastname)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtfirstname)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dropdownrole)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.epfirstname)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.eplastname)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.epusername)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.eppassword)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.epcontactnumber)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.epmail)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.epgender)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.epcity)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.epstatus)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.edpcreateddate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.eprole)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.validatorForTextBoxes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
             // 
@@ -169,6 +156,7 @@
             this.txtcity.Size = new System.Drawing.Size(196, 24);
             this.txtcity.TabIndex = 8;
             this.txtcity.ThemeName = "Crystal";
+            this.validatorForTextBoxes.SetValidationRule(this.txtcity, radValidationRule1);
             // 
             // kryptonLabel7
             // 
@@ -231,6 +219,7 @@
             this.txtmail.Size = new System.Drawing.Size(196, 24);
             this.txtmail.TabIndex = 5;
             this.txtmail.ThemeName = "Crystal";
+            this.validatorForTextBoxes.SetValidationRule(this.txtmail, radValidationRule1);
             // 
             // kryptonLabel5
             // 
@@ -292,6 +281,7 @@
             this.txtcontactnumber.Size = new System.Drawing.Size(196, 24);
             this.txtcontactnumber.TabIndex = 4;
             this.txtcontactnumber.ThemeName = "Crystal";
+            this.validatorForTextBoxes.SetValidationRule(this.txtcontactnumber, radValidationRule1);
             // 
             // txtpassword
             // 
@@ -302,6 +292,7 @@
             this.txtpassword.Size = new System.Drawing.Size(196, 24);
             this.txtpassword.TabIndex = 3;
             this.txtpassword.ThemeName = "Crystal";
+            this.validatorForTextBoxes.SetValidationRule(this.txtpassword, radValidationRule1);
             // 
             // txtusername
             // 
@@ -312,6 +303,7 @@
             this.txtusername.Size = new System.Drawing.Size(196, 24);
             this.txtusername.TabIndex = 2;
             this.txtusername.ThemeName = "Crystal";
+            this.validatorForTextBoxes.SetValidationRule(this.txtusername, radValidationRule1);
             // 
             // txtlastname
             // 
@@ -322,6 +314,7 @@
             this.txtlastname.Size = new System.Drawing.Size(196, 24);
             this.txtlastname.TabIndex = 1;
             this.txtlastname.ThemeName = "Crystal";
+            this.validatorForTextBoxes.SetValidationRule(this.txtlastname, radValidationRule1);
             // 
             // txtfirstname
             // 
@@ -332,6 +325,7 @@
             this.txtfirstname.Size = new System.Drawing.Size(196, 24);
             this.txtfirstname.TabIndex = 0;
             this.txtfirstname.ThemeName = "Crystal";
+            this.validatorForTextBoxes.SetValidationRule(this.txtfirstname, radValidationRule1);
             // 
             // btnadduser
             // 
@@ -359,50 +353,6 @@
             this.dropdownrole.Size = new System.Drawing.Size(196, 21);
             this.dropdownrole.TabIndex = 13;
             // 
-            // epfirstname
-            // 
-            this.epfirstname.ContainerControl = this;
-            // 
-            // eplastname
-            // 
-            this.eplastname.ContainerControl = this;
-            // 
-            // epusername
-            // 
-            this.epusername.ContainerControl = this;
-            // 
-            // eppassword
-            // 
-            this.eppassword.ContainerControl = this;
-            // 
-            // epcontactnumber
-            // 
-            this.epcontactnumber.ContainerControl = this;
-            // 
-            // epmail
-            // 
-            this.epmail.ContainerControl = this;
-            // 
-            // epgender
-            // 
-            this.epgender.ContainerControl = this;
-            // 
-            // epcity
-            // 
-            this.epcity.ContainerControl = this;
-            // 
-            // epstatus
-            // 
-            this.epstatus.ContainerControl = this;
-            // 
-            // edpcreateddate
-            // 
-            this.edpcreateddate.ContainerControl = this;
-            // 
-            // eprole
-            // 
-            this.eprole.ContainerControl = this;
-            // 
             // pictureBox1
             // 
             this.tableLayoutPanel1.SetColumnSpan(this.pictureBox1, 2);
@@ -414,6 +364,35 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 14;
             this.pictureBox1.TabStop = false;
+            // 
+            // epgender
+            // 
+            this.epgender.ContainerControl = this;
+            // 
+            // edpcreateddate
+            // 
+            this.edpcreateddate.ContainerControl = this;
+            // 
+            // eprole
+            // 
+            this.eprole.ContainerControl = this;
+            // 
+            // validatorForTextBoxes
+            // 
+            this.validatorForTextBoxes.ValidationMode = Telerik.WinControls.UI.ValidationMode.Programmatically;
+            radValidationRule1.Controls.Add(this.txtcity);
+            radValidationRule1.Controls.Add(this.txtmail);
+            radValidationRule1.Controls.Add(this.txtcontactnumber);
+            radValidationRule1.Controls.Add(this.txtpassword);
+            radValidationRule1.Controls.Add(this.txtusername);
+            radValidationRule1.Controls.Add(this.txtlastname);
+            radValidationRule1.Controls.Add(this.txtfirstname);
+            radValidationRule1.Operator = Telerik.WinControls.Data.FilterOperator.IsNotLike;
+            radValidationRule1.ToolTipText = "It Cannot Be Empty";
+            radValidationRule1.ToolTipTitle = "";
+            radValidationRule1.Value = "";
+            this.validatorForTextBoxes.ValidationRules.AddRange(new Telerik.WinControls.Data.FilterDescriptor[] {
+            radValidationRule1});
             // 
             // UsersForm
             // 
@@ -451,18 +430,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtlastname)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtfirstname)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dropdownrole)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.epfirstname)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.eplastname)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.epusername)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.eppassword)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.epcontactnumber)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.epmail)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.epgender)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.epcity)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.epstatus)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.edpcreateddate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.eprole)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.validatorForTextBoxes)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);
 
@@ -494,18 +466,11 @@
         public Telerik.WinControls.UI.RadRadioButton rdbmale;
         public Telerik.WinControls.UI.RadTextBox txtcity;
         public ComponentFactory.Krypton.Toolkit.KryptonButton btnadduser;
-        private System.Windows.Forms.ErrorProvider epfirstname;
-        private System.Windows.Forms.ErrorProvider eplastname;
-        private System.Windows.Forms.ErrorProvider epusername;
-        private System.Windows.Forms.ErrorProvider eppassword;
-        private System.Windows.Forms.ErrorProvider epcontactnumber;
-        private System.Windows.Forms.ErrorProvider epmail;
         private System.Windows.Forms.ErrorProvider epgender;
-        private System.Windows.Forms.ErrorProvider epcity;
-        private System.Windows.Forms.ErrorProvider epstatus;
         private System.Windows.Forms.ErrorProvider edpcreateddate;
         private System.Windows.Forms.ErrorProvider eprole;
         public ComponentFactory.Krypton.Toolkit.KryptonComboBox dropdownrole;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private Telerik.WinControls.UI.RadValidationProvider validatorForTextBoxes;
     }
 }
