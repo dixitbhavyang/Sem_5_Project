@@ -88,5 +88,11 @@
     <Build Include="dbo\Stored Procedures\INSERT_CATEGORY.sql" />
     <Build Include="dbo\Stored Procedures\EDIT_CATEGORY.sql" />
     <Build Include="dbo\Stored Procedures\DELETE_CATEGORY.sql" />
+    <Build Include="dbo\Stored Procedures\SELECT_ITEMS.sql" />
+    <Build Include="dbo\Stored Procedures\SELECT_ACTIVE_USERS.sql" />
+    <Build Include="dbo\Stored Procedures\SELECT_ACTIVE_ITEMS.sql" />
+    <Build Include="dbo\Stored Procedures\SELECT_ACTIVE_COMPANIES.sql" />
+    <Build Include="dbo\Stored Procedures\SELECT_ACTIVE_CATEGORIES.sql" />
+    <Build Include="dbo\Stored Procedures\INSERT_ITEM.sql" />
   </ItemGroup>
 </Project>
