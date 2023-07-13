@@ -46,27 +46,33 @@ namespace GSMS
         {
             if (String.IsNullOrEmpty(txtcompanyname.Text))
             {
-                erpcompanyname.SetError(txtcompanyname, "It Cannot be Empty");
+                validatorForTextBoxes.ClearErrorStatus(txtshortname);
+                validatorForTextBoxes.ClearErrorStatus(txtaddress);
+
+                validatorForTextBoxes.Validate(txtcompanyname);
                 txtcompanyname.Focus();
             }
             else if (String.IsNullOrEmpty(txtshortname.Text))
             {
-                erpcompanyname.Clear();
-                erpshortname.SetError(txtshortname, "It Cannot be Empty");
+                validatorForTextBoxes.ClearErrorStatus(txtcompanyname);
+                validatorForTextBoxes.ClearErrorStatus(txtaddress);
+
+                validatorForTextBoxes.Validate(txtshortname);
                 txtshortname.Focus();
             }
             else if (String.IsNullOrEmpty(txtaddress.Text))
             {
-                erpcompanyname.Clear();
-                erpshortname.Clear();
-                erpaddress.SetError(txtaddress, "It Cannot be Empty");
+                validatorForTextBoxes.ClearErrorStatus(txtcompanyname);
+                validatorForTextBoxes.ClearErrorStatus(txtshortname);
+
+                validatorForTextBoxes.Validate(txtaddress);
                 txtaddress.Focus();
             }
             else
             {
-                erpcompanyname.Clear();
-                erpshortname.Clear();
-                erpaddress.Clear();
+                validatorForTextBoxes.ClearErrorStatus(txtcompanyname);
+                validatorForTextBoxes.ClearErrorStatus(txtshortname);
+                validatorForTextBoxes.ClearErrorStatus(txtaddress);
 
                 string query = "INSERT_COMPANY";
                 if (MasterForm.companyId > 0)

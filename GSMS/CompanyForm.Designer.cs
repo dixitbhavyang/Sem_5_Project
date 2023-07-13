@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            Telerik.WinControls.UI.RadValidationRule radValidationRule1 = new Telerik.WinControls.UI.RadValidationRule();
             this.materialBlueGreyTheme1 = new Telerik.WinControls.Themes.MaterialBlueGreyTheme();
             this.crystalTheme1 = new Telerik.WinControls.Themes.CrystalTheme();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -37,20 +38,16 @@
             this.txtshortname = new Telerik.WinControls.UI.RadTextBox();
             this.kryptonLabel1 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.txtcompanyname = new Telerik.WinControls.UI.RadTextBox();
-            this.txtaddress = new Telerik.WinControls.UI.RadTextBoxControl();
             this.btnaddcomapny = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.erpcompanyname = new System.Windows.Forms.ErrorProvider(this.components);
-            this.erpshortname = new System.Windows.Forms.ErrorProvider(this.components);
-            this.erpaddress = new System.Windows.Forms.ErrorProvider(this.components);
+            this.validatorForTextBoxes = new Telerik.WinControls.UI.RadValidationProvider(this.components);
+            this.txtaddress = new Telerik.WinControls.UI.RadTextBox();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtshortname)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtcompanyname)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtaddress)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.erpcompanyname)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.erpshortname)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.erpaddress)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.validatorForTextBoxes)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtaddress)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
             // 
@@ -64,9 +61,9 @@
             this.tableLayoutPanel1.Controls.Add(this.txtshortname, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.kryptonLabel1, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.txtcompanyname, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.txtaddress, 1, 3);
             this.tableLayoutPanel1.Controls.Add(this.btnaddcomapny, 1, 4);
             this.tableLayoutPanel1.Controls.Add(this.pictureBox1, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.txtaddress, 1, 3);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -109,6 +106,7 @@
             this.txtshortname.Size = new System.Drawing.Size(141, 24);
             this.txtshortname.TabIndex = 1;
             this.txtshortname.ThemeName = "Crystal";
+            this.validatorForTextBoxes.SetValidationRule(this.txtshortname, radValidationRule1);
             // 
             // kryptonLabel1
             // 
@@ -129,15 +127,7 @@
             this.txtcompanyname.Size = new System.Drawing.Size(141, 24);
             this.txtcompanyname.TabIndex = 0;
             this.txtcompanyname.ThemeName = "Crystal";
-            // 
-            // txtaddress
-            // 
-            this.txtaddress.Location = new System.Drawing.Point(150, 199);
-            this.txtaddress.Multiline = true;
-            this.txtaddress.Name = "txtaddress";
-            this.txtaddress.Size = new System.Drawing.Size(204, 58);
-            this.txtaddress.TabIndex = 2;
-            this.txtaddress.ThemeName = "Crystal";
+            this.validatorForTextBoxes.SetValidationRule(this.txtcompanyname, radValidationRule1);
             // 
             // btnaddcomapny
             // 
@@ -164,20 +154,36 @@
             this.pictureBox1.TabIndex = 4;
             this.pictureBox1.TabStop = false;
             // 
-            // erpcompanyname
+            // validatorForTextBoxes
             // 
-            this.erpcompanyname.ContainerControl = this;
+            this.validatorForTextBoxes.ValidationMode = Telerik.WinControls.UI.ValidationMode.Programmatically;
+            radValidationRule1.Controls.Add(this.txtshortname);
+            radValidationRule1.Controls.Add(this.txtcompanyname);
+            radValidationRule1.Controls.Add(this.txtaddress);
+            radValidationRule1.Operator = Telerik.WinControls.Data.FilterOperator.IsNotLike;
+            radValidationRule1.ToolTipText = "It cannot be Empty";
+            radValidationRule1.ToolTipTitle = "";
+            radValidationRule1.Value = "";
+            this.validatorForTextBoxes.ValidationRules.AddRange(new Telerik.WinControls.Data.FilterDescriptor[] {
+            radValidationRule1});
             // 
-            // erpshortname
+            // txtaddress
             // 
-            this.erpshortname.ContainerControl = this;
+            this.txtaddress.Location = new System.Drawing.Point(150, 199);
+            this.txtaddress.Multiline = true;
+            this.txtaddress.Name = "txtaddress";
             // 
-            // erpaddress
             // 
-            this.erpaddress.ContainerControl = this;
+            // 
+            this.txtaddress.RootElement.StretchVertically = true;
+            this.txtaddress.Size = new System.Drawing.Size(226, 58);
+            this.txtaddress.TabIndex = 5;
+            this.txtaddress.ThemeName = "Crystal";
+            this.validatorForTextBoxes.SetValidationRule(this.txtaddress, radValidationRule1);
             // 
             // CompanyForm
             // 
+            this.AcceptButton = this.btnaddcomapny;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(388, 299);
@@ -192,18 +198,16 @@
             this.RootElement.ApplyShapeToControl = true;
             this.RootElement.MaxSize = new System.Drawing.Size(0, 0);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "  Enter Company Details";
+            this.Text = "  Company Details";
             this.ThemeName = "MaterialBlueGrey";
             this.Load += new System.EventHandler(this.CompanyForm_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtshortname)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtcompanyname)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtaddress)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.erpcompanyname)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.erpshortname)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.erpaddress)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.validatorForTextBoxes)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtaddress)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);
 
@@ -217,13 +221,11 @@
         private ComponentFactory.Krypton.Toolkit.KryptonLabel kryptonLabel1;
         private ComponentFactory.Krypton.Toolkit.KryptonLabel kryptonLabel2;
         private ComponentFactory.Krypton.Toolkit.KryptonLabel kryptonLabel3;
-        private System.Windows.Forms.ErrorProvider erpcompanyname;
-        private System.Windows.Forms.ErrorProvider erpshortname;
-        private System.Windows.Forms.ErrorProvider erpaddress;
         public Telerik.WinControls.UI.RadTextBox txtcompanyname;
         public Telerik.WinControls.UI.RadTextBox txtshortname;
-        public Telerik.WinControls.UI.RadTextBoxControl txtaddress;
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnaddcomapny;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private Telerik.WinControls.UI.RadValidationProvider validatorForTextBoxes;
+        public Telerik.WinControls.UI.RadTextBox txtaddress;
     }
 }
