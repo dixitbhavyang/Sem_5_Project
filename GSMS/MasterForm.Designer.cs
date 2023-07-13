@@ -28,9 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition16 = new Telerik.WinControls.UI.TableViewDefinition();
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition17 = new Telerik.WinControls.UI.TableViewDefinition();
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition18 = new Telerik.WinControls.UI.TableViewDefinition();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition2 = new Telerik.WinControls.UI.TableViewDefinition();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition3 = new Telerik.WinControls.UI.TableViewDefinition();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition4 = new Telerik.WinControls.UI.TableViewDefinition();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition1 = new Telerik.WinControls.UI.TableViewDefinition();
             this.materialBlueGreyTheme1 = new Telerik.WinControls.Themes.MaterialBlueGreyTheme();
             this.office2019GrayTheme1 = new Telerik.WinControls.Themes.Office2019GrayTheme();
             this.visualStudio2012LightTheme1 = new Telerik.WinControls.Themes.VisualStudio2012LightTheme();
@@ -59,7 +60,12 @@
             this.btnadduser = new Telerik.WinControls.UI.RadButton();
             this.pagehome = new Telerik.WinControls.UI.RadPageViewPage();
             this.radPageView1 = new Telerik.WinControls.UI.RadPageView();
+            this.gridviewitem = new Telerik.WinControls.UI.RadGridView();
+            this.btnitemedit = new Telerik.WinControls.UI.RadButton();
+            this.radButton2 = new Telerik.WinControls.UI.RadButton();
+            this.btnitemadd = new Telerik.WinControls.UI.RadButton();
             ((System.ComponentModel.ISupportInitialize)(this.radTabbedFormControl1)).BeginInit();
+            this.pageitem.SuspendLayout();
             this.pagecategory.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridviewcategory)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridviewcategory.MasterTemplate)).BeginInit();
@@ -83,6 +89,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnadduser)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radPageView1)).BeginInit();
             this.radPageView1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridviewitem)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridviewitem.MasterTemplate)).BeginInit();
+            this.gridviewitem.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnitemedit)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radButton2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnitemadd)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
             // 
@@ -156,6 +168,7 @@
             // 
             // pageitem
             // 
+            this.pageitem.Controls.Add(this.gridviewitem);
             this.pageitem.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pageitem.Image = global::GSMS.Properties.Resources.ItemsIcon;
             this.pageitem.ItemSize = new System.Drawing.SizeF(106F, 32F);
@@ -201,7 +214,7 @@
             this.gridviewcategory.MasterTemplate.CaseSensitive = true;
             this.gridviewcategory.MasterTemplate.PageSize = 5;
             this.gridviewcategory.MasterTemplate.ShowGroupedColumns = true;
-            this.gridviewcategory.MasterTemplate.ViewDefinition = tableViewDefinition16;
+            this.gridviewcategory.MasterTemplate.ViewDefinition = tableViewDefinition2;
             this.gridviewcategory.Name = "gridviewcategory";
             this.gridviewcategory.Padding = new System.Windows.Forms.Padding(1);
             this.gridviewcategory.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -296,7 +309,7 @@
             this.gridviewcompany.MasterTemplate.CaseSensitive = true;
             this.gridviewcompany.MasterTemplate.PageSize = 5;
             this.gridviewcompany.MasterTemplate.ShowGroupedColumns = true;
-            this.gridviewcompany.MasterTemplate.ViewDefinition = tableViewDefinition17;
+            this.gridviewcompany.MasterTemplate.ViewDefinition = tableViewDefinition3;
             this.gridviewcompany.Name = "gridviewcompany";
             this.gridviewcompany.Padding = new System.Windows.Forms.Padding(1);
             this.gridviewcompany.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -392,7 +405,7 @@
             this.gridviewusers.MasterTemplate.CaseSensitive = true;
             this.gridviewusers.MasterTemplate.PageSize = 5;
             this.gridviewusers.MasterTemplate.ShowGroupedColumns = true;
-            this.gridviewusers.MasterTemplate.ViewDefinition = tableViewDefinition18;
+            this.gridviewusers.MasterTemplate.ViewDefinition = tableViewDefinition4;
             this.gridviewusers.Name = "gridviewusers";
             this.gridviewusers.Padding = new System.Windows.Forms.Padding(1);
             this.gridviewusers.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -406,6 +419,7 @@
             this.btndeleteuser.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btndeleteuser.BackColor = System.Drawing.Color.Red;
             this.btndeleteuser.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btndeleteuser.Font = new System.Drawing.Font("Sitka Text", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btndeleteuser.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btndeleteuser.Image = global::GSMS.Properties.Resources.UserDeleteImage;
             this.btndeleteuser.Location = new System.Drawing.Point(1042, 9);
@@ -478,11 +492,11 @@
             this.radPageView1.Controls.Add(this.pagesettings);
             this.radPageView1.DefaultPage = this.pagehome;
             this.radPageView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.radPageView1.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.radPageView1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.radPageView1.ItemSizeMode = ((Telerik.WinControls.UI.PageViewItemSizeMode)((Telerik.WinControls.UI.PageViewItemSizeMode.EqualWidth | Telerik.WinControls.UI.PageViewItemSizeMode.EqualHeight)));
             this.radPageView1.Location = new System.Drawing.Point(0, 0);
             this.radPageView1.Name = "radPageView1";
-            this.radPageView1.SelectedPage = this.pagecategory;
+            this.radPageView1.SelectedPage = this.pageitem;
             this.radPageView1.Size = new System.Drawing.Size(1283, 598);
             this.radPageView1.TabIndex = 0;
             this.radPageView1.ThemeName = "Office2019Gray";
@@ -497,11 +511,87 @@
             ((Telerik.WinControls.UI.RadPageViewNavigationViewElement)(this.radPageView1.GetChildAt(0))).Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             ((Telerik.WinControls.UI.RadPageViewNavigationViewElement)(this.radPageView1.GetChildAt(0))).Alignment = System.Drawing.ContentAlignment.TopLeft;
             ((Telerik.WinControls.UI.NavigationViewHeaderElement)(this.radPageView1.GetChildAt(0).GetChildAt(2))).ClipText = false;
-            ((Telerik.WinControls.UI.NavigationViewHeaderElement)(this.radPageView1.GetChildAt(0).GetChildAt(2))).Text = "Categories";
+            ((Telerik.WinControls.UI.NavigationViewHeaderElement)(this.radPageView1.GetChildAt(0).GetChildAt(2))).Text = "Items";
             ((Telerik.WinControls.UI.NavigationViewHeaderElement)(this.radPageView1.GetChildAt(0).GetChildAt(2))).Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             ((Telerik.WinControls.UI.NavigationViewHeaderElement)(this.radPageView1.GetChildAt(0).GetChildAt(2))).CustomFontSize = 20F;
             ((Telerik.WinControls.UI.NavigationViewHeaderElement)(this.radPageView1.GetChildAt(0).GetChildAt(2))).Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
             ((Telerik.WinControls.UI.NavigationViewHeaderElement)(this.radPageView1.GetChildAt(0).GetChildAt(2))).Margin = new System.Windows.Forms.Padding(0);
+            // 
+            // gridviewitem
+            // 
+            this.gridviewitem.Controls.Add(this.btnitemedit);
+            this.gridviewitem.Controls.Add(this.radButton2);
+            this.gridviewitem.Controls.Add(this.btnitemadd);
+            this.gridviewitem.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.gridviewitem.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridviewitem.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.gridviewitem.Location = new System.Drawing.Point(0, 0);
+            // 
+            // 
+            // 
+            this.gridviewitem.MasterTemplate.AllowAddNewRow = false;
+            this.gridviewitem.MasterTemplate.AllowColumnResize = false;
+            this.gridviewitem.MasterTemplate.AllowDeleteRow = false;
+            this.gridviewitem.MasterTemplate.AllowEditRow = false;
+            this.gridviewitem.MasterTemplate.AllowRowResize = false;
+            this.gridviewitem.MasterTemplate.AllowSearchRow = true;
+            this.gridviewitem.MasterTemplate.AutoExpandGroups = true;
+            this.gridviewitem.MasterTemplate.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill;
+            this.gridviewitem.MasterTemplate.CaseSensitive = true;
+            this.gridviewitem.MasterTemplate.PageSize = 5;
+            this.gridviewitem.MasterTemplate.ShowGroupedColumns = true;
+            this.gridviewitem.MasterTemplate.ViewDefinition = tableViewDefinition1;
+            this.gridviewitem.Name = "gridviewitem";
+            this.gridviewitem.Padding = new System.Windows.Forms.Padding(1);
+            this.gridviewitem.Size = new System.Drawing.Size(1149, 558);
+            this.gridviewitem.TabIndex = 0;
+            this.gridviewitem.ThemeName = "MaterialBlueGrey";
+            // 
+            // btnitemedit
+            // 
+            this.btnitemedit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnitemedit.BackColor = System.Drawing.Color.LimeGreen;
+            this.btnitemedit.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnitemedit.Font = new System.Drawing.Font("Arial Rounded MT Bold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnitemedit.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnitemedit.Image = global::GSMS.Properties.Resources.CategoryEditIcon;
+            this.btnitemedit.Location = new System.Drawing.Point(950, 9);
+            this.btnitemedit.Name = "btnitemedit";
+            this.btnitemedit.Size = new System.Drawing.Size(87, 36);
+            this.btnitemedit.TabIndex = 16;
+            this.btnitemedit.Text = "Edit";
+            this.btnitemedit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnitemedit.ThemeName = "MaterialBlueGrey";
+            // 
+            // radButton2
+            // 
+            this.radButton2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.radButton2.BackColor = System.Drawing.Color.Red;
+            this.radButton2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.radButton2.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.radButton2.Image = global::GSMS.Properties.Resources.CategoryDeleteIcon;
+            this.radButton2.Location = new System.Drawing.Point(1042, 9);
+            this.radButton2.Name = "radButton2";
+            this.radButton2.Size = new System.Drawing.Size(102, 36);
+            this.radButton2.TabIndex = 17;
+            this.radButton2.Text = "Delete";
+            this.radButton2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.radButton2.ThemeName = "MaterialBlueGrey";
+            // 
+            // btnitemadd
+            // 
+            this.btnitemadd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnitemadd.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.btnitemadd.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnitemadd.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnitemadd.Image = global::GSMS.Properties.Resources.CategoryAddIcon;
+            this.btnitemadd.Location = new System.Drawing.Point(859, 9);
+            this.btnitemadd.Name = "btnitemadd";
+            this.btnitemadd.Size = new System.Drawing.Size(87, 36);
+            this.btnitemadd.TabIndex = 15;
+            this.btnitemadd.Text = "Add";
+            this.btnitemadd.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnitemadd.ThemeName = "MaterialBlueGrey";
             // 
             // MasterForm
             // 
@@ -521,6 +611,7 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.radTabbedFormControl1)).EndInit();
+            this.pageitem.ResumeLayout(false);
             this.pagecategory.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridviewcategory.MasterTemplate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridviewcategory)).EndInit();
@@ -548,6 +639,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.radPageView1)).EndInit();
             this.radPageView1.ResumeLayout(false);
             this.radPageView1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridviewitem.MasterTemplate)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridviewitem)).EndInit();
+            this.gridviewitem.ResumeLayout(false);
+            this.gridviewitem.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnitemedit)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radButton2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnitemadd)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);
 
@@ -582,5 +680,9 @@
         private Telerik.WinControls.UI.RadButton btncategorydelete;
         private Telerik.WinControls.UI.RadButton btncategoryedit;
         private Telerik.WinControls.UI.RadButton btncategoryadd;
+        private Telerik.WinControls.UI.RadGridView gridviewitem;
+        private Telerik.WinControls.UI.RadButton btnitemedit;
+        private Telerik.WinControls.UI.RadButton radButton2;
+        private Telerik.WinControls.UI.RadButton btnitemadd;
     }
 }
