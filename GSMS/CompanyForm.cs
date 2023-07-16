@@ -20,7 +20,7 @@ namespace GSMS
         {
             InitializeComponent();
         }
-        private void perfomOperation(string query)
+        private void performOperation(string query)
         {
             con.Open();
             cmd = new SqlCommand(query, con);
@@ -79,7 +79,7 @@ namespace GSMS
                 {
                     query = "UPDATE_COMPANY";
                 }
-                perfomOperation(query);
+                performOperation(query);
                 Close();
             }
         }
@@ -92,6 +92,35 @@ namespace GSMS
             }
             else { btnaddcomapny.Text = "Add"; }
         }
-        
+
+        private void txtcompanyname_TextChanged(object sender, EventArgs e)
+        {
+            if (String.IsNullOrEmpty(txtcompanyname.Text))
+            {
+                validatorForTextBoxes.Validate(txtcompanyname);
+                txtcompanyname.Focus();
+            }
+            else { validatorForTextBoxes.ClearErrorStatus(txtcompanyname); }
+        }
+
+        private void txtshortname_TextChanged(object sender, EventArgs e)
+        {
+            if (String.IsNullOrEmpty(txtshortname.Text))
+            {
+                validatorForTextBoxes.Validate(txtshortname);
+                txtshortname.Focus();
+            }
+            else { validatorForTextBoxes.ClearErrorStatus(txtshortname); }
+        }
+
+        private void txtaddress_TextChanged(object sender, EventArgs e)
+        {
+            if (String.IsNullOrEmpty(txtaddress.Text))
+            {
+                validatorForTextBoxes.Validate(txtaddress);
+                txtaddress.Focus();
+            }
+            else { validatorForTextBoxes.ClearErrorStatus(txtaddress); }
+        }
     }
 }

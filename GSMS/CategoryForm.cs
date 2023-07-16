@@ -25,7 +25,7 @@ namespace GSMS
         {
             InitializeComponent();
         }
-        private void perfomOperation(string query)
+        private void performOperation(string query)
         {
             cmd = new SqlCommand(query, con);
             cmd.CommandType = CommandType.StoredProcedure;
@@ -114,9 +114,39 @@ namespace GSMS
                 {
                     query = "UPDATE_CATEGORY";
                 }
-                perfomOperation(query);
+                performOperation(query);
                 Close();
             }
+        }
+
+        private void txtcategoryname_TextChanged(object sender, EventArgs e)
+        {
+            if (String.IsNullOrEmpty(txtcategoryname.Text))
+            {
+                validatorForTextBoxes.Validate(txtcategoryname);
+                txtcategoryname.Focus();
+            }
+            else { validatorForTextBoxes.ClearErrorStatus(txtcategoryname); }
+        }
+
+        private void txtshortname_TextChanged(object sender, EventArgs e)
+        {
+            if (String.IsNullOrEmpty(txtshortname.Text))
+            {
+                validatorForTextBoxes.Validate(txtshortname);
+                txtshortname.Focus();
+            }
+            else { validatorForTextBoxes.ClearErrorStatus(txtshortname); }
+        }
+
+        private void drpselectcompany_TextChanged(object sender, EventArgs e)
+        {
+            if (String.IsNullOrEmpty(drpselectcompany.Text))
+            {
+                erpcomapny.SetError(drpselectcompany, "Please Select Comapny");
+                drpselectcompany.Focus();
+            }
+            else { erpcomapny.Clear(); }
         }
     }
 }

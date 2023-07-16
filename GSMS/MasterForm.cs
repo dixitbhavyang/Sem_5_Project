@@ -20,7 +20,7 @@ namespace GSMS
         SqlDataReader dr;
         DataTable dt = new DataTable();
         SqlDataAdapter da;
-        public static int userId, companyId, categoryId;
+        public static int userId, companyId, categoryId, itemId;
         public MasterForm()
         {
             InitializeComponent();
@@ -163,42 +163,6 @@ namespace GSMS
             gridviewcompany.ShowGroupedColumns = true;
         }
 
-        private void getUserId()
-        {
-            userId = 0;
-            for (int i = 0; i < gridviewusers.Rows.Count; i++)
-            {
-                if (gridviewusers.Rows[i].IsSelected)
-                {
-                    //MessageBox.Show(radGridView1.Rows[i].Cells["Id"].Value.ToString());
-                    userId = Convert.ToInt32(gridviewusers.Rows[i].Cells["Id"].Value);
-                }
-            }
-        }
-        private void getCompanyId()
-        {
-            companyId = 0;
-            for (int i = 0; i < gridviewcompany.Rows.Count; i++)
-            {
-                if (gridviewcompany.Rows[i].IsSelected)
-                {
-                    //MessageBox.Show(radGridView1.Rows[i].Cells["Id"].Value.ToString());
-                    companyId = Convert.ToInt32(gridviewcompany.Rows[i].Cells["Id"].Value);
-                }
-            }
-        }
-        private void getCategoryId()
-        {
-            categoryId = 0;
-            for (int i = 0; i < gridviewcategory.Rows.Count; i++)
-            {
-                if (gridviewcategory.Rows[i].IsSelected)
-                {
-                    //MessageBox.Show(radGridView1.Rows[i].Cells["Id"].Value.ToString());
-                    categoryId = Convert.ToInt32(gridviewcategory.Rows[i].Cells["Id"].Value);
-                }
-            }
-        }
         private void getCategoryRecords()
         {
             string query = "EXEC SELECT_CATEGORIES";
@@ -296,8 +260,26 @@ namespace GSMS
                 rowInfo.Cells[1].Value = row["Name"].ToString();
                 rowInfo.Cells[2].Value = row["ShortName"].ToString();
                 rowInfo.Cells[3].Value = row["Price"].ToString();
-                rowInfo.Cells[4].Value = row["Discount"].ToString();
-                rowInfo.Cells[5].Value = row["Tax"].ToString();
+                string discount = row["Discount"].ToString();
+                if (Convert.ToInt32(row["DiscountType"]) == 1)
+                {
+                    discount += " %";
+                }
+                else
+                {
+                    discount += " Rs.";
+                }
+                rowInfo.Cells[4].Value = discount;
+                string tax = row["Tax"].ToString();
+                if (Convert.ToInt32(row["TaxType"]) == 1)
+                {
+                    tax += " %";
+                }
+                else
+                {
+                    tax += " Rs.";
+                }
+                rowInfo.Cells[5].Value = tax;
                 rowInfo.Cells[6].Value = Convert.ToDateTime(row["ExpiryDate"]).ToString("dd/MMM/yyyy hh:mm:ss tt");
                 rowInfo.Cells[7].Value = row["Category"].ToString();
                 rowInfo.Cells[8].Value = Convert.ToDateTime(row["CreatedDate"]).ToString("dd/MMM/yyyy hh:mm:ss tt");
@@ -321,6 +303,177 @@ namespace GSMS
             gridviewitem.AutoSizeColumnsMode = GridViewAutoSizeColumnsMode.Fill;
             gridviewitem.ShowGroupedColumns = true;
 
+        }
+
+        private void getUserId()
+        {
+            userId = 0;
+            for (int i = 0; i < gridviewusers.Rows.Count; i++)
+            {
+                if (gridviewusers.Rows[i].IsSelected)
+                {
+                    //MessageBox.Show(radGridView1.Rows[i].Cells["Id"].Value.ToString());
+                    userId = Convert.ToInt32(gridviewusers.Rows[i].Cells["Id"].Value);
+                }
+            }
+        }
+        private void getCompanyId()
+        {
+            companyId = 0;
+            for (int i = 0; i < gridviewcompany.Rows.Count; i++)
+            {
+                if (gridviewcompany.Rows[i].IsSelected)
+                {
+                    //MessageBox.Show(radGridView1.Rows[i].Cells["Id"].Value.ToString());
+                    companyId = Convert.ToInt32(gridviewcompany.Rows[i].Cells["Id"].Value);
+                }
+            }
+        }
+        private void getCategoryId()
+        {
+            categoryId = 0;
+            for (int i = 0; i < gridviewcategory.Rows.Count; i++)
+            {
+                if (gridviewcategory.Rows[i].IsSelected)
+                {
+                    //MessageBox.Show(radGridView1.Rows[i].Cells["Id"].Value.ToString());
+                    categoryId = Convert.ToInt32(gridviewcategory.Rows[i].Cells["Id"].Value);
+                }
+            }
+        }
+        private void getItemId()
+        {
+            itemId = 0;
+            for (int i = 0; i < gridviewitem.Rows.Count; i++)
+            {
+                if (gridviewitem.Rows[i].IsSelected)
+                {
+                    //MessageBox.Show(radGridView1.Rows[i].Cells["Id"].Value.ToString());
+                    itemId = Convert.ToInt32(gridviewitem.Rows[i].Cells["Id"].Value);
+                }
+            }
+        }
+        private void editUser()
+        {
+            getUserId();
+            dt.Clear();
+            cmd = new SqlCommand("EDIT_USER", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@ID", userId);
+            da = new SqlDataAdapter(cmd);
+            da.Fill(dt);
+
+            if (dt.Rows.Count > 0)
+            {
+                UsersForm uf = new UsersForm();
+                uf.txtfirstname.Text = dt.Rows[0].ItemArray[1].ToString();
+                uf.txtlastname.Text = dt.Rows[0].ItemArray[2].ToString();
+                uf.txtusername.Text = dt.Rows[0].ItemArray[3].ToString();
+                uf.txtpassword.Text = dt.Rows[0].ItemArray[4].ToString();
+                uf.txtcontactnumber.Text = dt.Rows[0].ItemArray[5].ToString();
+                uf.txtmail.Text = dt.Rows[0].ItemArray[6].ToString();
+                if (dt.Rows[0].ItemArray[7].ToString() == "0")
+                {
+                    uf.rdbfemale.IsChecked = true;
+                }
+                else
+                {
+                    uf.rdbmale.IsChecked = true;
+                }
+                uf.txtcity.Text = dt.Rows[0].ItemArray[8].ToString();
+                if (dt.Rows[0].ItemArray[13].ToString() == "Admin")
+                {
+                    uf.dropdownrole.SelectedIndex = 0;
+                }
+                else
+                {
+                    uf.dropdownrole.SelectedIndex = 1;
+                }
+                uf.ShowDialog();
+                getUserRecords();
+            }
+            userId = 0;
+        }
+
+        private void editCompany()
+        {
+            getCompanyId();
+            dt.Clear();
+            cmd = new SqlCommand("EDIT_COMPANY", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@ID", companyId);
+            da = new SqlDataAdapter(cmd);
+            da.Fill(dt);
+            if (dt.Rows.Count > 0)
+            {
+                CompanyForm cf = new CompanyForm();
+                cf.txtcompanyname.Text = dt.Rows[0].Field<string>("Name").ToString();
+                cf.txtshortname.Text = dt.Rows[0].Field<string>("ShortName").ToString();
+                cf.txtaddress.Text = dt.Rows[0].Field<string>("Address").ToString();
+                cf.ShowDialog();
+                getCompanyRecords();
+            }
+            companyId = 0;
+        }
+
+        private void editCategory()
+        {
+            getCategoryId();
+            dt.Clear();
+            cmd = new SqlCommand("EDIT_CATEGORY", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@ID", categoryId);
+            da = new SqlDataAdapter(cmd);
+            da.Fill(dt);
+            if (dt.Rows.Count > 0)
+            {
+                CategoryForm cf = new CategoryForm();
+                companyId = dt.Rows[0].Field<Int32>("CompanyId");
+                cf.txtcategoryname.Text = dt.Rows[0].Field<String>("Name");
+                cf.txtshortname.Text = dt.Rows[0].Field<String>("ShortName");
+                cf.ShowDialog();
+                getCategoryRecords();
+            }
+            categoryId = 0;
+            companyId = 0;
+        }
+
+        private void editItem()
+        {
+            getItemId();
+            dt.Clear();
+            cmd = new SqlCommand("EDIT_ITEM", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@ID", itemId);
+            da = new SqlDataAdapter(cmd);
+            da.Fill(dt);
+            if (dt.Rows.Count > 0)
+            {
+                ItemForm itemf = new ItemForm();
+                categoryId = dt.Rows[0].Field<Int32>("CategoryId");
+                itemf.txtitemname.Text = dt.Rows[0].Field<String>("Name");
+                itemf.txtshortname.Text = dt.Rows[0].Field<String>("ShortName");
+                itemf.spineditorprice.Value = dt.Rows[0].Field<Decimal>("Price");
+                decimal discount = dt.Rows[0].Field<Decimal>("Discount");
+                if (dt.Rows[0].Field<Boolean>("DiscountType"))
+                {
+                    itemf.toggleswitchdiscount.Value = true;
+                    discount *= 100;
+                }
+                itemf.spineditordiscount.Value = discount;
+                decimal tax = dt.Rows[0].Field<Decimal>("Tax");
+                if (dt.Rows[0].Field<Boolean>("TaxType"))
+                {
+                    itemf.toggleswitchtax.Value = true;
+                    tax *= 100;
+                }
+                itemf.spineditortax.Value = tax;
+                itemf.datetimeexpiration.Value = dt.Rows[0].Field<DateTime>("ExpiryDate");
+                itemf.ShowDialog();
+                getItemRecords();
+            }
+            itemId = 0;
+            categoryId = 0;
         }
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -347,41 +500,7 @@ namespace GSMS
         }
         private void btnedituser_Click(object sender, EventArgs e)
         {
-            getUserId();
-            dt.Clear();
-            cmd = new SqlCommand("EDIT_USER", con);
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@ID", userId);
-            da = new SqlDataAdapter(cmd);
-            da.Fill(dt);
-
-            UsersForm uf = new UsersForm();
-            uf.txtfirstname.Text = dt.Rows[0].ItemArray[1].ToString();
-            uf.txtlastname.Text = dt.Rows[0].ItemArray[2].ToString();
-            uf.txtusername.Text = dt.Rows[0].ItemArray[3].ToString();
-            uf.txtpassword.Text = dt.Rows[0].ItemArray[4].ToString();
-            uf.txtcontactnumber.Text = dt.Rows[0].ItemArray[5].ToString();
-            uf.txtmail.Text = dt.Rows[0].ItemArray[6].ToString();
-            if (dt.Rows[0].ItemArray[7].ToString() == "0")
-            {
-                uf.rdbfemale.IsChecked = true;
-            }
-            else
-            {
-                uf.rdbmale.IsChecked = true;
-            }
-            uf.txtcity.Text = dt.Rows[0].ItemArray[8].ToString();
-            if (dt.Rows[0].ItemArray[13].ToString() == "Admin")
-            {
-                uf.dropdownrole.SelectedIndex = 0;
-            }
-            else
-            {
-                uf.dropdownrole.SelectedIndex = 1;
-            }
-            uf.ShowDialog();
-            getUserRecords();
-            userId = 0;
+            editUser();
         }
 
         private void btndeleteuser_Click(object sender, EventArgs e)
@@ -414,7 +533,10 @@ namespace GSMS
             cf.ShowDialog();
             getCompanyRecords();
         }
-
+        private void btncompanyedit_Click(object sender, EventArgs e)
+        {
+            editCompany();
+        }
         private void btncompanydelete_Click(object sender, EventArgs e)
         {
             getCompanyId();
@@ -455,77 +577,16 @@ namespace GSMS
             companyId = 0;
         }
 
+        private void btncategoryadd_Click(object sender, EventArgs e)
+        {
+            CategoryForm cf = new CategoryForm();
+            cf.ShowDialog();
+            getCategoryRecords();
+        }
         private void btncategoryedit_Click(object sender, EventArgs e)
         {
-            getCategoryId();
-            dt.Clear();
-            cmd = new SqlCommand("EDIT_CATEGORY", con);
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@ID", categoryId);
-            da = new SqlDataAdapter(cmd);
-            da.Fill(dt);
-            if (dt.Rows.Count > 0)
-            {
-                CategoryForm cf = new CategoryForm();
-                companyId = dt.Rows[0].Field<Int32>("CompanyId");
-                cf.txtcategoryname.Text = dt.Rows[0].Field<String>("Name");
-                cf.txtshortname.Text = dt.Rows[0].Field<String>("ShortName");
-                cf.ShowDialog();
-                getCategoryRecords();
-            }
+            editCategory();
         }
-
-        private void gridviewcategory_SelectionChanged(object sender, EventArgs e)
-        {
-            bool isSelected = false;
-            for (int i = 0; i < gridviewcategory.Rows.Count; i++)
-            {
-                if (gridviewcategory.Rows[i].IsSelected)
-                {
-                    isSelected = true;
-                }
-            }
-            if (isSelected)
-            {
-                btncategorydelete.Enabled = btncategoryedit.Enabled = true;
-            }
-            else { btncategorydelete.Enabled = btncategoryedit.Enabled = false; }
-        }
-
-        private void gridviewcompany_SelectionChanged(object sender, EventArgs e)
-        {
-            bool isSelected = false;
-            for (int i = 0; i < gridviewcompany.Rows.Count; i++)
-            {
-                if (gridviewcompany.Rows[i].IsSelected)
-                {
-                    isSelected = true;
-                }
-            }
-            if (isSelected)
-            {
-                btncompanydelete.Enabled = btncompanyedit.Enabled = true;
-            }
-            else { btncompanydelete.Enabled = btncompanyedit.Enabled = false; }
-        }
-
-        private void gridviewusers_SelectionChanged(object sender, EventArgs e)
-        {
-            bool isSelected = false;
-            for (int i = 0; i < gridviewusers.Rows.Count; i++)
-            {
-                if (gridviewusers.Rows[i].IsSelected)
-                {
-                    isSelected = true;
-                }
-            }
-            if (isSelected)
-            {
-                btnedituser.Enabled = btndeleteuser.Enabled = true;
-            }
-            else { btnedituser.Enabled = btndeleteuser.Enabled = false; }
-        }
-
         private void btncategorydelete_Click(object sender, EventArgs e)
         {
             getCategoryId();
@@ -564,34 +625,132 @@ namespace GSMS
             categoryId = 0;
         }
 
-        private void btncategoryadd_Click(object sender, EventArgs e)
+        private void btnitemadd_Click(object sender, EventArgs e)
         {
-            CategoryForm cf = new CategoryForm();
-            cf.ShowDialog();
-            getCategoryRecords();
+            ItemForm itemf = new ItemForm();
+            itemf.ShowDialog();
+            getItemRecords();
         }
-
-
-        private void btncompanyedit_Click(object sender, EventArgs e)
+        private void btnitemedit_Click(object sender, EventArgs e)
         {
-            getCompanyId();
-            dt.Clear();
-            cmd = new SqlCommand("EDIT_COMPANY", con);
+            editItem();
+        }
+        private void btnitemdelete_Click(object sender, EventArgs e)
+        {
+            getItemId();
+            cmd = new SqlCommand("EDIT_ITEM", con);
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@ID", companyId);
-            da = new SqlDataAdapter(cmd);
-            da.Fill(dt);
-            if (dt.Rows.Count > 0)
+            cmd.Parameters.AddWithValue("@ID", itemId);
+            dr = cmd.ExecuteReader();
+            if (dr.HasRows)
             {
-                CompanyForm cf = new CompanyForm();
-                cf.txtcompanyname.Text = dt.Rows[0].Field<string>("Name").ToString();
-                cf.txtshortname.Text = dt.Rows[0].Field<string>("ShortName").ToString();
-                cf.txtaddress.Text = dt.Rows[0].Field<string>("Address").ToString();
-                cf.ShowDialog();
-                getCompanyRecords();
-                companyId = 0;
+                DialogResult res = MessageBox.Show("Do You wnat to Delete ?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (res == DialogResult.Yes)
+                {
+                    dr.Close();
+                    cmd = new SqlCommand("DELETE_ITEM", con);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@ID", itemId);
+                    cmd.ExecuteNonQuery();
+                    getItemRecords();
+                }
             }
+            dr.Close();
+            itemId = 0;
         }
 
+        private void gridviewusers_SelectionChanged(object sender, EventArgs e)
+        {
+            bool isSelected = false;
+            for (int i = 0; i < gridviewusers.Rows.Count; i++)
+            {
+                if (gridviewusers.Rows[i].IsSelected)
+                {
+                    isSelected = true;
+                }
+            }
+            if (isSelected)
+            {
+                if (LoginForm.usertype == "Admin")
+                {
+                    btnedituser.Enabled = btndeleteuser.Enabled = true;
+                }
+            }
+            else { btnedituser.Enabled = btndeleteuser.Enabled = false; }
+        }
+        private void gridviewcompany_SelectionChanged(object sender, EventArgs e)
+        {
+            bool isSelected = false;
+            for (int i = 0; i < gridviewcompany.Rows.Count; i++)
+            {
+                if (gridviewcompany.Rows[i].IsSelected)
+                {
+                    isSelected = true;
+                }
+            }
+            if (isSelected)
+            {
+                if (LoginForm.usertype == "Admin")
+                {
+                    btncompanydelete.Enabled = btncompanyedit.Enabled = true;
+                }
+            }
+            else { btncompanydelete.Enabled = btncompanyedit.Enabled = false; }
+        }
+        private void gridviewcategory_SelectionChanged(object sender, EventArgs e)
+        {
+            bool isSelected = false;
+            for (int i = 0; i < gridviewcategory.Rows.Count; i++)
+            {
+                if (gridviewcategory.Rows[i].IsSelected)
+                {
+                    isSelected = true;
+                }
+            }
+            if (isSelected)
+            {
+                if (LoginForm.usertype == "Admin")
+                {
+                    btncategorydelete.Enabled = btncategoryedit.Enabled = true;
+                }
+            }
+            else { btncategorydelete.Enabled = btncategoryedit.Enabled = false; }
+        }
+        private void gridviewitem_SelectionChanged(object sender, EventArgs e)
+        {
+            bool isSelected = false;
+            for (int i = 0; i < gridviewitem.Rows.Count; i++)
+            {
+                if (gridviewitem.Rows[i].IsSelected)
+                {
+                    isSelected = true;
+                }
+            }
+            if (isSelected)
+            {
+                if (LoginForm.usertype == "Admin")
+                {
+                    btnitemedit.Enabled = btnitemdelete.Enabled = true;
+                }
+            }
+            else { btnitemedit.Enabled = btnitemdelete.Enabled = false; }
+        }
+
+        private void gridviewusers_CellDoubleClick(object sender, GridViewCellEventArgs e)
+        {
+            editUser();
+        }
+        private void gridviewcompany_CellDoubleClick(object sender, GridViewCellEventArgs e)
+        {
+            editCompany();
+        }
+        private void gridviewcategory_CellDoubleClick(object sender, GridViewCellEventArgs e)
+        {
+            editCategory();
+        }
+        private void gridviewitem_CellDoubleClick(object sender, GridViewCellEventArgs e)
+        {
+            editItem();
+        }
     }
 }

@@ -30,11 +30,11 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginForm));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.radPictureBox1 = new Telerik.WinControls.UI.RadPictureBox();
             this.txtpassword = new Telerik.WinControls.UI.RadTextBox();
-            this.txtusername = new Telerik.WinControls.UI.RadTextBox();
+            this.radPictureBox1 = new Telerik.WinControls.UI.RadPictureBox();
             this.btnlogin = new Telerik.WinControls.UI.RadButton();
             this.chkshowpassword = new Telerik.WinControls.UI.RadCheckBox();
+            this.txtusername = new Telerik.WinControls.UI.RadTextBox();
             this.materialBlueGreyTheme1 = new Telerik.WinControls.Themes.MaterialBlueGreyTheme();
             this.crystalDarkTheme1 = new Telerik.WinControls.Themes.CrystalDarkTheme();
             this.office2007SilverTheme1 = new Telerik.WinControls.Themes.Office2007SilverTheme();
@@ -42,11 +42,11 @@
             this.visualStudio2012DarkTheme1 = new Telerik.WinControls.Themes.VisualStudio2012DarkTheme();
             this.windows7Theme1 = new Telerik.WinControls.Themes.Windows7Theme();
             this.tableLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.radPictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtpassword)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtusername)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radPictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnlogin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkshowpassword)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtusername)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
             // 
@@ -77,6 +77,23 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(272, 336);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
+            // txtpassword
+            // 
+            this.txtpassword.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.txtpassword.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.txtpassword.EmbeddedLabelText = "Enter Password";
+            this.txtpassword.ForeColor = System.Drawing.Color.Black;
+            this.txtpassword.Location = new System.Drawing.Point(12, 230);
+            this.txtpassword.Name = "txtpassword";
+            this.txtpassword.NullText = "Password";
+            this.txtpassword.PasswordChar = '●';
+            this.txtpassword.ShowClearButton = true;
+            this.txtpassword.ShowNullText = true;
+            this.txtpassword.Size = new System.Drawing.Size(254, 36);
+            this.txtpassword.TabIndex = 1;
+            this.txtpassword.ThemeName = "MaterialBlueGrey";
+            this.txtpassword.UseSystemPasswordChar = true;
+            // 
             // radPictureBox1
             // 
             this.radPictureBox1.AllowPanelAnimations = false;
@@ -91,38 +108,6 @@
             this.radPictureBox1.PanelDisplayMode = Telerik.WinControls.UI.PictureBoxPanelDisplayMode.None;
             this.radPictureBox1.Size = new System.Drawing.Size(266, 176);
             this.radPictureBox1.TabIndex = 8;
-            // 
-            // txtpassword
-            // 
-            this.txtpassword.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.txtpassword.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtpassword.EmbeddedLabelText = "Enter Password";
-            this.txtpassword.ForeColor = System.Drawing.Color.Black;
-            this.txtpassword.Location = new System.Drawing.Point(12, 230);
-            this.txtpassword.Name = "txtpassword";
-            this.txtpassword.NullText = "Password";
-            this.txtpassword.PasswordChar = '●';
-            this.txtpassword.ShowClearButton = true;
-            this.txtpassword.ShowNullText = true;
-            this.txtpassword.Size = new System.Drawing.Size(254, 36);
-            this.txtpassword.TabIndex = 1;
-            this.txtpassword.ThemeName = "MaterialBlueGrey";
-            this.txtpassword.UseSystemPasswordChar = true;
-            // 
-            // txtusername
-            // 
-            this.txtusername.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.txtusername.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtusername.EmbeddedLabelText = "Please Enter Username";
-            this.txtusername.ForeColor = System.Drawing.Color.Black;
-            this.txtusername.Location = new System.Drawing.Point(12, 186);
-            this.txtusername.Name = "txtusername";
-            this.txtusername.NullText = "Username";
-            this.txtusername.ShowClearButton = true;
-            this.txtusername.ShowNullText = true;
-            this.txtusername.Size = new System.Drawing.Size(254, 36);
-            this.txtusername.TabIndex = 0;
-            this.txtusername.ThemeName = "MaterialBlueGrey";
             // 
             // btnlogin
             // 
@@ -147,25 +132,43 @@
             this.chkshowpassword.DisplayStyle = Telerik.WinControls.DisplayStyle.Text;
             this.chkshowpassword.Location = new System.Drawing.Point(12, 271);
             this.chkshowpassword.Name = "chkshowpassword";
-            this.chkshowpassword.Size = new System.Drawing.Size(98, 18);
+            this.chkshowpassword.Size = new System.Drawing.Size(101, 18);
             this.chkshowpassword.TabIndex = 2;
             this.chkshowpassword.Text = " Show Password";
             this.chkshowpassword.ThemeName = "Office2010Silver";
             this.chkshowpassword.ToggleStateChanged += new Telerik.WinControls.UI.StateChangedEventHandler(this.radCheckBox1_ToggleStateChanged);
             // 
+            // txtusername
+            // 
+            this.txtusername.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.txtusername.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.txtusername.EmbeddedLabelText = "Please Enter Username";
+            this.txtusername.ForeColor = System.Drawing.Color.Black;
+            this.txtusername.Location = new System.Drawing.Point(12, 186);
+            this.txtusername.Name = "txtusername";
+            this.txtusername.NullText = "Username";
+            this.txtusername.ShowClearButton = true;
+            this.txtusername.ShowNullText = true;
+            this.txtusername.Size = new System.Drawing.Size(254, 36);
+            this.txtusername.TabIndex = 0;
+            this.txtusername.ThemeName = "MaterialBlueGrey";
+            // 
             // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(272, 336);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.ForeColor = System.Drawing.Color.White;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.MaximumSize = new System.Drawing.Size(280, 369);
             this.MinimumSize = new System.Drawing.Size(280, 369);
             this.Name = "LoginForm";
+            this.RightToLeft = System.Windows.Forms.RightToLeft.No;
             // 
             // 
             // 
@@ -173,14 +176,14 @@
             this.RootElement.MaxSize = new System.Drawing.Size(280, 369);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = " LogIn";
-            this.ThemeName = "Fluent";
+            this.ThemeName = "CrystalDark";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.radPictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtpassword)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtusername)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radPictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnlogin)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkshowpassword)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtusername)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

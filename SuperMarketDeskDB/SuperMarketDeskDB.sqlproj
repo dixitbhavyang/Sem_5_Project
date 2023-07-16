@@ -94,5 +94,8 @@
     <Build Include="dbo\Stored Procedures\SELECT_ACTIVE_COMPANIES.sql" />
     <Build Include="dbo\Stored Procedures\SELECT_ACTIVE_CATEGORIES.sql" />
     <Build Include="dbo\Stored Procedures\INSERT_ITEM.sql" />
+    <Build Include="dbo\Stored Procedures\UPDATE_ITEM.sql" />
+    <Build Include="dbo\Stored Procedures\EDIT_ITEM.sql" />
+    <Build Include="dbo\Stored Procedures\DELETE_ITEM.sql" />
   </ItemGroup>
 </Project>

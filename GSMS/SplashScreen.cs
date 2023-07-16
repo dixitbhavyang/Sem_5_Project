@@ -7,10 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Telerik.WinControls.UI;
 
 namespace GSMS
 {
-    public partial class SplashScreen : Form
+    public partial class SplashScreen : RadForm
     {
         int i = 0;
         public SplashScreen()
@@ -20,17 +21,16 @@ namespace GSMS
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            if (progressBar1.Value < 100)
+            if (progressBar1.Value1 < 100)
             {
-                progressBar1.Value = i;
+                progressBar1.Value1 = i;
                 i++;
             }
             else
             {
                 timer1.Enabled = false;
-                LoginForm l = new LoginForm();
-                Hide();
-                l.ShowDialog();
+                LoginForm lf = new LoginForm();
+                lf.ShowDialog();
                 Close();
             }
         }
@@ -39,5 +39,6 @@ namespace GSMS
         {
             timer1.Enabled = true;
         }
+        
     }
 }

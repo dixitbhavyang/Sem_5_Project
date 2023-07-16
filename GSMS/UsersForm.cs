@@ -21,8 +21,17 @@ namespace GSMS
         {
             InitializeComponent();
         }
+    
+        private void UsersForm_Load(object sender, EventArgs e)
+        {
+            if (MasterForm.userId > 0)
+            {
+                btnadduser.Text = "Update";
+            }
+            else { btnadduser.Text = "Add"; }
+        }
 
-        private void perfomOperation(string query)
+        private void performOperation(string query)
         {
             int gender = 1;
             cmd = new SqlCommand(query, con);
@@ -200,24 +209,90 @@ namespace GSMS
                 {
                     query = "UPDATE_USER";
                 }
-                perfomOperation(query);
+                performOperation(query);
                 con.Close();
                 Close();
             }
         }
 
-
-        private void UsersForm_Load(object sender, EventArgs e)
+        private void txtfirstname_TextChanged(object sender, EventArgs e)
         {
-            if (MasterForm.userId > 0)
+            if (String.IsNullOrEmpty(txtfirstname.Text))
             {
-                btnadduser.Text = "Update";
+                validatorForTextBoxes.Validate(txtfirstname);
+                txtfirstname.Focus();
             }
-            else { btnadduser.Text = "Add"; }
+            else { validatorForTextBoxes.ClearErrorStatus(txtfirstname); }
         }
 
-        private void radValidationProvider1_ControlValidation(object sender, RadValidationEventArgs e)
+        private void txtlastname_TextChanged(object sender, EventArgs e)
         {
+            if (String.IsNullOrEmpty(txtlastname.Text))
+            {
+                validatorForTextBoxes.Validate(txtlastname);
+                txtlastname.Focus();
+            }
+            else { validatorForTextBoxes.ClearErrorStatus(txtlastname); }
+        }
+
+        private void txtusername_TextChanged(object sender, EventArgs e)
+        {
+            if (String.IsNullOrEmpty(txtusername.Text))
+            {
+                validatorForTextBoxes.Validate(txtusername);
+                txtusername.Focus();
+            }
+            else { validatorForTextBoxes.ClearErrorStatus(txtusername); }
+        }
+
+        private void txtpassword_TextChanged(object sender, EventArgs e)
+        {
+            if (String.IsNullOrEmpty(txtpassword.Text))
+            {
+                validatorForTextBoxes.Validate(txtpassword);
+                txtpassword.Focus();
+            }
+            else { validatorForTextBoxes.ClearErrorStatus(txtpassword); }
+        }
+
+        private void txtcontactnumber_TextChanged(object sender, EventArgs e)
+        {
+            if (String.IsNullOrEmpty(txtcontactnumber.Text))
+            {
+                validatorForTextBoxes.Validate(txtcontactnumber);
+                txtcontactnumber.Focus();
+            }
+            else { validatorForTextBoxes.ClearErrorStatus(txtcontactnumber); }
+        }
+
+        private void txtmail_TextChanged(object sender, EventArgs e)
+        {
+            if (String.IsNullOrEmpty(txtmail.Text))
+            {
+                validatorForTextBoxes.Validate(txtmail);
+                txtmail.Focus();
+            }
+            else { validatorForTextBoxes.ClearErrorStatus(txtmail); }
+        }
+
+        private void txtcity_TextChanged(object sender, EventArgs e)
+        {
+            if (String.IsNullOrEmpty(txtcity.Text))
+            {
+                validatorForTextBoxes.Validate(txtcity);
+                txtcity.Focus();
+            }
+            else { validatorForTextBoxes.ClearErrorStatus(txtcity); }
+        }
+
+        private void dropdownrole_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (dropdownrole.SelectedIndex < 0)
+            {
+                eprole.SetError(dropdownrole,"Please Select Role...");
+                dropdownrole.Focus();
+            }
+            else { eprole.Clear(); }
         }
     }
 }

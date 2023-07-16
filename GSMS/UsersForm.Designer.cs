@@ -29,27 +29,27 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Telerik.WinControls.UI.RadValidationRule radValidationRule1 = new Telerik.WinControls.UI.RadValidationRule();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.kryptonLabel11 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
-            this.kryptonLabel8 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            Telerik.WinControls.UI.RadValidationRule radValidationRule2 = new Telerik.WinControls.UI.RadValidationRule();
             this.txtcity = new Telerik.WinControls.UI.RadTextBox();
-            this.kryptonLabel7 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.rdbfemale = new Telerik.WinControls.UI.RadRadioButton();
-            this.rdbmale = new Telerik.WinControls.UI.RadRadioButton();
-            this.kryptonLabel6 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.txtmail = new Telerik.WinControls.UI.RadTextBox();
-            this.kryptonLabel5 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
-            this.kryptonLabel4 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
-            this.kryptonLabel3 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
-            this.kryptonLabel2 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
-            this.kryptonLabel1 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.txtcontactnumber = new Telerik.WinControls.UI.RadTextBox();
             this.txtpassword = new Telerik.WinControls.UI.RadTextBox();
             this.txtusername = new Telerik.WinControls.UI.RadTextBox();
             this.txtlastname = new Telerik.WinControls.UI.RadTextBox();
             this.txtfirstname = new Telerik.WinControls.UI.RadTextBox();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.kryptonLabel11 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            this.kryptonLabel8 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            this.kryptonLabel7 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.rdbfemale = new Telerik.WinControls.UI.RadRadioButton();
+            this.rdbmale = new Telerik.WinControls.UI.RadRadioButton();
+            this.kryptonLabel6 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            this.kryptonLabel5 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            this.kryptonLabel4 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            this.kryptonLabel3 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            this.kryptonLabel2 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            this.kryptonLabel1 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.btnadduser = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.dropdownrole = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -60,17 +60,17 @@
             this.edpcreateddate = new System.Windows.Forms.ErrorProvider(this.components);
             this.eprole = new System.Windows.Forms.ErrorProvider(this.components);
             this.validatorForTextBoxes = new Telerik.WinControls.UI.RadValidationProvider(this.components);
-            this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtcity)).BeginInit();
-            this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.rdbfemale)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rdbmale)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtmail)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtcontactnumber)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtpassword)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtusername)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtlastname)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtfirstname)).BeginInit();
+            this.tableLayoutPanel1.SuspendLayout();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.rdbfemale)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rdbmale)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dropdownrole)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.epgender)).BeginInit();
@@ -79,6 +79,94 @@
             ((System.ComponentModel.ISupportInitialize)(this.validatorForTextBoxes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
+            // 
+            // txtcity
+            // 
+            this.txtcity.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.txtcity.Location = new System.Drawing.Point(156, 466);
+            this.txtcity.MaxLength = 20;
+            this.txtcity.Name = "txtcity";
+            this.txtcity.ShowClearButton = true;
+            this.txtcity.Size = new System.Drawing.Size(196, 24);
+            this.txtcity.TabIndex = 8;
+            this.txtcity.ThemeName = "Crystal";
+            this.validatorForTextBoxes.SetValidationRule(this.txtcity, radValidationRule2);
+            this.txtcity.TextChanged += new System.EventHandler(this.txtcity_TextChanged);
+            // 
+            // txtmail
+            // 
+            this.txtmail.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.txtmail.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
+            this.txtmail.Location = new System.Drawing.Point(156, 406);
+            this.txtmail.MaxLength = 50;
+            this.txtmail.Name = "txtmail";
+            this.txtmail.ShowClearButton = true;
+            this.txtmail.Size = new System.Drawing.Size(196, 24);
+            this.txtmail.TabIndex = 5;
+            this.txtmail.ThemeName = "Crystal";
+            this.validatorForTextBoxes.SetValidationRule(this.txtmail, radValidationRule2);
+            this.txtmail.TextChanged += new System.EventHandler(this.txtmail_TextChanged);
+            // 
+            // txtcontactnumber
+            // 
+            this.txtcontactnumber.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.txtcontactnumber.Location = new System.Drawing.Point(156, 376);
+            this.txtcontactnumber.MaxLength = 10;
+            this.txtcontactnumber.Name = "txtcontactnumber";
+            this.txtcontactnumber.ShowClearButton = true;
+            this.txtcontactnumber.Size = new System.Drawing.Size(196, 24);
+            this.txtcontactnumber.TabIndex = 4;
+            this.txtcontactnumber.ThemeName = "Crystal";
+            this.validatorForTextBoxes.SetValidationRule(this.txtcontactnumber, radValidationRule2);
+            this.txtcontactnumber.TextChanged += new System.EventHandler(this.txtcontactnumber_TextChanged);
+            // 
+            // txtpassword
+            // 
+            this.txtpassword.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.txtpassword.Location = new System.Drawing.Point(156, 346);
+            this.txtpassword.Name = "txtpassword";
+            this.txtpassword.ShowClearButton = true;
+            this.txtpassword.Size = new System.Drawing.Size(196, 24);
+            this.txtpassword.TabIndex = 3;
+            this.txtpassword.ThemeName = "Crystal";
+            this.validatorForTextBoxes.SetValidationRule(this.txtpassword, radValidationRule2);
+            this.txtpassword.TextChanged += new System.EventHandler(this.txtpassword_TextChanged);
+            // 
+            // txtusername
+            // 
+            this.txtusername.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.txtusername.Location = new System.Drawing.Point(156, 316);
+            this.txtusername.Name = "txtusername";
+            this.txtusername.ShowClearButton = true;
+            this.txtusername.Size = new System.Drawing.Size(196, 24);
+            this.txtusername.TabIndex = 2;
+            this.txtusername.ThemeName = "Crystal";
+            this.validatorForTextBoxes.SetValidationRule(this.txtusername, radValidationRule2);
+            this.txtusername.TextChanged += new System.EventHandler(this.txtusername_TextChanged);
+            // 
+            // txtlastname
+            // 
+            this.txtlastname.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.txtlastname.Location = new System.Drawing.Point(156, 286);
+            this.txtlastname.Name = "txtlastname";
+            this.txtlastname.ShowClearButton = true;
+            this.txtlastname.Size = new System.Drawing.Size(196, 24);
+            this.txtlastname.TabIndex = 1;
+            this.txtlastname.ThemeName = "Crystal";
+            this.validatorForTextBoxes.SetValidationRule(this.txtlastname, radValidationRule2);
+            this.txtlastname.TextChanged += new System.EventHandler(this.txtlastname_TextChanged);
+            // 
+            // txtfirstname
+            // 
+            this.txtfirstname.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.txtfirstname.Location = new System.Drawing.Point(156, 256);
+            this.txtfirstname.Name = "txtfirstname";
+            this.txtfirstname.ShowClearButton = true;
+            this.txtfirstname.Size = new System.Drawing.Size(196, 24);
+            this.txtfirstname.TabIndex = 0;
+            this.txtfirstname.ThemeName = "Crystal";
+            this.validatorForTextBoxes.SetValidationRule(this.txtfirstname, radValidationRule2);
+            this.txtfirstname.TextChanged += new System.EventHandler(this.txtfirstname_TextChanged);
             // 
             // tableLayoutPanel1
             // 
@@ -146,18 +234,6 @@
             this.kryptonLabel8.TabIndex = 1;
             this.kryptonLabel8.Values.Text = "City :";
             // 
-            // txtcity
-            // 
-            this.txtcity.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.txtcity.Location = new System.Drawing.Point(156, 466);
-            this.txtcity.MaxLength = 20;
-            this.txtcity.Name = "txtcity";
-            this.txtcity.ShowClearButton = true;
-            this.txtcity.Size = new System.Drawing.Size(196, 24);
-            this.txtcity.TabIndex = 8;
-            this.txtcity.ThemeName = "Crystal";
-            this.validatorForTextBoxes.SetValidationRule(this.txtcity, radValidationRule1);
-            // 
             // kryptonLabel7
             // 
             this.kryptonLabel7.Anchor = System.Windows.Forms.AnchorStyles.Right;
@@ -207,19 +283,6 @@
             this.kryptonLabel6.Size = new System.Drawing.Size(49, 20);
             this.kryptonLabel6.TabIndex = 1;
             this.kryptonLabel6.Values.Text = "Email :";
-            // 
-            // txtmail
-            // 
-            this.txtmail.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.txtmail.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
-            this.txtmail.Location = new System.Drawing.Point(156, 406);
-            this.txtmail.MaxLength = 50;
-            this.txtmail.Name = "txtmail";
-            this.txtmail.ShowClearButton = true;
-            this.txtmail.Size = new System.Drawing.Size(196, 24);
-            this.txtmail.TabIndex = 5;
-            this.txtmail.ThemeName = "Crystal";
-            this.validatorForTextBoxes.SetValidationRule(this.txtmail, radValidationRule1);
             // 
             // kryptonLabel5
             // 
@@ -271,62 +334,6 @@
             this.kryptonLabel1.TabIndex = 1;
             this.kryptonLabel1.Values.Text = "First Name :";
             // 
-            // txtcontactnumber
-            // 
-            this.txtcontactnumber.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.txtcontactnumber.Location = new System.Drawing.Point(156, 376);
-            this.txtcontactnumber.MaxLength = 10;
-            this.txtcontactnumber.Name = "txtcontactnumber";
-            this.txtcontactnumber.ShowClearButton = true;
-            this.txtcontactnumber.Size = new System.Drawing.Size(196, 24);
-            this.txtcontactnumber.TabIndex = 4;
-            this.txtcontactnumber.ThemeName = "Crystal";
-            this.validatorForTextBoxes.SetValidationRule(this.txtcontactnumber, radValidationRule1);
-            // 
-            // txtpassword
-            // 
-            this.txtpassword.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.txtpassword.Location = new System.Drawing.Point(156, 346);
-            this.txtpassword.Name = "txtpassword";
-            this.txtpassword.ShowClearButton = true;
-            this.txtpassword.Size = new System.Drawing.Size(196, 24);
-            this.txtpassword.TabIndex = 3;
-            this.txtpassword.ThemeName = "Crystal";
-            this.validatorForTextBoxes.SetValidationRule(this.txtpassword, radValidationRule1);
-            // 
-            // txtusername
-            // 
-            this.txtusername.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.txtusername.Location = new System.Drawing.Point(156, 316);
-            this.txtusername.Name = "txtusername";
-            this.txtusername.ShowClearButton = true;
-            this.txtusername.Size = new System.Drawing.Size(196, 24);
-            this.txtusername.TabIndex = 2;
-            this.txtusername.ThemeName = "Crystal";
-            this.validatorForTextBoxes.SetValidationRule(this.txtusername, radValidationRule1);
-            // 
-            // txtlastname
-            // 
-            this.txtlastname.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.txtlastname.Location = new System.Drawing.Point(156, 286);
-            this.txtlastname.Name = "txtlastname";
-            this.txtlastname.ShowClearButton = true;
-            this.txtlastname.Size = new System.Drawing.Size(196, 24);
-            this.txtlastname.TabIndex = 1;
-            this.txtlastname.ThemeName = "Crystal";
-            this.validatorForTextBoxes.SetValidationRule(this.txtlastname, radValidationRule1);
-            // 
-            // txtfirstname
-            // 
-            this.txtfirstname.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.txtfirstname.Location = new System.Drawing.Point(156, 256);
-            this.txtfirstname.Name = "txtfirstname";
-            this.txtfirstname.ShowClearButton = true;
-            this.txtfirstname.Size = new System.Drawing.Size(196, 24);
-            this.txtfirstname.TabIndex = 0;
-            this.txtfirstname.ThemeName = "Crystal";
-            this.validatorForTextBoxes.SetValidationRule(this.txtfirstname, radValidationRule1);
-            // 
             // btnadduser
             // 
             this.btnadduser.Anchor = System.Windows.Forms.AnchorStyles.Left;
@@ -352,6 +359,7 @@
             this.dropdownrole.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue;
             this.dropdownrole.Size = new System.Drawing.Size(196, 21);
             this.dropdownrole.TabIndex = 13;
+            this.dropdownrole.SelectedIndexChanged += new System.EventHandler(this.dropdownrole_SelectedIndexChanged);
             // 
             // pictureBox1
             // 
@@ -380,19 +388,19 @@
             // validatorForTextBoxes
             // 
             this.validatorForTextBoxes.ValidationMode = Telerik.WinControls.UI.ValidationMode.Programmatically;
-            radValidationRule1.Controls.Add(this.txtcity);
-            radValidationRule1.Controls.Add(this.txtmail);
-            radValidationRule1.Controls.Add(this.txtcontactnumber);
-            radValidationRule1.Controls.Add(this.txtpassword);
-            radValidationRule1.Controls.Add(this.txtusername);
-            radValidationRule1.Controls.Add(this.txtlastname);
-            radValidationRule1.Controls.Add(this.txtfirstname);
-            radValidationRule1.Operator = Telerik.WinControls.Data.FilterOperator.IsNotLike;
-            radValidationRule1.ToolTipText = "It Cannot Be Empty";
-            radValidationRule1.ToolTipTitle = "";
-            radValidationRule1.Value = "";
+            radValidationRule2.Controls.Add(this.txtcity);
+            radValidationRule2.Controls.Add(this.txtmail);
+            radValidationRule2.Controls.Add(this.txtcontactnumber);
+            radValidationRule2.Controls.Add(this.txtpassword);
+            radValidationRule2.Controls.Add(this.txtusername);
+            radValidationRule2.Controls.Add(this.txtlastname);
+            radValidationRule2.Controls.Add(this.txtfirstname);
+            radValidationRule2.Operator = Telerik.WinControls.Data.FilterOperator.IsNotLike;
+            radValidationRule2.ToolTipText = "It Cannot Be Empty";
+            radValidationRule2.ToolTipTitle = "";
+            radValidationRule2.Value = "";
             this.validatorForTextBoxes.ValidationRules.AddRange(new Telerik.WinControls.Data.FilterDescriptor[] {
-            radValidationRule1});
+            radValidationRule2});
             // 
             // UsersForm
             // 
@@ -416,19 +424,19 @@
             this.Text = " Enter User Details";
             this.ThemeName = "MaterialBlueGrey";
             this.Load += new System.EventHandler(this.UsersForm_Load);
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtcity)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.rdbfemale)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rdbmale)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtmail)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtcontactnumber)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtpassword)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtusername)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtlastname)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtfirstname)).EndInit();
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.rdbfemale)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rdbmale)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dropdownrole)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.epgender)).EndInit();
