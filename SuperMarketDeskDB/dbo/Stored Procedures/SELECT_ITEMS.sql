@@ -2,7 +2,7 @@
 AS
 BEGIN
 	SELECT  
-	I.Id, I.[Name], I.ShortName, I.Price, I.Discount, I.Tax, I.ExpiryDate, C.[Name] "Category", 
+	I.Id, I.[Name], I.ShortName, I.Price, I.Discount, I.DiscountType, I.Tax, I.TaxType, I.ExpiryDate, C.[Name] "Category", 
 	I.CreatedDate, U.[Username] "Created By", 
 	I.UpdatedDate, U2.[Username] "Updated By", I.[Status]
 	FROM Item "I"

@@ -1,0 +1,6 @@
+﻿CREATE PROC DELETE_ITEM 
+	@ID INT
+AS
+BEGIN
+	UPDATE Item SET [Status] = 0 WHERE Id = @ID;
+END
