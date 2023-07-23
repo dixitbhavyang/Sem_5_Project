@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CategoryForm));
-            Telerik.WinControls.UI.RadValidationRule radValidationRule2 = new Telerik.WinControls.UI.RadValidationRule();
+            Telerik.WinControls.UI.RadValidationRule radValidationRule1 = new Telerik.WinControls.UI.RadValidationRule();
             this.txtshortname = new Telerik.WinControls.UI.RadTextBox();
             this.txtcategoryname = new Telerik.WinControls.UI.RadTextBox();
             this.materialBlueGreyTheme1 = new Telerik.WinControls.Themes.MaterialBlueGreyTheme();
@@ -64,7 +64,7 @@
             this.txtshortname.Size = new System.Drawing.Size(197, 24);
             this.txtshortname.TabIndex = 2;
             this.txtshortname.ThemeName = "Crystal";
-            this.validatorForTextBoxes.SetValidationRule(this.txtshortname, radValidationRule2);
+            this.validatorForTextBoxes.SetValidationRule(this.txtshortname, radValidationRule1);
             this.txtshortname.TextChanged += new System.EventHandler(this.txtshortname_TextChanged);
             // 
             // txtcategoryname
@@ -77,7 +77,7 @@
             this.txtcategoryname.Size = new System.Drawing.Size(197, 24);
             this.txtcategoryname.TabIndex = 1;
             this.txtcategoryname.ThemeName = "Crystal";
-            this.validatorForTextBoxes.SetValidationRule(this.txtcategoryname, radValidationRule2);
+            this.validatorForTextBoxes.SetValidationRule(this.txtcategoryname, radValidationRule1);
             this.txtcategoryname.TextChanged += new System.EventHandler(this.txtcategoryname_TextChanged);
             // 
             // tableLayoutPanel1
@@ -184,14 +184,14 @@
             // validatorForTextBoxes
             // 
             this.validatorForTextBoxes.ValidationMode = Telerik.WinControls.UI.ValidationMode.Programmatically;
-            radValidationRule2.Controls.Add(this.txtshortname);
-            radValidationRule2.Controls.Add(this.txtcategoryname);
-            radValidationRule2.Operator = Telerik.WinControls.Data.FilterOperator.IsNotLike;
-            radValidationRule2.ToolTipText = "It cannot be Empty";
-            radValidationRule2.ToolTipTitle = "";
-            radValidationRule2.Value = "";
+            radValidationRule1.Controls.Add(this.txtshortname);
+            radValidationRule1.Controls.Add(this.txtcategoryname);
+            radValidationRule1.Operator = Telerik.WinControls.Data.FilterOperator.IsNotLike;
+            radValidationRule1.ToolTipText = "It cannot be Empty";
+            radValidationRule1.ToolTipTitle = "";
+            radValidationRule1.Value = "";
             this.validatorForTextBoxes.ValidationRules.AddRange(new Telerik.WinControls.Data.FilterDescriptor[] {
-            radValidationRule2});
+            radValidationRule1});
             // 
             // CategoryForm
             // 

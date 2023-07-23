@@ -98,9 +98,9 @@
             this.txtitemname.Size = new System.Drawing.Size(188, 24);
             this.txtitemname.TabIndex = 2;
             this.txtitemname.ThemeName = "Crystal";
+            this.validatorForDiscount.SetValidationRule(this.txtitemname, null);
             this.validatorForSpinEditor.SetValidationRule(this.txtitemname, null);
             this.validatorForTextBoxes.SetValidationRule(this.txtitemname, radValidationRule2);
-            this.validatorForDiscount.SetValidationRule(this.txtitemname, null);
             this.txtitemname.TextChanged += new System.EventHandler(this.txtitemname_TextChanged);
             // 
             // txtshortname
@@ -112,9 +112,9 @@
             this.txtshortname.Size = new System.Drawing.Size(188, 24);
             this.txtshortname.TabIndex = 3;
             this.txtshortname.ThemeName = "Crystal";
+            this.validatorForDiscount.SetValidationRule(this.txtshortname, null);
             this.validatorForSpinEditor.SetValidationRule(this.txtshortname, null);
             this.validatorForTextBoxes.SetValidationRule(this.txtshortname, radValidationRule2);
-            this.validatorForDiscount.SetValidationRule(this.txtshortname, null);
             this.txtshortname.TextChanged += new System.EventHandler(this.txtshortname_TextChanged);
             // 
             // spineditortax
@@ -134,9 +134,9 @@
             this.spineditortax.TabIndex = 6;
             this.spineditortax.ThemeName = "Fluent";
             this.spineditortax.ThousandsSeparator = true;
+            this.validatorForDiscount.SetValidationRule(this.spineditortax, null);
             this.validatorForSpinEditor.SetValidationRule(this.spineditortax, radValidationRule1);
             this.validatorForTextBoxes.SetValidationRule(this.spineditortax, null);
-            this.validatorForDiscount.SetValidationRule(this.spineditortax, null);
             // 
             // spineditordiscount
             // 
@@ -155,9 +155,9 @@
             this.spineditordiscount.TabIndex = 5;
             this.spineditordiscount.ThemeName = "Fluent";
             this.spineditordiscount.ThousandsSeparator = true;
+            this.validatorForDiscount.SetValidationRule(this.spineditordiscount, radValidationRuleWithTargetControl1);
             this.validatorForSpinEditor.SetValidationRule(this.spineditordiscount, radValidationRule1);
             this.validatorForTextBoxes.SetValidationRule(this.spineditordiscount, null);
-            this.validatorForDiscount.SetValidationRule(this.spineditordiscount, radValidationRuleWithTargetControl1);
             // 
             // spineditorprice
             // 
@@ -174,9 +174,9 @@
             this.spineditorprice.TabIndex = 4;
             this.spineditorprice.ThemeName = "Fluent";
             this.spineditorprice.ThousandsSeparator = true;
+            this.validatorForDiscount.SetValidationRule(this.spineditorprice, null);
             this.validatorForSpinEditor.SetValidationRule(this.spineditorprice, radValidationRule1);
             this.validatorForTextBoxes.SetValidationRule(this.spineditorprice, null);
-            this.validatorForDiscount.SetValidationRule(this.spineditorprice, null);
             // 
             // tableLayoutPanel1
             // 

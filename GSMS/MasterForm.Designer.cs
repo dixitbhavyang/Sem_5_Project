@@ -33,7 +33,6 @@
             Telerik.WinControls.UI.TableViewDefinition tableViewDefinition3 = new Telerik.WinControls.UI.TableViewDefinition();
             Telerik.WinControls.UI.TableViewDefinition tableViewDefinition4 = new Telerik.WinControls.UI.TableViewDefinition();
             Telerik.WinControls.UI.TableViewDefinition tableViewDefinition5 = new Telerik.WinControls.UI.TableViewDefinition();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MasterForm));
             this.materialBlueGreyTheme1 = new Telerik.WinControls.Themes.MaterialBlueGreyTheme();
             this.office2019GrayTheme1 = new Telerik.WinControls.Themes.Office2019GrayTheme();
             this.visualStudio2012LightTheme1 = new Telerik.WinControls.Themes.VisualStudio2012LightTheme();
@@ -599,7 +598,7 @@
             this.btninventoryedit.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btninventoryedit.Font = new System.Drawing.Font("Arial Rounded MT Bold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btninventoryedit.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btninventoryedit.Image = ((System.Drawing.Image)(resources.GetObject("btninventoryedit.Image")));
+            this.btninventoryedit.Image = global::GSMS.Properties.Resources.InventoryEditRecordImage;
             this.btninventoryedit.Location = new System.Drawing.Point(951, 8);
             this.btninventoryedit.Name = "btninventoryedit";
             this.btninventoryedit.Size = new System.Drawing.Size(87, 36);
@@ -615,7 +614,7 @@
             this.btninventorydelete.BackColor = System.Drawing.Color.Red;
             this.btninventorydelete.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btninventorydelete.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btninventorydelete.Image = ((System.Drawing.Image)(resources.GetObject("btninventorydelete.Image")));
+            this.btninventorydelete.Image = global::GSMS.Properties.Resources.InventoryDeleteRecordImage;
             this.btninventorydelete.Location = new System.Drawing.Point(1043, 8);
             this.btninventorydelete.Name = "btninventorydelete";
             this.btninventorydelete.Size = new System.Drawing.Size(102, 36);
@@ -631,7 +630,7 @@
             this.btninventoryadd.BackColor = System.Drawing.SystemColors.HotTrack;
             this.btninventoryadd.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btninventoryadd.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btninventoryadd.Image = ((System.Drawing.Image)(resources.GetObject("btninventoryadd.Image")));
+            this.btninventoryadd.Image = global::GSMS.Properties.Resources.InventoryAddRecordImage;
             this.btninventoryadd.Location = new System.Drawing.Point(860, 8);
             this.btninventoryadd.Name = "btninventoryadd";
             this.btninventoryadd.Size = new System.Drawing.Size(87, 36);

@@ -292,12 +292,16 @@
     <Content Include="Images\icons8-edit-25.png" />
     <Content Include="Images\icons8-pencil-drawing-24.png" />
     <Content Include="Images\icons8-plus-math-24.png" />
+    <Content Include="Images\icons8_error_25_K2P_icon.ico" />
     <Content Include="Images\menu.png" />
     <Content Include="Images\write.png" />
     <Content Include="Resources\35976.jpg" />
     <Content Include="Resources\4565.jpg" />
+    <Content Include="Resources\7401745_3657674.jpg" />
     <Content Include="Resources\add %283%29.png" />
     <Content Include="Resources\add %284%29.png" />
+    <Content Include="Resources\box_1791537.png" />
+    <Content Include="Resources\concept_8175979.png" />
     <Content Include="Resources\delete %283%29.png" />
     <Content Include="Resources\delete-user %281%29.png" />
     <Content Include="Resources\edit %286%29.png" />
@@ -314,7 +318,9 @@
     <Content Include="Resources\icons8-similar-items-20.png" />
     <Content Include="Resources\icons8-trolley-20.png" />
     <Content Include="Resources\icons8-users-20 %282%29.png" />
+    <Content Include="Resources\icons8_error_25_K2P_icon.ico" />
     <Content Include="Resources\pencil %281%29.png" />
+    <Content Include="Resources\remove-file_4807345.png" />
     <Content Include="Resources\vecteezy_unlock-personal-password-account-security_.jpg" />
     <None Include="Resources\icons8-plus-math-24.png" />
     <None Include="Resources\icons8-pencil-drawing-24.png" />

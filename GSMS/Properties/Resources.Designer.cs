@@ -181,11 +181,61 @@ namespace GSMS.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        internal static System.Drawing.Icon ErrorProviderIcon {
+            get {
+                object obj = ResourceManager.GetObject("ErrorProviderIcon", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap HomeIcon {
             get {
                 object obj = ResourceManager.GetObject("HomeIcon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap InventoryAddRecordImage {
+            get {
+                object obj = ResourceManager.GetObject("InventoryAddRecordImage", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap InventoryDeleteRecordImage {
+            get {
+                object obj = ResourceManager.GetObject("InventoryDeleteRecordImage", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap InventoryEditRecordImage {
+            get {
+                object obj = ResourceManager.GetObject("InventoryEditRecordImage", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap InventoryFormImage {
+            get {
+                object obj = ResourceManager.GetObject("InventoryFormImage", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
