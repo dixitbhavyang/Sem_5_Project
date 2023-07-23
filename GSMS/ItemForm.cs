@@ -24,13 +24,13 @@ namespace GSMS
             InitializeComponent();
         }
 
-        private void getCategories()
+        private void getCompanies()
         {
             Dictionary<int, string> source = new Dictionary<int, string>();
             source.Clear();
             dt.Clear();
 
-            da = new SqlDataAdapter("EXEC SELECT_ACTIVE_CATEGORIES", con);
+            da = new SqlDataAdapter("EXEC SELECT_ACTIVE_COMPANIES", con);
             da.Fill(dt);
 
             if (dt.Rows.Count > 0)
@@ -40,9 +40,36 @@ namespace GSMS
                     source.Add(Convert.ToInt32(row.ItemArray[0]), row.ItemArray[1].ToString());
                 }
 
+                drpselectcompany.DataSource = new BindingSource(source, null);
+                drpselectcompany.DisplayMember = "Value";
+                drpselectcompany.ValueMember = "Key";
+            }
+        }
+        private void getCategories(object comapnyId)
+        {
+            Dictionary<int, string> source = new Dictionary<int, string>();
+            source.Clear();
+            dt.Clear();
+
+            cmd = new SqlCommand("SELECT_CATEGORIES_BASED_ON_COMPANYID", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@ID", comapnyId);
+            da = new SqlDataAdapter(cmd);
+            da.Fill(dt);
+
+            if (dt.Rows.Count > 0)
+            {
+                foreach (DataRow row in dt.Rows)
+                {
+                    source.Add(Convert.ToInt32(row.ItemArray[0]), row.ItemArray[1].ToString());
+                }
                 drpselectcategory.DataSource = new BindingSource(source, null);
                 drpselectcategory.DisplayMember = "Value";
                 drpselectcategory.ValueMember = "Key";
+            }
+            else
+            {
+                drpselectcategory.DataSource = null;
             }
         }
 
@@ -60,6 +87,7 @@ namespace GSMS
                 cmd.Parameters.AddWithValue("@CREATEDDATE", DateTime.Now.ToString("MM/dd/yyyy hh:mm:ss tt"));
                 cmd.Parameters.AddWithValue("@CREATEDBY", LoginForm.loggedInUserId);
             }
+            cmd.Parameters.AddWithValue("@COMPANYID", drpselectcompany.SelectedValue);
             cmd.Parameters.AddWithValue("@CATEGORYID", drpselectcategory.SelectedValue);
             cmd.Parameters.AddWithValue("@NAME", txtitemname.Text);
             cmd.Parameters.AddWithValue("@SHORTNAME", txtshortname.Text);
@@ -89,10 +117,11 @@ namespace GSMS
         }
         private void ItemForm_Load(object sender, EventArgs e)
         {
-            getCategories();
+            getCompanies();
             if (MasterForm.itemId > 0)
             {
                 btnadditem.Text = "Update";
+                drpselectcompany.SelectedValue = MasterForm.companyId;
                 drpselectcategory.SelectedValue = MasterForm.categoryId;
             }
             else { btnadditem.Text = "Add"; }
@@ -117,45 +146,7 @@ namespace GSMS
             }
             else { validatorForTextBoxes.ClearErrorStatus(txtshortname); }
         }
-
-        private void spineditorprice_ValueChanged(object sender, EventArgs e)
-        {
-            if (spineditorprice.Value <= 0)
-            {
-                validatorForSpinEditor.Validate(spineditorprice);
-                spineditorprice.Focus();
-            }
-            else { validatorForSpinEditor.ClearErrorStatus(spineditorprice); }
-        }
-
-        private void spineditordiscount_ValueChanged(object sender, EventArgs e)
-        {
-            if (spineditordiscount.Value <= 0)
-            {
-                validatorForSpinEditor.Validate(spineditordiscount);
-                spineditordiscount.Focus();
-            }
-            else if (spineditordiscount.Value >= spineditorprice.Value)
-            {
-                if (toggleswitchdiscount.Value != true)
-                {
-                    validatorForDiscount.Validate(spineditordiscount);
-                    spineditordiscount.Focus();
-                }
-            }
-            else { validatorForSpinEditor.ClearErrorStatus(spineditordiscount); }
-        }
-
-        private void spineditortax_ValueChanged(object sender, EventArgs e)
-        {
-            if (spineditortax.Value <= 0)
-            {
-                validatorForSpinEditor.Validate(spineditortax);
-                spineditortax.Focus();
-            }
-            else { validatorForSpinEditor.ClearErrorStatus(spineditortax); }
-        }
-
+        
         private void drpselectcategory_TextChanged(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(drpselectcategory.Text))
@@ -179,8 +170,22 @@ namespace GSMS
         }
         private void kryptonButton1_Click(object sender, EventArgs e)
         {
-            if (drpselectcategory.SelectedIndex < 0)
+            if (drpselectcompany.SelectedIndex < 0)
             {
+                erpcategory.Clear();
+                validatorForTextBoxes.ClearErrorStatus(txtitemname);
+                validatorForTextBoxes.ClearErrorStatus(txtshortname);
+                validatorForSpinEditor.ClearErrorStatus(spineditorprice);
+                validatorForSpinEditor.ClearErrorStatus(spineditordiscount);
+                validatorForSpinEditor.ClearErrorStatus(spineditortax);
+                erpdate.Clear();
+
+                erpcompany.SetError(drpselectcategory, "Please Select Company...");
+                drpselectcompany.Focus();
+            }
+            else if (drpselectcategory.SelectedIndex < 0)
+            {
+                erpcompany.Clear();
                 validatorForTextBoxes.ClearErrorStatus(txtitemname);
                 validatorForTextBoxes.ClearErrorStatus(txtshortname);
                 validatorForSpinEditor.ClearErrorStatus(spineditorprice);
@@ -193,6 +198,7 @@ namespace GSMS
             }
             else if (string.IsNullOrEmpty(txtitemname.Text))
             {
+                erpcompany.Clear();
                 erpcategory.Clear();
                 validatorForTextBoxes.ClearErrorStatus(txtshortname);
                 validatorForSpinEditor.ClearErrorStatus(spineditorprice);
@@ -205,6 +211,7 @@ namespace GSMS
             }
             else if (string.IsNullOrEmpty(txtshortname.Text))
             {
+                erpcompany.Clear();
                 erpcategory.Clear();
                 validatorForTextBoxes.ClearErrorStatus(txtitemname);
                 validatorForSpinEditor.ClearErrorStatus(spineditorprice);
@@ -217,6 +224,7 @@ namespace GSMS
             }
             else if (spineditorprice.Value <= 0)
             {
+                erpcompany.Clear();
                 erpcategory.Clear();
                 validatorForTextBoxes.ClearErrorStatus(txtitemname);
                 validatorForTextBoxes.ClearErrorStatus(txtshortname);
@@ -229,6 +237,7 @@ namespace GSMS
             }
             else if (spineditordiscount.Value <= 0)
             {
+                erpcompany.Clear();
                 erpcategory.Clear();
                 validatorForTextBoxes.ClearErrorStatus(txtitemname);
                 validatorForTextBoxes.ClearErrorStatus(txtshortname);
@@ -249,6 +258,7 @@ namespace GSMS
             }
             else if (spineditortax.Value <= 0)
             {
+                erpcompany.Clear();
                 erpcategory.Clear();
                 validatorForTextBoxes.ClearErrorStatus(txtitemname);
                 validatorForTextBoxes.ClearErrorStatus(txtshortname);
@@ -261,6 +271,7 @@ namespace GSMS
             }
             else if (datetimeexpiration.Value == DateTime.Now)
             {
+                erpcompany.Clear();
                 erpcategory.Clear();
                 validatorForTextBoxes.ClearErrorStatus(txtitemname);
                 validatorForTextBoxes.ClearErrorStatus(txtshortname);
@@ -272,6 +283,7 @@ namespace GSMS
             }
             else
             {
+                erpcompany.Clear();
                 erpcategory.Clear();
                 validatorForTextBoxes.ClearErrorStatus(txtitemname);
                 validatorForTextBoxes.ClearErrorStatus(txtshortname);
@@ -288,6 +300,44 @@ namespace GSMS
                 performOperation(query);
                 con.Close();
                 Close();
+            }
+        }
+
+        private void drpselectcompany_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (drpselectcompany.SelectedIndex >= 0)
+            {
+                KeyValuePair<int, string> selectedPair = (KeyValuePair<int, string>)drpselectcompany.SelectedItem;
+                drpselectcategory.Enabled = true;
+                getCategories(selectedPair.Key);
+            }
+            else
+            {
+                drpselectcategory.Enabled = false;
+            }
+        }
+        private void drpselectcompany_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(drpselectcompany.Text))
+            {
+                drpselectcategory.DataSource = null;
+                drpselectcategory.Enabled = false;
+
+                erpcategory.Clear();
+                validatorForTextBoxes.ClearErrorStatus(txtitemname);
+                validatorForTextBoxes.ClearErrorStatus(txtshortname);
+                validatorForSpinEditor.ClearErrorStatus(spineditorprice);
+                validatorForSpinEditor.ClearErrorStatus(spineditordiscount);
+                validatorForSpinEditor.ClearErrorStatus(spineditordiscount);
+                erpdate.Clear();
+
+                erpcompany.SetError(drpselectcompany, "Please Select a Comapny !");
+                drpselectcompany.Focus();
+            }
+            else
+            {
+                drpselectcategory.Enabled = true;
+                erpcompany.Clear();
             }
         }
     }
