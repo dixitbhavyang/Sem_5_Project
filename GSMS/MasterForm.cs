@@ -20,7 +20,7 @@ namespace GSMS
         SqlDataReader dr;
         DataTable dt = new DataTable();
         SqlDataAdapter da;
-        public static int userId, companyId, categoryId, itemId;
+        public static int userId, companyId, categoryId, itemId, inventoryId;
         public MasterForm()
         {
             InitializeComponent();
@@ -50,7 +50,7 @@ namespace GSMS
             gridviewusers.Columns.Add("City");
             gridviewusers.Columns.Add("Created Date");
             gridviewusers.Columns.Add("Created By");
-            gridviewusers.Columns.Add("Updated Date");
+            gridviewusers.Columns.Add("Last Updated");
             gridviewusers.Columns.Add("Updated By");
             gridviewusers.Columns.Add("Role");
             gridviewusers.Columns.Add("Status");
@@ -123,7 +123,7 @@ namespace GSMS
             gridviewcompany.Columns.Add("Short Name");
             gridviewcompany.Columns.Add("Created Date");
             gridviewcompany.Columns.Add("Created By");
-            gridviewcompany.Columns.Add("Updated Date");
+            gridviewcompany.Columns.Add("Last Updated");
             gridviewcompany.Columns.Add("Updated By");
             gridviewcompany.Columns.Add("Address");
             gridviewcompany.Columns.Add("Status");
@@ -180,7 +180,7 @@ namespace GSMS
             gridviewcategory.Columns.Add("Short Name");
             gridviewcategory.Columns.Add("Created Date");
             gridviewcategory.Columns.Add("Created By");
-            gridviewcategory.Columns.Add("Updated Date");
+            gridviewcategory.Columns.Add("Last Updated");
             gridviewcategory.Columns.Add("Updated By");
             gridviewcategory.Columns.Add("Company");
             gridviewcategory.Columns.Add("Status");
@@ -241,9 +241,10 @@ namespace GSMS
             gridviewitem.Columns.Add("Tax");
             gridviewitem.Columns.Add("Expiry Date");
             gridviewitem.Columns.Add("Category");
+            gridviewitem.Columns.Add("Company");
             gridviewitem.Columns.Add("Created Date");
             gridviewitem.Columns.Add("Created By");
-            gridviewitem.Columns.Add("Updated Date");
+            gridviewitem.Columns.Add("Last Updated");
             gridviewitem.Columns.Add("Updated By");
             gridviewitem.Columns.Add("Status");
 
@@ -280,12 +281,13 @@ namespace GSMS
                     tax += " Rs.";
                 }
                 rowInfo.Cells[5].Value = tax;
-                rowInfo.Cells[6].Value = Convert.ToDateTime(row["ExpiryDate"]).ToString("dd/MMM/yyyy hh:mm:ss tt");
+                rowInfo.Cells[6].Value = Convert.ToDateTime(row["ExpiryDate"]).ToString("dd/MMM/yyyy");
                 rowInfo.Cells[7].Value = row["Category"].ToString();
-                rowInfo.Cells[8].Value = Convert.ToDateTime(row["CreatedDate"]).ToString("dd/MMM/yyyy hh:mm:ss tt");
-                rowInfo.Cells[9].Value = row["Created By"].ToString();
-                rowInfo.Cells[10].Value = Convert.ToDateTime(row["UpdatedDate"]).ToString("dd/MMM/yyyy hh:mm:ss tt");
-                rowInfo.Cells[11].Value = row["Updated By"].ToString();
+                rowInfo.Cells[8].Value = row["Company"].ToString();
+                rowInfo.Cells[9].Value = Convert.ToDateTime(row["CreatedDate"]).ToString("dd/MMM/yyyy hh:mm:ss tt");
+                rowInfo.Cells[10].Value = row["Created By"].ToString();
+                rowInfo.Cells[11].Value = Convert.ToDateTime(row["UpdatedDate"]).ToString("dd/MMM/yyyy hh:mm:ss tt");
+                rowInfo.Cells[12].Value = row["Updated By"].ToString();
                 if (Convert.ToInt32(row["Status"]) == 1)
                 {
                     status = "Active";
@@ -294,7 +296,7 @@ namespace GSMS
                 {
                     status = "Not Active";
                 }
-                rowInfo.Cells[12].Value = status;
+                rowInfo.Cells[13].Value = status;
 
                 gridviewitem.Rows.Add(rowInfo);
             }
@@ -305,6 +307,67 @@ namespace GSMS
 
         }
 
+        private void getInventoryRecords()
+        {
+            string query = "EXEC SELECT_INVENTORY_RECORDS";
+
+            da = new SqlDataAdapter(query, con);
+            dt.Clear();
+            da.Fill(dt);
+
+            gridviewinventory.Columns.Clear();
+            gridviewinventory.Rows.Clear();
+
+            gridviewinventory.Columns.Add("Id");
+            gridviewinventory.Columns["Id"].IsVisible = false;
+            gridviewinventory.Columns.Add("Company");
+            gridviewinventory.Columns.Add("Category");
+            gridviewinventory.Columns.Add("Item");
+            gridviewinventory.Columns.Add("Quantity");
+            gridviewinventory.Columns.Add("Unit");
+            gridviewinventory.Columns.Add("Created Date");
+            gridviewinventory.Columns.Add("Created By");
+            gridviewinventory.Columns.Add("Last Updated");
+            gridviewinventory.Columns.Add("Updated By");
+            gridviewinventory.Columns.Add("Minimum Stock");
+            gridviewinventory.Columns.Add("Maximum Stock");
+            gridviewinventory.Columns.Add("Status");
+
+            for (int i = 0; i < gridviewinventory.Columns.Count; i++)
+            {
+                gridviewinventory.Columns[i].TextAlignment = ContentAlignment.MiddleCenter;
+            }
+
+            foreach (DataRow item in dt.Rows)
+            {
+                string status = "Not Active";
+                GridViewDataRowInfo rowInfo = new GridViewDataRowInfo(this.gridviewinventory.MasterView);
+                //rowInfo.Cells[0].Value = item["FirstName"].ToString();
+                rowInfo.Cells[0].Value = item["Id"].ToString();
+                rowInfo.Cells[1].Value = item["Company"].ToString();
+                rowInfo.Cells[2].Value = item["Category"].ToString();
+                rowInfo.Cells[3].Value = item["Item"].ToString();
+                rowInfo.Cells[4].Value = item["Quantity"].ToString();
+                rowInfo.Cells[5].Value = item["Unit"].ToString();
+                rowInfo.Cells[6].Value = Convert.ToDateTime(item["CreatedDate"]).ToString("dd/MMM/yyyy hh:mm:ss tt");
+                rowInfo.Cells[7].Value = item["Created By"].ToString();
+                rowInfo.Cells[8].Value = Convert.ToDateTime(item["LastUpdated"]).ToString("dd/MMM/yyyy hh:mm:ss tt");
+                rowInfo.Cells[9].Value = item["Updated By"].ToString();
+                rowInfo.Cells[10].Value = item["MinimumStock"].ToString();
+                rowInfo.Cells[11].Value = item["MaximumStock"].ToString();
+                if (Convert.ToBoolean(item["Status"]))
+                {
+                    status = "Active";
+                }
+                rowInfo.Cells[12].Value = status;
+                gridviewinventory.Rows.Add(rowInfo);
+            }
+
+            //gridviewinventory.AutoSizeRows = true;
+            gridviewinventory.BestFitColumns();
+            gridviewinventory.AutoSizeColumnsMode = GridViewAutoSizeColumnsMode.Fill;
+            gridviewinventory.ShowGroupedColumns = true;
+        }
         private void getUserId()
         {
             userId = 0;
@@ -350,6 +413,18 @@ namespace GSMS
                 {
                     //MessageBox.Show(radGridView1.Rows[i].Cells["Id"].Value.ToString());
                     itemId = Convert.ToInt32(gridviewitem.Rows[i].Cells["Id"].Value);
+                }
+            }
+        }
+        private void getInventoryId()
+        {
+            inventoryId = 0;
+            for (int i = 0; i < gridviewinventory.Rows.Count; i++)
+            {
+                if (gridviewinventory.Rows[i].IsSelected)
+                {
+                    //MessageBox.Show(radGridView1.Rows[i].Cells["Id"].Value.ToString());
+                    inventoryId = Convert.ToInt32(gridviewinventory.Rows[i].Cells["Id"].Value);
                 }
             }
         }
@@ -450,6 +525,7 @@ namespace GSMS
             if (dt.Rows.Count > 0)
             {
                 ItemForm itemf = new ItemForm();
+                companyId = dt.Rows[0].Field<Int32>("CompanyId");
                 categoryId = dt.Rows[0].Field<Int32>("CategoryId");
                 itemf.txtitemname.Text = dt.Rows[0].Field<String>("Name");
                 itemf.txtshortname.Text = dt.Rows[0].Field<String>("ShortName");
@@ -473,7 +549,35 @@ namespace GSMS
                 getItemRecords();
             }
             itemId = 0;
+            companyId = 0;
             categoryId = 0;
+        }
+        private void editInventoryRecord()
+        {
+            getInventoryId();
+            dt.Clear();
+            cmd = new SqlCommand("EDIT_INVENTORY_RECORD", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@ID", inventoryId);
+            da = new SqlDataAdapter(cmd);
+            da.Fill(dt);
+            if (dt.Rows.Count > 0)
+            {
+                InventoryForm inventoryF = new InventoryForm();
+                companyId = dt.Rows[0].Field<Int32>("CompanyId");
+                categoryId = dt.Rows[0].Field<Int32>("CategoryId");
+                itemId = dt.Rows[0].Field<Int32>("ItemId");
+                inventoryF.spineditorquantity.Value = dt.Rows[0].Field<Decimal>("Quantity");
+                inventoryF.spineditorunit.Value = dt.Rows[0].Field<Int32>("Unit");
+                inventoryF.spineditorminimumstock.Value = dt.Rows[0].Field<Int32>("MinimumStock");
+                inventoryF.spineditormaximumstock.Value = dt.Rows[0].Field<Int32>("MaximumStock");
+                inventoryF.ShowDialog();
+                getInventoryRecords();
+            }
+            companyId = 0;
+            categoryId = 0;
+            itemId = 0;
+            inventoryId = 0;
         }
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -490,6 +594,7 @@ namespace GSMS
             getCompanyRecords();
             getCategoryRecords();
             getItemRecords();
+            getInventoryRecords();
         }
 
         private void radButton1_Click(object sender, EventArgs e)
@@ -609,7 +714,7 @@ namespace GSMS
                         string items = "";
                         while (dr.Read())
                         {
-                            items += "\n " + dr.GetString(1);
+                            items += "\n " + dr.GetString(0);
                         }
                         MessageBox.Show("You cannot Delete this Category because it has Items : " + items, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
@@ -651,12 +756,59 @@ namespace GSMS
                     cmd = new SqlCommand("DELETE_ITEM", con);
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@ID", itemId);
-                    cmd.ExecuteNonQuery();
-                    getItemRecords();
+                    dr = cmd.ExecuteReader();
+                    if (dr.HasRows)
+                    {
+                        int stock = 0;
+                        while (dr.Read())
+                        {
+                            stock += dr.GetInt32(0);
+                        }
+                        dr.Close();
+                        MessageBox.Show("You cannot delete this Item because it has Stock : " + stock.ToString() + " Units", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        dr.Close();
+                        getItemRecords();
+                    }
                 }
             }
             dr.Close();
             itemId = 0;
+        }
+        private void btninventoryadd_Click(object sender, EventArgs e)
+        {
+            InventoryForm inventoryForm = new InventoryForm();
+            inventoryForm.ShowDialog();
+            getInventoryRecords();
+        }
+        private void btninventoryedit_Click(object sender, EventArgs e)
+        {
+            editInventoryRecord();
+        }
+        private void btninventorydelete_Click(object sender, EventArgs e)
+        {
+            getInventoryId();
+            cmd = new SqlCommand("EDIT_INVENTORY_RECORD", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@ID", inventoryId);
+            dr = cmd.ExecuteReader();
+            if (dr.HasRows)
+            {
+                DialogResult res = MessageBox.Show("Do You wnat to Delete ?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (res == DialogResult.Yes)
+                {
+                    dr.Close();
+                    cmd = new SqlCommand("DELETE_INVENTORY_RECORD", con);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@ID", inventoryId);
+                    cmd.ExecuteNonQuery();
+                    getInventoryRecords();
+                }
+            }
+            dr.Close();
+            inventoryId = 0;
         }
 
         private void gridviewusers_SelectionChanged(object sender, EventArgs e)
@@ -752,5 +904,10 @@ namespace GSMS
         {
             editItem();
         }
+        private void gridviewinventory_CellDoubleClick(object sender, GridViewCellEventArgs e)
+        {
+            editInventoryRecord();
+        }
+
     }
 }

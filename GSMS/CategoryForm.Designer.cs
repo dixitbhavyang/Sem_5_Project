@@ -29,7 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Telerik.WinControls.UI.RadValidationRule radValidationRule3 = new Telerik.WinControls.UI.RadValidationRule();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CategoryForm));
+            Telerik.WinControls.UI.RadValidationRule radValidationRule2 = new Telerik.WinControls.UI.RadValidationRule();
             this.txtshortname = new Telerik.WinControls.UI.RadTextBox();
             this.txtcategoryname = new Telerik.WinControls.UI.RadTextBox();
             this.materialBlueGreyTheme1 = new Telerik.WinControls.Themes.MaterialBlueGreyTheme();
@@ -42,8 +43,6 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.crystalTheme1 = new Telerik.WinControls.Themes.CrystalTheme();
             this.erpcomapny = new System.Windows.Forms.ErrorProvider(this.components);
-            this.erpcategoryname = new System.Windows.Forms.ErrorProvider(this.components);
-            this.erpshortname = new System.Windows.Forms.ErrorProvider(this.components);
             this.validatorForTextBoxes = new Telerik.WinControls.UI.RadValidationProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.txtshortname)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtcategoryname)).BeginInit();
@@ -51,8 +50,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.drpselectcompany)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.erpcomapny)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.erpcategoryname)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.erpshortname)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.validatorForTextBoxes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
@@ -61,26 +58,26 @@
             // 
             this.txtshortname.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.txtshortname.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.txtshortname.Location = new System.Drawing.Point(147, 244);
+            this.txtshortname.Location = new System.Drawing.Point(146, 244);
             this.txtshortname.Name = "txtshortname";
             this.txtshortname.ShowClearButton = true;
             this.txtshortname.Size = new System.Drawing.Size(197, 24);
             this.txtshortname.TabIndex = 2;
             this.txtshortname.ThemeName = "Crystal";
-            this.validatorForTextBoxes.SetValidationRule(this.txtshortname, radValidationRule3);
+            this.validatorForTextBoxes.SetValidationRule(this.txtshortname, radValidationRule2);
             this.txtshortname.TextChanged += new System.EventHandler(this.txtshortname_TextChanged);
             // 
             // txtcategoryname
             // 
             this.txtcategoryname.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.txtcategoryname.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.txtcategoryname.Location = new System.Drawing.Point(147, 211);
+            this.txtcategoryname.Location = new System.Drawing.Point(146, 211);
             this.txtcategoryname.Name = "txtcategoryname";
             this.txtcategoryname.ShowClearButton = true;
             this.txtcategoryname.Size = new System.Drawing.Size(197, 24);
             this.txtcategoryname.TabIndex = 1;
             this.txtcategoryname.ThemeName = "Crystal";
-            this.validatorForTextBoxes.SetValidationRule(this.txtcategoryname, radValidationRule3);
+            this.validatorForTextBoxes.SetValidationRule(this.txtcategoryname, radValidationRule2);
             this.txtcategoryname.TextChanged += new System.EventHandler(this.txtcategoryname_TextChanged);
             // 
             // tableLayoutPanel1
@@ -114,7 +111,7 @@
             // 
             this.kryptonLabel2.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.kryptonLabel2.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.BoldControl;
-            this.kryptonLabel2.Location = new System.Drawing.Point(54, 246);
+            this.kryptonLabel2.Location = new System.Drawing.Point(53, 246);
             this.kryptonLabel2.Name = "kryptonLabel2";
             this.kryptonLabel2.Size = new System.Drawing.Size(87, 20);
             this.kryptonLabel2.TabIndex = 2;
@@ -124,7 +121,7 @@
             // 
             this.kryptonLabel1.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.kryptonLabel1.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.BoldControl;
-            this.kryptonLabel1.Location = new System.Drawing.Point(33, 213);
+            this.kryptonLabel1.Location = new System.Drawing.Point(32, 213);
             this.kryptonLabel1.Name = "kryptonLabel1";
             this.kryptonLabel1.Size = new System.Drawing.Size(108, 20);
             this.kryptonLabel1.TabIndex = 2;
@@ -134,7 +131,7 @@
             // 
             this.kryptonLabel3.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.kryptonLabel3.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.BoldControl;
-            this.kryptonLabel3.Location = new System.Drawing.Point(69, 181);
+            this.kryptonLabel3.Location = new System.Drawing.Point(68, 181);
             this.kryptonLabel3.Name = "kryptonLabel3";
             this.kryptonLabel3.Size = new System.Drawing.Size(72, 20);
             this.kryptonLabel3.TabIndex = 2;
@@ -147,7 +144,7 @@
             this.drpselectcompany.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.drpselectcompany.Cursor = System.Windows.Forms.Cursors.Hand;
             this.drpselectcompany.DropDownWidth = 197;
-            this.drpselectcompany.Location = new System.Drawing.Point(147, 181);
+            this.drpselectcompany.Location = new System.Drawing.Point(146, 181);
             this.drpselectcompany.Name = "drpselectcompany";
             this.drpselectcompany.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue;
             this.drpselectcompany.Size = new System.Drawing.Size(197, 21);
@@ -158,7 +155,7 @@
             // 
             this.btnaddcategory.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.btnaddcategory.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnaddcategory.Location = new System.Drawing.Point(147, 278);
+            this.btnaddcategory.Location = new System.Drawing.Point(146, 278);
             this.btnaddcategory.Name = "btnaddcategory";
             this.btnaddcategory.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue;
             this.btnaddcategory.Size = new System.Drawing.Size(105, 25);
@@ -182,26 +179,19 @@
             // erpcomapny
             // 
             this.erpcomapny.ContainerControl = this;
-            // 
-            // erpcategoryname
-            // 
-            this.erpcategoryname.ContainerControl = this;
-            // 
-            // erpshortname
-            // 
-            this.erpshortname.ContainerControl = this;
+            this.erpcomapny.Icon = ((System.Drawing.Icon)(resources.GetObject("erpcomapny.Icon")));
             // 
             // validatorForTextBoxes
             // 
             this.validatorForTextBoxes.ValidationMode = Telerik.WinControls.UI.ValidationMode.Programmatically;
-            radValidationRule3.Controls.Add(this.txtshortname);
-            radValidationRule3.Controls.Add(this.txtcategoryname);
-            radValidationRule3.Operator = Telerik.WinControls.Data.FilterOperator.IsNotLike;
-            radValidationRule3.ToolTipText = "It cannot be Empty";
-            radValidationRule3.ToolTipTitle = "";
-            radValidationRule3.Value = "";
+            radValidationRule2.Controls.Add(this.txtshortname);
+            radValidationRule2.Controls.Add(this.txtcategoryname);
+            radValidationRule2.Operator = Telerik.WinControls.Data.FilterOperator.IsNotLike;
+            radValidationRule2.ToolTipText = "It cannot be Empty";
+            radValidationRule2.ToolTipTitle = "";
+            radValidationRule2.Value = "";
             this.validatorForTextBoxes.ValidationRules.AddRange(new Telerik.WinControls.Data.FilterDescriptor[] {
-            radValidationRule3});
+            radValidationRule2});
             // 
             // CategoryForm
             // 
@@ -230,8 +220,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.drpselectcompany)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.erpcomapny)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.erpcategoryname)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.erpshortname)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.validatorForTextBoxes)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);
@@ -252,8 +240,6 @@
         public ComponentFactory.Krypton.Toolkit.KryptonComboBox drpselectcompany;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.ErrorProvider erpcomapny;
-        private System.Windows.Forms.ErrorProvider erpcategoryname;
-        private System.Windows.Forms.ErrorProvider erpshortname;
         private Telerik.WinControls.UI.RadValidationProvider validatorForTextBoxes;
     }
 }

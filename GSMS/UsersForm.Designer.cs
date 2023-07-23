@@ -29,7 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Telerik.WinControls.UI.RadValidationRule radValidationRule2 = new Telerik.WinControls.UI.RadValidationRule();
+            Telerik.WinControls.UI.RadValidationRule radValidationRule1 = new Telerik.WinControls.UI.RadValidationRule();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UsersForm));
             this.txtcity = new Telerik.WinControls.UI.RadTextBox();
             this.txtmail = new Telerik.WinControls.UI.RadTextBox();
             this.txtcontactnumber = new Telerik.WinControls.UI.RadTextBox();
@@ -90,7 +91,7 @@
             this.txtcity.Size = new System.Drawing.Size(196, 24);
             this.txtcity.TabIndex = 8;
             this.txtcity.ThemeName = "Crystal";
-            this.validatorForTextBoxes.SetValidationRule(this.txtcity, radValidationRule2);
+            this.validatorForTextBoxes.SetValidationRule(this.txtcity, radValidationRule1);
             this.txtcity.TextChanged += new System.EventHandler(this.txtcity_TextChanged);
             // 
             // txtmail
@@ -104,7 +105,7 @@
             this.txtmail.Size = new System.Drawing.Size(196, 24);
             this.txtmail.TabIndex = 5;
             this.txtmail.ThemeName = "Crystal";
-            this.validatorForTextBoxes.SetValidationRule(this.txtmail, radValidationRule2);
+            this.validatorForTextBoxes.SetValidationRule(this.txtmail, radValidationRule1);
             this.txtmail.TextChanged += new System.EventHandler(this.txtmail_TextChanged);
             // 
             // txtcontactnumber
@@ -117,7 +118,7 @@
             this.txtcontactnumber.Size = new System.Drawing.Size(196, 24);
             this.txtcontactnumber.TabIndex = 4;
             this.txtcontactnumber.ThemeName = "Crystal";
-            this.validatorForTextBoxes.SetValidationRule(this.txtcontactnumber, radValidationRule2);
+            this.validatorForTextBoxes.SetValidationRule(this.txtcontactnumber, radValidationRule1);
             this.txtcontactnumber.TextChanged += new System.EventHandler(this.txtcontactnumber_TextChanged);
             // 
             // txtpassword
@@ -129,7 +130,7 @@
             this.txtpassword.Size = new System.Drawing.Size(196, 24);
             this.txtpassword.TabIndex = 3;
             this.txtpassword.ThemeName = "Crystal";
-            this.validatorForTextBoxes.SetValidationRule(this.txtpassword, radValidationRule2);
+            this.validatorForTextBoxes.SetValidationRule(this.txtpassword, radValidationRule1);
             this.txtpassword.TextChanged += new System.EventHandler(this.txtpassword_TextChanged);
             // 
             // txtusername
@@ -141,7 +142,7 @@
             this.txtusername.Size = new System.Drawing.Size(196, 24);
             this.txtusername.TabIndex = 2;
             this.txtusername.ThemeName = "Crystal";
-            this.validatorForTextBoxes.SetValidationRule(this.txtusername, radValidationRule2);
+            this.validatorForTextBoxes.SetValidationRule(this.txtusername, radValidationRule1);
             this.txtusername.TextChanged += new System.EventHandler(this.txtusername_TextChanged);
             // 
             // txtlastname
@@ -153,7 +154,7 @@
             this.txtlastname.Size = new System.Drawing.Size(196, 24);
             this.txtlastname.TabIndex = 1;
             this.txtlastname.ThemeName = "Crystal";
-            this.validatorForTextBoxes.SetValidationRule(this.txtlastname, radValidationRule2);
+            this.validatorForTextBoxes.SetValidationRule(this.txtlastname, radValidationRule1);
             this.txtlastname.TextChanged += new System.EventHandler(this.txtlastname_TextChanged);
             // 
             // txtfirstname
@@ -165,7 +166,7 @@
             this.txtfirstname.Size = new System.Drawing.Size(196, 24);
             this.txtfirstname.TabIndex = 0;
             this.txtfirstname.ThemeName = "Crystal";
-            this.validatorForTextBoxes.SetValidationRule(this.txtfirstname, radValidationRule2);
+            this.validatorForTextBoxes.SetValidationRule(this.txtfirstname, radValidationRule1);
             this.txtfirstname.TextChanged += new System.EventHandler(this.txtfirstname_TextChanged);
             // 
             // tableLayoutPanel1
@@ -376,31 +377,34 @@
             // epgender
             // 
             this.epgender.ContainerControl = this;
+            this.epgender.Icon = ((System.Drawing.Icon)(resources.GetObject("epgender.Icon")));
             // 
             // edpcreateddate
             // 
             this.edpcreateddate.ContainerControl = this;
+            this.edpcreateddate.Icon = ((System.Drawing.Icon)(resources.GetObject("edpcreateddate.Icon")));
             // 
             // eprole
             // 
             this.eprole.ContainerControl = this;
+            this.eprole.Icon = ((System.Drawing.Icon)(resources.GetObject("eprole.Icon")));
             // 
             // validatorForTextBoxes
             // 
             this.validatorForTextBoxes.ValidationMode = Telerik.WinControls.UI.ValidationMode.Programmatically;
-            radValidationRule2.Controls.Add(this.txtcity);
-            radValidationRule2.Controls.Add(this.txtmail);
-            radValidationRule2.Controls.Add(this.txtcontactnumber);
-            radValidationRule2.Controls.Add(this.txtpassword);
-            radValidationRule2.Controls.Add(this.txtusername);
-            radValidationRule2.Controls.Add(this.txtlastname);
-            radValidationRule2.Controls.Add(this.txtfirstname);
-            radValidationRule2.Operator = Telerik.WinControls.Data.FilterOperator.IsNotLike;
-            radValidationRule2.ToolTipText = "It Cannot Be Empty";
-            radValidationRule2.ToolTipTitle = "";
-            radValidationRule2.Value = "";
+            radValidationRule1.Controls.Add(this.txtcity);
+            radValidationRule1.Controls.Add(this.txtmail);
+            radValidationRule1.Controls.Add(this.txtcontactnumber);
+            radValidationRule1.Controls.Add(this.txtpassword);
+            radValidationRule1.Controls.Add(this.txtusername);
+            radValidationRule1.Controls.Add(this.txtlastname);
+            radValidationRule1.Controls.Add(this.txtfirstname);
+            radValidationRule1.Operator = Telerik.WinControls.Data.FilterOperator.IsNotLike;
+            radValidationRule1.ToolTipText = "It Cannot Be Empty";
+            radValidationRule1.ToolTipTitle = "";
+            radValidationRule1.Value = "";
             this.validatorForTextBoxes.ValidationRules.AddRange(new Telerik.WinControls.Data.FilterDescriptor[] {
-            radValidationRule2});
+            radValidationRule1});
             // 
             // UsersForm
             // 
@@ -412,6 +416,7 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Font = new System.Drawing.Font("Arial Rounded MT Bold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(401, 600);
             this.MinimumSize = new System.Drawing.Size(401, 600);
             this.Name = "UsersForm";

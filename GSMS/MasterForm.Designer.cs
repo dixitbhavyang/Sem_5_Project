@@ -32,6 +32,8 @@
             Telerik.WinControls.UI.TableViewDefinition tableViewDefinition2 = new Telerik.WinControls.UI.TableViewDefinition();
             Telerik.WinControls.UI.TableViewDefinition tableViewDefinition3 = new Telerik.WinControls.UI.TableViewDefinition();
             Telerik.WinControls.UI.TableViewDefinition tableViewDefinition4 = new Telerik.WinControls.UI.TableViewDefinition();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition5 = new Telerik.WinControls.UI.TableViewDefinition();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MasterForm));
             this.materialBlueGreyTheme1 = new Telerik.WinControls.Themes.MaterialBlueGreyTheme();
             this.office2019GrayTheme1 = new Telerik.WinControls.Themes.Office2019GrayTheme();
             this.visualStudio2012LightTheme1 = new Telerik.WinControls.Themes.VisualStudio2012LightTheme();
@@ -59,6 +61,10 @@
             this.btnitemdelete = new Telerik.WinControls.UI.RadButton();
             this.btnitemadd = new Telerik.WinControls.UI.RadButton();
             this.pageinventory = new Telerik.WinControls.UI.RadPageViewPage();
+            this.gridviewinventory = new Telerik.WinControls.UI.RadGridView();
+            this.btninventoryedit = new Telerik.WinControls.UI.RadButton();
+            this.btninventorydelete = new Telerik.WinControls.UI.RadButton();
+            this.btninventoryadd = new Telerik.WinControls.UI.RadButton();
             this.pagestaff = new Telerik.WinControls.UI.RadPageViewPage();
             this.pagecustomer = new Telerik.WinControls.UI.RadPageViewPage();
             this.pagecustomerbill = new Telerik.WinControls.UI.RadPageViewPage();
@@ -96,6 +102,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnitemedit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnitemdelete)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnitemadd)).BeginInit();
+            this.pageinventory.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridviewinventory)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridviewinventory.MasterTemplate)).BeginInit();
+            this.gridviewinventory.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btninventoryedit)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btninventorydelete)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btninventoryadd)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
             // 
@@ -126,7 +139,7 @@
             this.radPageView1.ItemSizeMode = ((Telerik.WinControls.UI.PageViewItemSizeMode)((Telerik.WinControls.UI.PageViewItemSizeMode.EqualWidth | Telerik.WinControls.UI.PageViewItemSizeMode.EqualHeight)));
             this.radPageView1.Location = new System.Drawing.Point(0, 0);
             this.radPageView1.Name = "radPageView1";
-            this.radPageView1.SelectedPage = this.pageitem;
+            this.radPageView1.SelectedPage = this.pageinventory;
             this.radPageView1.Size = new System.Drawing.Size(1283, 598);
             this.radPageView1.TabIndex = 0;
             this.radPageView1.ThemeName = "Office2019Gray";
@@ -141,7 +154,7 @@
             ((Telerik.WinControls.UI.RadPageViewNavigationViewElement)(this.radPageView1.GetChildAt(0))).Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             ((Telerik.WinControls.UI.RadPageViewNavigationViewElement)(this.radPageView1.GetChildAt(0))).Alignment = System.Drawing.ContentAlignment.TopLeft;
             ((Telerik.WinControls.UI.NavigationViewHeaderElement)(this.radPageView1.GetChildAt(0).GetChildAt(2))).ClipText = false;
-            ((Telerik.WinControls.UI.NavigationViewHeaderElement)(this.radPageView1.GetChildAt(0).GetChildAt(2))).Text = "Items";
+            ((Telerik.WinControls.UI.NavigationViewHeaderElement)(this.radPageView1.GetChildAt(0).GetChildAt(2))).Text = "Inventory";
             ((Telerik.WinControls.UI.NavigationViewHeaderElement)(this.radPageView1.GetChildAt(0).GetChildAt(2))).Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             ((Telerik.WinControls.UI.NavigationViewHeaderElement)(this.radPageView1.GetChildAt(0).GetChildAt(2))).CustomFontSize = 20F;
             ((Telerik.WinControls.UI.NavigationViewHeaderElement)(this.radPageView1.GetChildAt(0).GetChildAt(2))).Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
@@ -540,6 +553,7 @@
             // 
             // pageinventory
             // 
+            this.pageinventory.Controls.Add(this.gridviewinventory);
             this.pageinventory.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pageinventory.Image = global::GSMS.Properties.Resources.InventoryIcon;
             this.pageinventory.ItemSize = new System.Drawing.SizeF(106F, 32F);
@@ -547,6 +561,85 @@
             this.pageinventory.Name = "pageinventory";
             this.pageinventory.Size = new System.Drawing.Size(1149, 558);
             this.pageinventory.Text = "Inventory";
+            // 
+            // gridviewinventory
+            // 
+            this.gridviewinventory.Controls.Add(this.btninventoryedit);
+            this.gridviewinventory.Controls.Add(this.btninventorydelete);
+            this.gridviewinventory.Controls.Add(this.btninventoryadd);
+            this.gridviewinventory.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.gridviewinventory.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridviewinventory.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.gridviewinventory.Location = new System.Drawing.Point(0, 0);
+            // 
+            // 
+            // 
+            this.gridviewinventory.MasterTemplate.AllowAddNewRow = false;
+            this.gridviewinventory.MasterTemplate.AllowColumnResize = false;
+            this.gridviewinventory.MasterTemplate.AllowDeleteRow = false;
+            this.gridviewinventory.MasterTemplate.AllowEditRow = false;
+            this.gridviewinventory.MasterTemplate.AllowRowResize = false;
+            this.gridviewinventory.MasterTemplate.AllowSearchRow = true;
+            this.gridviewinventory.MasterTemplate.AutoExpandGroups = true;
+            this.gridviewinventory.MasterTemplate.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill;
+            this.gridviewinventory.MasterTemplate.CaseSensitive = true;
+            this.gridviewinventory.MasterTemplate.PageSize = 5;
+            this.gridviewinventory.MasterTemplate.ShowGroupedColumns = true;
+            this.gridviewinventory.MasterTemplate.ViewDefinition = tableViewDefinition5;
+            this.gridviewinventory.Name = "gridviewinventory";
+            this.gridviewinventory.Size = new System.Drawing.Size(1149, 558);
+            this.gridviewinventory.TabIndex = 0;
+            this.gridviewinventory.ThemeName = "MaterialBlueGrey";
+            this.gridviewinventory.CellDoubleClick += new Telerik.WinControls.UI.GridViewCellEventHandler(this.gridviewinventory_CellDoubleClick);
+            // 
+            // btninventoryedit
+            // 
+            this.btninventoryedit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btninventoryedit.BackColor = System.Drawing.Color.LimeGreen;
+            this.btninventoryedit.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btninventoryedit.Font = new System.Drawing.Font("Arial Rounded MT Bold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btninventoryedit.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btninventoryedit.Image = ((System.Drawing.Image)(resources.GetObject("btninventoryedit.Image")));
+            this.btninventoryedit.Location = new System.Drawing.Point(951, 8);
+            this.btninventoryedit.Name = "btninventoryedit";
+            this.btninventoryedit.Size = new System.Drawing.Size(87, 36);
+            this.btninventoryedit.TabIndex = 18;
+            this.btninventoryedit.Text = "Edit";
+            this.btninventoryedit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btninventoryedit.ThemeName = "MaterialBlueGrey";
+            this.btninventoryedit.Click += new System.EventHandler(this.btninventoryedit_Click);
+            // 
+            // btninventorydelete
+            // 
+            this.btninventorydelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btninventorydelete.BackColor = System.Drawing.Color.Red;
+            this.btninventorydelete.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btninventorydelete.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btninventorydelete.Image = ((System.Drawing.Image)(resources.GetObject("btninventorydelete.Image")));
+            this.btninventorydelete.Location = new System.Drawing.Point(1043, 8);
+            this.btninventorydelete.Name = "btninventorydelete";
+            this.btninventorydelete.Size = new System.Drawing.Size(102, 36);
+            this.btninventorydelete.TabIndex = 19;
+            this.btninventorydelete.Text = "Delete";
+            this.btninventorydelete.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btninventorydelete.ThemeName = "MaterialBlueGrey";
+            this.btninventorydelete.Click += new System.EventHandler(this.btninventorydelete_Click);
+            // 
+            // btninventoryadd
+            // 
+            this.btninventoryadd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btninventoryadd.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.btninventoryadd.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btninventoryadd.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btninventoryadd.Image = ((System.Drawing.Image)(resources.GetObject("btninventoryadd.Image")));
+            this.btninventoryadd.Location = new System.Drawing.Point(860, 8);
+            this.btninventoryadd.Name = "btninventoryadd";
+            this.btninventoryadd.Size = new System.Drawing.Size(87, 36);
+            this.btninventoryadd.TabIndex = 16;
+            this.btninventoryadd.Text = "Add";
+            this.btninventoryadd.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btninventoryadd.ThemeName = "MaterialBlueGrey";
+            this.btninventoryadd.Click += new System.EventHandler(this.btninventoryadd_Click);
             // 
             // pagestaff
             // 
@@ -651,6 +744,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnitemedit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnitemdelete)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnitemadd)).EndInit();
+            this.pageinventory.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gridviewinventory.MasterTemplate)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridviewinventory)).EndInit();
+            this.gridviewinventory.ResumeLayout(false);
+            this.gridviewinventory.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btninventoryedit)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btninventorydelete)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btninventoryadd)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);
 
@@ -690,5 +791,9 @@
         private Telerik.WinControls.UI.RadButton btnitemdelete;
         private Telerik.WinControls.UI.RadButton btnitemadd;
         private Telerik.WinControls.Themes.CrystalDarkTheme crystalDarkTheme1;
+        private Telerik.WinControls.UI.RadGridView gridviewinventory;
+        private Telerik.WinControls.UI.RadButton btninventoryedit;
+        private Telerik.WinControls.UI.RadButton btninventorydelete;
+        private Telerik.WinControls.UI.RadButton btninventoryadd;
     }
 }

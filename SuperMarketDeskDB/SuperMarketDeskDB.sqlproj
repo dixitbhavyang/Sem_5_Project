@@ -97,5 +97,12 @@
     <Build Include="dbo\Stored Procedures\UPDATE_ITEM.sql" />
     <Build Include="dbo\Stored Procedures\EDIT_ITEM.sql" />
     <Build Include="dbo\Stored Procedures\DELETE_ITEM.sql" />
+    <Build Include="dbo\Stored Procedures\SELECT_ITEMS_BASED_ON_CATEGORYID.sql" />
+    <Build Include="dbo\Stored Procedures\SELECT_INVENTORY_RECORDS.sql" />
+    <Build Include="dbo\Stored Procedures\SELECT_CATEGORIES_BASED_ON_COMPANYID.sql" />
+    <Build Include="dbo\Stored Procedures\INSERT_INVENTORY_RECORD.sql" />
+    <Build Include="dbo\Stored Procedures\EDIT_INVENTORY_RECORD.sql" />
+    <Build Include="dbo\Stored Procedures\UPDATE_INVENTORY_RECORD.sql" />
+    <Build Include="dbo\Stored Procedures\DELETE_INVENTORY_RECORD.sql" />
   </ItemGroup>
 </Project>
