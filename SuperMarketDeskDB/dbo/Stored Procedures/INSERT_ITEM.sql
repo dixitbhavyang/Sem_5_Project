@@ -1,4 +1,5 @@
 ﻿CREATE PROCEDURE [dbo].[INSERT_ITEM] 
+	@COMPANYID INT,
 	@CATEGORYID INT,
 	@NAME VARCHAR(100), 
 	@SHORTNAME VARCHAR(10),
@@ -15,7 +16,8 @@
 AS
 BEGIN
 	INSERT INTO [dbo].[Item]
-           ([CategoryId]
+           ([CompanyId]
+		   ,[CategoryId]
            ,[Name]
            ,[ShortName]
            ,[Price]
@@ -29,7 +31,8 @@ BEGIN
            ,[UpdatedBy]
            ,[ExpiryDate])
      VALUES
-           (@CATEGORYID
+           (@COMPANYID
+		   ,@CATEGORYID
 		   ,@NAME
 		   ,@SHORTNAME
 		   ,@PRICE
