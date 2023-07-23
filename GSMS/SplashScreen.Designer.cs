@@ -54,7 +54,7 @@
             this.radPictureBox1.Image = global::GSMS.Properties.Resources.SplashScreenImage;
             this.radPictureBox1.Location = new System.Drawing.Point(0, 0);
             this.radPictureBox1.Name = "radPictureBox1";
-            this.radPictureBox1.Size = new System.Drawing.Size(895, 525);
+            this.radPictureBox1.Size = new System.Drawing.Size(903, 525);
             this.radPictureBox1.TabIndex = 2;
             // 
             // kryptonLabel1
@@ -63,7 +63,7 @@
             this.kryptonLabel1.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.TitlePanel;
             this.kryptonLabel1.Location = new System.Drawing.Point(0, 0);
             this.kryptonLabel1.Name = "kryptonLabel1";
-            this.kryptonLabel1.Size = new System.Drawing.Size(895, 29);
+            this.kryptonLabel1.Size = new System.Drawing.Size(903, 29);
             this.kryptonLabel1.TabIndex = 0;
             this.kryptonLabel1.Values.Text = "Supermarket Management System";
             // 
@@ -83,7 +83,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Bisque;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(895, 547);
+            this.ClientSize = new System.Drawing.Size(903, 577);
             this.ControlBox = false;
             this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.radPictureBox1);
