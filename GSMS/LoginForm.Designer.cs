@@ -82,6 +82,7 @@
             this.txtpassword.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.txtpassword.Cursor = System.Windows.Forms.Cursors.Hand;
             this.txtpassword.EmbeddedLabelText = "Enter Password";
+            this.txtpassword.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtpassword.ForeColor = System.Drawing.Color.Black;
             this.txtpassword.Location = new System.Drawing.Point(12, 230);
             this.txtpassword.Name = "txtpassword";
@@ -89,7 +90,7 @@
             this.txtpassword.PasswordChar = '●';
             this.txtpassword.ShowClearButton = true;
             this.txtpassword.ShowNullText = true;
-            this.txtpassword.Size = new System.Drawing.Size(254, 36);
+            this.txtpassword.Size = new System.Drawing.Size(254, 35);
             this.txtpassword.TabIndex = 1;
             this.txtpassword.ThemeName = "MaterialBlueGrey";
             this.txtpassword.UseSystemPasswordChar = true;
@@ -143,6 +144,7 @@
             this.txtusername.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.txtusername.Cursor = System.Windows.Forms.Cursors.Hand;
             this.txtusername.EmbeddedLabelText = "Please Enter Username";
+            this.txtusername.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtusername.ForeColor = System.Drawing.Color.Black;
             this.txtusername.Location = new System.Drawing.Point(12, 186);
             this.txtusername.Name = "txtusername";
@@ -155,8 +157,7 @@
             // 
             // LoginForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
