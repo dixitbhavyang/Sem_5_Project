@@ -134,6 +134,12 @@
     <Compile Include="CompanyForm.Designer.cs">
       <DependentUpon>CompanyForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="DepartmentForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DepartmentForm.Designer.cs">
+      <DependentUpon>DepartmentForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="InventoryForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -172,6 +178,12 @@
     <Compile Include="SplashScreen.Designer.cs">
       <DependentUpon>SplashScreen.cs</DependentUpon>
     </Compile>
+    <Compile Include="StaffForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StaffForm.Designer.cs">
+      <DependentUpon>StaffForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="SuperMarketMS_ProjectDataSet.cs">
       <DependentUpon>SuperMarketMS_ProjectDataSet.xsd</DependentUpon>
     </Compile>
@@ -191,6 +203,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CompanyForm.resx">
       <DependentUpon>CompanyForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DepartmentForm.resx">
+      <DependentUpon>DepartmentForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="InventoryForm.resx">
       <DependentUpon>InventoryForm.cs</DependentUpon>
@@ -220,6 +235,9 @@
     </Compile>
     <EmbeddedResource Include="SplashScreen.resx">
       <DependentUpon>SplashScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StaffForm.resx">
+      <DependentUpon>StaffForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UsersForm.resx">
       <DependentUpon>UsersForm.cs</DependentUpon>
@@ -297,19 +315,30 @@
     <Content Include="Images\write.png" />
     <Content Include="Resources\35976.jpg" />
     <Content Include="Resources\4565.jpg" />
+    <None Include="Resources\6375476_25456.jpg" />
     <Content Include="Resources\7401745_3657674.jpg" />
+    <None Include="Resources\8252028_3871744.jpg" />
     <Content Include="Resources\add %283%29.png" />
     <Content Include="Resources\add %284%29.png" />
+    <None Include="Resources\add-button %281%29.png" />
+    <None Include="Resources\add-button %282%29.png" />
     <Content Include="Resources\box_1791537.png" />
+    <None Include="Resources\cancel %281%29.png" />
+    <None Include="Resources\cleaner.png" />
     <Content Include="Resources\concept_8175979.png" />
     <Content Include="Resources\delete %283%29.png" />
+    <None Include="Resources\delete %284%29.png" />
     <Content Include="Resources\delete-user %281%29.png" />
+    <None Include="Resources\edit %2811%29.png" />
     <Content Include="Resources\edit %286%29.png" />
+    <None Include="Resources\edit %287%29.png" />
+    <None Include="Resources\finger.png" />
     <Content Include="Resources\icons8-badge-20.png" />
     <Content Include="Resources\icons8-bill-20 %281%29.png" />
     <Content Include="Resources\icons8-broadcasting-20.png" />
     <Content Include="Resources\icons8-customers-20 %281%29.png" />
     <Content Include="Resources\icons8-edit-25.png" />
+    <None Include="Resources\icons8-furniture-store-20.png" />
     <Content Include="Resources\icons8-group-of-companies-20.png" />
     <Content Include="Resources\icons8-home-20.png" />
     <Content Include="Resources\icons8-login-16 %281%29.png" />
@@ -319,6 +348,7 @@
     <Content Include="Resources\icons8-trolley-20.png" />
     <Content Include="Resources\icons8-users-20 %282%29.png" />
     <Content Include="Resources\icons8_error_25_K2P_icon.ico" />
+    <None Include="Resources\paint-brush.png" />
     <Content Include="Resources\pencil %281%29.png" />
     <Content Include="Resources\remove-file_4807345.png" />
     <Content Include="Resources\vecteezy_unlock-personal-password-account-security_.jpg" />
