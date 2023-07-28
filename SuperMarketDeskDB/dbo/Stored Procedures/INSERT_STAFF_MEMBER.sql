@@ -1,0 +1,46 @@
+﻿CREATE PROC [dbo].[INSERT_STAFF_MEMBER]
+	@FNAME VARCHAR(15),
+	@LNAME VARCHAR(15),
+	@PHONE VARCHAR(10),
+	@EMAIL VARCHAR(150),
+	@GENDER BIT,
+	@ADDRESS VARCHAR(200),
+	@DEPARTMENTID INT,
+	@SALARY DECIMAL(9,0),
+	@JOINDATE DATETIME,
+	@CREATEDDATE DATETIME,
+	@CREATEDBY INT,
+	@LASTUPDATED DATETIME,
+	@UPDATEDBY INT
+AS
+BEGIN
+	INSERT INTO Staff (
+		[FirstName],
+		[LastName],
+		[Phone],
+		[Email],
+		[Gender],
+		[Address],
+		[DepartmentId],
+		[Salary],
+		[JoinDate],
+		[CreatedDate],
+		[CreatedBy],
+		[LastUpdated],
+		[UpdatedBy] )
+		
+	VALUES (
+		@FNAME,
+		@LNAME,
+		@PHONE,
+		@EMAIL,
+		@GENDER,
+		@ADDRESS,
+		@DEPARTMENTID,
+		@SALARY,
+		@JOINDATE,
+		@CREATEDDATE,
+		@CREATEDBY,
+		@LASTUPDATED,
+		@UPDATEDBY );
+END

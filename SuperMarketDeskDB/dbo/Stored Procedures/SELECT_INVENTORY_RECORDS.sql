@@ -2,7 +2,7 @@
 BEGIN
 	SELECT
 	I.Id, C2.[Name] "Company", C.[Name] "Category", I2.[Name] "Item", 
-	I.Quantity,I.Unit,
+	I.Quantity, I.Unit, I.Measurement,
 	I.CreatedDate, U.[Username] "Created By", 
 	I.LastUpdated, U2.[Username] "Updated By",
 	I.MinimumStock, I.MaximumStock,
