@@ -120,6 +120,7 @@
             this.txtcontactnumber.ThemeName = "Crystal";
             this.validatorForTextBoxes.SetValidationRule(this.txtcontactnumber, radValidationRule1);
             this.txtcontactnumber.TextChanged += new System.EventHandler(this.txtcontactnumber_TextChanged);
+            this.txtcontactnumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtcontactnumber_KeyPress);
             // 
             // txtpassword
             // 
@@ -256,9 +257,10 @@
             // 
             // rdbfemale
             // 
+            this.rdbfemale.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rdbfemale.Location = new System.Drawing.Point(84, 3);
             this.rdbfemale.Name = "rdbfemale";
-            this.rdbfemale.Size = new System.Drawing.Size(57, 18);
+            this.rdbfemale.Size = new System.Drawing.Size(60, 19);
             this.rdbfemale.TabIndex = 7;
             this.rdbfemale.TabStop = false;
             this.rdbfemale.Text = "Female";
@@ -267,9 +269,10 @@
             // rdbmale
             // 
             this.rdbmale.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.rdbmale.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rdbmale.Location = new System.Drawing.Point(3, 3);
             this.rdbmale.Name = "rdbmale";
-            this.rdbmale.Size = new System.Drawing.Size(46, 18);
+            this.rdbmale.Size = new System.Drawing.Size(48, 19);
             this.rdbmale.TabIndex = 6;
             this.rdbmale.Text = "Male";
             this.rdbmale.ThemeName = "Fluent";
@@ -289,11 +292,11 @@
             // 
             this.kryptonLabel5.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.kryptonLabel5.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.BoldControl;
-            this.kryptonLabel5.Location = new System.Drawing.Point(37, 378);
+            this.kryptonLabel5.Location = new System.Drawing.Point(96, 378);
             this.kryptonLabel5.Name = "kryptonLabel5";
-            this.kryptonLabel5.Size = new System.Drawing.Size(113, 20);
+            this.kryptonLabel5.Size = new System.Drawing.Size(54, 20);
             this.kryptonLabel5.TabIndex = 1;
-            this.kryptonLabel5.Values.Text = "Contact Number :";
+            this.kryptonLabel5.Values.Text = "Phone :";
             // 
             // kryptonLabel4
             // 
@@ -414,7 +417,7 @@
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(399, 563);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Font = new System.Drawing.Font("Arial Rounded MT Bold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(401, 600);
@@ -426,7 +429,7 @@
             this.RootElement.ApplyShapeToControl = true;
             this.RootElement.MaxSize = new System.Drawing.Size(401, 600);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = " Enter User Details";
+            this.Text = "";
             this.ThemeName = "MaterialBlueGrey";
             this.Load += new System.EventHandler(this.UsersForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.txtcity)).EndInit();
