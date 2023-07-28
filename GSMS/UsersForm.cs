@@ -21,7 +21,7 @@ namespace GSMS
         {
             InitializeComponent();
         }
-    
+
         private void UsersForm_Load(object sender, EventArgs e)
         {
             if (MasterForm.userId > 0)
@@ -289,10 +289,19 @@ namespace GSMS
         {
             if (dropdownrole.SelectedIndex < 0)
             {
-                eprole.SetError(dropdownrole,"Please Select Role...");
+                eprole.SetError(dropdownrole, "Please Select Role...");
                 dropdownrole.Focus();
             }
             else { eprole.Clear(); }
+        }
+
+        private void txtcontactnumber_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                // If it's not a digit or a control character, suppress the keypress event
+                e.Handled = true;
+            }
         }
     }
 }
