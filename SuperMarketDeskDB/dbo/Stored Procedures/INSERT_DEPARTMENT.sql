@@ -1,0 +1,31 @@
+﻿CREATE PROC [dbo].[INSERT_DEPARTMENT] 
+	@NAME VARCHAR(50),
+	@SHORTNAME VARCHAR(10),
+	@PHONE VARCHAR(10),
+	@DESCRIPTION TEXT,
+	@CREATEDDATE DATETIME,
+	@CREATEDBY INT,
+	@LASTUPDATED DATETIME,
+	@UPDATEDBY INT
+AS
+BEGIN
+	INSERT INTO Department (
+		[Name],
+		[ShortName],
+		[Phone],
+		[Description],
+		[CreatedDate],
+		[CreatedBy],
+		[LastUpdated],
+		[UpdatedBy] )
+		
+	VALUES (
+		@NAME,
+		@SHORTNAME,
+		@PHONE,
+		@DESCRIPTION,
+		@CREATEDDATE,
+		@CREATEDBY,
+		@LASTUPDATED,
+		@UPDATEDBY );
+END

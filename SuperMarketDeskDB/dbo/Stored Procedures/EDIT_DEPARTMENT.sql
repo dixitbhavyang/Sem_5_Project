@@ -1,0 +1,6 @@
+﻿CREATE PROC [dbo].[EDIT_DEPARTMENT]
+	@ID INT
+AS
+BEGIN
+	SELECT *FROM Department WHERE [Id]=@ID AND [Status]=1;
+END
