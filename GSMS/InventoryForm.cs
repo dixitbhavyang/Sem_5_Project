@@ -117,6 +117,7 @@ namespace GSMS
             cmd.Parameters.AddWithValue("@ITEMID", drpitem.SelectedValue);
             cmd.Parameters.AddWithValue("@QUANTITY", Convert.ToDecimal(spineditorquantity.Value));
             cmd.Parameters.AddWithValue("@UNIT", spineditorunit.Value);
+            cmd.Parameters.AddWithValue("@MEASUREMENT", drpunit.SelectedItem);
             cmd.Parameters.AddWithValue("@MINIMUMSTOCK", spineditorminimumstock.Value);
             cmd.Parameters.AddWithValue("@MAXIMUMSTOCK", spineditormaximumstock.Value);
             cmd.Parameters.AddWithValue("@LASTUPDATED", DateTime.Now.ToString("MM/dd/yyyy hh:mm:ss tt"));
@@ -240,12 +241,24 @@ namespace GSMS
             }
         }
 
+        private void drpunit_TextChanged(object sender, EventArgs e)
+        {
+            if (String.IsNullOrEmpty(drpunit.Text))
+            {
+                erpdrpunit.SetError(drpunit, "Please Select Unit Measure...!");
+            }
+            else
+            {
+                erpdrpunit.Clear();
+            }
+        }
         private void btnadd_Click(object sender, EventArgs e)
         {
             if (drpcompany.SelectedIndex < 0)
             {
                 erpcategory.Clear();
                 erpitem.Clear();
+                erpdrpunit.Clear();
                 validatorForSpinEditor.ClearErrorStatus(spineditorquantity);
                 validatorForSpinEditor.ClearErrorStatus(spineditorunit);
                 validatorForSpinEditor.ClearErrorStatus(spineditorminimumstock);
@@ -258,6 +271,7 @@ namespace GSMS
             {
                 erpcompany.Clear();
                 erpitem.Clear();
+                erpdrpunit.Clear();
                 validatorForSpinEditor.ClearErrorStatus(spineditorquantity);
                 validatorForSpinEditor.ClearErrorStatus(spineditorunit);
                 validatorForSpinEditor.ClearErrorStatus(spineditorminimumstock);
@@ -270,6 +284,7 @@ namespace GSMS
             {
                 erpcompany.Clear();
                 erpcategory.Clear();
+                erpdrpunit.Clear();
                 validatorForSpinEditor.ClearErrorStatus(spineditorquantity);
                 validatorForSpinEditor.ClearErrorStatus(spineditorunit);
                 validatorForSpinEditor.ClearErrorStatus(spineditorminimumstock);
@@ -282,6 +297,7 @@ namespace GSMS
             {
                 erpcompany.Clear();
                 erpcategory.Clear();
+                erpdrpunit.Clear();
                 validatorForSpinEditor.ClearErrorStatus(spineditorunit);
                 validatorForSpinEditor.ClearErrorStatus(spineditorminimumstock);
                 validatorForSpinEditor.ClearErrorStatus(spineditormaximumstock);
@@ -293,6 +309,7 @@ namespace GSMS
             {
                 erpcompany.Clear();
                 erpcategory.Clear();
+                erpdrpunit.Clear();
                 validatorForSpinEditor.ClearErrorStatus(spineditorquantity);
                 validatorForSpinEditor.ClearErrorStatus(spineditorminimumstock);
                 validatorForSpinEditor.ClearErrorStatus(spineditormaximumstock);
@@ -300,10 +317,24 @@ namespace GSMS
                 validatorForSpinEditor.Validate(spineditorunit);
                 spineditorunit.Focus();
             }
+            else if (drpunit.SelectedItem == null)
+            {
+                erpcompany.Clear();
+                erpcategory.Clear();
+                erpitem.Clear();
+                validatorForSpinEditor.ClearErrorStatus(spineditorquantity);
+                validatorForSpinEditor.ClearErrorStatus(spineditorunit);
+                validatorForSpinEditor.ClearErrorStatus(spineditorminimumstock);
+                validatorForSpinEditor.ClearErrorStatus(spineditormaximumstock);
+
+                erpdrpunit.SetError(drpunit,"Please Select Unit Measure...!");
+                drpunit.Focus();
+            }
             else if (spineditorminimumstock.Value == 0)
             {
                 erpcompany.Clear();
                 erpcategory.Clear();
+                erpdrpunit.Clear();
                 validatorForSpinEditor.ClearErrorStatus(spineditorquantity);
                 validatorForSpinEditor.ClearErrorStatus(spineditorunit);
                 validatorForSpinEditor.ClearErrorStatus(spineditormaximumstock);
@@ -315,6 +346,7 @@ namespace GSMS
             {
                 erpcompany.Clear();
                 erpcategory.Clear();
+                erpdrpunit.Clear();
                 validatorForSpinEditor.ClearErrorStatus(spineditorquantity);
                 validatorForSpinEditor.ClearErrorStatus(spineditorunit);
                 validatorForSpinEditor.ClearErrorStatus(spineditorminimumstock);
@@ -327,6 +359,7 @@ namespace GSMS
                 erpcompany.Clear();
                 erpcategory.Clear();
                 erpitem.Clear();
+                erpdrpunit.Clear();
                 validatorForSpinEditor.ClearErrorStatus(spineditorquantity);
                 validatorForSpinEditor.ClearErrorStatus(spineditorunit);
                 validatorForSpinEditor.ClearErrorStatus(spineditorminimumstock);
@@ -343,6 +376,5 @@ namespace GSMS
                 this.Close();
             }
         }
-
     }
 }

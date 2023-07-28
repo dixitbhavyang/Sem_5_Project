@@ -104,5 +104,17 @@
     <Build Include="dbo\Stored Procedures\EDIT_INVENTORY_RECORD.sql" />
     <Build Include="dbo\Stored Procedures\UPDATE_INVENTORY_RECORD.sql" />
     <Build Include="dbo\Stored Procedures\DELETE_INVENTORY_RECORD.sql" />
+    <Build Include="dbo\Tables\Department.sql" />
+    <Build Include="dbo\Stored Procedures\UPDATE_STAFF_MEMBER.sql" />
+    <Build Include="dbo\Stored Procedures\UPDATE_DEPARTMENT.sql" />
+    <Build Include="dbo\Stored Procedures\SELECT_STAFF.sql" />
+    <Build Include="dbo\Stored Procedures\SELECT_DEPARTMENTS.sql" />
+    <Build Include="dbo\Stored Procedures\SELECT_ACTIVE_DEPARTMENTS.sql" />
+    <Build Include="dbo\Stored Procedures\INSERT_STAFF_MEMBER.sql" />
+    <Build Include="dbo\Stored Procedures\INSERT_DEPARTMENT.sql" />
+    <Build Include="dbo\Stored Procedures\EDIT_STAFF_MEMBER.sql" />
+    <Build Include="dbo\Stored Procedures\EDIT_DEPARTMENT.sql" />
+    <Build Include="dbo\Stored Procedures\DELETE_STAFF_MEMBER.sql" />
+    <Build Include="dbo\Stored Procedures\DELETE_DEPARTMENT.sql" />
   </ItemGroup>
 </Project>

@@ -250,6 +250,10 @@
             this.datetimeexpiration.Name = "datetimeexpiration";
             this.datetimeexpiration.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue;
             this.datetimeexpiration.Size = new System.Drawing.Size(188, 21);
+            this.datetimeexpiration.StateCommon.Border.Draw = ComponentFactory.Krypton.Toolkit.InheritBool.False;
+            this.datetimeexpiration.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
             this.datetimeexpiration.TabIndex = 7;
             // 
             // kryptonLabel7
@@ -385,6 +389,10 @@
             this.drpselectcategory.Name = "drpselectcategory";
             this.drpselectcategory.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue;
             this.drpselectcategory.Size = new System.Drawing.Size(188, 21);
+            this.drpselectcategory.StateCommon.ComboBox.Border.Draw = ComponentFactory.Krypton.Toolkit.InheritBool.False;
+            this.drpselectcategory.StateCommon.ComboBox.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
             this.drpselectcategory.TabIndex = 1;
             this.drpselectcategory.TextChanged += new System.EventHandler(this.drpselectcategory_TextChanged);
             // 
@@ -419,6 +427,10 @@
             this.drpselectcompany.Name = "drpselectcompany";
             this.drpselectcompany.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue;
             this.drpselectcompany.Size = new System.Drawing.Size(188, 21);
+            this.drpselectcompany.StateCommon.ComboBox.Border.Draw = ComponentFactory.Krypton.Toolkit.InheritBool.False;
+            this.drpselectcompany.StateCommon.ComboBox.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
             this.drpselectcompany.TabIndex = 0;
             this.drpselectcompany.SelectedIndexChanged += new System.EventHandler(this.drpselectcompany_SelectedIndexChanged);
             this.drpselectcompany.TextChanged += new System.EventHandler(this.drpselectcompany_TextChanged);
@@ -495,7 +507,7 @@
             this.RootElement.ApplyShapeToControl = true;
             this.RootElement.MaxSize = new System.Drawing.Size(355, 526);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "  Item Details";
+            this.Text = "";
             this.ThemeName = "MaterialBlueGrey";
             this.Load += new System.EventHandler(this.ItemForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.txtitemname)).EndInit();

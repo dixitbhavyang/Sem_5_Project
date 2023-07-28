@@ -189,3 +189,5 @@ C:\Users\C.E.H V10\Documents\GitHub\Sem_5_Project\GSMS\obj\Debug\GSMS.pdb
 C:\Users\C.E.H V10\Documents\GitHub\Sem_5_Project\GSMS\obj\Debug\GSMS.ItemForm.resources
 C:\Users\C.E.H V10\Documents\GitHub\Sem_5_Project\GSMS\obj\Debug\GSMS.LoaderScreen.resources
 C:\Users\C.E.H V10\Documents\GitHub\Sem_5_Project\GSMS\obj\Debug\GSMS.InventoryForm.resources
+C:\Users\C.E.H V10\Documents\GitHub\Sem_5_Project\GSMS\obj\Debug\GSMS.StaffForm.resources
+C:\Users\C.E.H V10\Documents\GitHub\Sem_5_Project\GSMS\obj\Debug\GSMS.DepartmentForm.resources

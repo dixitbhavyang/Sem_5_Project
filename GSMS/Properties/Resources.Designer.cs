@@ -83,9 +83,9 @@ namespace GSMS.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap CategoryAddIcon {
+        internal static System.Drawing.Bitmap CategoryAddImage {
             get {
-                object obj = ResourceManager.GetObject("CategoryAddIcon", resourceCulture);
+                object obj = ResourceManager.GetObject("CategoryAddImage", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -93,9 +93,9 @@ namespace GSMS.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap CategoryDeleteIcon {
+        internal static System.Drawing.Bitmap CategoryDeleteImage {
             get {
-                object obj = ResourceManager.GetObject("CategoryDeleteIcon", resourceCulture);
+                object obj = ResourceManager.GetObject("CategoryDeleteImage", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -103,9 +103,9 @@ namespace GSMS.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap CategoryEditIcon {
+        internal static System.Drawing.Bitmap CategoryEditImage {
             get {
-                object obj = ResourceManager.GetObject("CategoryEditIcon", resourceCulture);
+                object obj = ResourceManager.GetObject("CategoryEditImage", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -176,6 +176,56 @@ namespace GSMS.Properties {
         internal static System.Drawing.Bitmap CustomersIcon {
             get {
                 object obj = ResourceManager.GetObject("CustomersIcon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap DepartmentAddImage {
+            get {
+                object obj = ResourceManager.GetObject("DepartmentAddImage", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap DepartmentDeleteImage {
+            get {
+                object obj = ResourceManager.GetObject("DepartmentDeleteImage", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap DepartmentEditImage {
+            get {
+                object obj = ResourceManager.GetObject("DepartmentEditImage", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap DepartmentFormImage {
+            get {
+                object obj = ResourceManager.GetObject("DepartmentFormImage", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap DepartmentIcon {
+            get {
+                object obj = ResourceManager.GetObject("DepartmentIcon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -353,9 +403,49 @@ namespace GSMS.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap StaffFormImage {
+            get {
+                object obj = ResourceManager.GetObject("StaffFormImage", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap StaffIcon {
             get {
                 object obj = ResourceManager.GetObject("StaffIcon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap StaffMemberAddImage {
+            get {
+                object obj = ResourceManager.GetObject("StaffMemberAddImage", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap StaffMemberDeleteImage {
+            get {
+                object obj = ResourceManager.GetObject("StaffMemberDeleteImage", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap StaffMemberEditImage {
+            get {
+                object obj = ResourceManager.GetObject("StaffMemberEditImage", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

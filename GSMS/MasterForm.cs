@@ -20,7 +20,7 @@ namespace GSMS
         SqlDataReader dr;
         DataTable dt = new DataTable();
         SqlDataAdapter da;
-        public static int userId, companyId, categoryId, itemId, inventoryId;
+        public static int userId, companyId, categoryId, itemId, inventoryId, staffMemberId, departmentId;
         public MasterForm()
         {
             InitializeComponent();
@@ -44,7 +44,7 @@ namespace GSMS
             gridviewusers.Columns.Add("Last Name");
             gridviewusers.Columns.Add("Username");
             gridviewusers.Columns.Add("Password");
-            gridviewusers.Columns.Add("ContactNo.");
+            gridviewusers.Columns.Add("Phone");
             gridviewusers.Columns.Add("Email");
             gridviewusers.Columns.Add("Gender");
             gridviewusers.Columns.Add("City");
@@ -348,7 +348,7 @@ namespace GSMS
                 rowInfo.Cells[2].Value = item["Category"].ToString();
                 rowInfo.Cells[3].Value = item["Item"].ToString();
                 rowInfo.Cells[4].Value = item["Quantity"].ToString();
-                rowInfo.Cells[5].Value = item["Unit"].ToString();
+                rowInfo.Cells[5].Value = item["Unit"].ToString() + " " + item["Measurement"].ToString();
                 rowInfo.Cells[6].Value = Convert.ToDateTime(item["CreatedDate"]).ToString("dd/MMM/yyyy hh:mm:ss tt");
                 rowInfo.Cells[7].Value = item["Created By"].ToString();
                 rowInfo.Cells[8].Value = Convert.ToDateTime(item["LastUpdated"]).ToString("dd/MMM/yyyy hh:mm:ss tt");
@@ -367,6 +367,143 @@ namespace GSMS
             gridviewinventory.BestFitColumns();
             gridviewinventory.AutoSizeColumnsMode = GridViewAutoSizeColumnsMode.Fill;
             gridviewinventory.ShowGroupedColumns = true;
+        }
+
+        private void getDepartmentRecords()
+        {
+
+            string query = "EXEC SELECT_DEPARTMENTS";
+
+            da = new SqlDataAdapter(query, con);
+            dt.Clear();
+            da.Fill(dt);
+
+            gridviewdepartment.Columns.Clear();
+            gridviewdepartment.Rows.Clear();
+
+            gridviewdepartment.Columns.Add("Id");
+            gridviewdepartment.Columns[0].IsVisible = false;
+            gridviewdepartment.Columns.Add("Name");
+            gridviewdepartment.Columns.Add("Short Name");
+            gridviewdepartment.Columns.Add("Phone");
+            gridviewdepartment.Columns.Add("Description");
+            gridviewdepartment.Columns.Add("Created Date");
+            gridviewdepartment.Columns.Add("Created By");
+            gridviewdepartment.Columns.Add("Last Updated");
+            gridviewdepartment.Columns.Add("Updated By");
+            gridviewdepartment.Columns.Add("Status");
+
+            for (int i = 0; i < gridviewdepartment.Columns.Count; i++)
+            {
+                gridviewdepartment.Columns[i].TextAlignment = ContentAlignment.MiddleCenter;
+            }
+
+            foreach (DataRow row in dt.Rows)
+            {
+                string status = "";
+                GridViewDataRowInfo rowInfo = new GridViewDataRowInfo(this.gridviewdepartment.MasterView);
+                rowInfo.Cells[0].Value = row["Id"].ToString();
+                rowInfo.Cells[1].Value = row["Name"].ToString();
+                rowInfo.Cells[2].Value = row["ShortName"].ToString();
+                rowInfo.Cells[3].Value = row["Phone"].ToString();
+                rowInfo.Cells[4].Value = row["Description"].ToString();
+                rowInfo.Cells[5].Value = Convert.ToDateTime(row["CreatedDate"]).ToString("dd/MMM/yyyy hh:mm:ss tt");
+                rowInfo.Cells[6].Value = row["Created By"].ToString();
+                rowInfo.Cells[7].Value = Convert.ToDateTime(row["LastUpdated"]).ToString("dd/MMM/yyyy hh:mm:ss tt");
+                rowInfo.Cells[8].Value = row["Updated By"].ToString();
+                if (Convert.ToInt32(row["Status"]) == 1)
+                {
+                    status = "Active";
+                }
+                else
+                {
+                    status = "Not Active";
+                }
+                rowInfo.Cells[9].Value = status;
+
+                gridviewdepartment.Rows.Add(rowInfo);
+            }
+            //gridviewdepartment.AutoSizeRows = true;
+            gridviewdepartment.BestFitColumns();
+            gridviewdepartment.AutoSizeColumnsMode = GridViewAutoSizeColumnsMode.Fill;
+        }
+
+        private void getStaffRcords()
+        {
+
+            string query = "EXEC SELECT_STAFF";
+
+            da = new SqlDataAdapter(query, con);
+            dt.Clear();
+            da.Fill(dt);
+
+            gridviewstaff.Columns.Clear();
+            gridviewstaff.Rows.Clear();
+
+            gridviewstaff.Columns.Add("Id");
+            gridviewstaff.Columns[0].IsVisible = false;
+            gridviewstaff.Columns.Add("First Name");
+            gridviewstaff.Columns.Add("Last Name");
+            gridviewstaff.Columns.Add("Phone");
+            gridviewstaff.Columns.Add("Email");
+            gridviewstaff.Columns.Add("Gender");
+            gridviewstaff.Columns.Add("Address");
+            gridviewstaff.Columns.Add("Department");
+            gridviewstaff.Columns.Add("Salary");
+            gridviewstaff.Columns.Add("Join Date");
+            gridviewstaff.Columns.Add("Created Date");
+            gridviewstaff.Columns.Add("Created By");
+            gridviewstaff.Columns.Add("Last Updated");
+            gridviewstaff.Columns.Add("Updated By");
+            gridviewstaff.Columns.Add("Status");
+
+            for (int i = 0; i < gridviewstaff.Columns.Count; i++)
+            {
+                gridviewstaff.Columns[i].TextAlignment = ContentAlignment.MiddleCenter;
+            }
+
+            foreach (DataRow row in dt.Rows)
+            {
+                string status = "", gender = "";
+                GridViewDataRowInfo rowInfo = new GridViewDataRowInfo(this.gridviewstaff.MasterView);
+                rowInfo.Cells[0].Value = row["Id"].ToString();
+                rowInfo.Cells[1].Value = row["FirstName"].ToString();
+                rowInfo.Cells[2].Value = row["LastName"].ToString();
+                rowInfo.Cells[3].Value = row["Phone"].ToString();
+                rowInfo.Cells[4].Value = row["Email"].ToString();
+                if (Convert.ToInt32(row["Gender"]) == 1)
+                {
+                    gender = "Male";
+                }
+                else
+                {
+                    gender = "Female";
+                }
+                rowInfo.Cells[5].Value = gender;
+                rowInfo.Cells[6].Value = row["Address"].ToString();
+                rowInfo.Cells[7].Value = row["Department"].ToString();
+                rowInfo.Cells[8].Value = row["Salary"].ToString();
+                rowInfo.Cells[9].Value = Convert.ToDateTime(row["JoinDate"]).ToString("dd/MMM/yyyy");
+                rowInfo.Cells[10].Value = Convert.ToDateTime(row["CreatedDate"]).ToString("dd/MMM/yyyy hh:mm:ss tt");
+                rowInfo.Cells[11].Value = row["Created By"].ToString();
+                rowInfo.Cells[12].Value = Convert.ToDateTime(row["LastUpdated"]).ToString("dd/MMM/yyyy hh:mm:ss tt");
+                rowInfo.Cells[13].Value = row["Updated By"].ToString();
+                if (Convert.ToInt32(row["Status"]) == 1)
+                {
+                    status = "Active";
+                }
+                else
+                {
+                    status = "Not Active";
+                }
+                rowInfo.Cells[14].Value = status;
+
+                gridviewstaff.Rows.Add(rowInfo);
+            }
+            //gridviewstaff.AutoSizeRows = true;
+            gridviewstaff.BestFitColumns();
+            gridviewstaff.AutoSizeColumnsMode = GridViewAutoSizeColumnsMode.Fill;
+            gridviewstaff.ShowGroupedColumns = true;
         }
         private void getUserId()
         {
@@ -428,6 +565,30 @@ namespace GSMS
                 }
             }
         }
+        private void getDepartmetnId()
+        {
+            departmentId = 0;
+            for (int i = 0; i < gridviewdepartment.Rows.Count; i++)
+            {
+                if (gridviewdepartment.Rows[i].IsSelected)
+                {
+                    //MessageBox.Show(radGridView1.Rows[i].Cells["Id"].Value.ToString());
+                    departmentId = Convert.ToInt32(gridviewdepartment.Rows[i].Cells["Id"].Value);
+                }
+            }
+        }
+        private void getStaffMemberId()
+        {
+            staffMemberId = 0;
+            for (int i = 0; i < gridviewstaff.Rows.Count; i++)
+            {
+                if (gridviewstaff.Rows[i].IsSelected)
+                {
+                    //MessageBox.Show(radGridView1.Rows[i].Cells["Id"].Value.ToString());
+                    staffMemberId = Convert.ToInt32(gridviewstaff.Rows[i].Cells["Id"].Value);
+                }
+            }
+        }
         private void editUser()
         {
             getUserId();
@@ -467,7 +628,6 @@ namespace GSMS
                 uf.ShowDialog();
                 getUserRecords();
             }
-            userId = 0;
         }
 
         private void editCompany()
@@ -488,7 +648,6 @@ namespace GSMS
                 cf.ShowDialog();
                 getCompanyRecords();
             }
-            companyId = 0;
         }
 
         private void editCategory()
@@ -509,7 +668,6 @@ namespace GSMS
                 cf.ShowDialog();
                 getCategoryRecords();
             }
-            categoryId = 0;
             companyId = 0;
         }
 
@@ -548,7 +706,6 @@ namespace GSMS
                 itemf.ShowDialog();
                 getItemRecords();
             }
-            itemId = 0;
             companyId = 0;
             categoryId = 0;
         }
@@ -569,6 +726,7 @@ namespace GSMS
                 itemId = dt.Rows[0].Field<Int32>("ItemId");
                 inventoryF.spineditorquantity.Value = dt.Rows[0].Field<Decimal>("Quantity");
                 inventoryF.spineditorunit.Value = dt.Rows[0].Field<Int32>("Unit");
+                inventoryF.drpunit.SelectedItem = dt.Rows[0].Field<String>("Measurement");
                 inventoryF.spineditorminimumstock.Value = dt.Rows[0].Field<Int32>("MinimumStock");
                 inventoryF.spineditormaximumstock.Value = dt.Rows[0].Field<Int32>("MaximumStock");
                 inventoryF.ShowDialog();
@@ -577,24 +735,80 @@ namespace GSMS
             companyId = 0;
             categoryId = 0;
             itemId = 0;
-            inventoryId = 0;
+        }
+
+        private void editDepartment()
+        {
+            getDepartmetnId();
+            dt.Clear();
+            cmd = new SqlCommand("EDIT_DEPARTMENT", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@ID", departmentId);
+            da = new SqlDataAdapter(cmd);
+            da.Fill(dt);
+            if (dt.Rows.Count > 0)
+            {
+                DepartmentForm df = new DepartmentForm();
+                df.txtname.Text = dt.Rows[0].Field<string>("Name").ToString();
+                df.txtshortname.Text = dt.Rows[0].Field<string>("ShortName").ToString();
+                df.txtphone.Text = dt.Rows[0].Field<string>("Phone").ToString();
+                df.txtdescription.Text = dt.Rows[0].Field<string>("Description");
+                df.ShowDialog();
+                getDepartmentRecords();
+            }
+        }
+        private void editStaffMemebr()
+        {
+            getStaffMemberId();
+            dt.Clear();
+            cmd = new SqlCommand("EDIT_STAFF_MEMBER", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@ID", staffMemberId);
+            da = new SqlDataAdapter(cmd);
+            da.Fill(dt);
+            if (dt.Rows.Count > 0)
+            {
+                StaffForm sf = new StaffForm();
+                sf.txtfirstname.Text = dt.Rows[0].Field<string>("FirstName").ToString();
+                sf.txtlastname.Text = dt.Rows[0].Field<string>("LastName").ToString();
+                sf.txtcontactnumber.Text = dt.Rows[0].Field<string>("Phone").ToString();
+                sf.txtmail.Text = dt.Rows[0].Field<string>("Email");
+                if (dt.Rows[0].Field<Boolean>("Gender"))
+                {
+                    sf.rdbmale.IsChecked = true;
+                }
+                else
+                {
+                    sf.rdbfemale.IsChecked = true;
+                }
+                sf.txtaddress.Text = dt.Rows[0].Field<string>("Address");
+                departmentId = dt.Rows[0].Field<int>("DepartmentId");
+                sf.txtmail.Text = dt.Rows[0].Field<string>("Email");
+                sf.spineditorsalary.Value = dt.Rows[0].Field<Decimal>("Salary");
+                sf.datetimejointdate.Value = dt.Rows[0].Field<DateTime>("JoinDate");
+                sf.ShowDialog();
+                getStaffRcords();
+            }
+            departmentId = 0;
         }
         private void Form1_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'superMarketMS_ProjectDataSet.Users' table. You can move, or remove it, as needed.
             if (LoginForm.usertype == "Admin")
             {
-                btnedituser.Enabled = btndeleteuser.Enabled = btncompanyedit.Enabled = btncompanydelete.Enabled = btncategoryedit.Enabled = btncategorydelete.Enabled = true;
+                btnedituser.Enabled = btndeleteuser.Enabled = btncompanyedit.Enabled = btncompanydelete.Enabled = btncategoryedit.Enabled = btncategorydelete.Enabled = btnitemedit.Enabled = btnitemdelete.Enabled = btninventoryedit.Enabled = btninventorydelete.Enabled = true;
             }
             else
             {
-                btnedituser.Enabled = btndeleteuser.Enabled = btncompanyedit.Enabled = btncompanydelete.Enabled = btncategoryedit.Enabled = btncategorydelete.Enabled = false;
+                btnedituser.Enabled = btndeleteuser.Enabled = btncompanyedit.Enabled = btncompanydelete.Enabled = btncategoryedit.Enabled = btncategorydelete.Enabled = btnitemedit.Enabled = btnitemdelete.Enabled = btninventoryedit.Enabled = btninventorydelete.Enabled = false;
             }
             getUserRecords();
             getCompanyRecords();
             getCategoryRecords();
             getItemRecords();
             getInventoryRecords();
+            getDepartmentRecords();
+            getStaffRcords();
         }
 
         private void radButton1_Click(object sender, EventArgs e)
@@ -629,7 +843,6 @@ namespace GSMS
                 }
             }
             dr.Close();
-            userId = 0;
         }
 
         private void btncompanyadd_Click(object sender, EventArgs e)
@@ -679,7 +892,6 @@ namespace GSMS
                 }
             }
             dr.Close();
-            companyId = 0;
         }
 
         private void btncategoryadd_Click(object sender, EventArgs e)
@@ -727,7 +939,6 @@ namespace GSMS
                 }
             }
             dr.Close();
-            categoryId = 0;
         }
 
         private void btnitemadd_Click(object sender, EventArgs e)
@@ -775,8 +986,8 @@ namespace GSMS
                 }
             }
             dr.Close();
-            itemId = 0;
         }
+
         private void btninventoryadd_Click(object sender, EventArgs e)
         {
             InventoryForm inventoryForm = new InventoryForm();
@@ -808,7 +1019,89 @@ namespace GSMS
                 }
             }
             dr.Close();
-            inventoryId = 0;
+        }
+        private void btndepartmentadd_Click(object sender, EventArgs e)
+        {
+            DepartmentForm df = new DepartmentForm();
+            df.ShowDialog();
+            getDepartmentRecords();
+        }
+        private void btndepartmentedit_Click(object sender, EventArgs e)
+        {
+            editDepartment();
+        }
+        private void btndepartmentdelete_Click(object sender, EventArgs e)
+        {
+            getDepartmetnId();
+            if (departmentId > 0)
+            {
+                cmd = new SqlCommand("EDIT_DEPARTMENT", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@ID", departmentId);
+                dr = cmd.ExecuteReader();
+                if (dr.HasRows)
+                {
+                    DialogResult res = MessageBox.Show("Do You Want to Delte ?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (res == DialogResult.Yes)
+                    {
+                        dr.Close();
+                        cmd = new SqlCommand("DELETE_DEPARTMENT", con);
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@ID", departmentId);
+                        dr = cmd.ExecuteReader();
+                        if (dr.HasRows)
+                        {
+                            string staff = "";
+                            while (dr.Read())
+                            {
+                                staff += "\n" + dr.GetString(0);
+                            }
+                            MessageBox.Show("You cannot Delete this Department because it has Staff : " + staff, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            dr.Close();
+                            getDepartmentRecords();
+                        }
+                        dr.Close();
+                    }
+                }
+                dr.Close();
+            }
+        }
+
+
+        private void btnstaffmemberadd_Click(object sender, EventArgs e)
+        {
+            StaffForm sf = new StaffForm();
+            sf.ShowDialog();
+            getStaffRcords();
+        }
+        private void btnstaffmemberedit_Click(object sender, EventArgs e)
+        {
+            editStaffMemebr();
+        }
+        private void btnstaffmemberdelete_Click(object sender, EventArgs e)
+        {
+            getStaffMemberId();
+            cmd = new SqlCommand("EDIT_STAFF_MEMBER", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@ID", staffMemberId);
+            dr = cmd.ExecuteReader();
+            if (dr.HasRows)
+            {
+                DialogResult res = MessageBox.Show("Do You Want to Delete ?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (res == DialogResult.Yes)
+                {
+                    dr.Close();
+                    cmd = new SqlCommand("DELETE_STAFF_MEMBER", con);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@ID", staffMemberId);
+                    cmd.ExecuteNonQuery();
+                    getStaffRcords();
+                }
+            }
+            dr.Close();
         }
 
         private void gridviewusers_SelectionChanged(object sender, EventArgs e)
@@ -868,6 +1161,7 @@ namespace GSMS
             }
             else { btncategorydelete.Enabled = btncategoryedit.Enabled = false; }
         }
+
         private void gridviewitem_SelectionChanged(object sender, EventArgs e)
         {
             bool isSelected = false;
@@ -886,6 +1180,65 @@ namespace GSMS
                 }
             }
             else { btnitemedit.Enabled = btnitemdelete.Enabled = false; }
+        }
+        private void gridviewinventory_SelectionChanged(object sender, EventArgs e)
+        {
+            bool isSelected = false;
+            for (int i = 0; i < gridviewinventory.Rows.Count; i++)
+            {
+                if (gridviewinventory.Rows[i].IsSelected)
+                {
+                    isSelected = true;
+                }
+            }
+            if (isSelected)
+            {
+                if (LoginForm.usertype == "Admin")
+                {
+                    btninventoryedit.Enabled = btninventorydelete.Enabled = true;
+                }
+            }
+            else { btninventoryedit.Enabled = btninventorydelete.Enabled = false; }
+        }
+
+        private void gridviewdepartment_SelectionChanged(object sender, EventArgs e)
+        {
+            bool isSelected = false;
+            for (int i = 0; i < gridviewdepartment.Rows.Count; i++)
+            {
+                if (gridviewdepartment.Rows[i].IsSelected)
+                {
+                    isSelected = true;
+                }
+            }
+            if (isSelected)
+            {
+                if (LoginForm.usertype == "Admin")
+                {
+                    btndepartmentedit.Enabled = btndepartmentdelete.Enabled = true;
+                }
+            }
+            else { btndepartmentedit.Enabled = btndepartmentdelete.Enabled = false; }
+        }
+
+        private void gridviewstaff_SelectionChanged(object sender, EventArgs e)
+        {
+            bool isSelected = false;
+            for (int i = 0; i < gridviewstaff.Rows.Count; i++)
+            {
+                if (gridviewstaff.Rows[i].IsSelected)
+                {
+                    isSelected = true;
+                }
+            }
+            if (isSelected)
+            {
+                if (LoginForm.usertype == "Admin")
+                {
+                    btnstaffmemberedit.Enabled = btnstaffmemberdelete.Enabled = true;
+                }
+            }
+            else { btnstaffmemberedit.Enabled = btnstaffmemberdelete.Enabled = false; }
         }
 
         private void gridviewusers_CellDoubleClick(object sender, GridViewCellEventArgs e)
@@ -908,6 +1261,13 @@ namespace GSMS
         {
             editInventoryRecord();
         }
-
+        private void gridviewdepartment_CellDoubleClick(object sender, GridViewCellEventArgs e)
+        {
+            editDepartment();
+        }
+        private void gridviewstaff_CellDoubleClick(object sender, GridViewCellEventArgs e)
+        {
+            editStaffMemebr();
+        }
     }
 }
