@@ -24,7 +24,6 @@ namespace GSMS
         public MasterForm()
         {
             InitializeComponent();
-            con.Open();
         }
 
         private void getUserRecords()
@@ -87,6 +86,12 @@ namespace GSMS
                 if (Convert.ToBoolean(item["Status"]))
                 {
                     status = "Active";
+                    rowInfo.Cells[14].Style.ForeColor = Color.Green;
+                    rowInfo.Cells[14].Style.BackColor = Color.Green;
+                }
+                else
+                {
+                    rowInfo.Cells[14].Style.ForeColor = Color.Red;
                 }
                 rowInfo.Cells[14].Value = status;
                 if (item["LastLogIn"] != DBNull.Value)
@@ -148,9 +153,11 @@ namespace GSMS
                 if (Convert.ToInt32(row["Status"]) == 1)
                 {
                     status = "Active";
+                    rowInfo.Cells[8].Style.ForeColor = Color.Green;
                 }
                 else
                 {
+                    rowInfo.Cells[8].Style.ForeColor = Color.Red;
                     status = "Not Active";
                 }
                 rowInfo.Cells[8].Value = status;
@@ -205,9 +212,11 @@ namespace GSMS
                 if (Convert.ToInt32(row["Status"]) == 1)
                 {
                     status = "Active";
+                    rowInfo.Cells[8].Style.ForeColor = Color.Green;
                 }
                 else
                 {
+                    rowInfo.Cells[8].Style.ForeColor = Color.Red;
                     status = "Not Active";
                 }
                 rowInfo.Cells[8].Value = status;
@@ -239,7 +248,6 @@ namespace GSMS
             gridviewitem.Columns.Add("Price");
             gridviewitem.Columns.Add("Discount");
             gridviewitem.Columns.Add("Tax");
-            gridviewitem.Columns.Add("Expiry Date");
             gridviewitem.Columns.Add("Category");
             gridviewitem.Columns.Add("Company");
             gridviewitem.Columns.Add("Created Date");
@@ -281,22 +289,23 @@ namespace GSMS
                     tax += " Rs.";
                 }
                 rowInfo.Cells[5].Value = tax;
-                rowInfo.Cells[6].Value = Convert.ToDateTime(row["ExpiryDate"]).ToString("dd/MMM/yyyy");
-                rowInfo.Cells[7].Value = row["Category"].ToString();
-                rowInfo.Cells[8].Value = row["Company"].ToString();
-                rowInfo.Cells[9].Value = Convert.ToDateTime(row["CreatedDate"]).ToString("dd/MMM/yyyy hh:mm:ss tt");
-                rowInfo.Cells[10].Value = row["Created By"].ToString();
-                rowInfo.Cells[11].Value = Convert.ToDateTime(row["UpdatedDate"]).ToString("dd/MMM/yyyy hh:mm:ss tt");
-                rowInfo.Cells[12].Value = row["Updated By"].ToString();
+                rowInfo.Cells[6].Value = row["Category"].ToString();
+                rowInfo.Cells[7].Value = row["Company"].ToString();
+                rowInfo.Cells[8].Value = Convert.ToDateTime(row["CreatedDate"]).ToString("dd/MMM/yyyy hh:mm:ss tt");
+                rowInfo.Cells[9].Value = row["Created By"].ToString();
+                rowInfo.Cells[10].Value = Convert.ToDateTime(row["UpdatedDate"]).ToString("dd/MMM/yyyy hh:mm:ss tt");
+                rowInfo.Cells[11].Value = row["Updated By"].ToString();
                 if (Convert.ToInt32(row["Status"]) == 1)
                 {
                     status = "Active";
+                    rowInfo.Cells[12].Style.ForeColor = Color.Green;
                 }
                 else
                 {
                     status = "Not Active";
+                    rowInfo.Cells[12].Style.ForeColor = Color.Red;
                 }
-                rowInfo.Cells[13].Value = status;
+                rowInfo.Cells[12].Value = status;
 
                 gridviewitem.Rows.Add(rowInfo);
             }
@@ -348,7 +357,7 @@ namespace GSMS
                 rowInfo.Cells[2].Value = item["Category"].ToString();
                 rowInfo.Cells[3].Value = item["Item"].ToString();
                 rowInfo.Cells[4].Value = item["Quantity"].ToString();
-                rowInfo.Cells[5].Value = item["Unit"].ToString() + " " + item["Measurement"].ToString();
+                rowInfo.Cells[5].Value = item["Unit"].ToString();
                 rowInfo.Cells[6].Value = Convert.ToDateTime(item["CreatedDate"]).ToString("dd/MMM/yyyy hh:mm:ss tt");
                 rowInfo.Cells[7].Value = item["Created By"].ToString();
                 rowInfo.Cells[8].Value = Convert.ToDateTime(item["LastUpdated"]).ToString("dd/MMM/yyyy hh:mm:ss tt");
@@ -358,6 +367,11 @@ namespace GSMS
                 if (Convert.ToBoolean(item["Status"]))
                 {
                     status = "Active";
+                    rowInfo.Cells[12].Style.ForeColor = Color.Green;
+                }
+                else
+                {
+                    rowInfo.Cells[12].Style.ForeColor = Color.Red;
                 }
                 rowInfo.Cells[12].Value = status;
                 gridviewinventory.Rows.Add(rowInfo);
@@ -414,9 +428,11 @@ namespace GSMS
                 if (Convert.ToInt32(row["Status"]) == 1)
                 {
                     status = "Active";
+                    rowInfo.Cells[9].Style.ForeColor = Color.Green;
                 }
                 else
                 {
+                    rowInfo.Cells[9].Style.ForeColor = Color.Red;
                     status = "Not Active";
                 }
                 rowInfo.Cells[9].Value = status;
@@ -491,10 +507,12 @@ namespace GSMS
                 if (Convert.ToInt32(row["Status"]) == 1)
                 {
                     status = "Active";
+                    rowInfo.Cells[14].Style.ForeColor = Color.Green;
                 }
                 else
                 {
                     status = "Not Active";
+                    rowInfo.Cells[14].Style.ForeColor = Color.Red;
                 }
                 rowInfo.Cells[14].Value = status;
 
@@ -504,6 +522,114 @@ namespace GSMS
             gridviewstaff.BestFitColumns();
             gridviewstaff.AutoSizeColumnsMode = GridViewAutoSizeColumnsMode.Fill;
             gridviewstaff.ShowGroupedColumns = true;
+        }
+        private void getCustomerRecords()
+        {
+
+            string query = "EXEC SELECT_CUSTOMERS";
+
+            da = new SqlDataAdapter(query, con);
+            dt.Clear();
+            da.Fill(dt);
+
+            gridviewcustomer.Columns.Clear();
+            gridviewcustomer.Rows.Clear();
+
+            gridviewcustomer.Columns.Add("Id");
+            gridviewcustomer.Columns[0].IsVisible = false;
+            gridviewcustomer.Columns.Add("First Name");
+            gridviewcustomer.Columns.Add("Last Name");
+            gridviewcustomer.Columns.Add("Phone");
+            gridviewcustomer.Columns.Add("Email");
+            gridviewcustomer.Columns.Add("Gender");
+            gridviewcustomer.Columns.Add("City");
+            gridviewcustomer.Columns.Add("Pincode");
+     
+            for (int i = 0; i < gridviewcustomer.Columns.Count; i++)
+            {
+                gridviewcustomer.Columns[i].TextAlignment = ContentAlignment.MiddleCenter;
+            }
+
+            foreach (DataRow row in dt.Rows)
+            {
+                string gender = "";
+                GridViewDataRowInfo rowInfo = new GridViewDataRowInfo(this.gridviewcustomer.MasterView);
+                rowInfo.Cells[0].Value = row["Id"].ToString();
+                rowInfo.Cells[1].Value = row["FirstName"].ToString();
+                rowInfo.Cells[2].Value = row["LastName"].ToString();
+                rowInfo.Cells[3].Value = row["Phone"].ToString();
+                rowInfo.Cells[4].Value = row["Email"].ToString();
+                if (Convert.ToInt32(row["Gender"]) == 1)
+                {
+                    gender = "Male";
+                }
+                else
+                {
+                    gender = "Female";
+                }
+                rowInfo.Cells[5].Value = gender;
+                rowInfo.Cells[6].Value = row["City"].ToString();
+                rowInfo.Cells[7].Value = row["Pincode"].ToString();
+
+                gridviewcustomer.Rows.Add(rowInfo);
+            }
+            //gridviewcustomer.AutoSizeRows = true;
+            gridviewcustomer.BestFitColumns();
+            gridviewcustomer.AutoSizeColumnsMode = GridViewAutoSizeColumnsMode.Fill;
+        }
+        private void getBillRecords()
+        {
+
+            string query = "EXEC SELECT_BILLS";
+
+            da = new SqlDataAdapter(query, con);
+            dt.Clear();
+            da.Fill(dt);
+
+            gridviewbill.Columns.Clear();
+            gridviewbill.Rows.Clear();
+
+            gridviewbill.Columns.Add("Id");
+            gridviewbill.Columns[0].IsVisible = false;
+            gridviewbill.Columns.Add("Bill No.");
+            gridviewbill.Columns.Add("Customer Name");
+            gridviewbill.Columns.Add("Item");
+            gridviewbill.Columns.Add("Quantity");
+            gridviewbill.Columns.Add("Total Amount");
+            gridviewbill.Columns.Add("Discount");
+            gridviewbill.Columns.Add("Tax");
+            gridviewbill.Columns.Add("Payable Amount");
+            gridviewbill.Columns.Add("Bill Date");
+            gridviewbill.Columns.Add("Payment Status");
+            gridviewbill.Columns.Add("Created Date");
+            gridviewbill.Columns.Add("Created By");
+
+            for (int i = 0; i < gridviewbill.Columns.Count; i++)
+            {
+                gridviewbill.Columns[i].TextAlignment = ContentAlignment.MiddleCenter;
+            }
+
+            foreach (DataRow row in dt.Rows)
+            {
+                GridViewDataRowInfo rowInfo = new GridViewDataRowInfo(this.gridviewbill.MasterView);
+                rowInfo.Cells[0].Value = row["Id"].ToString();
+                rowInfo.Cells[1].Value = row["BillNo"].ToString();
+                rowInfo.Cells[2].Value = row["Customer"].ToString();
+                rowInfo.Cells[3].Value = row["Item"].ToString();
+                rowInfo.Cells[4].Value = row["Quantity"].ToString();
+                rowInfo.Cells[5].Value = row["TotalAmount"].ToString();
+                rowInfo.Cells[6].Value = row["Discount"].ToString();
+                rowInfo.Cells[7].Value = row["Tax"].ToString();
+                rowInfo.Cells[8].Value = row["PayableAmount"].ToString();
+                rowInfo.Cells[9].Value = Convert.ToDateTime(row["BillDate"]).ToString("dd/MM/yyyy hh:mm:ss tt");
+                rowInfo.Cells[10].Value = row["PaymentStatus"].ToString();
+                rowInfo.Cells[11].Value = Convert.ToDateTime(row["CreatedDate"]).ToString("dd/MM/yyyy hh:mm:ss tt");
+                rowInfo.Cells[12].Value = row["Created By"].ToString();
+                gridviewbill.Rows.Add(rowInfo);
+            }
+            //gridviewbill.AutoSizeRows = true;
+            gridviewbill.BestFitColumns();
+            gridviewbill.AutoSizeColumnsMode = GridViewAutoSizeColumnsMode.Fill;
         }
         private void getUserId()
         {
@@ -648,6 +774,7 @@ namespace GSMS
                 cf.ShowDialog();
                 getCompanyRecords();
             }
+            companyId = 0;
         }
 
         private void editCategory()
@@ -668,6 +795,7 @@ namespace GSMS
                 cf.ShowDialog();
                 getCategoryRecords();
             }
+            categoryId = 0;
             companyId = 0;
         }
 
@@ -702,10 +830,10 @@ namespace GSMS
                     tax *= 100;
                 }
                 itemf.spineditortax.Value = tax;
-                itemf.datetimeexpiration.Value = dt.Rows[0].Field<DateTime>("ExpiryDate");
                 itemf.ShowDialog();
                 getItemRecords();
             }
+            itemId = 0;
             companyId = 0;
             categoryId = 0;
         }
@@ -725,13 +853,13 @@ namespace GSMS
                 categoryId = dt.Rows[0].Field<Int32>("CategoryId");
                 itemId = dt.Rows[0].Field<Int32>("ItemId");
                 inventoryF.spineditorquantity.Value = dt.Rows[0].Field<Decimal>("Quantity");
-                inventoryF.spineditorunit.Value = dt.Rows[0].Field<Int32>("Unit");
-                inventoryF.drpunit.SelectedItem = dt.Rows[0].Field<String>("Measurement");
+                inventoryF.drpunit.SelectedItem = dt.Rows[0].Field<String>("Unit");
                 inventoryF.spineditorminimumstock.Value = dt.Rows[0].Field<Int32>("MinimumStock");
                 inventoryF.spineditormaximumstock.Value = dt.Rows[0].Field<Int32>("MaximumStock");
                 inventoryF.ShowDialog();
                 getInventoryRecords();
             }
+            inventoryId = 0;
             companyId = 0;
             categoryId = 0;
             itemId = 0;
@@ -756,6 +884,7 @@ namespace GSMS
                 df.ShowDialog();
                 getDepartmentRecords();
             }
+            departmentId = 0;
         }
         private void editStaffMemebr()
         {
@@ -789,10 +918,12 @@ namespace GSMS
                 sf.ShowDialog();
                 getStaffRcords();
             }
+            staffMemberId = 0;
             departmentId = 0;
         }
         private void Form1_Load(object sender, EventArgs e)
         {
+            con.Open();
             // TODO: This line of code loads data into the 'superMarketMS_ProjectDataSet.Users' table. You can move, or remove it, as needed.
             if (LoginForm.usertype == "Admin")
             {
@@ -809,6 +940,8 @@ namespace GSMS
             getInventoryRecords();
             getDepartmentRecords();
             getStaffRcords();
+            getCustomerRecords();
+            getBillRecords();
         }
 
         private void radButton1_Click(object sender, EventArgs e)
@@ -1041,7 +1174,7 @@ namespace GSMS
                 dr = cmd.ExecuteReader();
                 if (dr.HasRows)
                 {
-                    DialogResult res = MessageBox.Show("Do You Want to Delte ?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    DialogResult res = MessageBox.Show("Do You Want to Delete ?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     if (res == DialogResult.Yes)
                     {
                         dr.Close();
@@ -1245,6 +1378,13 @@ namespace GSMS
         {
             editUser();
         }
+
+        private void btnbillnew_Click(object sender, EventArgs e)
+        {
+            BillForm bf = new BillForm();
+            bf.ShowDialog();
+        }
+
         private void gridviewcompany_CellDoubleClick(object sender, GridViewCellEventArgs e)
         {
             editCompany();

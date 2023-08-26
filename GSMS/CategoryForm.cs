@@ -43,9 +43,7 @@ namespace GSMS
             cmd.Parameters.AddWithValue("@SHORTNAME", txtshortname.Text);
             cmd.Parameters.AddWithValue("@UPDATEDDATE", DateTime.Now.ToString("MM/dd/yyyy hh:mm:ss tt"));
             cmd.Parameters.AddWithValue("UPDATEDBY", LoginForm.loggedInUserId);
-            con.Open();
             cmd.ExecuteNonQuery();
-            con.Close();
         }
 
         private void getCompanies()
@@ -114,8 +112,10 @@ namespace GSMS
                 {
                     query = "UPDATE_CATEGORY";
                 }
+                con.Open();
                 performOperation(query);
-                Close();
+                con.Close();
+                this.Close();
             }
         }
 

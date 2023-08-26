@@ -66,10 +66,6 @@ namespace GSMS
                 drpcategory.DisplayMember = "Value";
                 drpcategory.ValueMember = "Key";
             }
-            else
-            {
-                drpcategory.DataSource = null;
-            }
         }
         private void getItems(object categoryId)
         {
@@ -93,10 +89,6 @@ namespace GSMS
                 drpitem.DisplayMember = "Value";
                 drpitem.ValueMember = "Key";
             }
-            else
-            {
-                drpitem.DataSource = null;
-            }
         }
 
         private void performOperation(string query)
@@ -116,8 +108,7 @@ namespace GSMS
             cmd.Parameters.AddWithValue("@CATEGORYID", drpcategory.SelectedValue);
             cmd.Parameters.AddWithValue("@ITEMID", drpitem.SelectedValue);
             cmd.Parameters.AddWithValue("@QUANTITY", Convert.ToDecimal(spineditorquantity.Value));
-            cmd.Parameters.AddWithValue("@UNIT", spineditorunit.Value);
-            cmd.Parameters.AddWithValue("@MEASUREMENT", drpunit.SelectedItem);
+            cmd.Parameters.AddWithValue("@UNIT", drpunit.SelectedItem);
             cmd.Parameters.AddWithValue("@MINIMUMSTOCK", spineditorminimumstock.Value);
             cmd.Parameters.AddWithValue("@MAXIMUMSTOCK", spineditormaximumstock.Value);
             cmd.Parameters.AddWithValue("@LASTUPDATED", DateTime.Now.ToString("MM/dd/yyyy hh:mm:ss tt"));
@@ -178,7 +169,6 @@ namespace GSMS
                 erpcategory.Clear();
                 erpitem.Clear();
                 validatorForSpinEditor.ClearErrorStatus(spineditorquantity);
-                validatorForSpinEditor.ClearErrorStatus(spineditorunit);
                 validatorForSpinEditor.ClearErrorStatus(spineditorminimumstock);
                 validatorForSpinEditor.ClearErrorStatus(spineditormaximumstock);
 
@@ -204,7 +194,6 @@ namespace GSMS
                     erpcompany.Clear();
                     erpitem.Clear();
                     validatorForSpinEditor.ClearErrorStatus(spineditorquantity);
-                    validatorForSpinEditor.ClearErrorStatus(spineditorunit);
                     validatorForSpinEditor.ClearErrorStatus(spineditorminimumstock);
                     validatorForSpinEditor.ClearErrorStatus(spineditormaximumstock);
 
@@ -227,7 +216,6 @@ namespace GSMS
                 {
                     erpcompany.Clear();
                     validatorForSpinEditor.ClearErrorStatus(spineditorquantity);
-                    validatorForSpinEditor.ClearErrorStatus(spineditorunit);
                     validatorForSpinEditor.ClearErrorStatus(spineditorminimumstock);
                     validatorForSpinEditor.ClearErrorStatus(spineditormaximumstock);
 
@@ -260,7 +248,6 @@ namespace GSMS
                 erpitem.Clear();
                 erpdrpunit.Clear();
                 validatorForSpinEditor.ClearErrorStatus(spineditorquantity);
-                validatorForSpinEditor.ClearErrorStatus(spineditorunit);
                 validatorForSpinEditor.ClearErrorStatus(spineditorminimumstock);
                 validatorForSpinEditor.ClearErrorStatus(spineditormaximumstock);
 
@@ -273,7 +260,6 @@ namespace GSMS
                 erpitem.Clear();
                 erpdrpunit.Clear();
                 validatorForSpinEditor.ClearErrorStatus(spineditorquantity);
-                validatorForSpinEditor.ClearErrorStatus(spineditorunit);
                 validatorForSpinEditor.ClearErrorStatus(spineditorminimumstock);
                 validatorForSpinEditor.ClearErrorStatus(spineditormaximumstock);
 
@@ -286,7 +272,6 @@ namespace GSMS
                 erpcategory.Clear();
                 erpdrpunit.Clear();
                 validatorForSpinEditor.ClearErrorStatus(spineditorquantity);
-                validatorForSpinEditor.ClearErrorStatus(spineditorunit);
                 validatorForSpinEditor.ClearErrorStatus(spineditorminimumstock);
                 validatorForSpinEditor.ClearErrorStatus(spineditormaximumstock);
 
@@ -298,24 +283,11 @@ namespace GSMS
                 erpcompany.Clear();
                 erpcategory.Clear();
                 erpdrpunit.Clear();
-                validatorForSpinEditor.ClearErrorStatus(spineditorunit);
                 validatorForSpinEditor.ClearErrorStatus(spineditorminimumstock);
                 validatorForSpinEditor.ClearErrorStatus(spineditormaximumstock);
 
                 validatorForSpinEditor.Validate(spineditorquantity);
                 spineditorquantity.Focus();
-            }
-            else if (spineditorunit.Value == 0)
-            {
-                erpcompany.Clear();
-                erpcategory.Clear();
-                erpdrpunit.Clear();
-                validatorForSpinEditor.ClearErrorStatus(spineditorquantity);
-                validatorForSpinEditor.ClearErrorStatus(spineditorminimumstock);
-                validatorForSpinEditor.ClearErrorStatus(spineditormaximumstock);
-
-                validatorForSpinEditor.Validate(spineditorunit);
-                spineditorunit.Focus();
             }
             else if (drpunit.SelectedItem == null)
             {
@@ -323,7 +295,6 @@ namespace GSMS
                 erpcategory.Clear();
                 erpitem.Clear();
                 validatorForSpinEditor.ClearErrorStatus(spineditorquantity);
-                validatorForSpinEditor.ClearErrorStatus(spineditorunit);
                 validatorForSpinEditor.ClearErrorStatus(spineditorminimumstock);
                 validatorForSpinEditor.ClearErrorStatus(spineditormaximumstock);
 
@@ -336,7 +307,6 @@ namespace GSMS
                 erpcategory.Clear();
                 erpdrpunit.Clear();
                 validatorForSpinEditor.ClearErrorStatus(spineditorquantity);
-                validatorForSpinEditor.ClearErrorStatus(spineditorunit);
                 validatorForSpinEditor.ClearErrorStatus(spineditormaximumstock);
 
                 validatorForSpinEditor.Validate(spineditorminimumstock);
@@ -348,7 +318,6 @@ namespace GSMS
                 erpcategory.Clear();
                 erpdrpunit.Clear();
                 validatorForSpinEditor.ClearErrorStatus(spineditorquantity);
-                validatorForSpinEditor.ClearErrorStatus(spineditorunit);
                 validatorForSpinEditor.ClearErrorStatus(spineditorminimumstock);
 
                 validatorForSpinEditor.Validate(spineditormaximumstock);
@@ -361,7 +330,6 @@ namespace GSMS
                 erpitem.Clear();
                 erpdrpunit.Clear();
                 validatorForSpinEditor.ClearErrorStatus(spineditorquantity);
-                validatorForSpinEditor.ClearErrorStatus(spineditorunit);
                 validatorForSpinEditor.ClearErrorStatus(spineditorminimumstock);
                 validatorForSpinEditor.ClearErrorStatus(spineditormaximumstock);
 

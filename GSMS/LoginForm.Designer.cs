@@ -177,7 +177,7 @@
             this.RootElement.MaxSize = new System.Drawing.Size(280, 369);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = " LogIn";
-            this.ThemeName = "CrystalDark";
+            this.ThemeName = "Fluent";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtpassword)).EndInit();

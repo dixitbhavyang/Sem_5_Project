@@ -62,6 +62,95 @@ namespace GSMS
             cmd.Parameters.AddWithValue("@CITY", txtcity.Text);
             cmd.ExecuteNonQuery();
         }
+
+        private void txtfirstname_TextChanged(object sender, EventArgs e)
+        {
+            if (String.IsNullOrEmpty(txtfirstname.Text))
+            {
+                validatorForTextBoxes.Validate(txtfirstname);
+                txtfirstname.Focus();
+            }
+            else { validatorForTextBoxes.ClearErrorStatus(txtfirstname); }
+        }
+
+        private void txtlastname_TextChanged(object sender, EventArgs e)
+        {
+            if (String.IsNullOrEmpty(txtlastname.Text))
+            {
+                validatorForTextBoxes.Validate(txtlastname);
+                txtlastname.Focus();
+            }
+            else { validatorForTextBoxes.ClearErrorStatus(txtlastname); }
+        }
+
+        private void txtusername_TextChanged(object sender, EventArgs e)
+        {
+            if (String.IsNullOrEmpty(txtusername.Text))
+            {
+                validatorForTextBoxes.Validate(txtusername);
+                txtusername.Focus();
+            }
+            else { validatorForTextBoxes.ClearErrorStatus(txtusername); }
+        }
+
+        private void txtpassword_TextChanged(object sender, EventArgs e)
+        {
+            if (String.IsNullOrEmpty(txtpassword.Text))
+            {
+                validatorForTextBoxes.Validate(txtpassword);
+                txtpassword.Focus();
+            }
+            else { validatorForTextBoxes.ClearErrorStatus(txtpassword); }
+        }
+
+        private void txtcontactnumber_TextChanged(object sender, EventArgs e)
+        {
+            if (String.IsNullOrEmpty(txtcontactnumber.Text))
+            {
+                validatorForTextBoxes.Validate(txtcontactnumber);
+                txtcontactnumber.Focus();
+            }
+            else { validatorForTextBoxes.ClearErrorStatus(txtcontactnumber); }
+        }
+
+        private void txtmail_TextChanged(object sender, EventArgs e)
+        {
+            if (String.IsNullOrEmpty(txtmail.Text))
+            {
+                validatorForTextBoxes.Validate(txtmail);
+                txtmail.Focus();
+            }
+            else { validatorForTextBoxes.ClearErrorStatus(txtmail); }
+        }
+
+        private void txtcity_TextChanged(object sender, EventArgs e)
+        {
+            if (String.IsNullOrEmpty(txtcity.Text))
+            {
+                validatorForTextBoxes.Validate(txtcity);
+                txtcity.Focus();
+            }
+            else { validatorForTextBoxes.ClearErrorStatus(txtcity); }
+        }
+
+        private void dropdownrole_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (dropdownrole.SelectedIndex < 0)
+            {
+                eprole.SetError(dropdownrole, "Please Select Role...");
+                dropdownrole.Focus();
+            }
+            else { eprole.Clear(); }
+        }
+
+        private void txtcontactnumber_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                // If it's not a digit or a control character, suppress the keypress event
+                e.Handled = true;
+            }
+        }
         private void btnadduser_Click(object sender, EventArgs e)
         {
             role = "";
@@ -203,104 +292,15 @@ namespace GSMS
                 eprole.Clear();
 
                 role = dropdownrole.SelectedItem.ToString();
-                con.Open();
                 string query = "INSERT_USER";
                 if (MasterForm.userId > 0)
                 {
                     query = "UPDATE_USER";
                 }
+                con.Open();
                 performOperation(query);
                 con.Close();
                 Close();
-            }
-        }
-
-        private void txtfirstname_TextChanged(object sender, EventArgs e)
-        {
-            if (String.IsNullOrEmpty(txtfirstname.Text))
-            {
-                validatorForTextBoxes.Validate(txtfirstname);
-                txtfirstname.Focus();
-            }
-            else { validatorForTextBoxes.ClearErrorStatus(txtfirstname); }
-        }
-
-        private void txtlastname_TextChanged(object sender, EventArgs e)
-        {
-            if (String.IsNullOrEmpty(txtlastname.Text))
-            {
-                validatorForTextBoxes.Validate(txtlastname);
-                txtlastname.Focus();
-            }
-            else { validatorForTextBoxes.ClearErrorStatus(txtlastname); }
-        }
-
-        private void txtusername_TextChanged(object sender, EventArgs e)
-        {
-            if (String.IsNullOrEmpty(txtusername.Text))
-            {
-                validatorForTextBoxes.Validate(txtusername);
-                txtusername.Focus();
-            }
-            else { validatorForTextBoxes.ClearErrorStatus(txtusername); }
-        }
-
-        private void txtpassword_TextChanged(object sender, EventArgs e)
-        {
-            if (String.IsNullOrEmpty(txtpassword.Text))
-            {
-                validatorForTextBoxes.Validate(txtpassword);
-                txtpassword.Focus();
-            }
-            else { validatorForTextBoxes.ClearErrorStatus(txtpassword); }
-        }
-
-        private void txtcontactnumber_TextChanged(object sender, EventArgs e)
-        {
-            if (String.IsNullOrEmpty(txtcontactnumber.Text))
-            {
-                validatorForTextBoxes.Validate(txtcontactnumber);
-                txtcontactnumber.Focus();
-            }
-            else { validatorForTextBoxes.ClearErrorStatus(txtcontactnumber); }
-        }
-
-        private void txtmail_TextChanged(object sender, EventArgs e)
-        {
-            if (String.IsNullOrEmpty(txtmail.Text))
-            {
-                validatorForTextBoxes.Validate(txtmail);
-                txtmail.Focus();
-            }
-            else { validatorForTextBoxes.ClearErrorStatus(txtmail); }
-        }
-
-        private void txtcity_TextChanged(object sender, EventArgs e)
-        {
-            if (String.IsNullOrEmpty(txtcity.Text))
-            {
-                validatorForTextBoxes.Validate(txtcity);
-                txtcity.Focus();
-            }
-            else { validatorForTextBoxes.ClearErrorStatus(txtcity); }
-        }
-
-        private void dropdownrole_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (dropdownrole.SelectedIndex < 0)
-            {
-                eprole.SetError(dropdownrole, "Please Select Role...");
-                dropdownrole.Focus();
-            }
-            else { eprole.Clear(); }
-        }
-
-        private void txtcontactnumber_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
-            {
-                // If it's not a digit or a control character, suppress the keypress event
-                e.Handled = true;
             }
         }
     }

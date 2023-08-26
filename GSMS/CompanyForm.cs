@@ -22,7 +22,6 @@ namespace GSMS
         }
         private void performOperation(string query)
         {
-            con.Open();
             cmd = new SqlCommand(query, con);
             cmd.CommandType = CommandType.StoredProcedure;
             if (MasterForm.companyId > 0)
@@ -40,48 +39,6 @@ namespace GSMS
             cmd.Parameters.AddWithValue("@UPDATEDBY", LoginForm.loggedInUserId);
             cmd.Parameters.AddWithValue("@ADDRESS", txtaddress.Text);
             cmd.ExecuteNonQuery();
-            con.Close();
-        }
-        private void btnaddcomapny_Click_2(object sender, EventArgs e)
-        {
-            if (String.IsNullOrEmpty(txtcompanyname.Text))
-            {
-                validatorForTextBoxes.ClearErrorStatus(txtshortname);
-                validatorForTextBoxes.ClearErrorStatus(txtaddress);
-
-                validatorForTextBoxes.Validate(txtcompanyname);
-                txtcompanyname.Focus();
-            }
-            else if (String.IsNullOrEmpty(txtshortname.Text))
-            {
-                validatorForTextBoxes.ClearErrorStatus(txtcompanyname);
-                validatorForTextBoxes.ClearErrorStatus(txtaddress);
-
-                validatorForTextBoxes.Validate(txtshortname);
-                txtshortname.Focus();
-            }
-            else if (String.IsNullOrEmpty(txtaddress.Text))
-            {
-                validatorForTextBoxes.ClearErrorStatus(txtcompanyname);
-                validatorForTextBoxes.ClearErrorStatus(txtshortname);
-
-                validatorForTextBoxes.Validate(txtaddress);
-                txtaddress.Focus();
-            }
-            else
-            {
-                validatorForTextBoxes.ClearErrorStatus(txtcompanyname);
-                validatorForTextBoxes.ClearErrorStatus(txtshortname);
-                validatorForTextBoxes.ClearErrorStatus(txtaddress);
-
-                string query = "INSERT_COMPANY";
-                if (MasterForm.companyId > 0)
-                {
-                    query = "UPDATE_COMPANY";
-                }
-                performOperation(query);
-                Close();
-            }
         }
 
         private void CompanyForm_Load(object sender, EventArgs e)
@@ -122,5 +79,49 @@ namespace GSMS
             }
             else { validatorForTextBoxes.ClearErrorStatus(txtaddress); }
         }
+        private void btnaddcomapny_Click_2(object sender, EventArgs e)
+        {
+            if (String.IsNullOrEmpty(txtcompanyname.Text))
+            {
+                validatorForTextBoxes.ClearErrorStatus(txtshortname);
+                validatorForTextBoxes.ClearErrorStatus(txtaddress);
+
+                validatorForTextBoxes.Validate(txtcompanyname);
+                txtcompanyname.Focus();
+            }
+            else if (String.IsNullOrEmpty(txtshortname.Text))
+            {
+                validatorForTextBoxes.ClearErrorStatus(txtcompanyname);
+                validatorForTextBoxes.ClearErrorStatus(txtaddress);
+
+                validatorForTextBoxes.Validate(txtshortname);
+                txtshortname.Focus();
+            }
+            else if (String.IsNullOrEmpty(txtaddress.Text))
+            {
+                validatorForTextBoxes.ClearErrorStatus(txtcompanyname);
+                validatorForTextBoxes.ClearErrorStatus(txtshortname);
+
+                validatorForTextBoxes.Validate(txtaddress);
+                txtaddress.Focus();
+            }
+            else
+            {
+                validatorForTextBoxes.ClearErrorStatus(txtcompanyname);
+                validatorForTextBoxes.ClearErrorStatus(txtshortname);
+                validatorForTextBoxes.ClearErrorStatus(txtaddress);
+
+                string query = "INSERT_COMPANY";
+                if (MasterForm.companyId > 0)
+                {
+                    query = "UPDATE_COMPANY";
+                }
+                con.Open();
+                performOperation(query);
+                con.Close();
+                this.Close();
+            }
+        }
+
     }
 }

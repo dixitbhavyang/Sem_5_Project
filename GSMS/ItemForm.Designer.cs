@@ -42,8 +42,6 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnadditem = new ComponentFactory.Krypton.Toolkit.KryptonButton();
-            this.datetimeexpiration = new ComponentFactory.Krypton.Toolkit.KryptonDateTimePicker();
-            this.kryptonLabel7 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.kryptonLabel6 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.kryptonLabel9 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
@@ -93,7 +91,7 @@
             // 
             this.txtitemname.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.txtitemname.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.txtitemname.Location = new System.Drawing.Point(132, 269);
+            this.txtitemname.Location = new System.Drawing.Point(132, 301);
             this.txtitemname.Name = "txtitemname";
             this.txtitemname.Size = new System.Drawing.Size(188, 24);
             this.txtitemname.TabIndex = 2;
@@ -107,7 +105,7 @@
             // 
             this.txtshortname.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.txtshortname.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.txtshortname.Location = new System.Drawing.Point(132, 301);
+            this.txtshortname.Location = new System.Drawing.Point(132, 333);
             this.txtshortname.Name = "txtshortname";
             this.txtshortname.Size = new System.Drawing.Size(188, 24);
             this.txtshortname.TabIndex = 3;
@@ -135,7 +133,7 @@
             this.spineditortax.ThemeName = "Fluent";
             this.spineditortax.ThousandsSeparator = true;
             this.validatorForDiscount.SetValidationRule(this.spineditortax, null);
-            this.validatorForSpinEditor.SetValidationRule(this.spineditortax, radValidationRule1);
+            this.validatorForSpinEditor.SetValidationRule(this.spineditortax, null);
             this.validatorForTextBoxes.SetValidationRule(this.spineditortax, null);
             // 
             // spineditordiscount
@@ -156,13 +154,13 @@
             this.spineditordiscount.ThemeName = "Fluent";
             this.spineditordiscount.ThousandsSeparator = true;
             this.validatorForDiscount.SetValidationRule(this.spineditordiscount, radValidationRuleWithTargetControl1);
-            this.validatorForSpinEditor.SetValidationRule(this.spineditordiscount, radValidationRule1);
+            this.validatorForSpinEditor.SetValidationRule(this.spineditordiscount, null);
             this.validatorForTextBoxes.SetValidationRule(this.spineditordiscount, null);
             // 
             // spineditorprice
             // 
             this.spineditorprice.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.spineditorprice.Location = new System.Drawing.Point(132, 332);
+            this.spineditorprice.Location = new System.Drawing.Point(132, 364);
             this.spineditorprice.Maximum = new decimal(new int[] {
             100000,
             0,
@@ -184,9 +182,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 36.54391F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 63.45609F));
             this.tableLayoutPanel1.Controls.Add(this.pictureBox1, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.btnadditem, 1, 9);
-            this.tableLayoutPanel1.Controls.Add(this.datetimeexpiration, 1, 8);
-            this.tableLayoutPanel1.Controls.Add(this.kryptonLabel7, 0, 8);
+            this.tableLayoutPanel1.Controls.Add(this.btnadditem, 1, 8);
             this.tableLayoutPanel1.Controls.Add(this.kryptonLabel6, 0, 7);
             this.tableLayoutPanel1.Controls.Add(this.panel2, 1, 7);
             this.tableLayoutPanel1.Controls.Add(this.panel1, 1, 6);
@@ -204,7 +200,7 @@
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 10;
+            this.tableLayoutPanel1.RowCount = 9;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32F));
@@ -214,7 +210,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(353, 489);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
@@ -225,7 +221,7 @@
             this.pictureBox1.Image = global::GSMS.Properties.Resources.ItemFormImage;
             this.pictureBox1.Location = new System.Drawing.Point(3, 3);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(347, 195);
+            this.pictureBox1.Size = new System.Drawing.Size(347, 227);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
@@ -242,35 +238,11 @@
             this.btnadditem.Values.Text = "Add";
             this.btnadditem.Click += new System.EventHandler(this.kryptonButton1_Click);
             // 
-            // datetimeexpiration
-            // 
-            this.datetimeexpiration.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.datetimeexpiration.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.datetimeexpiration.Location = new System.Drawing.Point(132, 430);
-            this.datetimeexpiration.Name = "datetimeexpiration";
-            this.datetimeexpiration.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue;
-            this.datetimeexpiration.Size = new System.Drawing.Size(188, 21);
-            this.datetimeexpiration.StateCommon.Border.Draw = ComponentFactory.Krypton.Toolkit.InheritBool.False;
-            this.datetimeexpiration.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.datetimeexpiration.TabIndex = 7;
-            // 
-            // kryptonLabel7
-            // 
-            this.kryptonLabel7.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.kryptonLabel7.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.BoldControl;
-            this.kryptonLabel7.Location = new System.Drawing.Point(19, 431);
-            this.kryptonLabel7.Name = "kryptonLabel7";
-            this.kryptonLabel7.Size = new System.Drawing.Size(107, 20);
-            this.kryptonLabel7.TabIndex = 1;
-            this.kryptonLabel7.Values.Text = "Expiration Date :";
-            // 
             // kryptonLabel6
             // 
             this.kryptonLabel6.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.kryptonLabel6.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.BoldControl;
-            this.kryptonLabel6.Location = new System.Drawing.Point(88, 399);
+            this.kryptonLabel6.Location = new System.Drawing.Point(88, 431);
             this.kryptonLabel6.Name = "kryptonLabel6";
             this.kryptonLabel6.Size = new System.Drawing.Size(38, 20);
             this.kryptonLabel6.TabIndex = 1;
@@ -281,7 +253,7 @@
             this.panel2.Controls.Add(this.kryptonLabel9);
             this.panel2.Controls.Add(this.toggleswitchtax);
             this.panel2.Controls.Add(this.spineditortax);
-            this.panel2.Location = new System.Drawing.Point(132, 396);
+            this.panel2.Location = new System.Drawing.Point(132, 428);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(188, 26);
             this.panel2.TabIndex = 13;
@@ -311,7 +283,7 @@
             this.panel1.Controls.Add(this.kryptonLabel8);
             this.panel1.Controls.Add(this.toggleswitchdiscount);
             this.panel1.Controls.Add(this.spineditordiscount);
-            this.panel1.Location = new System.Drawing.Point(132, 364);
+            this.panel1.Location = new System.Drawing.Point(132, 396);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(188, 26);
             this.panel1.TabIndex = 12;
@@ -341,7 +313,7 @@
             // 
             this.kryptonLabel5.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.kryptonLabel5.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.BoldControl;
-            this.kryptonLabel5.Location = new System.Drawing.Point(57, 367);
+            this.kryptonLabel5.Location = new System.Drawing.Point(57, 399);
             this.kryptonLabel5.Name = "kryptonLabel5";
             this.kryptonLabel5.Size = new System.Drawing.Size(69, 20);
             this.kryptonLabel5.TabIndex = 1;
@@ -351,7 +323,7 @@
             // 
             this.kryptonLabel4.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.kryptonLabel4.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.BoldControl;
-            this.kryptonLabel4.Location = new System.Drawing.Point(80, 335);
+            this.kryptonLabel4.Location = new System.Drawing.Point(80, 367);
             this.kryptonLabel4.Name = "kryptonLabel4";
             this.kryptonLabel4.Size = new System.Drawing.Size(46, 20);
             this.kryptonLabel4.TabIndex = 1;
@@ -361,7 +333,7 @@
             // 
             this.kryptonLabel3.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.kryptonLabel3.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.BoldControl;
-            this.kryptonLabel3.Location = new System.Drawing.Point(39, 303);
+            this.kryptonLabel3.Location = new System.Drawing.Point(39, 335);
             this.kryptonLabel3.Name = "kryptonLabel3";
             this.kryptonLabel3.Size = new System.Drawing.Size(87, 20);
             this.kryptonLabel3.TabIndex = 1;
@@ -371,7 +343,7 @@
             // 
             this.kryptonLabel2.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.kryptonLabel2.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.BoldControl;
-            this.kryptonLabel2.Location = new System.Drawing.Point(44, 271);
+            this.kryptonLabel2.Location = new System.Drawing.Point(44, 303);
             this.kryptonLabel2.Name = "kryptonLabel2";
             this.kryptonLabel2.Size = new System.Drawing.Size(82, 20);
             this.kryptonLabel2.TabIndex = 1;
@@ -385,7 +357,7 @@
             this.drpselectcategory.Cursor = System.Windows.Forms.Cursors.Hand;
             this.drpselectcategory.DropDownWidth = 164;
             this.drpselectcategory.Enabled = false;
-            this.drpselectcategory.Location = new System.Drawing.Point(132, 238);
+            this.drpselectcategory.Location = new System.Drawing.Point(132, 270);
             this.drpselectcategory.Name = "drpselectcategory";
             this.drpselectcategory.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue;
             this.drpselectcategory.Size = new System.Drawing.Size(188, 21);
@@ -400,7 +372,7 @@
             // 
             this.kryptonLabel1.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.kryptonLabel1.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.BoldControl;
-            this.kryptonLabel1.Location = new System.Drawing.Point(56, 239);
+            this.kryptonLabel1.Location = new System.Drawing.Point(56, 271);
             this.kryptonLabel1.Name = "kryptonLabel1";
             this.kryptonLabel1.Size = new System.Drawing.Size(70, 20);
             this.kryptonLabel1.TabIndex = 1;
@@ -410,7 +382,7 @@
             // 
             this.kryptonLabel10.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.kryptonLabel10.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.BoldControl;
-            this.kryptonLabel10.Location = new System.Drawing.Point(54, 207);
+            this.kryptonLabel10.Location = new System.Drawing.Point(54, 239);
             this.kryptonLabel10.Name = "kryptonLabel10";
             this.kryptonLabel10.Size = new System.Drawing.Size(72, 20);
             this.kryptonLabel10.TabIndex = 100;
@@ -423,7 +395,7 @@
             this.drpselectcompany.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.drpselectcompany.Cursor = System.Windows.Forms.Cursors.Hand;
             this.drpselectcompany.DropDownWidth = 164;
-            this.drpselectcompany.Location = new System.Drawing.Point(132, 206);
+            this.drpselectcompany.Location = new System.Drawing.Point(132, 238);
             this.drpselectcompany.Name = "drpselectcompany";
             this.drpselectcompany.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue;
             this.drpselectcompany.Size = new System.Drawing.Size(188, 21);
@@ -460,8 +432,6 @@
             // validatorForSpinEditor
             // 
             this.validatorForSpinEditor.ValidationMode = Telerik.WinControls.UI.ValidationMode.Programmatically;
-            radValidationRule1.Controls.Add(this.spineditortax);
-            radValidationRule1.Controls.Add(this.spineditordiscount);
             radValidationRule1.Controls.Add(this.spineditorprice);
             radValidationRule1.Operator = Telerik.WinControls.Data.FilterOperator.IsNotEqualTo;
             radValidationRule1.PropertyName = "Value";
@@ -548,7 +518,6 @@
         private ComponentFactory.Krypton.Toolkit.KryptonLabel kryptonLabel4;
         private ComponentFactory.Krypton.Toolkit.KryptonLabel kryptonLabel5;
         private ComponentFactory.Krypton.Toolkit.KryptonLabel kryptonLabel6;
-        private ComponentFactory.Krypton.Toolkit.KryptonLabel kryptonLabel7;
         private Telerik.WinControls.UI.RadValidationProvider validatorForTextBoxes;
         private Telerik.WinControls.Themes.CrystalTheme crystalTheme1;
         private Telerik.WinControls.Themes.CrystalDarkTheme crystalDarkTheme1;
@@ -563,7 +532,6 @@
         public ComponentFactory.Krypton.Toolkit.KryptonComboBox drpselectcategory;
         public Telerik.WinControls.UI.RadTextBox txtitemname;
         public Telerik.WinControls.UI.RadTextBox txtshortname;
-        public ComponentFactory.Krypton.Toolkit.KryptonDateTimePicker datetimeexpiration;
         public Telerik.WinControls.UI.RadSpinEditor spineditorprice;
         public Telerik.WinControls.UI.RadSpinEditor spineditordiscount;
         public Telerik.WinControls.UI.RadToggleSwitch toggleswitchdiscount;

@@ -52,10 +52,8 @@
             this.erpcategory = new System.Windows.Forms.ErrorProvider(this.components);
             this.erpitem = new System.Windows.Forms.ErrorProvider(this.components);
             this.validatorForSpinEditor = new Telerik.WinControls.UI.RadValidationProvider(this.components);
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.spineditorunit = new Telerik.WinControls.UI.RadSpinEditor();
-            this.drpunit = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
             this.erpdrpunit = new System.Windows.Forms.ErrorProvider(this.components);
+            this.drpunit = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.spineditorquantity)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.spineditorminimumstock)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.spineditormaximumstock)).BeginInit();
@@ -68,10 +66,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.erpcategory)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.erpitem)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.validatorForSpinEditor)).BeginInit();
-            this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.spineditorunit)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.drpunit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.erpdrpunit)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.drpunit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
             // 
@@ -131,7 +127,7 @@
             this.tableLayoutPanel1.Controls.Add(this.kryptonLabel6, 0, 6);
             this.tableLayoutPanel1.Controls.Add(this.kryptonLabel7, 0, 7);
             this.tableLayoutPanel1.Controls.Add(this.btnadd, 1, 8);
-            this.tableLayoutPanel1.Controls.Add(this.panel1, 1, 5);
+            this.tableLayoutPanel1.Controls.Add(this.drpunit, 1, 5);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -331,30 +327,14 @@
             this.validatorForSpinEditor.ValidationRules.AddRange(new Telerik.WinControls.Data.FilterDescriptor[] {
             radValidationRule1});
             // 
-            // panel1
+            // erpdrpunit
             // 
-            this.panel1.Controls.Add(this.drpunit);
-            this.panel1.Controls.Add(this.spineditorunit);
-            this.panel1.Location = new System.Drawing.Point(147, 356);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(214, 24);
-            this.panel1.TabIndex = 8;
-            // 
-            // spineditorunit
-            // 
-            this.spineditorunit.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.spineditorunit.DecimalPlaces = 3;
-            this.spineditorunit.Dock = System.Windows.Forms.DockStyle.Left;
-            this.spineditorunit.Location = new System.Drawing.Point(0, 0);
-            this.spineditorunit.Name = "spineditorunit";
-            this.spineditorunit.ShowBorder = false;
-            this.spineditorunit.Size = new System.Drawing.Size(90, 24);
-            this.spineditorunit.TabIndex = 4;
-            this.spineditorunit.ThemeName = "Fluent";
-            this.validatorForSpinEditor.SetValidationRule(this.spineditorunit, null);
+            this.erpdrpunit.ContainerControl = this;
+            this.erpdrpunit.Icon = ((System.Drawing.Icon)(resources.GetObject("erpdrpunit.Icon")));
             // 
             // drpunit
             // 
+            this.drpunit.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.drpunit.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.drpunit.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.drpunit.DropDownWidth = 121;
@@ -365,18 +345,12 @@
             "Carton",
             "Box",
             "Dozen"});
-            this.drpunit.Location = new System.Drawing.Point(96, 2);
+            this.drpunit.Location = new System.Drawing.Point(147, 358);
             this.drpunit.Name = "drpunit";
             this.drpunit.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue;
-            this.drpunit.Size = new System.Drawing.Size(78, 19);
+            this.drpunit.Size = new System.Drawing.Size(90, 19);
             this.drpunit.StateCommon.ComboBox.Border.DrawBorders = ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.None;
-            this.drpunit.TabIndex = 4;
-            this.drpunit.TextChanged += new System.EventHandler(this.drpunit_TextChanged);
-            // 
-            // erpdrpunit
-            // 
-            this.erpdrpunit.ContainerControl = this;
-            this.erpdrpunit.Icon = ((System.Drawing.Icon)(resources.GetObject("erpdrpunit.Icon")));
+            this.drpunit.TabIndex = 8;
             // 
             // InventoryForm
             // 
@@ -409,11 +383,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.erpcategory)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.erpitem)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.validatorForSpinEditor)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.spineditorunit)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.drpunit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.erpdrpunit)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.drpunit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);
 
@@ -442,8 +413,6 @@
         public Telerik.WinControls.UI.RadSpinEditor spineditorminimumstock;
         public Telerik.WinControls.UI.RadSpinEditor spineditormaximumstock;
         public ComponentFactory.Krypton.Toolkit.KryptonButton btnadd;
-        private System.Windows.Forms.Panel panel1;
-        public Telerik.WinControls.UI.RadSpinEditor spineditorunit;
         private System.Windows.Forms.ErrorProvider erpdrpunit;
         public ComponentFactory.Krypton.Toolkit.KryptonComboBox drpunit;
     }

@@ -75,7 +75,6 @@ namespace GSMS
 
         private void performOperation(string query)
         {
-            con.Open();
             cmd = new SqlCommand(query, con);
             cmd.CommandType = CommandType.StoredProcedure;
             if (MasterForm.itemId > 0)
@@ -112,7 +111,6 @@ namespace GSMS
             cmd.Parameters.AddWithValue("@TAXTYPE", taxType);
             cmd.Parameters.AddWithValue("@UPDATEDDATE", DateTime.Now.ToString("MM/dd/yyyy hh:mm:ss tt"));
             cmd.Parameters.AddWithValue("@UPDATEDBY", LoginForm.loggedInUserId);
-            cmd.Parameters.AddWithValue("@EXPIRYDATE", datetimeexpiration.Value.ToString("MM/dd/yyyy hh:mm:ss tt"));
             cmd.ExecuteNonQuery();
         }
         private void ItemForm_Load(object sender, EventArgs e)
@@ -166,6 +164,43 @@ namespace GSMS
             else
             {
                 spineditordiscount.Maximum = spineditorprice.Value;
+            }
+        }
+        private void drpselectcompany_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (drpselectcompany.SelectedIndex >= 0)
+            {
+                KeyValuePair<int, string> selectedPair = (KeyValuePair<int, string>)drpselectcompany.SelectedItem;
+                drpselectcategory.Enabled = true;
+                getCategories(selectedPair.Key);
+            }
+            else
+            {
+                drpselectcategory.Enabled = false;
+            }
+        }
+        private void drpselectcompany_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(drpselectcompany.Text))
+            {
+                drpselectcategory.DataSource = null;
+                drpselectcategory.Enabled = false;
+
+                erpcategory.Clear();
+                validatorForTextBoxes.ClearErrorStatus(txtitemname);
+                validatorForTextBoxes.ClearErrorStatus(txtshortname);
+                validatorForSpinEditor.ClearErrorStatus(spineditorprice);
+                validatorForSpinEditor.ClearErrorStatus(spineditordiscount);
+                validatorForSpinEditor.ClearErrorStatus(spineditordiscount);
+                erpdate.Clear();
+
+                erpcompany.SetError(drpselectcompany, "Please Select a Comapny !");
+                drpselectcompany.Focus();
+            }
+            else
+            {
+                drpselectcategory.Enabled = true;
+                erpcompany.Clear();
             }
         }
         private void kryptonButton1_Click(object sender, EventArgs e)
@@ -235,19 +270,6 @@ namespace GSMS
                 validatorForSpinEditor.Validate(spineditorprice);
                 spineditorprice.Focus();
             }
-            else if (spineditordiscount.Value <= 0)
-            {
-                erpcompany.Clear();
-                erpcategory.Clear();
-                validatorForTextBoxes.ClearErrorStatus(txtitemname);
-                validatorForTextBoxes.ClearErrorStatus(txtshortname);
-                validatorForSpinEditor.ClearErrorStatus(spineditorprice);
-                validatorForSpinEditor.ClearErrorStatus(spineditortax);
-                erpdate.Clear();
-
-                validatorForSpinEditor.Validate(spineditordiscount);
-                spineditordiscount.Focus();
-            }
             else if (spineditordiscount.Value >= spineditorprice.Value)
             {
                 if (toggleswitchdiscount.Value != true)
@@ -255,31 +277,6 @@ namespace GSMS
                     validatorForDiscount.Validate(spineditordiscount);
                     spineditordiscount.Focus();
                 }
-            }
-            else if (spineditortax.Value <= 0)
-            {
-                erpcompany.Clear();
-                erpcategory.Clear();
-                validatorForTextBoxes.ClearErrorStatus(txtitemname);
-                validatorForTextBoxes.ClearErrorStatus(txtshortname);
-                validatorForSpinEditor.ClearErrorStatus(spineditorprice);
-                validatorForSpinEditor.ClearErrorStatus(spineditordiscount);
-                erpdate.Clear();
-
-                validatorForSpinEditor.Validate(spineditortax);
-                spineditortax.Focus();
-            }
-            else if (datetimeexpiration.Value == DateTime.Now)
-            {
-                erpcompany.Clear();
-                erpcategory.Clear();
-                validatorForTextBoxes.ClearErrorStatus(txtitemname);
-                validatorForTextBoxes.ClearErrorStatus(txtshortname);
-                validatorForSpinEditor.ClearErrorStatus(spineditorprice);
-                validatorForSpinEditor.ClearErrorStatus(spineditordiscount);
-                validatorForSpinEditor.ClearErrorStatus(spineditordiscount);
-
-                erpdate.SetError(datetimeexpiration, "Its Today's Date, Please select a Valid Date....");
             }
             else
             {
@@ -297,48 +294,12 @@ namespace GSMS
                 {
                     query = "UPDATE_ITEM";
                 }
+                con.Open();
                 performOperation(query);
                 con.Close();
-                Close();
+                this.Close();
             }
         }
 
-        private void drpselectcompany_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (drpselectcompany.SelectedIndex >= 0)
-            {
-                KeyValuePair<int, string> selectedPair = (KeyValuePair<int, string>)drpselectcompany.SelectedItem;
-                drpselectcategory.Enabled = true;
-                getCategories(selectedPair.Key);
-            }
-            else
-            {
-                drpselectcategory.Enabled = false;
-            }
-        }
-        private void drpselectcompany_TextChanged(object sender, EventArgs e)
-        {
-            if (string.IsNullOrEmpty(drpselectcompany.Text))
-            {
-                drpselectcategory.DataSource = null;
-                drpselectcategory.Enabled = false;
-
-                erpcategory.Clear();
-                validatorForTextBoxes.ClearErrorStatus(txtitemname);
-                validatorForTextBoxes.ClearErrorStatus(txtshortname);
-                validatorForSpinEditor.ClearErrorStatus(spineditorprice);
-                validatorForSpinEditor.ClearErrorStatus(spineditordiscount);
-                validatorForSpinEditor.ClearErrorStatus(spineditordiscount);
-                erpdate.Clear();
-
-                erpcompany.SetError(drpselectcompany, "Please Select a Comapny !");
-                drpselectcompany.Focus();
-            }
-            else
-            {
-                drpselectcategory.Enabled = true;
-                erpcompany.Clear();
-            }
-        }
     }
 }

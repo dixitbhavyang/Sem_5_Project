@@ -150,7 +150,7 @@ namespace GSMS
                 }
                 con.Open();
                 performOperation(query);
-                con.Close();
+                con.Open();
                 this.Close();
             }
         }
