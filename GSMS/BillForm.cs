@@ -361,9 +361,26 @@ namespace GSMS
             }
             else
             {
+                if (gridviewpurchaseditems.Rows.Count > 0)
+                {
+                    for (int i = 0; i < gridviewpurchaseditems.Rows.Count; i++)
+                    {
+                        if (Convert.ToInt32(gridviewpurchaseditems.Rows[i].Cells[0].Value) == itemPurchasedId)
+                        {
+                            itemStock -= Convert.ToDecimal(gridviewpurchaseditems.Rows[i].Cells["Quantity"].Value);
+                        }
+                    }
+                }
                 if (spineditorquantity.Value > itemStock)
                 {
-                    MessageBox.Show("We have Only " + itemStock.ToString() + " " + lblunit.Text + " " + "You cannot Buy More than that...", "", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    if (itemStock == 0)
+                    {
+                        MessageBox.Show("Sorry This Item is Out of Stock", "", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    }
+                    else
+                    {
+                        MessageBox.Show("We have Only " + itemStock.ToString() + " " + lblunit.Text + " " + "You cannot Buy More than that...", "", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    }
                     spineditorquantity.Value = 0;
                     spineditordiscount.Value = originalDiscount;
                     spineditortax.Value = originalTax;
@@ -435,7 +452,7 @@ namespace GSMS
             txtfirstname.Text = txtlastname.Text = txtcontactnumber.Text = txtmail.Text = txtcity.Text = "";
             spineditorprice.Value = spineditorquantity.Value = spineditordiscount.Value = spineditortax.Value = spineditorpaidamount.Value = spineditorremainingamount.Value = 0;
             gridviewpurchaseditems.Rows.Clear();
-            itemPurchased = 0;
+            //itemPurchased = 0;
             toggleswitchdiscount.Value = toggleswitchtax.Value = false;
             lblunit.Visible = false;
 
@@ -578,8 +595,8 @@ namespace GSMS
                 validatorForSpinEditor.ClearErrorStatus(spineditorpaidamount);
 
                 GridViewDataRowInfo rowInfo = new GridViewDataRowInfo(this.gridviewpurchaseditems.MasterView);
-                itemPurchased++;
-                rowInfo.Cells[0].Value = itemPurchased;
+                //itemPurchased++;
+                rowInfo.Cells[0].Value = itemPurchasedId;
                 rowInfo.Cells[1].Value = drpitem.Text;
                 rowInfo.Cells[2].Value = spineditorprice.Value.ToString();
                 rowInfo.Cells[3].Value = spineditorquantity.Value.ToString();
