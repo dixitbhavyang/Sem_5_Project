@@ -20,9 +20,10 @@ namespace GSMS
         SqlDataAdapter da;
         SqlDataReader dr;
 
-        public static int itemPurchasedId, itemPurchased = 0;
+        public static int itemPurchasedId = 0, gridviewItemSelectedId = 0;
         public decimal itemStock, itemPrice, itemDiscount, itemTax, itemQuantity, itemPayableAmount, paidAmount, originalDiscount, originalTax;
         public static string customerBillId = "";
+        private bool igonoreDropdownIndexChangedEvent = false;
         public BillForm()
         {
             InitializeComponent();
@@ -37,13 +38,22 @@ namespace GSMS
             gridviewpurchaseditems.Rows.Clear();
 
             gridviewpurchaseditems.Columns.Add("Id");
-            gridviewpurchaseditems.Columns[0].IsVisible = false;
+            gridviewpurchaseditems.Columns["Id"].IsVisible = false;
+
             gridviewpurchaseditems.Columns.Add("Item");
             gridviewpurchaseditems.Columns.Add("Price");
             gridviewpurchaseditems.Columns.Add("Quantity");
+            gridviewpurchaseditems.Columns.Add("Unit");
             gridviewpurchaseditems.Columns.Add("Total Amount");
             gridviewpurchaseditems.Columns.Add("Discount");
+            gridviewpurchaseditems.Columns.Add("DiscountType");
+
+            gridviewpurchaseditems.Columns["DiscountType"].IsVisible = false;
             gridviewpurchaseditems.Columns.Add("Tax");
+
+            gridviewpurchaseditems.Columns.Add("TaxType");
+            gridviewpurchaseditems.Columns["TaxType"].IsVisible = false;
+
             gridviewpurchaseditems.Columns.Add("Payable Amount");
 
             for (int i = 0; i < gridviewpurchaseditems.Columns.Count; i++)
@@ -122,6 +132,7 @@ namespace GSMS
         private void BillForm_Load(object sender, EventArgs e)
         {
             con.Open();
+            btngeneratebill.Enabled = false;
             customerBillId = lblbillno.Text = "B-" + DateTime.Now.ToString("yyyyMMddhhmmss");
             addColumns();
             getCustomers();
@@ -234,6 +245,8 @@ namespace GSMS
         {
             if (drpitem.SelectedItem != null)
             {
+                //if (igonoreDropdownIndexChangedEvent == false)
+                //{
                 erpitem.Clear();
                 KeyValuePair<int, string> item = (KeyValuePair<int, string>)drpitem.SelectedItem;
                 itemPurchasedId = item.Key;
@@ -248,32 +261,41 @@ namespace GSMS
                     if (dr.HasRows)
                     {
                         dr.Read();
+                        bool disType, taxType;
                         itemPrice = Convert.ToDecimal(dr["Price"]);
                         spineditorprice.Value = itemPrice;
+                        spineditorquantity.Value = 0;
+                        spineditortotalamount.Value = 0;
 
                         if (Convert.ToBoolean(dr["DiscountType"]))
                         {
+                            disType = true;
                             originalDiscount = itemDiscount = Convert.ToDecimal(dr["Discount"]) * Convert.ToDecimal(100);
-                            toggleswitchdiscount.Value = true;
                         }
                         else
                         {
+                            disType = false;
                             originalDiscount = itemDiscount = Convert.ToDecimal(dr["Discount"]);
-                            toggleswitchdiscount.Value = false;
                         }
-                        spineditordiscount.Value = itemDiscount;
 
                         if (Convert.ToBoolean(dr["TaxType"]))
                         {
+                            taxType = true;
                             originalTax = itemTax = Convert.ToDecimal(dr["Tax"]) * Convert.ToDecimal(100);
-                            toggleswitchtax.Value = true;
                         }
                         else
                         {
+                            taxType = false;
                             originalTax = itemTax = Convert.ToDecimal(dr["Tax"]);
-                            toggleswitchtax.Value = false;
                         }
-                        spineditortax.Value = itemTax;
+
+                        if (igonoreDropdownIndexChangedEvent == false)
+                        {
+                            toggleswitchdiscount.Value = disType;
+                            toggleswitchtax.Value = taxType;
+                            spineditordiscount.Value = itemDiscount;
+                            spineditortax.Value = itemTax;
+                        }
                     }
                     dr.Close();
                     spineditorquantity.Value = spineditortotalamount.Value = spineditorpayableamount.Value = spineditorpaidamount.Value = spineditorremainingamount.Value = 0;
@@ -284,6 +306,8 @@ namespace GSMS
                     lblunit.Visible = false;
                     disableControls();
                 }
+                igonoreDropdownIndexChangedEvent = false;
+                //}
             }
         }
 
@@ -310,7 +334,7 @@ namespace GSMS
             }
             else
             {
-                discount = (spineditordiscount.Value * Convert.ToDecimal(spineditorquantity.Value));
+                discount = (originalDiscount * Convert.ToDecimal(spineditorquantity.Value));
             }
             itemDiscount = discount;
             if (toggleswitchdiscount.Value == false)
@@ -331,7 +355,7 @@ namespace GSMS
             }
             else
             {
-                tax = (spineditortax.Value * Convert.ToDecimal(spineditorquantity.Value));
+                tax = (originalTax * Convert.ToDecimal(spineditorquantity.Value));
             }
             itemTax = tax;
             if (toggleswitchtax.Value == false)
@@ -345,12 +369,14 @@ namespace GSMS
         }
         private void getPayableAmount()
         {
-            if (spineditorquantity.Value > 0)
+            if (igonoreDropdownIndexChangedEvent == false)
             {
-                itemPayableAmount = (spineditortotalamount.Value - getDiscount()) + getTax();
-                spineditorpayableamount.Value = itemPayableAmount;
+                if (spineditorquantity.Value > 0)
+                {
+                    itemPayableAmount = (spineditortotalamount.Value - getDiscount()) + getTax();
+                    spineditorpayableamount.Value = itemPayableAmount;
+                }
             }
-
         }
 
         private void spineditorquantity_ValueChanged(object sender, EventArgs e)
@@ -365,7 +391,7 @@ namespace GSMS
                 {
                     for (int i = 0; i < gridviewpurchaseditems.Rows.Count; i++)
                     {
-                        if (Convert.ToInt32(gridviewpurchaseditems.Rows[i].Cells[0].Value) == itemPurchasedId)
+                        if (Convert.ToInt32(gridviewpurchaseditems.Rows[i].Cells[0].Value) == itemPurchasedId && gridviewItemSelectedId != itemPurchasedId)
                         {
                             itemStock -= Convert.ToDecimal(gridviewpurchaseditems.Rows[i].Cells["Quantity"].Value);
                         }
@@ -427,7 +453,6 @@ namespace GSMS
                 getPayableAmount();
             }
         }
-
         private void spineditortax_ValueChanged(object sender, EventArgs e)
         {
             if (itemTax != spineditortax.Value)
@@ -435,6 +460,12 @@ namespace GSMS
                 getPayableAmount();
             }
         }
+
+        private void gridviewpurchaseditems_CellClick(object sender, GridViewCellEventArgs e)
+        {
+            btnitemdelete.Enabled = true;
+        }
+
 
         private void spineditorpaidamount_ValueChanged(object sender, EventArgs e)
         {
@@ -464,8 +495,6 @@ namespace GSMS
             erpitem.Clear();
             validatorForSpinEditor.ClearErrorStatus(spineditorquantity);
             validatorForSpinEditor.ClearErrorStatus(spineditorpaidamount);
-
-            drpitem.Text = "Select an Item..";
         }
         private void disableControls()
         {
@@ -477,7 +506,7 @@ namespace GSMS
             spineditorprice.Enabled = spineditorquantity.Enabled = spineditordiscount.Enabled = spineditortax.Enabled = spineditorpaidamount.Enabled = spineditorremainingamount.Enabled = true;
         }
 
-        private void btnadditem_Click(object sender, EventArgs e)
+        private bool validateControls()
         {
             if (String.IsNullOrEmpty(txtfirstname.Text))
             {
@@ -585,6 +614,15 @@ namespace GSMS
             }
             else
             {
+                return true;
+            }
+            return false;
+        }
+
+        private void btnadditem_Click(object sender, EventArgs e)
+        {
+            if (validateControls())
+            {
                 validatorForTextBoxes.ClearErrorStatus(txtfirstname);
                 validatorForTextBoxes.ClearErrorStatus(txtlastname);
                 validatorForTextBoxes.ClearErrorStatus(txtcontactnumber);
@@ -595,24 +633,141 @@ namespace GSMS
                 validatorForSpinEditor.ClearErrorStatus(spineditorpaidamount);
 
                 GridViewDataRowInfo rowInfo = new GridViewDataRowInfo(this.gridviewpurchaseditems.MasterView);
-                //itemPurchased++;
+                bool disType = false, taxType = false;
+
                 rowInfo.Cells[0].Value = itemPurchasedId;
                 rowInfo.Cells[1].Value = drpitem.Text;
                 rowInfo.Cells[2].Value = spineditorprice.Value.ToString();
                 rowInfo.Cells[3].Value = spineditorquantity.Value.ToString();
-                rowInfo.Cells[4].Value = spineditortotalamount.Value.ToString();
-                rowInfo.Cells[5].Value = itemDiscount.ToString();
-                rowInfo.Cells[6].Value = itemTax.ToString();
-                rowInfo.Cells[7].Value = itemPayableAmount;
+                rowInfo.Cells[4].Value = lblunit.Text;
+                rowInfo.Cells[5].Value = spineditortotalamount.Value.ToString();
+
+                rowInfo.Cells[6].Value = itemDiscount.ToString();
+                if (toggleswitchdiscount.Value)
+                {
+                    disType = true;
+                }
+                rowInfo.Cells[7].Value = disType;
+
+                rowInfo.Cells[8].Value = itemTax.ToString();
+                if (toggleswitchtax.Value)
+                {
+                    taxType = true;
+                }
+                rowInfo.Cells[9].Value = taxType;
+
+                rowInfo.Cells[10].Value = itemPayableAmount;
 
                 gridviewpurchaseditems.Rows.Add(rowInfo);
-                drpitem.Text = "Select an Item..";
+                gridviewpurchaseditems.BestFitColumns();
+                gridviewpurchaseditems.AutoSizeColumnsMode = GridViewAutoSizeColumnsMode.Fill;
+
+                itemPurchasedId = 0;
+                lblunit.Visible = false;
                 spineditorprice.Value = spineditorquantity.Value = spineditortotalamount.Value = 0;
                 spineditordiscount.Value = spineditortax.Value = spineditorpayableamount.Value = spineditorpaidamount.Value = 0;
                 toggleswitchdiscount.Value = toggleswitchtax.Value = false;
             }
-
         }
+        private void gridviewpurchaseditems_RowsChanged(object sender, GridViewCollectionChangedEventArgs e)
+        {
+            if (gridviewpurchaseditems.Rows.Count > 0)
+            {
+                btngeneratebill.Enabled = true;
+            }
+            else
+            {
+                btngeneratebill.Enabled = false;
+                btnitemdelete.Enabled = false;
+            }
+        }
+
+        private void gridviewpurchaseditems_CellDoubleClick(object sender, GridViewCellEventArgs e)
+        {
+            igonoreDropdownIndexChangedEvent = true;
+            btnitemupdate.Enabled = true;
+
+            gridviewItemSelectedId = itemPurchasedId = Convert.ToInt32(gridviewpurchaseditems.SelectedRows[0].Cells[0].Value);
+            drpitem.SelectedValue = Convert.ToInt32(gridviewpurchaseditems.SelectedRows[0].Cells[0].Value);
+            spineditorprice.Value = Convert.ToDecimal(gridviewpurchaseditems.SelectedRows[0].Cells["Price"].Value);
+            spineditorquantity.Value = Convert.ToDecimal(gridviewpurchaseditems.SelectedRows[0].Cells["Quantity"].Value);
+            lblunit.Visible = true;
+            lblunit.Text = gridviewpurchaseditems.SelectedRows[0].Cells["Unit"].Value.ToString();
+            spineditortotalamount.Value = Convert.ToDecimal(gridviewpurchaseditems.SelectedRows[0].Cells["Total Amount"].Value);
+
+            if (Convert.ToBoolean(gridviewpurchaseditems.SelectedRows[0].Cells["DiscountType"].Value))
+            {
+                toggleswitchdiscount.Value = true;
+                decimal discountedPrice = spineditortotalamount.Value - (Convert.ToDecimal(gridviewpurchaseditems.SelectedRows[0].Cells["Discount"].Value));
+                spineditordiscount.Value = (Convert.ToDecimal(gridviewpurchaseditems.SelectedRows[0].Cells["Discount"].Value) / spineditortotalamount.Value) * 100;
+            }
+            else
+            {
+                toggleswitchdiscount.Value = false;
+                spineditordiscount.Value = Convert.ToDecimal(gridviewpurchaseditems.SelectedRows[0].Cells["Discount"].Value);
+            }
+
+            if (Convert.ToBoolean(gridviewpurchaseditems.SelectedRows[0].Cells["TaxType"].Value))
+            {
+                toggleswitchtax.Value = true;
+                decimal priceAfterDiscount = (spineditortotalamount.Value - Convert.ToDecimal(gridviewpurchaseditems.SelectedRows[0].Cells["Discount"].Value));
+                spineditortax.Value = (Convert.ToDecimal(gridviewpurchaseditems.SelectedRows[0].Cells["Tax"].Value) / priceAfterDiscount) * 100;
+            }
+            else
+            {
+                toggleswitchtax.Value = false;
+                spineditortax.Value = Convert.ToDecimal(gridviewpurchaseditems.SelectedRows[0].Cells["Tax"].Value);
+            }
+
+            spineditorpayableamount.Value = Convert.ToDecimal(gridviewpurchaseditems.SelectedRows[0].Cells["Payable Amount"].Value);
+
+            igonoreDropdownIndexChangedEvent = false;
+        }
+
+        private void btnitemupdate_Click(object sender, EventArgs e)
+        {
+            if (validateControls())
+            {
+                for (int i = 0; i < gridviewpurchaseditems.Rows.Count; i++)
+                {
+                    if (Convert.ToInt32(gridviewpurchaseditems.Rows[i].Cells["Id"].Value) == gridviewItemSelectedId)
+                    {
+                        gridviewpurchaseditems.Rows[i].Cells["Id"].Value = gridviewItemSelectedId;
+                        gridviewpurchaseditems.Rows[i].Cells["Item"].Value = drpitem.SelectedText;
+                        gridviewpurchaseditems.Rows[i].Cells["Price"].Value = spineditorprice.Value;
+                        gridviewpurchaseditems.Rows[i].Cells["Quantity"].Value = spineditorquantity.Value;
+                        gridviewpurchaseditems.Rows[i].Cells["Unit"].Value = lblunit.Text;
+                        gridviewpurchaseditems.Rows[i].Cells["Total Amount"].Value = spineditortotalamount.Value;
+                        gridviewpurchaseditems.Rows[i].Cells["Discount"].Value = itemDiscount;
+                        gridviewpurchaseditems.Rows[i].Cells["DiscountType"].Value = toggleswitchdiscount.Value;
+                        gridviewpurchaseditems.Rows[i].Cells["Tax"].Value = itemTax;
+                        gridviewpurchaseditems.Rows[i].Cells["TaxType"].Value = toggleswitchtax.Value;
+                        gridviewpurchaseditems.Rows[i].Cells["Payable Amount"].Value = spineditorpayableamount.Value;
+
+                        gridviewItemSelectedId = itemPurchasedId = 0;
+                        lblunit.Visible = false;
+                        spineditorprice.Value = spineditorquantity.Value = spineditortotalamount.Value = 0;
+                        spineditordiscount.Value = spineditortax.Value = spineditorpayableamount.Value = spineditorpaidamount.Value = 0;
+                        toggleswitchdiscount.Value = toggleswitchtax.Value = false;
+                        btnitemupdate.Enabled = false;
+                        break;
+                    }
+                }
+            }
+        }
+
+        private void btnitemdelete_Click(object sender, EventArgs e)
+        {
+            if (gridviewpurchaseditems.SelectedRows.Count > 0)
+            {
+                DialogResult dr = MessageBox.Show("Do you want to Delete . . . ?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (dr == DialogResult.Yes)
+                {
+                    gridviewpurchaseditems.Rows.Remove(gridviewpurchaseditems.SelectedRows[0]);
+                }
+            }
+        }
+
         private void btnclear_Click(object sender, EventArgs e)
         {
             clearControls();

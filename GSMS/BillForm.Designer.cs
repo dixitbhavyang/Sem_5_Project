@@ -30,9 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BillForm));
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition3 = new Telerik.WinControls.UI.TableViewDefinition();
-            Telerik.WinControls.UI.RadValidationRule radValidationRule6 = new Telerik.WinControls.UI.RadValidationRule();
-            Telerik.WinControls.UI.RadValidationRule radValidationRule5 = new Telerik.WinControls.UI.RadValidationRule();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition1 = new Telerik.WinControls.UI.TableViewDefinition();
+            Telerik.WinControls.UI.RadValidationRule radValidationRule2 = new Telerik.WinControls.UI.RadValidationRule();
+            Telerik.WinControls.UI.RadValidationRule radValidationRule1 = new Telerik.WinControls.UI.RadValidationRule();
             this.txtmail = new Telerik.WinControls.UI.RadTextBox();
             this.txtcontactnumber = new Telerik.WinControls.UI.RadTextBox();
             this.txtlastname = new Telerik.WinControls.UI.RadTextBox();
@@ -73,9 +73,6 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.kryptonLabel8 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.spineditorprice = new Telerik.WinControls.UI.RadSpinEditor();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.btnadditem = new ComponentFactory.Krypton.Toolkit.KryptonButton();
-            this.btnclear = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.panel7 = new System.Windows.Forms.Panel();
             this.kryptonLabel16 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.toggleswitchdiscount = new Telerik.WinControls.UI.RadToggleSwitch();
@@ -87,6 +84,12 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.lblunit = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.spineditorquantity = new Telerik.WinControls.UI.RadSpinEditor();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.btnitemupdate = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.btnitemdelete = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.btnitemadd = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.btnclear = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.gridviewpurchaseditems = new Telerik.WinControls.UI.RadGridView();
             this.crystalTheme1 = new Telerik.WinControls.Themes.CrystalTheme();
             this.visualStudio2012LightTheme1 = new Telerik.WinControls.Themes.VisualStudio2012LightTheme();
@@ -116,7 +119,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.drpexistingcustomer)).BeginInit();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.spineditorprice)).BeginInit();
-            this.panel6.SuspendLayout();
             this.panel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.toggleswitchdiscount)).BeginInit();
             this.panel3.SuspendLayout();
@@ -125,6 +127,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.spineditorremainingamount)).BeginInit();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.spineditorquantity)).BeginInit();
+            this.panel6.SuspendLayout();
+            this.panel8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridviewpurchaseditems)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridviewpurchaseditems.MasterTemplate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.validatorForTextBoxes)).BeginInit();
@@ -145,7 +149,7 @@
             this.txtmail.TabIndex = 4;
             this.txtmail.ThemeName = "Crystal";
             this.validatorForSpinEditor.SetValidationRule(this.txtmail, null);
-            this.validatorForTextBoxes.SetValidationRule(this.txtmail, radValidationRule6);
+            this.validatorForTextBoxes.SetValidationRule(this.txtmail, radValidationRule2);
             this.txtmail.TextChanged += new System.EventHandler(this.txtmail_TextChanged);
             // 
             // txtcontactnumber
@@ -159,7 +163,7 @@
             this.txtcontactnumber.TabIndex = 3;
             this.txtcontactnumber.ThemeName = "Crystal";
             this.validatorForSpinEditor.SetValidationRule(this.txtcontactnumber, null);
-            this.validatorForTextBoxes.SetValidationRule(this.txtcontactnumber, radValidationRule6);
+            this.validatorForTextBoxes.SetValidationRule(this.txtcontactnumber, radValidationRule2);
             this.txtcontactnumber.TextChanged += new System.EventHandler(this.txtcontactnumber_TextChanged);
             this.txtcontactnumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtcontactnumber_KeyPress);
             // 
@@ -173,7 +177,7 @@
             this.txtlastname.TabIndex = 2;
             this.txtlastname.ThemeName = "Crystal";
             this.validatorForSpinEditor.SetValidationRule(this.txtlastname, null);
-            this.validatorForTextBoxes.SetValidationRule(this.txtlastname, radValidationRule6);
+            this.validatorForTextBoxes.SetValidationRule(this.txtlastname, radValidationRule2);
             this.txtlastname.TextChanged += new System.EventHandler(this.txtlastname_TextChanged);
             // 
             // txtfirstname
@@ -186,7 +190,7 @@
             this.txtfirstname.TabIndex = 1;
             this.txtfirstname.ThemeName = "Crystal";
             this.validatorForSpinEditor.SetValidationRule(this.txtfirstname, null);
-            this.validatorForTextBoxes.SetValidationRule(this.txtfirstname, radValidationRule6);
+            this.validatorForTextBoxes.SetValidationRule(this.txtfirstname, radValidationRule2);
             this.txtfirstname.TextChanged += new System.EventHandler(this.txtfirstname_TextChanged);
             // 
             // txtcity
@@ -201,12 +205,12 @@
             this.txtcity.TabIndex = 6;
             this.txtcity.ThemeName = "Crystal";
             this.validatorForSpinEditor.SetValidationRule(this.txtcity, null);
-            this.validatorForTextBoxes.SetValidationRule(this.txtcity, radValidationRule6);
+            this.validatorForTextBoxes.SetValidationRule(this.txtcity, radValidationRule2);
             this.txtcity.TextChanged += new System.EventHandler(this.txtcity_TextChanged);
             // 
             // spineditordiscount
             // 
-            this.spineditordiscount.DecimalPlaces = 2;
+            this.spineditordiscount.DecimalPlaces = 3;
             this.spineditordiscount.Dock = System.Windows.Forms.DockStyle.Left;
             this.spineditordiscount.Location = new System.Drawing.Point(0, 0);
             this.spineditordiscount.Maximum = new decimal(new int[] {
@@ -221,13 +225,13 @@
             this.spineditordiscount.TabIndex = 10;
             this.spineditordiscount.ThemeName = "Crystal";
             this.spineditordiscount.ThousandsSeparator = true;
-            this.validatorForSpinEditor.SetValidationRule(this.spineditordiscount, radValidationRule5);
+            this.validatorForSpinEditor.SetValidationRule(this.spineditordiscount, radValidationRule1);
             this.validatorForTextBoxes.SetValidationRule(this.spineditordiscount, null);
             this.spineditordiscount.ValueChanged += new System.EventHandler(this.spineditordiscount_ValueChanged);
             // 
             // spineditortax
             // 
-            this.spineditortax.DecimalPlaces = 2;
+            this.spineditortax.DecimalPlaces = 3;
             this.spineditortax.Dock = System.Windows.Forms.DockStyle.Left;
             this.spineditortax.Location = new System.Drawing.Point(0, 0);
             this.spineditortax.Maximum = new decimal(new int[] {
@@ -242,7 +246,7 @@
             this.spineditortax.TabIndex = 11;
             this.spineditortax.ThemeName = "Crystal";
             this.spineditortax.ThousandsSeparator = true;
-            this.validatorForSpinEditor.SetValidationRule(this.spineditortax, radValidationRule5);
+            this.validatorForSpinEditor.SetValidationRule(this.spineditortax, radValidationRule1);
             this.validatorForTextBoxes.SetValidationRule(this.spineditortax, null);
             this.spineditortax.ValueChanged += new System.EventHandler(this.spineditortax_ValueChanged);
             // 
@@ -261,7 +265,7 @@
             this.spineditorpaidamount.TabIndex = 13;
             this.spineditorpaidamount.ThemeName = "Crystal";
             this.spineditorpaidamount.ThousandsSeparator = true;
-            this.validatorForSpinEditor.SetValidationRule(this.spineditorpaidamount, radValidationRule5);
+            this.validatorForSpinEditor.SetValidationRule(this.spineditorpaidamount, radValidationRule1);
             this.validatorForTextBoxes.SetValidationRule(this.spineditorpaidamount, null);
             this.spineditorpaidamount.ValueChanged += new System.EventHandler(this.spineditorpaidamount_ValueChanged);
             // 
@@ -299,6 +303,7 @@
             // 
             this.btngeneratebill.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.btngeneratebill.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btngeneratebill.Enabled = false;
             this.btngeneratebill.Location = new System.Drawing.Point(211, 4);
             this.btngeneratebill.Name = "btngeneratebill";
             this.btngeneratebill.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue;
@@ -359,13 +364,13 @@
             this.tableLayoutPanel1.Controls.Add(this.kryptonLabel7, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.drpexistingcustomer, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.panel5, 2, 7);
-            this.tableLayoutPanel1.Controls.Add(this.panel6, 1, 15);
             this.tableLayoutPanel1.Controls.Add(this.panel7, 1, 10);
             this.tableLayoutPanel1.Controls.Add(this.panel3, 1, 11);
             this.tableLayoutPanel1.Controls.Add(this.spineditortotalamount, 1, 9);
             this.tableLayoutPanel1.Controls.Add(this.spineditorpaidamount, 1, 13);
             this.tableLayoutPanel1.Controls.Add(this.spineditorremainingamount, 1, 14);
             this.tableLayoutPanel1.Controls.Add(this.panel4, 1, 8);
+            this.tableLayoutPanel1.Controls.Add(this.panel6, 0, 15);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -670,42 +675,6 @@
             this.validatorForSpinEditor.SetValidationRule(this.spineditorprice, null);
             this.validatorForTextBoxes.SetValidationRule(this.spineditorprice, null);
             // 
-            // panel6
-            // 
-            this.panel6.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.panel6.Controls.Add(this.btnadditem);
-            this.panel6.Controls.Add(this.btnclear);
-            this.panel6.Location = new System.Drawing.Point(468, 439);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(229, 23);
-            this.panel6.TabIndex = 18;
-            // 
-            // btnadditem
-            // 
-            this.btnadditem.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnadditem.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnadditem.Location = new System.Drawing.Point(0, 0);
-            this.btnadditem.Name = "btnadditem";
-            this.btnadditem.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue;
-            this.btnadditem.Size = new System.Drawing.Size(90, 23);
-            this.btnadditem.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
-            this.btnadditem.TabIndex = 15;
-            this.btnadditem.Values.Text = "Add";
-            this.btnadditem.Click += new System.EventHandler(this.btnadditem_Click);
-            // 
-            // btnclear
-            // 
-            this.btnclear.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnclear.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnclear.Location = new System.Drawing.Point(139, 0);
-            this.btnclear.Name = "btnclear";
-            this.btnclear.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue;
-            this.btnclear.Size = new System.Drawing.Size(90, 23);
-            this.btnclear.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
-            this.btnclear.TabIndex = 16;
-            this.btnclear.Values.Text = "Clear";
-            this.btnclear.Click += new System.EventHandler(this.btnclear_Click);
-            // 
             // panel7
             // 
             this.panel7.Controls.Add(this.kryptonLabel16);
@@ -848,6 +817,81 @@
             this.validatorForTextBoxes.SetValidationRule(this.spineditorquantity, null);
             this.spineditorquantity.ValueChanged += new System.EventHandler(this.spineditorquantity_ValueChanged);
             // 
+            // panel6
+            // 
+            this.tableLayoutPanel1.SetColumnSpan(this.panel6, 3);
+            this.panel6.Controls.Add(this.panel8);
+            this.panel6.Controls.Add(this.btnitemadd);
+            this.panel6.Controls.Add(this.btnclear);
+            this.panel6.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel6.Location = new System.Drawing.Point(322, 438);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(531, 26);
+            this.panel6.TabIndex = 27;
+            // 
+            // panel8
+            // 
+            this.panel8.Controls.Add(this.btnitemupdate);
+            this.panel8.Controls.Add(this.btnitemdelete);
+            this.panel8.Location = new System.Drawing.Point(146, 0);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(245, 26);
+            this.panel8.TabIndex = 28;
+            // 
+            // btnitemupdate
+            // 
+            this.btnitemupdate.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnitemupdate.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnitemupdate.Enabled = false;
+            this.btnitemupdate.Location = new System.Drawing.Point(0, 0);
+            this.btnitemupdate.Name = "btnitemupdate";
+            this.btnitemupdate.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue;
+            this.btnitemupdate.Size = new System.Drawing.Size(90, 26);
+            this.btnitemupdate.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
+            this.btnitemupdate.TabIndex = 15;
+            this.btnitemupdate.Values.Text = "Update";
+            this.btnitemupdate.Click += new System.EventHandler(this.btnitemupdate_Click);
+            // 
+            // btnitemdelete
+            // 
+            this.btnitemdelete.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnitemdelete.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnitemdelete.Enabled = false;
+            this.btnitemdelete.Location = new System.Drawing.Point(155, 0);
+            this.btnitemdelete.Name = "btnitemdelete";
+            this.btnitemdelete.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue;
+            this.btnitemdelete.Size = new System.Drawing.Size(90, 26);
+            this.btnitemdelete.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
+            this.btnitemdelete.TabIndex = 16;
+            this.btnitemdelete.Values.Text = "Delete";
+            this.btnitemdelete.Click += new System.EventHandler(this.btnitemdelete_Click);
+            // 
+            // btnitemadd
+            // 
+            this.btnitemadd.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnitemadd.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnitemadd.Location = new System.Drawing.Point(0, 0);
+            this.btnitemadd.Name = "btnitemadd";
+            this.btnitemadd.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue;
+            this.btnitemadd.Size = new System.Drawing.Size(90, 26);
+            this.btnitemadd.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
+            this.btnitemadd.TabIndex = 15;
+            this.btnitemadd.Values.Text = "Add";
+            this.btnitemadd.Click += new System.EventHandler(this.btnadditem_Click);
+            // 
+            // btnclear
+            // 
+            this.btnclear.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnclear.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnclear.Location = new System.Drawing.Point(441, 0);
+            this.btnclear.Name = "btnclear";
+            this.btnclear.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue;
+            this.btnclear.Size = new System.Drawing.Size(90, 26);
+            this.btnclear.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
+            this.btnclear.TabIndex = 16;
+            this.btnclear.Values.Text = "Clear";
+            this.btnclear.Click += new System.EventHandler(this.btnclear_Click);
+            // 
             // gridviewpurchaseditems
             // 
             this.gridviewpurchaseditems.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -868,26 +912,29 @@
             this.gridviewpurchaseditems.MasterTemplate.CaseSensitive = true;
             this.gridviewpurchaseditems.MasterTemplate.PageSize = 5;
             this.gridviewpurchaseditems.MasterTemplate.ShowGroupedColumns = true;
-            this.gridviewpurchaseditems.MasterTemplate.ViewDefinition = tableViewDefinition3;
+            this.gridviewpurchaseditems.MasterTemplate.ViewDefinition = tableViewDefinition1;
             this.gridviewpurchaseditems.Name = "gridviewpurchaseditems";
             this.gridviewpurchaseditems.Size = new System.Drawing.Size(856, 223);
             this.gridviewpurchaseditems.TabIndex = 2;
             this.gridviewpurchaseditems.ThemeName = "VisualStudio2012Light";
+            this.gridviewpurchaseditems.RowsChanged += new Telerik.WinControls.UI.GridViewCollectionChangedEventHandler(this.gridviewpurchaseditems_RowsChanged);
+            this.gridviewpurchaseditems.CellClick += new Telerik.WinControls.UI.GridViewCellEventHandler(this.gridviewpurchaseditems_CellClick);
+            this.gridviewpurchaseditems.CellDoubleClick += new Telerik.WinControls.UI.GridViewCellEventHandler(this.gridviewpurchaseditems_CellDoubleClick);
             // 
             // validatorForTextBoxes
             // 
             this.validatorForTextBoxes.ValidationMode = Telerik.WinControls.UI.ValidationMode.Programmatically;
-            radValidationRule6.Controls.Add(this.txtmail);
-            radValidationRule6.Controls.Add(this.txtcontactnumber);
-            radValidationRule6.Controls.Add(this.txtlastname);
-            radValidationRule6.Controls.Add(this.txtfirstname);
-            radValidationRule6.Controls.Add(this.txtcity);
-            radValidationRule6.Operator = Telerik.WinControls.Data.FilterOperator.IsNotLike;
-            radValidationRule6.ToolTipText = "It Cannot Be Empty";
-            radValidationRule6.ToolTipTitle = "";
-            radValidationRule6.Value = "";
+            radValidationRule2.Controls.Add(this.txtmail);
+            radValidationRule2.Controls.Add(this.txtcontactnumber);
+            radValidationRule2.Controls.Add(this.txtlastname);
+            radValidationRule2.Controls.Add(this.txtfirstname);
+            radValidationRule2.Controls.Add(this.txtcity);
+            radValidationRule2.Operator = Telerik.WinControls.Data.FilterOperator.IsNotLike;
+            radValidationRule2.ToolTipText = "It Cannot Be Empty";
+            radValidationRule2.ToolTipTitle = "";
+            radValidationRule2.Value = "";
             this.validatorForTextBoxes.ValidationRules.AddRange(new Telerik.WinControls.Data.FilterDescriptor[] {
-            radValidationRule6});
+            radValidationRule2});
             // 
             // erpitem
             // 
@@ -897,20 +944,20 @@
             // validatorForSpinEditor
             // 
             this.validatorForSpinEditor.ValidationMode = Telerik.WinControls.UI.ValidationMode.Programmatically;
-            radValidationRule5.Controls.Add(this.spineditordiscount);
-            radValidationRule5.Controls.Add(this.spineditortax);
-            radValidationRule5.Controls.Add(this.spineditorpaidamount);
-            radValidationRule5.Operator = Telerik.WinControls.Data.FilterOperator.IsNotEqualTo;
-            radValidationRule5.PropertyName = "Value";
-            radValidationRule5.ToolTipText = "Value cannot be 0";
-            radValidationRule5.ToolTipTitle = "";
-            radValidationRule5.Value = 0;
+            radValidationRule1.Controls.Add(this.spineditordiscount);
+            radValidationRule1.Controls.Add(this.spineditortax);
+            radValidationRule1.Controls.Add(this.spineditorpaidamount);
+            radValidationRule1.Operator = Telerik.WinControls.Data.FilterOperator.IsNotEqualTo;
+            radValidationRule1.PropertyName = "Value";
+            radValidationRule1.ToolTipText = "Value cannot be 0";
+            radValidationRule1.ToolTipTitle = "";
+            radValidationRule1.Value = 0;
             this.validatorForSpinEditor.ValidationRules.AddRange(new Telerik.WinControls.Data.FilterDescriptor[] {
-            radValidationRule5});
+            radValidationRule1});
             // 
             // BillForm
             // 
-            this.AcceptButton = this.btnadditem;
+            this.AcceptButton = this.btnitemadd;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(856, 690);
@@ -955,7 +1002,6 @@
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.spineditorprice)).EndInit();
-            this.panel6.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.toggleswitchdiscount)).EndInit();
@@ -967,6 +1013,8 @@
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.spineditorquantity)).EndInit();
+            this.panel6.ResumeLayout(false);
+            this.panel8.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridviewpurchaseditems.MasterTemplate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridviewpurchaseditems)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.validatorForTextBoxes)).EndInit();
@@ -1021,9 +1069,6 @@
         private System.Windows.Forms.Panel panel5;
         public Telerik.WinControls.UI.RadSpinEditor spineditorprice;
         private ComponentFactory.Krypton.Toolkit.KryptonLabel kryptonLabel18;
-        private ComponentFactory.Krypton.Toolkit.KryptonButton btnclear;
-        private ComponentFactory.Krypton.Toolkit.KryptonButton btnadditem;
-        private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Panel panel3;
         private ComponentFactory.Krypton.Toolkit.KryptonLabel kryptonLabel17;
         public Telerik.WinControls.UI.RadToggleSwitch toggleswitchtax;
@@ -1039,5 +1084,11 @@
         private System.Windows.Forms.Panel panel4;
         private Telerik.WinControls.UI.RadSpinEditor spineditorquantity;
         private ComponentFactory.Krypton.Toolkit.KryptonLabel lblunit;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.Panel panel8;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton btnitemupdate;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton btnitemdelete;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton btnitemadd;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton btnclear;
     }
 }
