@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Telerik.WinControls.UI;
 using System.Data.SqlClient;
+using Telerik.WinControls;
 
 namespace GSMS
 {
@@ -28,10 +29,73 @@ namespace GSMS
         {
             InitializeComponent();
         }
-        private void performOperation(string query)
-        {
 
+        private int insertCustomer()
+        {
+            int customerId = 0;
+            if (drpexistingcustomer.Enabled)
+            {
+                customerId = Convert.ToInt32(drpexistingcustomer.SelectedValue);
+            }
+            else
+            {
+                cmd = new SqlCommand("INSERT_CUSTOMER", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@FNAME", txtfirstname.Text);
+                cmd.Parameters.AddWithValue("@LNAME", txtlastname.Text);
+                cmd.Parameters.AddWithValue("@PHONE", txtcontactnumber.Text);
+                cmd.Parameters.AddWithValue("@EMAIL", txtmail.Text);
+                bool gender = true;
+                if (rdbfemale.IsChecked)
+                {
+                    gender = false;
+                }
+                cmd.Parameters.AddWithValue("@GENDER", gender);
+                cmd.Parameters.AddWithValue("@CITY", txtcity.Text);
+                int i = Convert.ToInt32(cmd.ExecuteScalar());
+                if (i > 0)
+                {
+                    customerId = i;
+                }
+            }
+            return customerId;
         }
+
+        private int insertBill(int customerId, decimal totalAmount, decimal totalDiscount, decimal totaltax, decimal payableAmount)
+        {
+            cmd = new SqlCommand("INSERT_BILL", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@BILLNO", customerBillId);
+            cmd.Parameters.AddWithValue("@CUSTOMERID", customerId);
+            cmd.Parameters.AddWithValue("@TOTALAMOUNT", totalAmount);
+            cmd.Parameters.AddWithValue("@DISCOUNT", totalDiscount);
+            cmd.Parameters.AddWithValue("@TAX", totaltax);
+            cmd.Parameters.AddWithValue("@PAYABLEAMOUNT", payableAmount);
+            cmd.Parameters.AddWithValue("@BILLDATE", DateTime.Now.ToString("MM/dd/yyyy hh:mm:ss tt"));
+            cmd.Parameters.AddWithValue("@CREATEDDATE", DateTime.Now.ToString("MM/dd/yyyy hh:mm:ss tt"));
+            cmd.Parameters.AddWithValue("@CREATEDBY", LoginForm.loggedInUserId);
+            int i = Convert.ToInt32(cmd.ExecuteScalar());
+            return i;
+        }
+
+        private void insertSales(int billId, int itemId, decimal quantity)
+        {
+            cmd = new SqlCommand("INSERT_SALES", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@BILLID", billId);
+            cmd.Parameters.AddWithValue("@ITEMID", itemId);
+            cmd.Parameters.AddWithValue("@QUANTITY", quantity);
+            cmd.Parameters.AddWithValue("@SALEDATE", DateTime.Now.ToString("MM/dd/yyyy hh:mm:ss tt"));
+            cmd.ExecuteNonQuery();
+        }
+        private void updateInventory(int itemId, decimal quantity)
+        {
+            cmd = new SqlCommand("UPDATE INVENTORY SET QUANTITY=QUANTITY-@QUANTITY WHERE ITEMID=@ITEMID", con);
+            cmd.Parameters.AddWithValue("@ITEMID", itemId);
+            cmd.Parameters.AddWithValue("@QUANTITY", quantity);
+            cmd.ExecuteNonQuery();
+        }
+
         private void addColumns()
         {
             gridviewpurchaseditems.Columns.Clear();
@@ -132,6 +196,8 @@ namespace GSMS
         private void BillForm_Load(object sender, EventArgs e)
         {
             con.Open();
+            RadMessageBox.SetThemeName("MaterialBlueGrey");
+            //RadMessageBox.Show("We have Only ", "", MessageBoxButtons.OK, RadMessageIcon.Info, "We Have Limited Stock and You are buing More than that");
             btngeneratebill.Enabled = false;
             customerBillId = lblbillno.Text = "B-" + DateTime.Now.ToString("yyyyMMddhhmmss");
             addColumns();
@@ -245,8 +311,6 @@ namespace GSMS
         {
             if (drpitem.SelectedItem != null)
             {
-                //if (igonoreDropdownIndexChangedEvent == false)
-                //{
                 erpitem.Clear();
                 KeyValuePair<int, string> item = (KeyValuePair<int, string>)drpitem.SelectedItem;
                 itemPurchasedId = item.Key;
@@ -302,12 +366,11 @@ namespace GSMS
                 }
                 else
                 {
-                    MessageBox.Show("This Item is Out of Stock", "", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    RadMessageBox.Show("This Item is Out of Stock", "", MessageBoxButtons.OK, RadMessageIcon.Exclamation);
                     lblunit.Visible = false;
                     disableControls();
                 }
                 igonoreDropdownIndexChangedEvent = false;
-                //}
             }
         }
 
@@ -401,11 +464,12 @@ namespace GSMS
                 {
                     if (itemStock == 0)
                     {
-                        MessageBox.Show("Sorry This Item is Out of Stock", "", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        RadMessageBox.Show("Sorry This Item is Out of Stock", "", MessageBoxButtons.OK, RadMessageIcon.Exclamation);
                     }
                     else
                     {
-                        MessageBox.Show("We have Only " + itemStock.ToString() + " " + lblunit.Text + " " + "You cannot Buy More than that...", "", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        //MessageBox.Show("We have Only " + itemStock.ToString() + " " + lblunit.Text + " " + "You cannot Buy More than that...", "", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        RadMessageBox.Show("We have Only " + itemStock.ToString() + " " + lblunit.Text + " " + "You cannot Buy More than that...", "", MessageBoxButtons.OK, RadMessageIcon.Info, "We Have Limited Stock and You are buing More than that");
                     }
                     spineditorquantity.Value = 0;
                     spineditordiscount.Value = originalDiscount;
@@ -475,7 +539,15 @@ namespace GSMS
             }
             else
             {
-                spineditorremainingamount.Value = spineditorpayableamount.Value - spineditorpaidamount.Value;
+                if (spineditorpaidamount.Value > spineditorpayableamount.Value)
+                {
+                    RadMessageBox.Show("You cannot Enter More than Payable Amount . . .", "", MessageBoxButtons.OK, RadMessageIcon.Info);
+                    spineditorpaidamount.Value = 0;
+                }
+                else
+                {
+                    spineditorremainingamount.Value = spineditorpayableamount.Value - spineditorpaidamount.Value;
+                }
             }
         }
         private void clearControls()
@@ -496,11 +568,44 @@ namespace GSMS
             validatorForSpinEditor.ClearErrorStatus(spineditorquantity);
             validatorForSpinEditor.ClearErrorStatus(spineditorpaidamount);
         }
+
+        private void lblunit_VisibleChanged(object sender, EventArgs e)
+        {
+            if (lblunit.Visible)
+            {
+                enableControls();
+            }
+            else
+            {
+                disableControls();
+            }
+        }
+
         private void disableControls()
         {
             spineditorprice.Value = spineditorquantity.Value = spineditordiscount.Value = spineditortax.Value = spineditorpaidamount.Value = spineditorremainingamount.Value = 0;
             spineditorprice.Enabled = spineditorquantity.Enabled = spineditordiscount.Enabled = spineditortax.Enabled = spineditorpaidamount.Enabled = spineditorremainingamount.Enabled = false;
         }
+
+        private void chkIsExistingCustomer_ToggleStateChanged(object sender, StateChangedEventArgs args)
+        {
+            txtfirstname.ReadOnly = txtlastname.ReadOnly = txtmail.ReadOnly = txtcontactnumber.ReadOnly = txtcity.ReadOnly = rdbfemale.ReadOnly = rdbmale.ReadOnly = drpexistingcustomer.Enabled = chkIsExistingCustomer.Checked;
+            if (!drpexistingcustomer.Enabled)
+            {
+                txtfirstname.Clear();
+                txtlastname.Clear();
+                txtcontactnumber.Clear();
+                txtcity.Clear();
+                txtmail.Clear();
+
+                validatorForTextBoxes.ClearErrorStatus(txtfirstname);
+                validatorForTextBoxes.ClearErrorStatus(txtlastname);
+                validatorForTextBoxes.ClearErrorStatus(txtcontactnumber);
+                validatorForTextBoxes.ClearErrorStatus(txtmail);
+                validatorForTextBoxes.ClearErrorStatus(txtcity);
+            }
+        }
+
         private void enableControls()
         {
             spineditorprice.Enabled = spineditorquantity.Enabled = spineditordiscount.Enabled = spineditortax.Enabled = spineditorpaidamount.Enabled = spineditorremainingamount.Enabled = true;
@@ -760,11 +865,63 @@ namespace GSMS
         {
             if (gridviewpurchaseditems.SelectedRows.Count > 0)
             {
-                DialogResult dr = MessageBox.Show("Do you want to Delete . . . ?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                DialogResult dr = RadMessageBox.Show("Do you want to Delete . . . ?", "", MessageBoxButtons.YesNo, RadMessageIcon.Question);
                 if (dr == DialogResult.Yes)
                 {
                     gridviewpurchaseditems.Rows.Remove(gridviewpurchaseditems.SelectedRows[0]);
                 }
+            }
+        }
+
+        private void btngeneratebill_Click(object sender, EventArgs e)
+        {
+            int customerId = insertCustomer();
+            if (customerId > 0)
+            {
+                decimal totalAmount = 0, totalDiscount = 0, totalTax = 0, payableAmount = 0;
+                CustomerBillDataSet cbd = new CustomerBillDataSet();
+                for (int i = 0; i < gridviewpurchaseditems.Rows.Count; i++)
+                {
+                    DataRow dr = cbd.Tables["CustomerBillTable"].NewRow();
+                    dr["BillNo"] = lblbillno.Text;
+                    dr["CustomerId"] = customerId;
+                    dr["CustomerName"] = txtfirstname.Text + " " + txtlastname.Text;
+                    dr["ItemId"] = Convert.ToInt32(gridviewpurchaseditems.Rows[i].Cells["Id"].Value);
+                    dr["ItemName"] = gridviewpurchaseditems.Rows[i].Cells["Item"].Value.ToString();
+                    dr["Price"] = gridviewpurchaseditems.Rows[i].Cells["Price"].Value.ToString();
+                    dr["Quantity"] = Convert.ToDecimal(gridviewpurchaseditems.Rows[i].Cells["Quantity"].Value);
+                    dr["Unit"] = gridviewpurchaseditems.Rows[i].Cells["Unit"].Value.ToString();
+                    dr["TotalAmount"] = Convert.ToDecimal(gridviewpurchaseditems.Rows[i].Cells["Total Amount"].Value);
+                    totalAmount += Convert.ToDecimal(gridviewpurchaseditems.Rows[i].Cells["Total Amount"].Value);
+
+                    dr["Discount"] = Convert.ToDecimal(gridviewpurchaseditems.Rows[i].Cells["Discount"].Value);
+                    totalDiscount += Convert.ToDecimal(gridviewpurchaseditems.Rows[i].Cells["Discount"].Value);
+
+                    dr["Tax"] = Convert.ToDecimal(gridviewpurchaseditems.Rows[i].Cells["Tax"].Value);
+                    totalTax += Convert.ToDecimal(gridviewpurchaseditems.Rows[i].Cells["Tax"].Value);
+
+                    dr["PayableAmount"] = Convert.ToDecimal(gridviewpurchaseditems.Rows[i].Cells["Payable Amount"].Value);
+                    payableAmount += Convert.ToDecimal(gridviewpurchaseditems.Rows[i].Cells["Payable Amount"].Value);
+
+                    cbd.Tables["CustomerBillTable"].Rows.Add(dr);
+                    updateInventory(Convert.ToInt32(gridviewpurchaseditems.Rows[i].Cells["Id"].Value), Convert.ToDecimal(gridviewpurchaseditems.Rows[i].Cells["Quantity"].Value));
+                }
+                int billId = insertBill(customerId, totalAmount, totalDiscount, totalTax, payableAmount);
+
+                if (billId > 0)
+                {
+                    for (int i = 0; i < gridviewpurchaseditems.Rows.Count; i++)
+                    {
+                        insertSales(billId, Convert.ToInt32(gridviewpurchaseditems.Rows[i].Cells["Id"].Value), Convert.ToDecimal(gridviewpurchaseditems.Rows[i].Cells["Quantity"].Value));
+                    }
+                }
+
+                BillReportForm f = new BillReportForm();
+                BillReport cr = new BillReport();
+                cr.SetDataSource(cbd);
+                f.crystalReportViewer1.ReportSource = cr;
+                DialogResult BillDr = f.ShowDialog();
+                this.Close();
             }
         }
 

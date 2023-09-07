@@ -543,8 +543,7 @@ namespace GSMS
             gridviewcustomer.Columns.Add("Email");
             gridviewcustomer.Columns.Add("Gender");
             gridviewcustomer.Columns.Add("City");
-            gridviewcustomer.Columns.Add("Pincode");
-     
+
             for (int i = 0; i < gridviewcustomer.Columns.Count; i++)
             {
                 gridviewcustomer.Columns[i].TextAlignment = ContentAlignment.MiddleCenter;
@@ -569,7 +568,6 @@ namespace GSMS
                 }
                 rowInfo.Cells[5].Value = gender;
                 rowInfo.Cells[6].Value = row["City"].ToString();
-                rowInfo.Cells[7].Value = row["Pincode"].ToString();
 
                 gridviewcustomer.Rows.Add(rowInfo);
             }
@@ -593,14 +591,11 @@ namespace GSMS
             gridviewbill.Columns[0].IsVisible = false;
             gridviewbill.Columns.Add("Bill No.");
             gridviewbill.Columns.Add("Customer Name");
-            gridviewbill.Columns.Add("Item");
-            gridviewbill.Columns.Add("Quantity");
             gridviewbill.Columns.Add("Total Amount");
             gridviewbill.Columns.Add("Discount");
             gridviewbill.Columns.Add("Tax");
             gridviewbill.Columns.Add("Payable Amount");
             gridviewbill.Columns.Add("Bill Date");
-            gridviewbill.Columns.Add("Payment Status");
             gridviewbill.Columns.Add("Created Date");
             gridviewbill.Columns.Add("Created By");
 
@@ -615,22 +610,62 @@ namespace GSMS
                 rowInfo.Cells[0].Value = row["Id"].ToString();
                 rowInfo.Cells[1].Value = row["BillNo"].ToString();
                 rowInfo.Cells[2].Value = row["Customer"].ToString();
-                rowInfo.Cells[3].Value = row["Item"].ToString();
-                rowInfo.Cells[4].Value = row["Quantity"].ToString();
-                rowInfo.Cells[5].Value = row["TotalAmount"].ToString();
-                rowInfo.Cells[6].Value = row["Discount"].ToString();
-                rowInfo.Cells[7].Value = row["Tax"].ToString();
-                rowInfo.Cells[8].Value = row["PayableAmount"].ToString();
-                rowInfo.Cells[9].Value = Convert.ToDateTime(row["BillDate"]).ToString("dd/MM/yyyy hh:mm:ss tt");
-                rowInfo.Cells[10].Value = row["PaymentStatus"].ToString();
-                rowInfo.Cells[11].Value = Convert.ToDateTime(row["CreatedDate"]).ToString("dd/MM/yyyy hh:mm:ss tt");
-                rowInfo.Cells[12].Value = row["Created By"].ToString();
+                rowInfo.Cells[3].Value = row["TotalAmount"].ToString();
+                rowInfo.Cells[4].Value = row["Discount"].ToString();
+                rowInfo.Cells[5].Value = row["Tax"].ToString();
+                rowInfo.Cells[6].Value = row["PayableAmount"].ToString();
+                rowInfo.Cells[7].Value = Convert.ToDateTime(row["BillDate"]).ToString("dd/MM/yyyy hh:mm:ss tt");
+                rowInfo.Cells[8].Value = Convert.ToDateTime(row["CreatedDate"]).ToString("dd/MM/yyyy hh:mm:ss tt");
+                rowInfo.Cells[9].Value = row["Created By"].ToString();
                 gridviewbill.Rows.Add(rowInfo);
             }
             //gridviewbill.AutoSizeRows = true;
             gridviewbill.BestFitColumns();
             gridviewbill.AutoSizeColumnsMode = GridViewAutoSizeColumnsMode.Fill;
         }
+
+        private void getSales()
+        {
+            string query = "EXEC SELECT_SALES";
+
+            da = new SqlDataAdapter(query, con);
+            dt.Clear();
+            da.Fill(dt);
+
+            gridviewsales.Columns.Clear();
+            gridviewsales.Rows.Clear();
+
+            gridviewsales.Columns.Add("Id");
+            gridviewsales.Columns[0].IsVisible = false;
+            gridviewsales.Columns.Add("Bill No.");
+            gridviewsales.Columns.Add("Company");
+            gridviewsales.Columns.Add("Category");
+            gridviewsales.Columns.Add("Item");
+            gridviewsales.Columns.Add("Quantity");
+            gridviewsales.Columns.Add("Sale Date");
+
+            for (int i = 0; i < gridviewsales.Columns.Count; i++)
+            {
+                gridviewsales.Columns[i].TextAlignment = ContentAlignment.MiddleCenter;
+            }
+
+            foreach (DataRow row in dt.Rows)
+            {
+                GridViewDataRowInfo rowInfo = new GridViewDataRowInfo(this.gridviewsales.MasterView);
+                rowInfo.Cells[0].Value = row["Id"].ToString();
+                rowInfo.Cells[1].Value = row["Bill Number"].ToString();
+                rowInfo.Cells[2].Value = row["Company"].ToString();
+                rowInfo.Cells[3].Value = row["Category"].ToString();
+                rowInfo.Cells[4].Value = row["Item"].ToString();
+                rowInfo.Cells[5].Value = row["Quantity"].ToString() + " " + row["Unit"].ToString();
+                rowInfo.Cells[6].Value = Convert.ToDateTime(row["Date"]).ToString("dd/MM/yyyy hh:mm:ss tt");
+                gridviewsales.Rows.Add(rowInfo);
+            }
+            //gridviewsales.AutoSizeRows = true;
+            gridviewsales.BestFitColumns();
+            gridviewsales.AutoSizeColumnsMode = GridViewAutoSizeColumnsMode.Fill;
+        }
+
         private void getUserId()
         {
             userId = 0;
@@ -923,6 +958,7 @@ namespace GSMS
         }
         private void Form1_Load(object sender, EventArgs e)
         {
+            RadMessageBox.SetThemeName("MaterialBlueGrey");
             con.Open();
             // TODO: This line of code loads data into the 'superMarketMS_ProjectDataSet.Users' table. You can move, or remove it, as needed.
             if (LoginForm.usertype == "Admin")
@@ -942,6 +978,7 @@ namespace GSMS
             getStaffRcords();
             getCustomerRecords();
             getBillRecords();
+            getSales();
         }
 
         private void radButton1_Click(object sender, EventArgs e)
@@ -964,7 +1001,7 @@ namespace GSMS
             dr = cmd.ExecuteReader();
             if (dr.HasRows)
             {
-                DialogResult result = MessageBox.Show("Do you want to Delete ?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                DialogResult result = RadMessageBox.Show("Do you want to Delete ?", "", MessageBoxButtons.YesNo, RadMessageIcon.Question);
                 if (result == DialogResult.Yes)
                 {
                     dr.Close();
@@ -999,7 +1036,7 @@ namespace GSMS
 
             if (dr.HasRows)
             {
-                DialogResult result = MessageBox.Show("Do you want to Delete ?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                DialogResult result = RadMessageBox.Show("Do you want to Delete ?", "", MessageBoxButtons.YesNo, RadMessageIcon.Question);
                 if (result == DialogResult.Yes)
                 {
                     cmd = new SqlCommand("DELETE_COMPANY", con);
@@ -1014,7 +1051,7 @@ namespace GSMS
                         {
                             categories += "\n" + dr.GetString(0);
                         }
-                        MessageBox.Show("It Cannot be deleted because it has Categories : " + categories, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        RadMessageBox.Show("It Cannot be deleted because it has Categories : " + categories, "", MessageBoxButtons.OK, RadMessageIcon.Info, "You cannot delete this Company Because it has Some Categories , first You have to Delete those Categories to delete this Company");
                     }
                     else
                     {
@@ -1046,7 +1083,7 @@ namespace GSMS
             dr = cmd.ExecuteReader();
             if (dr.HasRows)
             {
-                DialogResult res = MessageBox.Show("Do You wnat to Delete ?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                DialogResult res = RadMessageBox.Show("Do You wnat to Delete ?", "", MessageBoxButtons.YesNo, RadMessageIcon.Question);
                 if (res == DialogResult.Yes)
                 {
                     dr.Close();
@@ -1061,7 +1098,7 @@ namespace GSMS
                         {
                             items += "\n " + dr.GetString(0);
                         }
-                        MessageBox.Show("You cannot Delete this Category because it has Items : " + items, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        RadMessageBox.Show("You cannot Delete this Category because it has Items : " + items, "Information", MessageBoxButtons.OK, RadMessageIcon.Info, "You cannot delete this Category Because it has Some Items , first You have to Delete those Items to delete this Category");
                     }
                     else
                     {
@@ -1093,7 +1130,7 @@ namespace GSMS
             dr = cmd.ExecuteReader();
             if (dr.HasRows)
             {
-                DialogResult res = MessageBox.Show("Do You wnat to Delete ?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                DialogResult res = RadMessageBox.Show("Do You wnat to Delete ?", "", MessageBoxButtons.YesNo, RadMessageIcon.Question);
                 if (res == DialogResult.Yes)
                 {
                     dr.Close();
@@ -1103,13 +1140,15 @@ namespace GSMS
                     dr = cmd.ExecuteReader();
                     if (dr.HasRows)
                     {
-                        int stock = 0;
+                        decimal stock = 0;
+                        string unit = "";
                         while (dr.Read())
                         {
-                            stock += dr.GetInt32(0);
+                            stock += Convert.ToDecimal(dr["Stock"]);
+                            unit = dr["Unit"].ToString();
                         }
                         dr.Close();
-                        MessageBox.Show("You cannot delete this Item because it has Stock : " + stock.ToString() + " Units", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        RadMessageBox.Show("You cannot delete this Item because it has Stock : " + stock.ToString() + " " + unit, "", MessageBoxButtons.OK, RadMessageIcon.Info, "You cannot delete this Item because it has Stock in Inventory");
                     }
                     else
                     {
@@ -1140,7 +1179,7 @@ namespace GSMS
             dr = cmd.ExecuteReader();
             if (dr.HasRows)
             {
-                DialogResult res = MessageBox.Show("Do You wnat to Delete ?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                DialogResult res = RadMessageBox.Show("Do You wnat to Delete ?", "", MessageBoxButtons.YesNo, RadMessageIcon.Question);
                 if (res == DialogResult.Yes)
                 {
                     dr.Close();
@@ -1174,7 +1213,7 @@ namespace GSMS
                 dr = cmd.ExecuteReader();
                 if (dr.HasRows)
                 {
-                    DialogResult res = MessageBox.Show("Do You Want to Delete ?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    DialogResult res = RadMessageBox.Show("Do You Want to Delete ?", "", MessageBoxButtons.YesNo, RadMessageIcon.Question);
                     if (res == DialogResult.Yes)
                     {
                         dr.Close();
@@ -1189,7 +1228,7 @@ namespace GSMS
                             {
                                 staff += "\n" + dr.GetString(0);
                             }
-                            MessageBox.Show("You cannot Delete this Department because it has Staff : " + staff, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            RadMessageBox.Show("You cannot Delete this Department because it has Staff : " + staff, "", MessageBoxButtons.OK, RadMessageIcon.Info, "You cannot delete this Department Because it has Staff");
                         }
                         else
                         {
@@ -1223,7 +1262,7 @@ namespace GSMS
             dr = cmd.ExecuteReader();
             if (dr.HasRows)
             {
-                DialogResult res = MessageBox.Show("Do You Want to Delete ?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                DialogResult res = RadMessageBox.Show("Do You Want to Delete ?", "", MessageBoxButtons.YesNo, RadMessageIcon.Question);
                 if (res == DialogResult.Yes)
                 {
                     dr.Close();
@@ -1383,6 +1422,8 @@ namespace GSMS
         {
             BillForm bf = new BillForm();
             bf.ShowDialog();
+            getBillRecords();
+            getSales();
         }
 
         private void gridviewcompany_CellDoubleClick(object sender, GridViewCellEventArgs e)

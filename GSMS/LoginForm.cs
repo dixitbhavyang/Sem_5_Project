@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using Telerik.WinForms.UI;
+using Telerik.WinControls;
 
 namespace GSMS
 {
@@ -78,7 +79,8 @@ namespace GSMS
                 }
                 else
                 {
-                    MessageBox.Show("Username or Password is Incorrect", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    RadMessageBox.SetThemeName("Fluent");
+                    RadMessageBox.Show("Username or Password is Incorrect", "", MessageBoxButtons.OK, RadMessageIcon.Error);
                 }
                 dr.Close();
                 con.Close();

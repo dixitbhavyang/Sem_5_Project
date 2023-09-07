@@ -28,16 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition1 = new Telerik.WinControls.UI.TableViewDefinition();
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition2 = new Telerik.WinControls.UI.TableViewDefinition();
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition3 = new Telerik.WinControls.UI.TableViewDefinition();
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition4 = new Telerik.WinControls.UI.TableViewDefinition();
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition5 = new Telerik.WinControls.UI.TableViewDefinition();
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition6 = new Telerik.WinControls.UI.TableViewDefinition();
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition7 = new Telerik.WinControls.UI.TableViewDefinition();
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition8 = new Telerik.WinControls.UI.TableViewDefinition();
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition9 = new Telerik.WinControls.UI.TableViewDefinition();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition11 = new Telerik.WinControls.UI.TableViewDefinition();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition12 = new Telerik.WinControls.UI.TableViewDefinition();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition13 = new Telerik.WinControls.UI.TableViewDefinition();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition14 = new Telerik.WinControls.UI.TableViewDefinition();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition15 = new Telerik.WinControls.UI.TableViewDefinition();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition16 = new Telerik.WinControls.UI.TableViewDefinition();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition17 = new Telerik.WinControls.UI.TableViewDefinition();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition18 = new Telerik.WinControls.UI.TableViewDefinition();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition19 = new Telerik.WinControls.UI.TableViewDefinition();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MasterForm));
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition20 = new Telerik.WinControls.UI.TableViewDefinition();
             this.materialBlueGreyTheme1 = new Telerik.WinControls.Themes.MaterialBlueGreyTheme();
             this.office2019GrayTheme1 = new Telerik.WinControls.Themes.Office2019GrayTheme();
             this.visualStudio2012LightTheme1 = new Telerik.WinControls.Themes.VisualStudio2012LightTheme();
@@ -87,6 +88,7 @@
             this.pagesales = new Telerik.WinControls.UI.RadPageViewPage();
             this.pagesettings = new Telerik.WinControls.UI.RadPageViewPage();
             this.crystalDarkTheme1 = new Telerik.WinControls.Themes.CrystalDarkTheme();
+            this.gridviewsales = new Telerik.WinControls.UI.RadGridView();
             ((System.ComponentModel.ISupportInitialize)(this.radTabbedFormControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radPageView1)).BeginInit();
             this.radPageView1.SuspendLayout();
@@ -147,6 +149,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridviewbill.MasterTemplate)).BeginInit();
             this.gridviewbill.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnbillnew)).BeginInit();
+            this.pagesales.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridviewsales)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridviewsales.MasterTemplate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
             // 
@@ -178,7 +183,7 @@
             this.radPageView1.ItemSizeMode = ((Telerik.WinControls.UI.PageViewItemSizeMode)((Telerik.WinControls.UI.PageViewItemSizeMode.EqualWidth | Telerik.WinControls.UI.PageViewItemSizeMode.EqualHeight)));
             this.radPageView1.Location = new System.Drawing.Point(0, 0);
             this.radPageView1.Name = "radPageView1";
-            this.radPageView1.SelectedPage = this.pageuser;
+            this.radPageView1.SelectedPage = this.pagecustomerbill;
             this.radPageView1.Size = new System.Drawing.Size(1283, 598);
             this.radPageView1.TabIndex = 0;
             this.radPageView1.ThemeName = "Office2019Gray";
@@ -193,7 +198,7 @@
             ((Telerik.WinControls.UI.RadPageViewNavigationViewElement)(this.radPageView1.GetChildAt(0))).Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             ((Telerik.WinControls.UI.RadPageViewNavigationViewElement)(this.radPageView1.GetChildAt(0))).Alignment = System.Drawing.ContentAlignment.TopLeft;
             ((Telerik.WinControls.UI.NavigationViewHeaderElement)(this.radPageView1.GetChildAt(0).GetChildAt(2))).ClipText = false;
-            ((Telerik.WinControls.UI.NavigationViewHeaderElement)(this.radPageView1.GetChildAt(0).GetChildAt(2))).Text = "Users";
+            ((Telerik.WinControls.UI.NavigationViewHeaderElement)(this.radPageView1.GetChildAt(0).GetChildAt(2))).Text = "Bill";
             ((Telerik.WinControls.UI.NavigationViewHeaderElement)(this.radPageView1.GetChildAt(0).GetChildAt(2))).Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             ((Telerik.WinControls.UI.NavigationViewHeaderElement)(this.radPageView1.GetChildAt(0).GetChildAt(2))).CustomFontSize = 20F;
             ((Telerik.WinControls.UI.NavigationViewHeaderElement)(this.radPageView1.GetChildAt(0).GetChildAt(2))).Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
@@ -250,7 +255,7 @@
             this.gridviewusers.MasterTemplate.CaseSensitive = true;
             this.gridviewusers.MasterTemplate.PageSize = 5;
             this.gridviewusers.MasterTemplate.ShowGroupedColumns = true;
-            this.gridviewusers.MasterTemplate.ViewDefinition = tableViewDefinition1;
+            this.gridviewusers.MasterTemplate.ViewDefinition = tableViewDefinition11;
             this.gridviewusers.Name = "gridviewusers";
             this.gridviewusers.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.gridviewusers.Size = new System.Drawing.Size(1149, 558);
@@ -348,7 +353,7 @@
             this.gridviewcompany.MasterTemplate.CaseSensitive = true;
             this.gridviewcompany.MasterTemplate.PageSize = 5;
             this.gridviewcompany.MasterTemplate.ShowGroupedColumns = true;
-            this.gridviewcompany.MasterTemplate.ViewDefinition = tableViewDefinition2;
+            this.gridviewcompany.MasterTemplate.ViewDefinition = tableViewDefinition12;
             this.gridviewcompany.Name = "gridviewcompany";
             this.gridviewcompany.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.gridviewcompany.Size = new System.Drawing.Size(1149, 558);
@@ -443,7 +448,7 @@
             this.gridviewcategory.MasterTemplate.CaseSensitive = true;
             this.gridviewcategory.MasterTemplate.PageSize = 5;
             this.gridviewcategory.MasterTemplate.ShowGroupedColumns = true;
-            this.gridviewcategory.MasterTemplate.ViewDefinition = tableViewDefinition3;
+            this.gridviewcategory.MasterTemplate.ViewDefinition = tableViewDefinition13;
             this.gridviewcategory.Name = "gridviewcategory";
             this.gridviewcategory.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.gridviewcategory.Size = new System.Drawing.Size(1149, 558);
@@ -535,7 +540,7 @@
             this.gridviewitem.MasterTemplate.CaseSensitive = true;
             this.gridviewitem.MasterTemplate.PageSize = 5;
             this.gridviewitem.MasterTemplate.ShowGroupedColumns = true;
-            this.gridviewitem.MasterTemplate.ViewDefinition = tableViewDefinition4;
+            this.gridviewitem.MasterTemplate.ViewDefinition = tableViewDefinition14;
             this.gridviewitem.Name = "gridviewitem";
             this.gridviewitem.Size = new System.Drawing.Size(1149, 558);
             this.gridviewitem.TabIndex = 0;
@@ -626,7 +631,7 @@
             this.gridviewinventory.MasterTemplate.CaseSensitive = true;
             this.gridviewinventory.MasterTemplate.PageSize = 5;
             this.gridviewinventory.MasterTemplate.ShowGroupedColumns = true;
-            this.gridviewinventory.MasterTemplate.ViewDefinition = tableViewDefinition5;
+            this.gridviewinventory.MasterTemplate.ViewDefinition = tableViewDefinition15;
             this.gridviewinventory.Name = "gridviewinventory";
             this.gridviewinventory.Size = new System.Drawing.Size(1149, 558);
             this.gridviewinventory.TabIndex = 0;
@@ -715,7 +720,7 @@
             this.gridviewdepartment.MasterTemplate.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill;
             this.gridviewdepartment.MasterTemplate.CaseSensitive = true;
             this.gridviewdepartment.MasterTemplate.PageSize = 5;
-            this.gridviewdepartment.MasterTemplate.ViewDefinition = tableViewDefinition6;
+            this.gridviewdepartment.MasterTemplate.ViewDefinition = tableViewDefinition16;
             this.gridviewdepartment.Name = "gridviewdepartment";
             this.gridviewdepartment.Size = new System.Drawing.Size(1149, 558);
             this.gridviewdepartment.TabIndex = 0;
@@ -806,7 +811,7 @@
             this.gridviewstaff.MasterTemplate.CaseSensitive = true;
             this.gridviewstaff.MasterTemplate.PageSize = 5;
             this.gridviewstaff.MasterTemplate.ShowGroupedColumns = true;
-            this.gridviewstaff.MasterTemplate.ViewDefinition = tableViewDefinition7;
+            this.gridviewstaff.MasterTemplate.ViewDefinition = tableViewDefinition17;
             this.gridviewstaff.Name = "gridviewstaff";
             this.gridviewstaff.Size = new System.Drawing.Size(1149, 558);
             this.gridviewstaff.TabIndex = 0;
@@ -894,7 +899,7 @@
             this.gridviewcustomer.MasterTemplate.CaseSensitive = true;
             this.gridviewcustomer.MasterTemplate.PageSize = 5;
             this.gridviewcustomer.MasterTemplate.ShowGroupedColumns = true;
-            this.gridviewcustomer.MasterTemplate.ViewDefinition = tableViewDefinition8;
+            this.gridviewcustomer.MasterTemplate.ViewDefinition = tableViewDefinition18;
             this.gridviewcustomer.Name = "gridviewcustomer";
             this.gridviewcustomer.Size = new System.Drawing.Size(1149, 558);
             this.gridviewcustomer.TabIndex = 0;
@@ -906,9 +911,9 @@
             this.pagecustomerbill.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pagecustomerbill.Image = global::GSMS.Properties.Resources.BillIcon;
             this.pagecustomerbill.ItemSize = new System.Drawing.SizeF(119F, 32F);
-            this.pagecustomerbill.Location = new System.Drawing.Point(131, 30);
+            this.pagecustomerbill.Location = new System.Drawing.Point(132, 38);
             this.pagecustomerbill.Name = "pagecustomerbill";
-            this.pagecustomerbill.Size = new System.Drawing.Size(1151, 567);
+            this.pagecustomerbill.Size = new System.Drawing.Size(1149, 558);
             this.pagecustomerbill.Text = "Bill";
             // 
             // gridviewbill
@@ -932,9 +937,9 @@
             this.gridviewbill.MasterTemplate.CaseSensitive = true;
             this.gridviewbill.MasterTemplate.PageSize = 5;
             this.gridviewbill.MasterTemplate.ShowGroupedColumns = true;
-            this.gridviewbill.MasterTemplate.ViewDefinition = tableViewDefinition9;
+            this.gridviewbill.MasterTemplate.ViewDefinition = tableViewDefinition19;
             this.gridviewbill.Name = "gridviewbill";
-            this.gridviewbill.Size = new System.Drawing.Size(1151, 567);
+            this.gridviewbill.Size = new System.Drawing.Size(1149, 558);
             this.gridviewbill.TabIndex = 1;
             this.gridviewbill.ThemeName = "MaterialBlueGrey";
             // 
@@ -945,7 +950,7 @@
             this.btnbillnew.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnbillnew.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btnbillnew.Image = ((System.Drawing.Image)(resources.GetObject("btnbillnew.Image")));
-            this.btnbillnew.Location = new System.Drawing.Point(1045, 8);
+            this.btnbillnew.Location = new System.Drawing.Point(1043, 8);
             this.btnbillnew.Name = "btnbillnew";
             this.btnbillnew.Size = new System.Drawing.Size(87, 36);
             this.btnbillnew.TabIndex = 21;
@@ -956,12 +961,13 @@
             // 
             // pagesales
             // 
+            this.pagesales.Controls.Add(this.gridviewsales);
             this.pagesales.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pagesales.Image = global::GSMS.Properties.Resources.SalesIcon;
             this.pagesales.ItemSize = new System.Drawing.SizeF(119F, 32F);
-            this.pagesales.Location = new System.Drawing.Point(152, 38);
+            this.pagesales.Location = new System.Drawing.Point(132, 38);
             this.pagesales.Name = "pagesales";
-            this.pagesales.Size = new System.Drawing.Size(959, 558);
+            this.pagesales.Size = new System.Drawing.Size(1149, 558);
             this.pagesales.Text = "Sales";
             // 
             // pagesettings
@@ -973,6 +979,30 @@
             this.pagesettings.Name = "pagesettings";
             this.pagesettings.Size = new System.Drawing.Size(959, 558);
             this.pagesettings.Text = "Settings";
+            // 
+            // gridviewsales
+            // 
+            this.gridviewsales.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridviewsales.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.gridviewsales.Location = new System.Drawing.Point(0, 0);
+            // 
+            // 
+            // 
+            this.gridviewsales.MasterTemplate.AllowAddNewRow = false;
+            this.gridviewsales.MasterTemplate.AllowColumnResize = false;
+            this.gridviewsales.MasterTemplate.AllowDeleteRow = false;
+            this.gridviewsales.MasterTemplate.AllowEditRow = false;
+            this.gridviewsales.MasterTemplate.AllowRowResize = false;
+            this.gridviewsales.MasterTemplate.AllowSearchRow = true;
+            this.gridviewsales.MasterTemplate.AutoExpandGroups = true;
+            this.gridviewsales.MasterTemplate.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill;
+            this.gridviewsales.MasterTemplate.CaseSensitive = true;
+            this.gridviewsales.MasterTemplate.PageSize = 5;
+            this.gridviewsales.MasterTemplate.ViewDefinition = tableViewDefinition20;
+            this.gridviewsales.Name = "gridviewsales";
+            this.gridviewsales.Size = new System.Drawing.Size(1149, 558);
+            this.gridviewsales.TabIndex = 0;
+            this.gridviewsales.ThemeName = "MaterialBlueGrey";
             // 
             // MasterForm
             // 
@@ -1060,6 +1090,9 @@
             this.gridviewbill.ResumeLayout(false);
             this.gridviewbill.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnbillnew)).EndInit();
+            this.pagesales.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gridviewsales.MasterTemplate)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridviewsales)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);
 
@@ -1115,5 +1148,6 @@
         private Telerik.WinControls.UI.RadGridView gridviewcustomer;
         private Telerik.WinControls.UI.RadGridView gridviewbill;
         private Telerik.WinControls.UI.RadButton btnbillnew;
+        private Telerik.WinControls.UI.RadGridView gridviewsales;
     }
 }

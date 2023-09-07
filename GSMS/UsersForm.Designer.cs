@@ -362,6 +362,10 @@
             this.dropdownrole.Name = "dropdownrole";
             this.dropdownrole.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue;
             this.dropdownrole.Size = new System.Drawing.Size(196, 21);
+            this.dropdownrole.StateCommon.ComboBox.Border.Draw = ComponentFactory.Krypton.Toolkit.InheritBool.False;
+            this.dropdownrole.StateCommon.ComboBox.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
             this.dropdownrole.TabIndex = 13;
             this.dropdownrole.SelectedIndexChanged += new System.EventHandler(this.dropdownrole_SelectedIndexChanged);
             // 
