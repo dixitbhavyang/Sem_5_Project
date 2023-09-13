@@ -53,9 +53,10 @@ namespace GSMS
             else
             {
                 con.Open();
-                cmd = new SqlCommand("SELECT * FROM USERS WHERE USERNAME=@uname AND PASSWORD=@password AND STATUS=1", con);
-                cmd.Parameters.AddWithValue("@uname", txtusername.Text);
-                cmd.Parameters.AddWithValue("@password", txtpassword.Text);
+                cmd = new SqlCommand("LOG_IN", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@USERNAME", txtusername.Text);
+                cmd.Parameters.AddWithValue("@PASSWORD", txtpassword.Text);
                 dr = cmd.ExecuteReader();
                 if (dr.HasRows)
                 {

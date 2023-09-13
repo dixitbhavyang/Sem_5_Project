@@ -1,0 +1,25 @@
+﻿CREATE PROC [dbo].[INSERT_CUSTOMER] 
+	@FNAME VARCHAR(15),
+	@LNAME VARCHAR(15),
+	@PHONE VARCHAR(10),
+	@EMAIL VARCHAR(200),
+	@GENDER BIT,
+	@CITY VARCHAR(15)
+AS
+BEGIN
+	INSERT INTO Customer (
+		[FirstName],
+		[LastName],
+		[Phone],
+		[Email],
+		[Gender],
+		[City] )
+	VALUES (
+		@FNAME,
+		@LNAME,
+		@PHONE,
+		@EMAIL,
+		@GENDER,
+		@CITY );
+	SELECT SCOPE_IDENTITY();
+END

@@ -116,5 +116,18 @@
     <Build Include="dbo\Stored Procedures\EDIT_DEPARTMENT.sql" />
     <Build Include="dbo\Stored Procedures\DELETE_STAFF_MEMBER.sql" />
     <Build Include="dbo\Stored Procedures\DELETE_DEPARTMENT.sql" />
+    <Build Include="dbo\Tables\ItemsPurchased.sql" />
+    <Build Include="dbo\Stored Procedures\SELECT_SALES.sql" />
+    <Build Include="dbo\Stored Procedures\SELECT_ITEM_INVENTORY.sql" />
+    <Build Include="dbo\Stored Procedures\SELECT_CUSTOMERS.sql" />
+    <Build Include="dbo\Stored Procedures\SELECT_CUSTOMER_BASED_ON_ID.sql" />
+    <Build Include="dbo\Stored Procedures\SELECT_BILLS.sql" />
+    <Build Include="dbo\Stored Procedures\LOG_IN.sql" />
+    <Build Include="dbo\Stored Procedures\INSERT_SALES.sql" />
+    <Build Include="dbo\Stored Procedures\INSERT_ITEM_PURCHASED.sql" />
+    <Build Include="dbo\Stored Procedures\INSERT_CUSTOMER.sql" />
+    <Build Include="dbo\Stored Procedures\INSERT_BILL.sql" />
+    <Build Include="dbo\Stored Procedures\CHANGE_PASSWORD.sql" />
+    <Build Include="dbo\Stored Procedures\ADD_PURCHASED_ITEM.sql" />
   </ItemGroup>
 </Project>

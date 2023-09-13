@@ -1,0 +1,22 @@
+﻿CREATE PROCEDURE [dbo].[INSERT_SALES] 
+	@BILLID int,
+	@ITEMID INT,
+	@QUANTITY DECIMAL(9,2),
+	@SALEDATE DATETIME
+AS
+BEGIN
+	INSERT INTO Sales
+	(
+		[CustomerBillId],
+		[ItemId],
+		[Quantity],
+		[SaleDate] 
+	)
+	VALUES
+	(
+		@BILLID,
+		@ITEMID,
+		@QUANTITY,
+		@SALEDATE
+	);
+END

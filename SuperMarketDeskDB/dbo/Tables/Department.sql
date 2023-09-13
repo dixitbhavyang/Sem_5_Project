@@ -10,8 +10,10 @@
     [UpdatedBy]   INT          NULL,
     [Status]      BIT          CONSTRAINT [DF_Department_Status] DEFAULT ((1)) NULL,
     CONSTRAINT [PK_Department] PRIMARY KEY CLUSTERED ([Id] ASC),
-    FOREIGN KEY ([UpdatedBy]) REFERENCES [dbo].[Users] ([Id]),
-    FOREIGN KEY ([UpdatedBy]) REFERENCES [dbo].[Users] ([Id]),
-    CONSTRAINT [FK__Departmen__Creat__4E1E9780] FOREIGN KEY ([CreatedBy]) REFERENCES [dbo].[Users] ([Id])
+    CONSTRAINT [FK__Departmen__Creat__4E1E9780] FOREIGN KEY ([CreatedBy]) REFERENCES [dbo].[Users] ([Id]),
+    CONSTRAINT [FK__Departmen__Updat__53D770D6] FOREIGN KEY ([UpdatedBy]) REFERENCES [dbo].[Users] ([Id]),
+    CONSTRAINT [FK__Departmen__Updat__54CB950F] FOREIGN KEY ([UpdatedBy]) REFERENCES [dbo].[Users] ([Id])
 );
+
+
 

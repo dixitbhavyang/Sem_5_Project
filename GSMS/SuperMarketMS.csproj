@@ -358,6 +358,7 @@
     <Content Include="Content\Fonts\fontawesome-webfont.svg" />
     <Content Include="Images\13749522_2007.i504.004..isometric supermarket infographics.jpg" />
     <Content Include="Images\14449322_5464026.jpg" />
+    <Content Include="Images\20602818_6325247.jpg" />
     <Content Include="Images\5538772_2827397.jpg" />
     <Content Include="Images\add %285%29.png" />
     <Content Include="Images\icons8-cancel-24.png" />
@@ -367,6 +368,7 @@
     <Content Include="Images\icons8_error_25_K2P_icon.ico" />
     <Content Include="Images\menu.png" />
     <Content Include="Images\write.png" />
+    <Content Include="Resources\20602818_6325247.jpg" />
     <Content Include="Resources\35976.jpg" />
     <Content Include="Resources\4565.jpg" />
     <None Include="Resources\6375476_25456.jpg" />

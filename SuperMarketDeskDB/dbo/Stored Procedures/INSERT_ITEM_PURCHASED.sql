@@ -1,0 +1,34 @@
+﻿CREATE PROC INSERT_ITEM_PURCHASED 
+	@BILLID VARCHAR(16),
+	@CUSTOMERID INT,
+	@ITEMID INT,
+	@QUANTITY DECIMAL(9,2),
+	@TOTALAMOUNT DECIMAL(9,2),
+	@DISCOUNT DECIMAL(9,2),
+	@TAX DECIMAL(9,2),
+	@PAYABLEAMOUNT DECIMAL(9,2)
+AS
+BEGIN
+	INSERT INTO ItemsPurchased
+	(
+		[BillId],
+		[CustomerId],
+		[ItemId],
+		[Quantity],
+		[TotalAmount],
+		[Discount],
+		[Tax],
+		[PayableAmount]
+	)
+	VALUES
+	(
+		@BILLID,
+		@CUSTOMERID,
+		@ITEMID,
+		@QUANTITY,
+		@TOTALAMOUNT,
+		@DISCOUNT,
+		@TAX,
+		@PAYABLEAMOUNT
+	);
+END

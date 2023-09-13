@@ -4,8 +4,7 @@
     [CategoryId]   INT            NULL,
     [ItemId]       INT            NULL,
     [Quantity]     DECIMAL (9, 2) NULL,
-    [Unit]         INT            NULL,
-    [Measurement]  VARCHAR (10)   NULL,
+    [Unit]         VARCHAR (10)   NULL,
     [CreatedDate]  DATETIME       NULL,
     [CreatedBy]    INT            NULL,
     [LastUpdated]  DATETIME       NULL,
@@ -20,6 +19,8 @@
     CONSTRAINT [FK__Inventory__ItemI__793DFFAF] FOREIGN KEY ([ItemId]) REFERENCES [dbo].[Item] ([Id]),
     CONSTRAINT [FK__Inventory__Updat__7755B73D] FOREIGN KEY ([UpdatedBy]) REFERENCES [dbo].[Users] ([Id])
 );
+
+
 
 
 

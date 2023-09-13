@@ -2,7 +2,7 @@
 AS
 BEGIN
 	SELECT  
-	I.Id, I.[Name], I.ShortName, I.Price, I.Discount, I.DiscountType, I.Tax, I.TaxType, I.ExpiryDate,
+	I.Id, I.[Name], I.ShortName, I.Price, I.Discount, I.DiscountType, I.Tax, I.TaxType,
 	C.[Name] "Category", C2.[Name] "Company",
 	I.CreatedDate, U.[Username] "Created By", 
 	I.UpdatedDate, U2.[Username] "Updated By", I.[Status]

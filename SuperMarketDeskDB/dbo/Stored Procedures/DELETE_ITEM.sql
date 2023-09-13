@@ -5,7 +5,7 @@ BEGIN
 	IF EXISTS (SELECT * FROM Inventory WHERE ItemId = @ID AND [Status] = 1)
     BEGIN
         -- Return the existing record
-        SELECT I.Unit FROM Inventory "I" WHERE I.ItemId = @ID;
+        SELECT I.Quantity "Stock", I.Unit "Unit" FROM Inventory "I" WHERE I.ItemId = @ID;
     END
 	ELSE
 	BEGIN

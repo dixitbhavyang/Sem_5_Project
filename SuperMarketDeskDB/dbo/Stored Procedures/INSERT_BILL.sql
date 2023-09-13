@@ -1,0 +1,38 @@
+﻿CREATE PROC [dbo].[INSERT_BILL]
+	@BILLNO VARCHAR(16),
+	@CUSTOMERID INT,
+	@TOTALAMOUNT DECIMAL(9,2),
+	@DISCOUNT DECIMAL(9,3),
+	@TAX DECIMAL(9,3),
+	@PAYABLEAMOUNT DECIMAL(9,3),
+	@BILLDATE DATETIME,
+	@CREATEDDATE DATETIME,
+	@CREATEDBY INT
+AS
+BEGIN
+	INSERT INTO CustomerBill
+	(
+		[BillNo],
+		[CustomerId],
+		[TotalAmount],
+		[Discount],
+		[Tax],
+		[PayableAmount],
+		[BillDate],
+		[CreatedDate],
+		[CreatedBy]
+	)
+	VALUES
+	(
+		@BILLNO,
+		@CUSTOMERID,
+		@TOTALAMOUNT,
+		@DISCOUNT,
+		@TAX,
+		@PAYABLEAMOUNT,
+		@BILLDATE,
+		@CREATEDDATE,
+		@CREATEDBY
+	);
+	SELECT SCOPE_IDENTITY();
+END

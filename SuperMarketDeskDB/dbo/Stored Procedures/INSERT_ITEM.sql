@@ -4,15 +4,14 @@
 	@NAME VARCHAR(100), 
 	@SHORTNAME VARCHAR(10),
 	@PRICE DECIMAL(9,2),
-	@DISCOUNT DECIMAL(9,2),
+	@DISCOUNT DECIMAL(9,3),
 	@DISCOUNTTYPE BIT,
-	@TAX DECIMAL(9,2),
+	@TAX DECIMAL(9,3),
 	@TAXTYPE BIT,
 	@CREATEDDATE DATETIME,
 	@CREATEDBY INT,
 	@UPDATEDDATE DATETIME,
-	@UPDATEDBY INT,
-	@EXPIRYDATE DATETIME
+	@UPDATEDBY INT
 AS
 BEGIN
 	INSERT INTO [dbo].[Item]
@@ -28,8 +27,7 @@ BEGIN
            ,[CreatedDate]
            ,[CreatedBy]
            ,[UpdatedDate]
-           ,[UpdatedBy]
-           ,[ExpiryDate])
+           ,[UpdatedBy])
      VALUES
            (@COMPANYID
 		   ,@CATEGORYID
@@ -43,6 +41,5 @@ BEGIN
 		   ,@CREATEDDATE
 		   ,@CREATEDBY
 		   ,@UPDATEDDATE
-		   ,@UPDATEDBY
-		   ,@EXPIRYDATE);
+		   ,@UPDATEDBY);
 END

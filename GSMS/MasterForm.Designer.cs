@@ -28,17 +28,23 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition11 = new Telerik.WinControls.UI.TableViewDefinition();
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition12 = new Telerik.WinControls.UI.TableViewDefinition();
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition13 = new Telerik.WinControls.UI.TableViewDefinition();
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition14 = new Telerik.WinControls.UI.TableViewDefinition();
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition15 = new Telerik.WinControls.UI.TableViewDefinition();
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition16 = new Telerik.WinControls.UI.TableViewDefinition();
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition17 = new Telerik.WinControls.UI.TableViewDefinition();
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition18 = new Telerik.WinControls.UI.TableViewDefinition();
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition19 = new Telerik.WinControls.UI.TableViewDefinition();
+            this.components = new System.ComponentModel.Container();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition1 = new Telerik.WinControls.UI.TableViewDefinition();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition2 = new Telerik.WinControls.UI.TableViewDefinition();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition3 = new Telerik.WinControls.UI.TableViewDefinition();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition4 = new Telerik.WinControls.UI.TableViewDefinition();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition5 = new Telerik.WinControls.UI.TableViewDefinition();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition6 = new Telerik.WinControls.UI.TableViewDefinition();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition7 = new Telerik.WinControls.UI.TableViewDefinition();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition8 = new Telerik.WinControls.UI.TableViewDefinition();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition9 = new Telerik.WinControls.UI.TableViewDefinition();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MasterForm));
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition20 = new Telerik.WinControls.UI.TableViewDefinition();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition10 = new Telerik.WinControls.UI.TableViewDefinition();
+            Telerik.WinControls.UI.RadValidationRule radValidationRule1 = new Telerik.WinControls.UI.RadValidationRule();
+            Telerik.WinControls.UI.RadValidationRuleWithTargetControl radValidationRuleWithTargetControl1 = new Telerik.WinControls.UI.RadValidationRuleWithTargetControl();
+            this.txtCurrentPassword = new Telerik.WinControls.UI.RadTextBox();
+            this.txtNewPassword = new Telerik.WinControls.UI.RadTextBox();
+            this.txtConfirmPassword = new Telerik.WinControls.UI.RadTextBox();
             this.materialBlueGreyTheme1 = new Telerik.WinControls.Themes.MaterialBlueGreyTheme();
             this.office2019GrayTheme1 = new Telerik.WinControls.Themes.Office2019GrayTheme();
             this.visualStudio2012LightTheme1 = new Telerik.WinControls.Themes.VisualStudio2012LightTheme();
@@ -86,9 +92,22 @@
             this.gridviewbill = new Telerik.WinControls.UI.RadGridView();
             this.btnbillnew = new Telerik.WinControls.UI.RadButton();
             this.pagesales = new Telerik.WinControls.UI.RadPageViewPage();
-            this.pagesettings = new Telerik.WinControls.UI.RadPageViewPage();
-            this.crystalDarkTheme1 = new Telerik.WinControls.Themes.CrystalDarkTheme();
             this.gridviewsales = new Telerik.WinControls.UI.RadGridView();
+            this.pagesettings = new Telerik.WinControls.UI.RadPageViewPage();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.radLabel1 = new Telerik.WinControls.UI.RadLabel();
+            this.radLabel2 = new Telerik.WinControls.UI.RadLabel();
+            this.radLabel3 = new Telerik.WinControls.UI.RadLabel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.chkShowPassword = new Telerik.WinControls.UI.RadCheckBox();
+            this.radLabel4 = new Telerik.WinControls.UI.RadLabel();
+            this.btnChangePassword = new Telerik.WinControls.UI.RadButton();
+            this.crystalDarkTheme1 = new Telerik.WinControls.Themes.CrystalDarkTheme();
+            this.validatorForTextBoxes = new Telerik.WinControls.UI.RadValidationProvider(this.components);
+            this.validatorForConfirmPassword = new Telerik.WinControls.UI.RadValidationProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.txtCurrentPassword)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtNewPassword)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtConfirmPassword)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radTabbedFormControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radPageView1)).BeginInit();
             this.radPageView1.SuspendLayout();
@@ -152,8 +171,73 @@
             this.pagesales.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridviewsales)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridviewsales.MasterTemplate)).BeginInit();
+            this.pagesettings.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabel1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabel2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabel3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkShowPassword)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabel4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnChangePassword)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.validatorForTextBoxes)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.validatorForConfirmPassword)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
+            // 
+            // txtCurrentPassword
+            // 
+            this.txtCurrentPassword.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.txtCurrentPassword.Location = new System.Drawing.Point(288, 182);
+            this.txtCurrentPassword.MaxLength = 8;
+            this.txtCurrentPassword.Name = "txtCurrentPassword";
+            this.txtCurrentPassword.NullText = "Current Password";
+            this.txtCurrentPassword.PasswordChar = '●';
+            this.txtCurrentPassword.ShowClearButton = true;
+            this.txtCurrentPassword.ShowNullText = true;
+            this.txtCurrentPassword.Size = new System.Drawing.Size(211, 36);
+            this.txtCurrentPassword.TabIndex = 0;
+            this.txtCurrentPassword.ThemeName = "MaterialBlueGrey";
+            this.txtCurrentPassword.UseSystemPasswordChar = true;
+            this.validatorForConfirmPassword.SetValidationRule(this.txtCurrentPassword, null);
+            this.validatorForTextBoxes.SetValidationRule(this.txtCurrentPassword, radValidationRule1);
+            this.txtCurrentPassword.TextChanged += new System.EventHandler(this.txtCurrentPassword_TextChanged);
+            // 
+            // txtNewPassword
+            // 
+            this.txtNewPassword.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.txtNewPassword.Location = new System.Drawing.Point(288, 262);
+            this.txtNewPassword.MaxLength = 8;
+            this.txtNewPassword.Name = "txtNewPassword";
+            this.txtNewPassword.NullText = "New Password";
+            this.txtNewPassword.PasswordChar = '●';
+            this.txtNewPassword.ShowClearButton = true;
+            this.txtNewPassword.ShowNullText = true;
+            this.txtNewPassword.Size = new System.Drawing.Size(211, 36);
+            this.txtNewPassword.TabIndex = 0;
+            this.txtNewPassword.ThemeName = "MaterialBlueGrey";
+            this.txtNewPassword.UseSystemPasswordChar = true;
+            this.validatorForConfirmPassword.SetValidationRule(this.txtNewPassword, null);
+            this.validatorForTextBoxes.SetValidationRule(this.txtNewPassword, radValidationRule1);
+            this.txtNewPassword.TextChanged += new System.EventHandler(this.txtNewPassword_TextChanged);
+            // 
+            // txtConfirmPassword
+            // 
+            this.txtConfirmPassword.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.txtConfirmPassword.Location = new System.Drawing.Point(288, 342);
+            this.txtConfirmPassword.MaxLength = 8;
+            this.txtConfirmPassword.Name = "txtConfirmPassword";
+            this.txtConfirmPassword.NullText = "Confirm Password";
+            this.txtConfirmPassword.PasswordChar = '●';
+            this.txtConfirmPassword.ShowClearButton = true;
+            this.txtConfirmPassword.ShowNullText = true;
+            this.txtConfirmPassword.Size = new System.Drawing.Size(211, 36);
+            this.txtConfirmPassword.TabIndex = 0;
+            this.txtConfirmPassword.ThemeName = "MaterialBlueGrey";
+            this.txtConfirmPassword.UseSystemPasswordChar = true;
+            this.validatorForConfirmPassword.SetValidationRule(this.txtConfirmPassword, radValidationRuleWithTargetControl1);
+            this.validatorForTextBoxes.SetValidationRule(this.txtConfirmPassword, radValidationRule1);
+            this.txtConfirmPassword.TextChanged += new System.EventHandler(this.txtConfirmPassword_TextChanged);
             // 
             // radTabbedFormControl1
             // 
@@ -183,7 +267,7 @@
             this.radPageView1.ItemSizeMode = ((Telerik.WinControls.UI.PageViewItemSizeMode)((Telerik.WinControls.UI.PageViewItemSizeMode.EqualWidth | Telerik.WinControls.UI.PageViewItemSizeMode.EqualHeight)));
             this.radPageView1.Location = new System.Drawing.Point(0, 0);
             this.radPageView1.Name = "radPageView1";
-            this.radPageView1.SelectedPage = this.pagecustomerbill;
+            this.radPageView1.SelectedPage = this.pagesettings;
             this.radPageView1.Size = new System.Drawing.Size(1283, 598);
             this.radPageView1.TabIndex = 0;
             this.radPageView1.ThemeName = "Office2019Gray";
@@ -198,7 +282,7 @@
             ((Telerik.WinControls.UI.RadPageViewNavigationViewElement)(this.radPageView1.GetChildAt(0))).Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             ((Telerik.WinControls.UI.RadPageViewNavigationViewElement)(this.radPageView1.GetChildAt(0))).Alignment = System.Drawing.ContentAlignment.TopLeft;
             ((Telerik.WinControls.UI.NavigationViewHeaderElement)(this.radPageView1.GetChildAt(0).GetChildAt(2))).ClipText = false;
-            ((Telerik.WinControls.UI.NavigationViewHeaderElement)(this.radPageView1.GetChildAt(0).GetChildAt(2))).Text = "Bill";
+            ((Telerik.WinControls.UI.NavigationViewHeaderElement)(this.radPageView1.GetChildAt(0).GetChildAt(2))).Text = "Settings";
             ((Telerik.WinControls.UI.NavigationViewHeaderElement)(this.radPageView1.GetChildAt(0).GetChildAt(2))).Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             ((Telerik.WinControls.UI.NavigationViewHeaderElement)(this.radPageView1.GetChildAt(0).GetChildAt(2))).CustomFontSize = 20F;
             ((Telerik.WinControls.UI.NavigationViewHeaderElement)(this.radPageView1.GetChildAt(0).GetChildAt(2))).Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
@@ -255,7 +339,7 @@
             this.gridviewusers.MasterTemplate.CaseSensitive = true;
             this.gridviewusers.MasterTemplate.PageSize = 5;
             this.gridviewusers.MasterTemplate.ShowGroupedColumns = true;
-            this.gridviewusers.MasterTemplate.ViewDefinition = tableViewDefinition11;
+            this.gridviewusers.MasterTemplate.ViewDefinition = tableViewDefinition1;
             this.gridviewusers.Name = "gridviewusers";
             this.gridviewusers.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.gridviewusers.Size = new System.Drawing.Size(1149, 558);
@@ -353,7 +437,7 @@
             this.gridviewcompany.MasterTemplate.CaseSensitive = true;
             this.gridviewcompany.MasterTemplate.PageSize = 5;
             this.gridviewcompany.MasterTemplate.ShowGroupedColumns = true;
-            this.gridviewcompany.MasterTemplate.ViewDefinition = tableViewDefinition12;
+            this.gridviewcompany.MasterTemplate.ViewDefinition = tableViewDefinition2;
             this.gridviewcompany.Name = "gridviewcompany";
             this.gridviewcompany.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.gridviewcompany.Size = new System.Drawing.Size(1149, 558);
@@ -448,7 +532,7 @@
             this.gridviewcategory.MasterTemplate.CaseSensitive = true;
             this.gridviewcategory.MasterTemplate.PageSize = 5;
             this.gridviewcategory.MasterTemplate.ShowGroupedColumns = true;
-            this.gridviewcategory.MasterTemplate.ViewDefinition = tableViewDefinition13;
+            this.gridviewcategory.MasterTemplate.ViewDefinition = tableViewDefinition3;
             this.gridviewcategory.Name = "gridviewcategory";
             this.gridviewcategory.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.gridviewcategory.Size = new System.Drawing.Size(1149, 558);
@@ -540,7 +624,7 @@
             this.gridviewitem.MasterTemplate.CaseSensitive = true;
             this.gridviewitem.MasterTemplate.PageSize = 5;
             this.gridviewitem.MasterTemplate.ShowGroupedColumns = true;
-            this.gridviewitem.MasterTemplate.ViewDefinition = tableViewDefinition14;
+            this.gridviewitem.MasterTemplate.ViewDefinition = tableViewDefinition4;
             this.gridviewitem.Name = "gridviewitem";
             this.gridviewitem.Size = new System.Drawing.Size(1149, 558);
             this.gridviewitem.TabIndex = 0;
@@ -631,7 +715,7 @@
             this.gridviewinventory.MasterTemplate.CaseSensitive = true;
             this.gridviewinventory.MasterTemplate.PageSize = 5;
             this.gridviewinventory.MasterTemplate.ShowGroupedColumns = true;
-            this.gridviewinventory.MasterTemplate.ViewDefinition = tableViewDefinition15;
+            this.gridviewinventory.MasterTemplate.ViewDefinition = tableViewDefinition5;
             this.gridviewinventory.Name = "gridviewinventory";
             this.gridviewinventory.Size = new System.Drawing.Size(1149, 558);
             this.gridviewinventory.TabIndex = 0;
@@ -720,7 +804,7 @@
             this.gridviewdepartment.MasterTemplate.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill;
             this.gridviewdepartment.MasterTemplate.CaseSensitive = true;
             this.gridviewdepartment.MasterTemplate.PageSize = 5;
-            this.gridviewdepartment.MasterTemplate.ViewDefinition = tableViewDefinition16;
+            this.gridviewdepartment.MasterTemplate.ViewDefinition = tableViewDefinition6;
             this.gridviewdepartment.Name = "gridviewdepartment";
             this.gridviewdepartment.Size = new System.Drawing.Size(1149, 558);
             this.gridviewdepartment.TabIndex = 0;
@@ -811,7 +895,7 @@
             this.gridviewstaff.MasterTemplate.CaseSensitive = true;
             this.gridviewstaff.MasterTemplate.PageSize = 5;
             this.gridviewstaff.MasterTemplate.ShowGroupedColumns = true;
-            this.gridviewstaff.MasterTemplate.ViewDefinition = tableViewDefinition17;
+            this.gridviewstaff.MasterTemplate.ViewDefinition = tableViewDefinition7;
             this.gridviewstaff.Name = "gridviewstaff";
             this.gridviewstaff.Size = new System.Drawing.Size(1149, 558);
             this.gridviewstaff.TabIndex = 0;
@@ -899,7 +983,7 @@
             this.gridviewcustomer.MasterTemplate.CaseSensitive = true;
             this.gridviewcustomer.MasterTemplate.PageSize = 5;
             this.gridviewcustomer.MasterTemplate.ShowGroupedColumns = true;
-            this.gridviewcustomer.MasterTemplate.ViewDefinition = tableViewDefinition18;
+            this.gridviewcustomer.MasterTemplate.ViewDefinition = tableViewDefinition8;
             this.gridviewcustomer.Name = "gridviewcustomer";
             this.gridviewcustomer.Size = new System.Drawing.Size(1149, 558);
             this.gridviewcustomer.TabIndex = 0;
@@ -937,7 +1021,7 @@
             this.gridviewbill.MasterTemplate.CaseSensitive = true;
             this.gridviewbill.MasterTemplate.PageSize = 5;
             this.gridviewbill.MasterTemplate.ShowGroupedColumns = true;
-            this.gridviewbill.MasterTemplate.ViewDefinition = tableViewDefinition19;
+            this.gridviewbill.MasterTemplate.ViewDefinition = tableViewDefinition9;
             this.gridviewbill.Name = "gridviewbill";
             this.gridviewbill.Size = new System.Drawing.Size(1149, 558);
             this.gridviewbill.TabIndex = 1;
@@ -970,16 +1054,6 @@
             this.pagesales.Size = new System.Drawing.Size(1149, 558);
             this.pagesales.Text = "Sales";
             // 
-            // pagesettings
-            // 
-            this.pagesettings.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pagesettings.Image = global::GSMS.Properties.Resources.SettingsIcon;
-            this.pagesettings.ItemSize = new System.Drawing.SizeF(119F, 32F);
-            this.pagesettings.Location = new System.Drawing.Point(152, 38);
-            this.pagesettings.Name = "pagesettings";
-            this.pagesettings.Size = new System.Drawing.Size(959, 558);
-            this.pagesettings.Text = "Settings";
-            // 
             // gridviewsales
             // 
             this.gridviewsales.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -998,11 +1072,161 @@
             this.gridviewsales.MasterTemplate.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill;
             this.gridviewsales.MasterTemplate.CaseSensitive = true;
             this.gridviewsales.MasterTemplate.PageSize = 5;
-            this.gridviewsales.MasterTemplate.ViewDefinition = tableViewDefinition20;
+            this.gridviewsales.MasterTemplate.ViewDefinition = tableViewDefinition10;
             this.gridviewsales.Name = "gridviewsales";
             this.gridviewsales.Size = new System.Drawing.Size(1149, 558);
             this.gridviewsales.TabIndex = 0;
             this.gridviewsales.ThemeName = "MaterialBlueGrey";
+            // 
+            // pagesettings
+            // 
+            this.pagesettings.Controls.Add(this.tableLayoutPanel1);
+            this.pagesettings.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pagesettings.Image = global::GSMS.Properties.Resources.SettingsIcon;
+            this.pagesettings.ItemSize = new System.Drawing.SizeF(119F, 32F);
+            this.pagesettings.Location = new System.Drawing.Point(132, 38);
+            this.pagesettings.Name = "pagesettings";
+            this.pagesettings.Size = new System.Drawing.Size(1149, 558);
+            this.pagesettings.Text = "Settings";
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.BackColor = System.Drawing.Color.White;
+            this.tableLayoutPanel1.ColumnCount = 3;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 45.61404F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 54.38596F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 524F));
+            this.tableLayoutPanel1.Controls.Add(this.txtCurrentPassword, 1, 2);
+            this.tableLayoutPanel1.Controls.Add(this.radLabel1, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.radLabel2, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.txtNewPassword, 1, 3);
+            this.tableLayoutPanel1.Controls.Add(this.radLabel3, 0, 4);
+            this.tableLayoutPanel1.Controls.Add(this.txtConfirmPassword, 1, 4);
+            this.tableLayoutPanel1.Controls.Add(this.pictureBox1, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this.chkShowPassword, 1, 5);
+            this.tableLayoutPanel1.Controls.Add(this.radLabel4, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.btnChangePassword, 0, 6);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 8;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 80F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 80F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 80F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 80F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 80F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 80F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 80F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1149, 558);
+            this.tableLayoutPanel1.TabIndex = 1;
+            // 
+            // radLabel1
+            // 
+            this.radLabel1.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.radLabel1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radLabel1.Location = new System.Drawing.Point(147, 188);
+            this.radLabel1.Name = "radLabel1";
+            this.radLabel1.Size = new System.Drawing.Size(135, 24);
+            this.radLabel1.TabIndex = 3;
+            this.radLabel1.Text = "Current Password :";
+            this.radLabel1.ThemeName = "MaterialBlueGrey";
+            // 
+            // radLabel2
+            // 
+            this.radLabel2.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.radLabel2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radLabel2.Location = new System.Drawing.Point(168, 268);
+            this.radLabel2.Name = "radLabel2";
+            this.radLabel2.Size = new System.Drawing.Size(114, 24);
+            this.radLabel2.TabIndex = 3;
+            this.radLabel2.Text = "New Password :";
+            this.radLabel2.ThemeName = "MaterialBlueGrey";
+            // 
+            // radLabel3
+            // 
+            this.radLabel3.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.radLabel3.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radLabel3.Location = new System.Drawing.Point(144, 348);
+            this.radLabel3.Name = "radLabel3";
+            this.radLabel3.Size = new System.Drawing.Size(138, 24);
+            this.radLabel3.TabIndex = 3;
+            this.radLabel3.Text = "Confirm Password :";
+            this.radLabel3.ThemeName = "MaterialBlueGrey";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::GSMS.Properties.Resources.ChangePasswordImage;
+            this.pictureBox1.Location = new System.Drawing.Point(627, 3);
+            this.pictureBox1.Name = "pictureBox1";
+            this.tableLayoutPanel1.SetRowSpan(this.pictureBox1, 8);
+            this.pictureBox1.Size = new System.Drawing.Size(516, 558);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 5;
+            this.pictureBox1.TabStop = false;
+            // 
+            // chkShowPassword
+            // 
+            this.chkShowPassword.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.chkShowPassword.Location = new System.Drawing.Point(288, 403);
+            this.chkShowPassword.Name = "chkShowPassword";
+            this.chkShowPassword.Size = new System.Drawing.Size(101, 18);
+            this.chkShowPassword.TabIndex = 6;
+            this.chkShowPassword.Text = "Show Password";
+            this.chkShowPassword.ThemeName = "Fluent";
+            this.chkShowPassword.ToggleStateChanged += new Telerik.WinControls.UI.StateChangedEventHandler(this.chkShowPassword_ToggleStateChanged);
+            // 
+            // radLabel4
+            // 
+            this.radLabel4.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.tableLayoutPanel1.SetColumnSpan(this.radLabel4, 2);
+            this.radLabel4.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radLabel4.Location = new System.Drawing.Point(181, 101);
+            this.radLabel4.Name = "radLabel4";
+            this.radLabel4.Size = new System.Drawing.Size(262, 37);
+            this.radLabel4.TabIndex = 7;
+            this.radLabel4.Text = "-: Change Password :-";
+            this.radLabel4.ThemeName = "MaterialBlueGrey";
+            // 
+            // btnChangePassword
+            // 
+            this.btnChangePassword.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnChangePassword.BackColor = System.Drawing.Color.MediumAquamarine;
+            this.tableLayoutPanel1.SetColumnSpan(this.btnChangePassword, 2);
+            this.btnChangePassword.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnChangePassword.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnChangePassword.ForeColor = System.Drawing.Color.Black;
+            this.btnChangePassword.Location = new System.Drawing.Point(231, 447);
+            this.btnChangePassword.Name = "btnChangePassword";
+            this.btnChangePassword.Size = new System.Drawing.Size(161, 36);
+            this.btnChangePassword.TabIndex = 4;
+            this.btnChangePassword.Text = "Change Password";
+            this.btnChangePassword.ThemeName = "MaterialBlueGrey";
+            this.btnChangePassword.Click += new System.EventHandler(this.btnChangePassword_Click);
+            // 
+            // validatorForTextBoxes
+            // 
+            this.validatorForTextBoxes.ValidationMode = Telerik.WinControls.UI.ValidationMode.Programmatically;
+            radValidationRule1.Controls.Add(this.txtCurrentPassword);
+            radValidationRule1.Controls.Add(this.txtNewPassword);
+            radValidationRule1.Controls.Add(this.txtConfirmPassword);
+            radValidationRule1.Operator = Telerik.WinControls.Data.FilterOperator.IsNotLike;
+            radValidationRule1.ToolTipText = "It Cannot Be Empty";
+            radValidationRule1.ToolTipTitle = "";
+            radValidationRule1.Value = "";
+            this.validatorForTextBoxes.ValidationRules.AddRange(new Telerik.WinControls.Data.FilterDescriptor[] {
+            radValidationRule1});
+            // 
+            // validatorForConfirmPassword
+            // 
+            this.validatorForConfirmPassword.ValidationMode = Telerik.WinControls.UI.ValidationMode.Programmatically;
+            radValidationRuleWithTargetControl1.Controls.Add(this.txtConfirmPassword);
+            radValidationRuleWithTargetControl1.Operator = Telerik.WinControls.Data.FilterOperator.IsEqualTo;
+            radValidationRuleWithTargetControl1.TargetControl = this.txtNewPassword;
+            radValidationRuleWithTargetControl1.ToolTipText = "Password does not match to New Password. . .";
+            radValidationRuleWithTargetControl1.ToolTipTitle = "";
+            this.validatorForConfirmPassword.ValidationRules.AddRange(new Telerik.WinControls.Data.FilterDescriptor[] {
+            radValidationRuleWithTargetControl1});
             // 
             // MasterForm
             // 
@@ -1021,6 +1245,9 @@
             this.ThemeName = "Fluent";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Form1_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.txtCurrentPassword)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtNewPassword)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtConfirmPassword)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radTabbedFormControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radPageView1)).EndInit();
             this.radPageView1.ResumeLayout(false);
@@ -1093,6 +1320,18 @@
             this.pagesales.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridviewsales.MasterTemplate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridviewsales)).EndInit();
+            this.pagesettings.ResumeLayout(false);
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabel1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabel2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabel3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkShowPassword)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabel4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnChangePassword)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.validatorForTextBoxes)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.validatorForConfirmPassword)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);
 
@@ -1149,5 +1388,18 @@
         private Telerik.WinControls.UI.RadGridView gridviewbill;
         private Telerik.WinControls.UI.RadButton btnbillnew;
         private Telerik.WinControls.UI.RadGridView gridviewsales;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private Telerik.WinControls.UI.RadTextBox txtCurrentPassword;
+        private Telerik.WinControls.UI.RadLabel radLabel1;
+        private Telerik.WinControls.UI.RadLabel radLabel2;
+        private Telerik.WinControls.UI.RadTextBox txtNewPassword;
+        private Telerik.WinControls.UI.RadLabel radLabel3;
+        private Telerik.WinControls.UI.RadTextBox txtConfirmPassword;
+        private Telerik.WinControls.UI.RadCheckBox chkShowPassword;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private Telerik.WinControls.UI.RadButton btnChangePassword;
+        private Telerik.WinControls.UI.RadLabel radLabel4;
+        private Telerik.WinControls.UI.RadValidationProvider validatorForTextBoxes;
+        private Telerik.WinControls.UI.RadValidationProvider validatorForConfirmPassword;
     }
 }

@@ -468,7 +468,6 @@ namespace GSMS
                     }
                     else
                     {
-                        //MessageBox.Show("We have Only " + itemStock.ToString() + " " + lblunit.Text + " " + "You cannot Buy More than that...", "", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         RadMessageBox.Show("We have Only " + itemStock.ToString() + " " + lblunit.Text + " " + "You cannot Buy More than that...", "", MessageBoxButtons.OK, RadMessageIcon.Info, "We Have Limited Stock and You are buing More than that");
                     }
                     spineditorquantity.Value = 0;

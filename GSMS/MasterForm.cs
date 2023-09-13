@@ -69,7 +69,25 @@ namespace GSMS
                 rowInfo.Cells[1].Value = item["FirstName"].ToString();
                 rowInfo.Cells[2].Value = item["LastName"].ToString();
                 rowInfo.Cells[3].Value = item["Username"].ToString();
-                rowInfo.Cells[4].Value = item["Password"].ToString();
+
+                if (LoginForm.usertype.ToLower() != "admin")
+                {
+                    // For Encrypt Password . . .
+                    string encrypted = "";
+                    byte[] b1;
+
+                    string original = item["Password"].ToString();
+                    int hashCode = original.GetHashCode();
+                    string withHash = original + hashCode.ToString();
+                    b1 = Encoding.BigEndianUnicode.GetBytes(withHash);
+                    encrypted = Convert.ToBase64String(b1);
+                    rowInfo.Cells[4].Value = encrypted.Substring(0, 4);
+                }
+                else
+                {
+                    rowInfo.Cells[4].Value = item["Password"].ToString();
+                }
+
                 rowInfo.Cells[5].Value = item["ContactNo"].ToString();
                 rowInfo.Cells[6].Value = item["Email"].ToString();
                 if (Convert.ToBoolean(item["Gender"]))
@@ -961,7 +979,7 @@ namespace GSMS
             RadMessageBox.SetThemeName("MaterialBlueGrey");
             con.Open();
             // TODO: This line of code loads data into the 'superMarketMS_ProjectDataSet.Users' table. You can move, or remove it, as needed.
-            if (LoginForm.usertype == "Admin")
+            if (LoginForm.usertype.ToLower() == "admin")
             {
                 btnedituser.Enabled = btndeleteuser.Enabled = btncompanyedit.Enabled = btncompanydelete.Enabled = btncategoryedit.Enabled = btncategorydelete.Enabled = btnitemedit.Enabled = btnitemdelete.Enabled = btninventoryedit.Enabled = btninventorydelete.Enabled = true;
             }
@@ -1288,7 +1306,7 @@ namespace GSMS
             }
             if (isSelected)
             {
-                if (LoginForm.usertype == "Admin")
+                if (LoginForm.usertype.ToLower() == "admin")
                 {
                     btnedituser.Enabled = btndeleteuser.Enabled = true;
                 }
@@ -1307,7 +1325,7 @@ namespace GSMS
             }
             if (isSelected)
             {
-                if (LoginForm.usertype == "Admin")
+                if (LoginForm.usertype.ToLower() == "admin")
                 {
                     btncompanydelete.Enabled = btncompanyedit.Enabled = true;
                 }
@@ -1326,7 +1344,7 @@ namespace GSMS
             }
             if (isSelected)
             {
-                if (LoginForm.usertype == "Admin")
+                if (LoginForm.usertype.ToLower() == "admin")
                 {
                     btncategorydelete.Enabled = btncategoryedit.Enabled = true;
                 }
@@ -1346,7 +1364,7 @@ namespace GSMS
             }
             if (isSelected)
             {
-                if (LoginForm.usertype == "Admin")
+                if (LoginForm.usertype.ToLower() == "admin")
                 {
                     btnitemedit.Enabled = btnitemdelete.Enabled = true;
                 }
@@ -1365,7 +1383,7 @@ namespace GSMS
             }
             if (isSelected)
             {
-                if (LoginForm.usertype == "Admin")
+                if (LoginForm.usertype.ToLower() == "admin")
                 {
                     btninventoryedit.Enabled = btninventorydelete.Enabled = true;
                 }
@@ -1385,7 +1403,7 @@ namespace GSMS
             }
             if (isSelected)
             {
-                if (LoginForm.usertype == "Admin")
+                if (LoginForm.usertype.ToLower() == "admin")
                 {
                     btndepartmentedit.Enabled = btndepartmentdelete.Enabled = true;
                 }
@@ -1405,17 +1423,12 @@ namespace GSMS
             }
             if (isSelected)
             {
-                if (LoginForm.usertype == "Admin")
+                if (LoginForm.usertype.ToLower() == "admin")
                 {
                     btnstaffmemberedit.Enabled = btnstaffmemberdelete.Enabled = true;
                 }
             }
             else { btnstaffmemberedit.Enabled = btnstaffmemberdelete.Enabled = false; }
-        }
-
-        private void gridviewusers_CellDoubleClick(object sender, GridViewCellEventArgs e)
-        {
-            editUser();
         }
 
         private void btnbillnew_Click(object sender, EventArgs e)
@@ -1426,29 +1439,159 @@ namespace GSMS
             getSales();
         }
 
+        private void gridviewusers_CellDoubleClick(object sender, GridViewCellEventArgs e)
+        {
+            if (LoginForm.usertype.ToLower() == "admin")
+            {
+                editUser();
+            }
+        }
         private void gridviewcompany_CellDoubleClick(object sender, GridViewCellEventArgs e)
         {
-            editCompany();
+            if (LoginForm.usertype.ToLower() == "admin")
+            {
+                editCompany();
+            }
         }
         private void gridviewcategory_CellDoubleClick(object sender, GridViewCellEventArgs e)
         {
-            editCategory();
+            if (LoginForm.usertype.ToLower() == "admin")
+            {
+                editCategory();
+            }
         }
         private void gridviewitem_CellDoubleClick(object sender, GridViewCellEventArgs e)
         {
-            editItem();
+            if (LoginForm.usertype.ToLower() == "admin")
+            {
+                editItem();
+            }
         }
         private void gridviewinventory_CellDoubleClick(object sender, GridViewCellEventArgs e)
         {
-            editInventoryRecord();
+            if (LoginForm.usertype.ToLower() == "admin")
+            {
+                editInventoryRecord();
+            }
         }
         private void gridviewdepartment_CellDoubleClick(object sender, GridViewCellEventArgs e)
         {
-            editDepartment();
+            if (LoginForm.usertype.ToLower() == "admin")
+            {
+                editDepartment();
+            }
         }
         private void gridviewstaff_CellDoubleClick(object sender, GridViewCellEventArgs e)
         {
-            editStaffMemebr();
+            if (LoginForm.usertype.ToLower() == "admin")
+            {
+                editStaffMemebr();
+            }
+        }
+
+
+        private void txtCurrentPassword_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtCurrentPassword.Text))
+            {
+                validatorForTextBoxes.Validate(txtCurrentPassword);
+                txtCurrentPassword.Focus();
+            }
+            else { validatorForTextBoxes.ClearErrorStatus(txtCurrentPassword); }
+        }
+
+        private void txtNewPassword_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtNewPassword.Text))
+            {
+                validatorForTextBoxes.Validate(txtNewPassword);
+                txtNewPassword.Focus();
+            }
+            else { validatorForTextBoxes.ClearErrorStatus(txtNewPassword); }
+        }
+
+        private void txtConfirmPassword_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtConfirmPassword.Text))
+            {
+                validatorForTextBoxes.Validate(txtConfirmPassword);
+                txtConfirmPassword.Focus();
+            }
+            else { validatorForTextBoxes.ClearErrorStatus(txtConfirmPassword); }
+        }
+
+        private void chkShowPassword_ToggleStateChanged(object sender, StateChangedEventArgs args)
+        {
+            if (chkShowPassword.Checked)
+            {
+                txtCurrentPassword.UseSystemPasswordChar = txtNewPassword.UseSystemPasswordChar = txtConfirmPassword.UseSystemPasswordChar = false;
+                txtCurrentPassword.PasswordChar = txtNewPassword.PasswordChar = txtConfirmPassword.PasswordChar = '\0';
+            }
+            else { txtCurrentPassword.UseSystemPasswordChar = txtNewPassword.UseSystemPasswordChar = txtConfirmPassword.UseSystemPasswordChar = true; }
+        }
+
+        private void btnChangePassword_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtCurrentPassword.Text))
+            {
+                validatorForTextBoxes.ClearErrorStatus(txtNewPassword);
+                validatorForTextBoxes.ClearErrorStatus(txtConfirmPassword);
+
+                validatorForTextBoxes.Validate(txtCurrentPassword);
+                txtCurrentPassword.Focus();
+            }
+            else if (string.IsNullOrEmpty(txtNewPassword.Text))
+            {
+                validatorForTextBoxes.ClearErrorStatus(txtCurrentPassword);
+                validatorForTextBoxes.ClearErrorStatus(txtConfirmPassword);
+
+                validatorForTextBoxes.Validate(txtNewPassword);
+                txtNewPassword.Focus();
+            }
+            else if (string.IsNullOrEmpty(txtConfirmPassword.Text))
+            {
+                validatorForTextBoxes.ClearErrorStatus(txtCurrentPassword);
+                validatorForTextBoxes.ClearErrorStatus(txtNewPassword);
+
+                validatorForTextBoxes.Validate(txtConfirmPassword);
+                txtConfirmPassword.Focus();
+            }
+            else if (txtNewPassword.Text != txtConfirmPassword.Text)
+            {
+                validatorForTextBoxes.ClearErrorStatus(txtCurrentPassword);
+                validatorForTextBoxes.ClearErrorStatus(txtNewPassword);
+                validatorForTextBoxes.ClearErrorStatus(txtConfirmPassword);
+
+                validatorForConfirmPassword.Validate(txtConfirmPassword);
+                txtConfirmPassword.Focus();
+            }
+            else
+            {
+                // CODE TO CHANGE PASSWORD . . .
+                cmd = new SqlCommand("LOG_IN", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@USERNAME", LoginForm.username);
+                cmd.Parameters.AddWithValue("@PASSWORD", txtCurrentPassword.Text);
+                dr = cmd.ExecuteReader();
+                if (dr.HasRows)
+                {
+                    dr.Read();
+                    int userId = 0;
+                    userId = Convert.ToInt32(dr["Id"]);
+                    dr.Close();
+                    cmd = new SqlCommand("CHANGE_PASSWORD", con);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@ID", userId);
+                    cmd.Parameters.AddWithValue("@NEWPASSWORD", txtConfirmPassword.Text);
+                    int i = cmd.ExecuteNonQuery();
+                    if (i > 0)
+                    {
+                        RadMessageBox.Show("Password Changed Successfully, You have to Restart the Application and Login again . . .", "", MessageBoxButtons.OK, RadMessageIcon.Info);
+                        this.Close();
+                    }
+                }
+                dr.Close();
+            }
         }
     }
 }

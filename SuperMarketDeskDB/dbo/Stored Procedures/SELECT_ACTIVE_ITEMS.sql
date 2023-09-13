@@ -1,7 +1,7 @@
 ﻿CREATE PROC [dbo].[SELECT_ACTIVE_ITEMS] AS
 BEGIN
 	SELECT  
-	I.Id, I.[Name], I.ShortName, I.Price, I.Discount, I.Tax, I.ExpiryDate, C.[Name] "Category", C2.[Name] "Company",
+	I.Id, I.[Name], I.ShortName, I.Price, I.Discount, I.Tax, C.[Name] "Category", C2.[Name] "Company",
 	I.CreatedDate, U.[Username] "Created By", 
 	I.UpdatedDate, U2.[Username] "Updated By", I.[Status]
 	FROM Item "I"
