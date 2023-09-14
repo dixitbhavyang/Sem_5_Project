@@ -51,6 +51,25 @@
             this.radTabbedFormControl1 = new Telerik.WinControls.UI.RadTabbedFormControl();
             this.radPageView1 = new Telerik.WinControls.UI.RadPageView();
             this.pagehome = new Telerik.WinControls.UI.RadPageViewPage();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.radGroupBox1 = new Telerik.WinControls.UI.RadGroupBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.btnTotalUsers = new Telerik.WinControls.UI.RadButton();
+            this.radGroupBox3 = new Telerik.WinControls.UI.RadGroupBox();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.btnTotalCategories = new Telerik.WinControls.UI.RadButton();
+            this.radGroupBox2 = new Telerik.WinControls.UI.RadGroupBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.btnTotalCompanies = new Telerik.WinControls.UI.RadButton();
+            this.radGroupBox4 = new Telerik.WinControls.UI.RadGroupBox();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.btnTotalItems = new Telerik.WinControls.UI.RadButton();
+            this.radGroupBox6 = new Telerik.WinControls.UI.RadGroupBox();
+            this.pictureBox6 = new System.Windows.Forms.PictureBox();
+            this.btnTotalStaff = new Telerik.WinControls.UI.RadButton();
+            this.radGroupBox5 = new Telerik.WinControls.UI.RadGroupBox();
+            this.pictureBox7 = new System.Windows.Forms.PictureBox();
+            this.btnTotalDepartments = new Telerik.WinControls.UI.RadButton();
             this.pageuser = new Telerik.WinControls.UI.RadPageViewPage();
             this.gridviewusers = new Telerik.WinControls.UI.RadGridView();
             this.btndeleteuser = new Telerik.WinControls.UI.RadButton();
@@ -111,6 +130,32 @@
             ((System.ComponentModel.ISupportInitialize)(this.radTabbedFormControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radPageView1)).BeginInit();
             this.radPageView1.SuspendLayout();
+            this.pagehome.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.radGroupBox1)).BeginInit();
+            this.radGroupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnTotalUsers)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radGroupBox3)).BeginInit();
+            this.radGroupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnTotalCategories)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radGroupBox2)).BeginInit();
+            this.radGroupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnTotalCompanies)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radGroupBox4)).BeginInit();
+            this.radGroupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnTotalItems)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radGroupBox6)).BeginInit();
+            this.radGroupBox6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnTotalStaff)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radGroupBox5)).BeginInit();
+            this.radGroupBox5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnTotalDepartments)).BeginInit();
             this.pageuser.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridviewusers)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridviewusers.MasterTemplate)).BeginInit();
@@ -188,7 +233,7 @@
             // txtCurrentPassword
             // 
             this.txtCurrentPassword.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.txtCurrentPassword.Location = new System.Drawing.Point(288, 182);
+            this.txtCurrentPassword.Location = new System.Drawing.Point(280, 182);
             this.txtCurrentPassword.MaxLength = 8;
             this.txtCurrentPassword.Name = "txtCurrentPassword";
             this.txtCurrentPassword.NullText = "Current Password";
@@ -199,14 +244,14 @@
             this.txtCurrentPassword.TabIndex = 0;
             this.txtCurrentPassword.ThemeName = "MaterialBlueGrey";
             this.txtCurrentPassword.UseSystemPasswordChar = true;
-            this.validatorForConfirmPassword.SetValidationRule(this.txtCurrentPassword, null);
             this.validatorForTextBoxes.SetValidationRule(this.txtCurrentPassword, radValidationRule1);
+            this.validatorForConfirmPassword.SetValidationRule(this.txtCurrentPassword, null);
             this.txtCurrentPassword.TextChanged += new System.EventHandler(this.txtCurrentPassword_TextChanged);
             // 
             // txtNewPassword
             // 
             this.txtNewPassword.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.txtNewPassword.Location = new System.Drawing.Point(288, 262);
+            this.txtNewPassword.Location = new System.Drawing.Point(280, 262);
             this.txtNewPassword.MaxLength = 8;
             this.txtNewPassword.Name = "txtNewPassword";
             this.txtNewPassword.NullText = "New Password";
@@ -217,14 +262,14 @@
             this.txtNewPassword.TabIndex = 0;
             this.txtNewPassword.ThemeName = "MaterialBlueGrey";
             this.txtNewPassword.UseSystemPasswordChar = true;
-            this.validatorForConfirmPassword.SetValidationRule(this.txtNewPassword, null);
             this.validatorForTextBoxes.SetValidationRule(this.txtNewPassword, radValidationRule1);
+            this.validatorForConfirmPassword.SetValidationRule(this.txtNewPassword, null);
             this.txtNewPassword.TextChanged += new System.EventHandler(this.txtNewPassword_TextChanged);
             // 
             // txtConfirmPassword
             // 
             this.txtConfirmPassword.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.txtConfirmPassword.Location = new System.Drawing.Point(288, 342);
+            this.txtConfirmPassword.Location = new System.Drawing.Point(280, 342);
             this.txtConfirmPassword.MaxLength = 8;
             this.txtConfirmPassword.Name = "txtConfirmPassword";
             this.txtConfirmPassword.NullText = "Confirm Password";
@@ -235,8 +280,8 @@
             this.txtConfirmPassword.TabIndex = 0;
             this.txtConfirmPassword.ThemeName = "MaterialBlueGrey";
             this.txtConfirmPassword.UseSystemPasswordChar = true;
-            this.validatorForConfirmPassword.SetValidationRule(this.txtConfirmPassword, radValidationRuleWithTargetControl1);
             this.validatorForTextBoxes.SetValidationRule(this.txtConfirmPassword, radValidationRule1);
+            this.validatorForConfirmPassword.SetValidationRule(this.txtConfirmPassword, radValidationRuleWithTargetControl1);
             this.txtConfirmPassword.TextChanged += new System.EventHandler(this.txtConfirmPassword_TextChanged);
             // 
             // radTabbedFormControl1
@@ -267,7 +312,7 @@
             this.radPageView1.ItemSizeMode = ((Telerik.WinControls.UI.PageViewItemSizeMode)((Telerik.WinControls.UI.PageViewItemSizeMode.EqualWidth | Telerik.WinControls.UI.PageViewItemSizeMode.EqualHeight)));
             this.radPageView1.Location = new System.Drawing.Point(0, 0);
             this.radPageView1.Name = "radPageView1";
-            this.radPageView1.SelectedPage = this.pagesettings;
+            this.radPageView1.SelectedPage = this.pagecustomerbill;
             this.radPageView1.Size = new System.Drawing.Size(1283, 598);
             this.radPageView1.TabIndex = 0;
             this.radPageView1.ThemeName = "Office2019Gray";
@@ -282,7 +327,7 @@
             ((Telerik.WinControls.UI.RadPageViewNavigationViewElement)(this.radPageView1.GetChildAt(0))).Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             ((Telerik.WinControls.UI.RadPageViewNavigationViewElement)(this.radPageView1.GetChildAt(0))).Alignment = System.Drawing.ContentAlignment.TopLeft;
             ((Telerik.WinControls.UI.NavigationViewHeaderElement)(this.radPageView1.GetChildAt(0).GetChildAt(2))).ClipText = false;
-            ((Telerik.WinControls.UI.NavigationViewHeaderElement)(this.radPageView1.GetChildAt(0).GetChildAt(2))).Text = "Settings";
+            ((Telerik.WinControls.UI.NavigationViewHeaderElement)(this.radPageView1.GetChildAt(0).GetChildAt(2))).Text = "Bill";
             ((Telerik.WinControls.UI.NavigationViewHeaderElement)(this.radPageView1.GetChildAt(0).GetChildAt(2))).Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             ((Telerik.WinControls.UI.NavigationViewHeaderElement)(this.radPageView1.GetChildAt(0).GetChildAt(2))).CustomFontSize = 20F;
             ((Telerik.WinControls.UI.NavigationViewHeaderElement)(this.radPageView1.GetChildAt(0).GetChildAt(2))).Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
@@ -291,6 +336,7 @@
             // pagehome
             // 
             this.pagehome.AutoSize = true;
+            this.pagehome.Controls.Add(this.tableLayoutPanel2);
             this.pagehome.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pagehome.Image = global::GSMS.Properties.Resources.HomeIcon;
             this.pagehome.ItemSize = new System.Drawing.SizeF(119F, 32F);
@@ -298,6 +344,279 @@
             this.pagehome.Name = "pagehome";
             this.pagehome.Size = new System.Drawing.Size(1149, 558);
             this.pagehome.Text = "Home";
+            // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.BackColor = System.Drawing.Color.White;
+            this.tableLayoutPanel2.ColumnCount = 2;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.Controls.Add(this.radGroupBox1, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.radGroupBox3, 0, 2);
+            this.tableLayoutPanel2.Controls.Add(this.radGroupBox2, 1, 0);
+            this.tableLayoutPanel2.Controls.Add(this.radGroupBox4, 1, 2);
+            this.tableLayoutPanel2.Controls.Add(this.radGroupBox6, 1, 4);
+            this.tableLayoutPanel2.Controls.Add(this.radGroupBox5, 0, 4);
+            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 6;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1149, 558);
+            this.tableLayoutPanel2.TabIndex = 1;
+            // 
+            // radGroupBox1
+            // 
+            this.radGroupBox1.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping;
+            this.radGroupBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.radGroupBox1.Controls.Add(this.pictureBox3);
+            this.radGroupBox1.Controls.Add(this.btnTotalUsers);
+            this.radGroupBox1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radGroupBox1.HeaderMargin = new System.Windows.Forms.Padding(1);
+            this.radGroupBox1.HeaderText = "Total Active Users";
+            this.radGroupBox1.Location = new System.Drawing.Point(146, 3);
+            this.radGroupBox1.Name = "radGroupBox1";
+            this.tableLayoutPanel2.SetRowSpan(this.radGroupBox1, 2);
+            this.radGroupBox1.Size = new System.Drawing.Size(281, 194);
+            this.radGroupBox1.TabIndex = 7;
+            this.radGroupBox1.Text = "Total Active Users";
+            this.radGroupBox1.ThemeName = "Office2019Gray";
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox3.Image = global::GSMS.Properties.Resources.UsersFormImage;
+            this.pictureBox3.Location = new System.Drawing.Point(2, 18);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(277, 134);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox3.TabIndex = 16;
+            this.pictureBox3.TabStop = false;
+            // 
+            // btnTotalUsers
+            // 
+            this.btnTotalUsers.BackColor = System.Drawing.Color.Transparent;
+            this.btnTotalUsers.DisplayStyle = Telerik.WinControls.DisplayStyle.Text;
+            this.btnTotalUsers.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.btnTotalUsers.Font = new System.Drawing.Font("Segoe UI", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTotalUsers.Location = new System.Drawing.Point(2, 152);
+            this.btnTotalUsers.Name = "btnTotalUsers";
+            this.btnTotalUsers.Size = new System.Drawing.Size(277, 40);
+            this.btnTotalUsers.TabIndex = 0;
+            this.btnTotalUsers.Text = "radButton1";
+            this.btnTotalUsers.ThemeName = "VisualStudio2012Light";
+            // 
+            // radGroupBox3
+            // 
+            this.radGroupBox3.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping;
+            this.radGroupBox3.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.radGroupBox3.Controls.Add(this.pictureBox4);
+            this.radGroupBox3.Controls.Add(this.btnTotalCategories);
+            this.radGroupBox3.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radGroupBox3.HeaderMargin = new System.Windows.Forms.Padding(1);
+            this.radGroupBox3.HeaderText = "Total Available Categories";
+            this.radGroupBox3.Location = new System.Drawing.Point(146, 203);
+            this.radGroupBox3.Name = "radGroupBox3";
+            this.tableLayoutPanel2.SetRowSpan(this.radGroupBox3, 2);
+            this.radGroupBox3.Size = new System.Drawing.Size(281, 194);
+            this.radGroupBox3.TabIndex = 12;
+            this.radGroupBox3.Text = "Total Available Categories";
+            this.radGroupBox3.ThemeName = "Office2019Gray";
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox4.Image = global::GSMS.Properties.Resources.CategoryFormImage;
+            this.pictureBox4.Location = new System.Drawing.Point(2, 18);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(277, 134);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox4.TabIndex = 18;
+            this.pictureBox4.TabStop = false;
+            // 
+            // btnTotalCategories
+            // 
+            this.btnTotalCategories.BackColor = System.Drawing.Color.Transparent;
+            this.btnTotalCategories.DisplayStyle = Telerik.WinControls.DisplayStyle.Text;
+            this.btnTotalCategories.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.btnTotalCategories.Font = new System.Drawing.Font("Segoe UI", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTotalCategories.Location = new System.Drawing.Point(2, 152);
+            this.btnTotalCategories.Name = "btnTotalCategories";
+            this.btnTotalCategories.Size = new System.Drawing.Size(277, 40);
+            this.btnTotalCategories.TabIndex = 2;
+            this.btnTotalCategories.Text = "radButton2";
+            this.btnTotalCategories.ThemeName = "VisualStudio2012Light";
+            // 
+            // radGroupBox2
+            // 
+            this.radGroupBox2.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping;
+            this.radGroupBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.radGroupBox2.Controls.Add(this.pictureBox2);
+            this.radGroupBox2.Controls.Add(this.btnTotalCompanies);
+            this.radGroupBox2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radGroupBox2.HeaderMargin = new System.Windows.Forms.Padding(1);
+            this.radGroupBox2.HeaderText = "Total Available Companies";
+            this.radGroupBox2.Location = new System.Drawing.Point(721, 3);
+            this.radGroupBox2.Name = "radGroupBox2";
+            this.tableLayoutPanel2.SetRowSpan(this.radGroupBox2, 2);
+            this.radGroupBox2.Size = new System.Drawing.Size(281, 194);
+            this.radGroupBox2.TabIndex = 8;
+            this.radGroupBox2.Text = "Total Available Companies";
+            this.radGroupBox2.ThemeName = "Office2019Gray";
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox2.Image = global::GSMS.Properties.Resources.CompanyFormImage;
+            this.pictureBox2.Location = new System.Drawing.Point(2, 18);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(277, 134);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 17;
+            this.pictureBox2.TabStop = false;
+            // 
+            // btnTotalCompanies
+            // 
+            this.btnTotalCompanies.BackColor = System.Drawing.Color.Transparent;
+            this.btnTotalCompanies.DisplayStyle = Telerik.WinControls.DisplayStyle.Text;
+            this.btnTotalCompanies.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.btnTotalCompanies.Font = new System.Drawing.Font("Segoe UI", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTotalCompanies.Location = new System.Drawing.Point(2, 152);
+            this.btnTotalCompanies.Name = "btnTotalCompanies";
+            this.btnTotalCompanies.Size = new System.Drawing.Size(277, 40);
+            this.btnTotalCompanies.TabIndex = 1;
+            this.btnTotalCompanies.Text = "radButton2";
+            this.btnTotalCompanies.ThemeName = "VisualStudio2012Light";
+            // 
+            // radGroupBox4
+            // 
+            this.radGroupBox4.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping;
+            this.radGroupBox4.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.radGroupBox4.Controls.Add(this.pictureBox5);
+            this.radGroupBox4.Controls.Add(this.btnTotalItems);
+            this.radGroupBox4.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radGroupBox4.HeaderMargin = new System.Windows.Forms.Padding(1);
+            this.radGroupBox4.HeaderText = "Total Available Items";
+            this.radGroupBox4.Location = new System.Drawing.Point(721, 203);
+            this.radGroupBox4.Name = "radGroupBox4";
+            this.tableLayoutPanel2.SetRowSpan(this.radGroupBox4, 2);
+            this.radGroupBox4.Size = new System.Drawing.Size(281, 194);
+            this.radGroupBox4.TabIndex = 10;
+            this.radGroupBox4.Text = "Total Available Items";
+            this.radGroupBox4.ThemeName = "Office2019Gray";
+            // 
+            // pictureBox5
+            // 
+            this.pictureBox5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox5.Image = global::GSMS.Properties.Resources.ItemFormImage;
+            this.pictureBox5.Location = new System.Drawing.Point(2, 18);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(277, 134);
+            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox5.TabIndex = 18;
+            this.pictureBox5.TabStop = false;
+            // 
+            // btnTotalItems
+            // 
+            this.btnTotalItems.BackColor = System.Drawing.Color.Transparent;
+            this.btnTotalItems.DisplayStyle = Telerik.WinControls.DisplayStyle.Text;
+            this.btnTotalItems.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.btnTotalItems.Font = new System.Drawing.Font("Segoe UI", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTotalItems.Location = new System.Drawing.Point(2, 152);
+            this.btnTotalItems.Name = "btnTotalItems";
+            this.btnTotalItems.Size = new System.Drawing.Size(277, 40);
+            this.btnTotalItems.TabIndex = 3;
+            this.btnTotalItems.Text = "radButton2";
+            this.btnTotalItems.ThemeName = "VisualStudio2012Light";
+            // 
+            // radGroupBox6
+            // 
+            this.radGroupBox6.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping;
+            this.radGroupBox6.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.radGroupBox6.Controls.Add(this.pictureBox6);
+            this.radGroupBox6.Controls.Add(this.btnTotalStaff);
+            this.radGroupBox6.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radGroupBox6.HeaderMargin = new System.Windows.Forms.Padding(1);
+            this.radGroupBox6.HeaderText = "Total Active Staff Members";
+            this.radGroupBox6.Location = new System.Drawing.Point(721, 403);
+            this.radGroupBox6.Name = "radGroupBox6";
+            this.tableLayoutPanel2.SetRowSpan(this.radGroupBox6, 2);
+            this.radGroupBox6.Size = new System.Drawing.Size(281, 194);
+            this.radGroupBox6.TabIndex = 14;
+            this.radGroupBox6.Text = "Total Active Staff Members";
+            this.radGroupBox6.ThemeName = "Office2019Gray";
+            // 
+            // pictureBox6
+            // 
+            this.pictureBox6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox6.Image = global::GSMS.Properties.Resources.StaffFormImage;
+            this.pictureBox6.Location = new System.Drawing.Point(2, 18);
+            this.pictureBox6.Name = "pictureBox6";
+            this.pictureBox6.Size = new System.Drawing.Size(277, 134);
+            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox6.TabIndex = 18;
+            this.pictureBox6.TabStop = false;
+            // 
+            // btnTotalStaff
+            // 
+            this.btnTotalStaff.BackColor = System.Drawing.Color.Transparent;
+            this.btnTotalStaff.DisplayStyle = Telerik.WinControls.DisplayStyle.Text;
+            this.btnTotalStaff.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.btnTotalStaff.Font = new System.Drawing.Font("Segoe UI", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTotalStaff.Location = new System.Drawing.Point(2, 152);
+            this.btnTotalStaff.Name = "btnTotalStaff";
+            this.btnTotalStaff.Size = new System.Drawing.Size(277, 40);
+            this.btnTotalStaff.TabIndex = 3;
+            this.btnTotalStaff.Text = "radButton2";
+            this.btnTotalStaff.ThemeName = "VisualStudio2012Light";
+            // 
+            // radGroupBox5
+            // 
+            this.radGroupBox5.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping;
+            this.radGroupBox5.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.radGroupBox5.Controls.Add(this.pictureBox7);
+            this.radGroupBox5.Controls.Add(this.btnTotalDepartments);
+            this.radGroupBox5.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radGroupBox5.HeaderMargin = new System.Windows.Forms.Padding(1);
+            this.radGroupBox5.HeaderText = "Total Available Departments";
+            this.radGroupBox5.Location = new System.Drawing.Point(146, 403);
+            this.radGroupBox5.Name = "radGroupBox5";
+            this.tableLayoutPanel2.SetRowSpan(this.radGroupBox5, 2);
+            this.radGroupBox5.Size = new System.Drawing.Size(281, 194);
+            this.radGroupBox5.TabIndex = 13;
+            this.radGroupBox5.Text = "Total Available Departments";
+            this.radGroupBox5.ThemeName = "Office2019Gray";
+            // 
+            // pictureBox7
+            // 
+            this.pictureBox7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox7.Image = global::GSMS.Properties.Resources.DepartmentFormImage;
+            this.pictureBox7.Location = new System.Drawing.Point(2, 18);
+            this.pictureBox7.Name = "pictureBox7";
+            this.pictureBox7.Size = new System.Drawing.Size(277, 134);
+            this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox7.TabIndex = 18;
+            this.pictureBox7.TabStop = false;
+            // 
+            // btnTotalDepartments
+            // 
+            this.btnTotalDepartments.BackColor = System.Drawing.Color.Transparent;
+            this.btnTotalDepartments.DisplayStyle = Telerik.WinControls.DisplayStyle.Text;
+            this.btnTotalDepartments.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.btnTotalDepartments.Font = new System.Drawing.Font("Segoe UI", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTotalDepartments.Location = new System.Drawing.Point(2, 152);
+            this.btnTotalDepartments.Name = "btnTotalDepartments";
+            this.btnTotalDepartments.Size = new System.Drawing.Size(277, 40);
+            this.btnTotalDepartments.TabIndex = 3;
+            this.btnTotalDepartments.Text = "radButton2";
+            this.btnTotalDepartments.ThemeName = "VisualStudio2012Light";
             // 
             // pageuser
             // 
@@ -1093,9 +1412,9 @@
             // 
             this.tableLayoutPanel1.BackColor = System.Drawing.Color.White;
             this.tableLayoutPanel1.ColumnCount = 3;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 45.61404F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 54.38596F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 524F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 24.10792F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30.89643F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 44.90862F));
             this.tableLayoutPanel1.Controls.Add(this.txtCurrentPassword, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.radLabel1, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.radLabel2, 0, 3);
@@ -1109,7 +1428,7 @@
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 8;
+            this.tableLayoutPanel1.RowCount = 6;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 80F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 80F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 80F));
@@ -1125,7 +1444,7 @@
             // 
             this.radLabel1.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.radLabel1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radLabel1.Location = new System.Drawing.Point(147, 188);
+            this.radLabel1.Location = new System.Drawing.Point(139, 188);
             this.radLabel1.Name = "radLabel1";
             this.radLabel1.Size = new System.Drawing.Size(135, 24);
             this.radLabel1.TabIndex = 3;
@@ -1136,7 +1455,7 @@
             // 
             this.radLabel2.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.radLabel2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radLabel2.Location = new System.Drawing.Point(168, 268);
+            this.radLabel2.Location = new System.Drawing.Point(160, 268);
             this.radLabel2.Name = "radLabel2";
             this.radLabel2.Size = new System.Drawing.Size(114, 24);
             this.radLabel2.TabIndex = 3;
@@ -1147,7 +1466,7 @@
             // 
             this.radLabel3.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.radLabel3.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radLabel3.Location = new System.Drawing.Point(144, 348);
+            this.radLabel3.Location = new System.Drawing.Point(136, 348);
             this.radLabel3.Name = "radLabel3";
             this.radLabel3.Size = new System.Drawing.Size(138, 24);
             this.radLabel3.TabIndex = 3;
@@ -1157,10 +1476,10 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::GSMS.Properties.Resources.ChangePasswordImage;
-            this.pictureBox1.Location = new System.Drawing.Point(627, 3);
+            this.pictureBox1.Location = new System.Drawing.Point(635, 3);
             this.pictureBox1.Name = "pictureBox1";
             this.tableLayoutPanel1.SetRowSpan(this.pictureBox1, 8);
-            this.pictureBox1.Size = new System.Drawing.Size(516, 558);
+            this.pictureBox1.Size = new System.Drawing.Size(511, 558);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 5;
             this.pictureBox1.TabStop = false;
@@ -1168,7 +1487,7 @@
             // chkShowPassword
             // 
             this.chkShowPassword.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.chkShowPassword.Location = new System.Drawing.Point(288, 403);
+            this.chkShowPassword.Location = new System.Drawing.Point(280, 403);
             this.chkShowPassword.Name = "chkShowPassword";
             this.chkShowPassword.Size = new System.Drawing.Size(101, 18);
             this.chkShowPassword.TabIndex = 6;
@@ -1181,7 +1500,7 @@
             this.radLabel4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.tableLayoutPanel1.SetColumnSpan(this.radLabel4, 2);
             this.radLabel4.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radLabel4.Location = new System.Drawing.Point(181, 101);
+            this.radLabel4.Location = new System.Drawing.Point(185, 101);
             this.radLabel4.Name = "radLabel4";
             this.radLabel4.Size = new System.Drawing.Size(262, 37);
             this.radLabel4.TabIndex = 7;
@@ -1196,7 +1515,7 @@
             this.btnChangePassword.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnChangePassword.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnChangePassword.ForeColor = System.Drawing.Color.Black;
-            this.btnChangePassword.Location = new System.Drawing.Point(231, 447);
+            this.btnChangePassword.Location = new System.Drawing.Point(235, 447);
             this.btnChangePassword.Name = "btnChangePassword";
             this.btnChangePassword.Size = new System.Drawing.Size(161, 36);
             this.btnChangePassword.TabIndex = 4;
@@ -1252,6 +1571,32 @@
             ((System.ComponentModel.ISupportInitialize)(this.radPageView1)).EndInit();
             this.radPageView1.ResumeLayout(false);
             this.radPageView1.PerformLayout();
+            this.pagehome.ResumeLayout(false);
+            this.tableLayoutPanel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.radGroupBox1)).EndInit();
+            this.radGroupBox1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnTotalUsers)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radGroupBox3)).EndInit();
+            this.radGroupBox3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnTotalCategories)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radGroupBox2)).EndInit();
+            this.radGroupBox2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnTotalCompanies)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radGroupBox4)).EndInit();
+            this.radGroupBox4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnTotalItems)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radGroupBox6)).EndInit();
+            this.radGroupBox6.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnTotalStaff)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radGroupBox5)).EndInit();
+            this.radGroupBox5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnTotalDepartments)).EndInit();
             this.pageuser.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridviewusers.MasterTemplate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridviewusers)).EndInit();
@@ -1401,5 +1746,24 @@
         private Telerik.WinControls.UI.RadLabel radLabel4;
         private Telerik.WinControls.UI.RadValidationProvider validatorForTextBoxes;
         private Telerik.WinControls.UI.RadValidationProvider validatorForConfirmPassword;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private Telerik.WinControls.UI.RadGroupBox radGroupBox2;
+        private Telerik.WinControls.UI.RadGroupBox radGroupBox1;
+        private Telerik.WinControls.UI.RadGroupBox radGroupBox4;
+        private Telerik.WinControls.UI.RadGroupBox radGroupBox3;
+        private Telerik.WinControls.UI.RadGroupBox radGroupBox5;
+        private Telerik.WinControls.UI.RadGroupBox radGroupBox6;
+        private Telerik.WinControls.UI.RadButton btnTotalUsers;
+        private Telerik.WinControls.UI.RadButton btnTotalCompanies;
+        private Telerik.WinControls.UI.RadButton btnTotalCategories;
+        private Telerik.WinControls.UI.RadButton btnTotalItems;
+        private Telerik.WinControls.UI.RadButton btnTotalDepartments;
+        private Telerik.WinControls.UI.RadButton btnTotalStaff;
+        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox pictureBox4;
+        private System.Windows.Forms.PictureBox pictureBox5;
+        private System.Windows.Forms.PictureBox pictureBox6;
+        private System.Windows.Forms.PictureBox pictureBox7;
     }
 }

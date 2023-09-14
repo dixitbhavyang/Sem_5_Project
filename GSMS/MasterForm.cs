@@ -59,7 +59,7 @@ namespace GSMS
             {
                 gridviewusers.Columns[i].TextAlignment = ContentAlignment.MiddleCenter;
             }
-
+            int totalAvailableUsers = 0;
             foreach (DataRow item in dt.Rows)
             {
                 string gender = "Female", status = "Not Active";
@@ -103,6 +103,7 @@ namespace GSMS
                 rowInfo.Cells[13].Value = item["Role"].ToString();
                 if (Convert.ToBoolean(item["Status"]))
                 {
+                    totalAvailableUsers++;
                     status = "Active";
                     rowInfo.Cells[14].Style.ForeColor = Color.Green;
                     rowInfo.Cells[14].Style.BackColor = Color.Green;
@@ -123,6 +124,9 @@ namespace GSMS
             }
 
             //gridviewusers.AutoSizeRows = true;
+            btnTotalUsers.ButtonElement.ShowBorder = false;
+            btnTotalUsers.Text = totalAvailableUsers.ToString();
+
             gridviewusers.BestFitColumns();
             gridviewusers.AutoSizeColumnsMode = GridViewAutoSizeColumnsMode.Fill;
             gridviewusers.ShowGroupedColumns = true;
@@ -155,7 +159,7 @@ namespace GSMS
             {
                 gridviewcompany.Columns[i].TextAlignment = ContentAlignment.MiddleCenter;
             }
-
+            int totalAvailableComapnies = 0;
             foreach (DataRow row in dt.Rows)
             {
                 string status = "";
@@ -170,6 +174,7 @@ namespace GSMS
                 rowInfo.Cells[7].Value = row["Address"].ToString();
                 if (Convert.ToInt32(row["Status"]) == 1)
                 {
+                    totalAvailableComapnies++;
                     status = "Active";
                     rowInfo.Cells[8].Style.ForeColor = Color.Green;
                 }
@@ -183,6 +188,9 @@ namespace GSMS
                 gridviewcompany.Rows.Add(rowInfo);
             }
             //gridviewcompany.AutoSizeRows = true;
+            btnTotalCompanies.ButtonElement.ShowBorder = false;
+            btnTotalCompanies.Text = totalAvailableComapnies.ToString();
+
             gridviewcompany.BestFitColumns();
             gridviewcompany.AutoSizeColumnsMode = GridViewAutoSizeColumnsMode.Fill;
             gridviewcompany.ShowGroupedColumns = true;
@@ -214,7 +222,7 @@ namespace GSMS
             {
                 gridviewcategory.Columns[i].TextAlignment = ContentAlignment.MiddleCenter;
             }
-
+            int totalAvailableCategories = 0;
             foreach (DataRow row in dt.Rows)
             {
                 string status = "";
@@ -229,6 +237,7 @@ namespace GSMS
                 rowInfo.Cells[7].Value = row["Company"].ToString();
                 if (Convert.ToInt32(row["Status"]) == 1)
                 {
+                    totalAvailableCategories++;
                     status = "Active";
                     rowInfo.Cells[8].Style.ForeColor = Color.Green;
                 }
@@ -241,6 +250,9 @@ namespace GSMS
 
                 gridviewcategory.Rows.Add(rowInfo);
             }
+            btnTotalCategories.ButtonElement.ShowBorder = false;
+            btnTotalCategories.Text = totalAvailableCategories.ToString();
+
             //gridviewcategory.AutoSizeRows = true;
             gridviewcategory.BestFitColumns();
             gridviewcategory.AutoSizeColumnsMode = GridViewAutoSizeColumnsMode.Fill;
@@ -278,7 +290,7 @@ namespace GSMS
             {
                 gridviewitem.Columns[i].TextAlignment = ContentAlignment.MiddleCenter;
             }
-
+            int totalAvailableItems = 0;
             foreach (DataRow row in dt.Rows)
             {
                 string status = "";
@@ -315,6 +327,7 @@ namespace GSMS
                 rowInfo.Cells[11].Value = row["Updated By"].ToString();
                 if (Convert.ToInt32(row["Status"]) == 1)
                 {
+                    totalAvailableItems++;
                     status = "Active";
                     rowInfo.Cells[12].Style.ForeColor = Color.Green;
                 }
@@ -328,6 +341,9 @@ namespace GSMS
                 gridviewitem.Rows.Add(rowInfo);
             }
             //gridviewitem.AutoSizeRows = true;
+            btnTotalItems.ButtonElement.ShowBorder = false;
+            btnTotalItems.Text = totalAvailableItems.ToString();
+
             gridviewitem.BestFitColumns();
             gridviewitem.AutoSizeColumnsMode = GridViewAutoSizeColumnsMode.Fill;
             gridviewitem.ShowGroupedColumns = true;
@@ -429,7 +445,7 @@ namespace GSMS
             {
                 gridviewdepartment.Columns[i].TextAlignment = ContentAlignment.MiddleCenter;
             }
-
+            int totalavailableDepartments = 0;
             foreach (DataRow row in dt.Rows)
             {
                 string status = "";
@@ -445,6 +461,7 @@ namespace GSMS
                 rowInfo.Cells[8].Value = row["Updated By"].ToString();
                 if (Convert.ToInt32(row["Status"]) == 1)
                 {
+                    totalavailableDepartments++;
                     status = "Active";
                     rowInfo.Cells[9].Style.ForeColor = Color.Green;
                 }
@@ -458,6 +475,9 @@ namespace GSMS
                 gridviewdepartment.Rows.Add(rowInfo);
             }
             //gridviewdepartment.AutoSizeRows = true;
+            btnTotalDepartments.ButtonElement.ShowBorder = false;
+            btnTotalDepartments.Text = totalavailableDepartments.ToString();
+
             gridviewdepartment.BestFitColumns();
             gridviewdepartment.AutoSizeColumnsMode = GridViewAutoSizeColumnsMode.Fill;
         }
@@ -495,7 +515,7 @@ namespace GSMS
             {
                 gridviewstaff.Columns[i].TextAlignment = ContentAlignment.MiddleCenter;
             }
-
+            int totalAvailableStaff = 0;
             foreach (DataRow row in dt.Rows)
             {
                 string status = "", gender = "";
@@ -524,6 +544,7 @@ namespace GSMS
                 rowInfo.Cells[13].Value = row["Updated By"].ToString();
                 if (Convert.ToInt32(row["Status"]) == 1)
                 {
+                    totalAvailableStaff++;
                     status = "Active";
                     rowInfo.Cells[14].Style.ForeColor = Color.Green;
                 }
@@ -537,6 +558,9 @@ namespace GSMS
                 gridviewstaff.Rows.Add(rowInfo);
             }
             //gridviewstaff.AutoSizeRows = true;
+            btnTotalStaff.ButtonElement.ShowBorder = false;
+            btnTotalStaff.Text = totalAvailableStaff.ToString();
+
             gridviewstaff.BestFitColumns();
             gridviewstaff.AutoSizeColumnsMode = GridViewAutoSizeColumnsMode.Fill;
             gridviewstaff.ShowGroupedColumns = true;
