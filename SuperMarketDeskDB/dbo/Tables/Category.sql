@@ -9,10 +9,12 @@
     [Updatedby]   INT          NULL,
     [Status]      BIT          CONSTRAINT [DF_Category_Status] DEFAULT ((1)) NULL,
     CONSTRAINT [PK_Category] PRIMARY KEY CLUSTERED ([Id] ASC),
-    FOREIGN KEY ([CompanyId]) REFERENCES [dbo].[Company] ([Id]),
+    CONSTRAINT [FK__Category__Compan__2BFE89A6] FOREIGN KEY ([CompanyId]) REFERENCES [dbo].[Company] ([Id]),
     CONSTRAINT [FK__Category__Create__2CF2ADDF] FOREIGN KEY ([CreatedBy]) REFERENCES [dbo].[Users] ([Id]),
     CONSTRAINT [FK__Category__Update__2DE6D218] FOREIGN KEY ([Updatedby]) REFERENCES [dbo].[Users] ([Id])
 );
+
+
 
 
 

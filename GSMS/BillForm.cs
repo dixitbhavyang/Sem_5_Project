@@ -450,25 +450,28 @@ namespace GSMS
             }
             else
             {
+                decimal availableStock = itemStock; // Create a temporary variable to store available stock
+
                 if (gridviewpurchaseditems.Rows.Count > 0)
                 {
                     for (int i = 0; i < gridviewpurchaseditems.Rows.Count; i++)
                     {
                         if (Convert.ToInt32(gridviewpurchaseditems.Rows[i].Cells[0].Value) == itemPurchasedId && gridviewItemSelectedId != itemPurchasedId)
                         {
-                            itemStock -= Convert.ToDecimal(gridviewpurchaseditems.Rows[i].Cells["Quantity"].Value);
+                            availableStock -= Convert.ToDecimal(gridviewpurchaseditems.Rows[i].Cells["Quantity"].Value);
                         }
                     }
                 }
-                if (spineditorquantity.Value > itemStock)
+
+                if (spineditorquantity.Value > availableStock)
                 {
-                    if (itemStock == 0)
+                    if (availableStock == 0)
                     {
                         RadMessageBox.Show("Sorry This Item is Out of Stock", "", MessageBoxButtons.OK, RadMessageIcon.Exclamation);
                     }
                     else
                     {
-                        RadMessageBox.Show("We have Only " + itemStock.ToString() + " " + lblunit.Text + " " + "You cannot Buy More than that...", "", MessageBoxButtons.OK, RadMessageIcon.Info, "We Have Limited Stock and You are buing More than that");
+                        RadMessageBox.Show("We have Only " + availableStock.ToString() + " " + lblunit.Text + " " + "You cannot Buy More than that...", "", MessageBoxButtons.OK, RadMessageIcon.Info, "We Have Limited Stock and You are buying More than that");
                     }
                     spineditorquantity.Value = 0;
                     spineditordiscount.Value = originalDiscount;
@@ -836,8 +839,15 @@ namespace GSMS
                 {
                     if (Convert.ToInt32(gridviewpurchaseditems.Rows[i].Cells["Id"].Value) == gridviewItemSelectedId)
                     {
+                        string selectedItemText = drpitem.SelectedItem.ToString();
+
+                        // Extract the text from the selected item
+                        int startIndex = selectedItemText.IndexOf(", ") + 2;
+                        int endIndex = selectedItemText.Length - 1;
+                        selectedItemText = selectedItemText.Substring(startIndex, endIndex - startIndex);
+
                         gridviewpurchaseditems.Rows[i].Cells["Id"].Value = gridviewItemSelectedId;
-                        gridviewpurchaseditems.Rows[i].Cells["Item"].Value = drpitem.SelectedText;
+                        gridviewpurchaseditems.Rows[i].Cells["Item"].Value = selectedItemText;
                         gridviewpurchaseditems.Rows[i].Cells["Price"].Value = spineditorprice.Value;
                         gridviewpurchaseditems.Rows[i].Cells["Quantity"].Value = spineditorquantity.Value;
                         gridviewpurchaseditems.Rows[i].Cells["Unit"].Value = lblunit.Text;

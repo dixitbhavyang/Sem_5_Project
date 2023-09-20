@@ -12,7 +12,7 @@
     [CreatedBy]   INT           NULL,
     [UpdatedDate] DATETIME      NULL,
     [UpdatedBy]   INT           NULL,
-    [Role]        VARCHAR (10)  NULL,
+    [Role]        VARCHAR (19)  NULL,
     [Status]      BIT           CONSTRAINT [DF_Users_Status] DEFAULT ((1)) NULL,
     [LastLogIn]   DATETIME      NULL,
     CONSTRAINT [PK_Users] PRIMARY KEY CLUSTERED ([Id] ASC),
@@ -23,6 +23,8 @@
     CONSTRAINT [FK__Users__Id__49C3F6B7] FOREIGN KEY ([Id]) REFERENCES [dbo].[Users] ([Id]),
     CONSTRAINT [FK_Users_Users1] FOREIGN KEY ([Id]) REFERENCES [dbo].[Users] ([Id])
 );
+
+
 
 
 

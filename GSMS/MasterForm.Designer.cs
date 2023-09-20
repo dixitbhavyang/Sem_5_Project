@@ -244,8 +244,8 @@
             this.txtCurrentPassword.TabIndex = 0;
             this.txtCurrentPassword.ThemeName = "MaterialBlueGrey";
             this.txtCurrentPassword.UseSystemPasswordChar = true;
-            this.validatorForTextBoxes.SetValidationRule(this.txtCurrentPassword, radValidationRule1);
             this.validatorForConfirmPassword.SetValidationRule(this.txtCurrentPassword, null);
+            this.validatorForTextBoxes.SetValidationRule(this.txtCurrentPassword, radValidationRule1);
             this.txtCurrentPassword.TextChanged += new System.EventHandler(this.txtCurrentPassword_TextChanged);
             // 
             // txtNewPassword
@@ -262,8 +262,8 @@
             this.txtNewPassword.TabIndex = 0;
             this.txtNewPassword.ThemeName = "MaterialBlueGrey";
             this.txtNewPassword.UseSystemPasswordChar = true;
-            this.validatorForTextBoxes.SetValidationRule(this.txtNewPassword, radValidationRule1);
             this.validatorForConfirmPassword.SetValidationRule(this.txtNewPassword, null);
+            this.validatorForTextBoxes.SetValidationRule(this.txtNewPassword, radValidationRule1);
             this.txtNewPassword.TextChanged += new System.EventHandler(this.txtNewPassword_TextChanged);
             // 
             // txtConfirmPassword
@@ -280,8 +280,8 @@
             this.txtConfirmPassword.TabIndex = 0;
             this.txtConfirmPassword.ThemeName = "MaterialBlueGrey";
             this.txtConfirmPassword.UseSystemPasswordChar = true;
-            this.validatorForTextBoxes.SetValidationRule(this.txtConfirmPassword, radValidationRule1);
             this.validatorForConfirmPassword.SetValidationRule(this.txtConfirmPassword, radValidationRuleWithTargetControl1);
+            this.validatorForTextBoxes.SetValidationRule(this.txtConfirmPassword, radValidationRule1);
             this.txtConfirmPassword.TextChanged += new System.EventHandler(this.txtConfirmPassword_TextChanged);
             // 
             // radTabbedFormControl1
@@ -312,7 +312,7 @@
             this.radPageView1.ItemSizeMode = ((Telerik.WinControls.UI.PageViewItemSizeMode)((Telerik.WinControls.UI.PageViewItemSizeMode.EqualWidth | Telerik.WinControls.UI.PageViewItemSizeMode.EqualHeight)));
             this.radPageView1.Location = new System.Drawing.Point(0, 0);
             this.radPageView1.Name = "radPageView1";
-            this.radPageView1.SelectedPage = this.pagecustomerbill;
+            this.radPageView1.SelectedPage = this.pagehome;
             this.radPageView1.Size = new System.Drawing.Size(1283, 598);
             this.radPageView1.TabIndex = 0;
             this.radPageView1.ThemeName = "Office2019Gray";
@@ -327,7 +327,7 @@
             ((Telerik.WinControls.UI.RadPageViewNavigationViewElement)(this.radPageView1.GetChildAt(0))).Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             ((Telerik.WinControls.UI.RadPageViewNavigationViewElement)(this.radPageView1.GetChildAt(0))).Alignment = System.Drawing.ContentAlignment.TopLeft;
             ((Telerik.WinControls.UI.NavigationViewHeaderElement)(this.radPageView1.GetChildAt(0).GetChildAt(2))).ClipText = false;
-            ((Telerik.WinControls.UI.NavigationViewHeaderElement)(this.radPageView1.GetChildAt(0).GetChildAt(2))).Text = "Bill";
+            ((Telerik.WinControls.UI.NavigationViewHeaderElement)(this.radPageView1.GetChildAt(0).GetChildAt(2))).Text = "Home";
             ((Telerik.WinControls.UI.NavigationViewHeaderElement)(this.radPageView1.GetChildAt(0).GetChildAt(2))).Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             ((Telerik.WinControls.UI.NavigationViewHeaderElement)(this.radPageView1.GetChildAt(0).GetChildAt(2))).CustomFontSize = 20F;
             ((Telerik.WinControls.UI.NavigationViewHeaderElement)(this.radPageView1.GetChildAt(0).GetChildAt(2))).Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
@@ -1554,6 +1554,7 @@
             this.ClientSize = new System.Drawing.Size(1283, 598);
             this.Controls.Add(this.radPageView1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MasterForm";
             // 
             // 

@@ -356,8 +356,10 @@
             this.dropdownrole.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.dropdownrole.DropDownWidth = 196;
             this.dropdownrole.Items.AddRange(new object[] {
-            "Admin\t",
-            "User"});
+            "Admin",
+            "Manager",
+            "Stock Administrator",
+            "Billing Clerk"});
             this.dropdownrole.Location = new System.Drawing.Point(156, 496);
             this.dropdownrole.Name = "dropdownrole";
             this.dropdownrole.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue;

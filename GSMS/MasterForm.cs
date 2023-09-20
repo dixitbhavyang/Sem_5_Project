@@ -820,13 +820,21 @@ namespace GSMS
                     uf.rdbmale.IsChecked = true;
                 }
                 uf.txtcity.Text = dt.Rows[0].ItemArray[8].ToString();
-                if (dt.Rows[0].ItemArray[13].ToString() == "Admin")
+                if (dt.Rows[0].ItemArray[13].ToString().ToLower() == "admin")
                 {
                     uf.dropdownrole.SelectedIndex = 0;
                 }
-                else
+                else if (dt.Rows[0].ItemArray[13].ToString().ToLower() == "manager")
                 {
                     uf.dropdownrole.SelectedIndex = 1;
+                }
+                else if (dt.Rows[0].ItemArray[13].ToString().ToLower() == "stock administrator")
+                {
+                    uf.dropdownrole.SelectedIndex = 2;
+                }
+                else
+                {
+                    uf.dropdownrole.SelectedIndex = 3;
                 }
                 uf.ShowDialog();
                 getUserRecords();
@@ -998,6 +1006,51 @@ namespace GSMS
             staffMemberId = 0;
             departmentId = 0;
         }
+
+        private void adminRights()
+        {
+            btnedituser.Enabled = btndeleteuser.Enabled = btncompanyedit.Enabled = btncompanydelete.Enabled = btncategoryedit.Enabled = btncategorydelete.Enabled = btnitemedit.Enabled = btnitemdelete.Enabled = btninventoryedit.Enabled = btninventorydelete.Enabled = true;
+        }
+
+        private void managerRights()
+        {
+            btnadduser.Enabled = btnedituser.Enabled = btndeleteuser.Enabled = false;
+            btncategoryadd.Enabled = btncategoryedit.Enabled = btncategorydelete.Enabled = false;
+            btnitemadd.Enabled = btnitemedit.Enabled = btnitemdelete.Enabled = false;
+            btninventoryadd.Enabled = btninventoryedit.Enabled = btninventorydelete.Enabled = false;
+            btnbillnew.Enabled = false;
+
+            btncompanyadd.Enabled = btncompanyedit.Enabled = btncompanydelete.Enabled = true;
+            btndepartmentadd.Enabled = btndepartmentedit.Enabled = btndepartmentdelete.Enabled = true;
+            btnstaffmemberadd.Enabled = btnstaffmemberedit.Enabled = btnstaffmemberdelete.Enabled = true;
+        }
+
+        private void inventoryManagerRights()
+        {
+            btnadduser.Enabled = btnedituser.Enabled = btndeleteuser.Enabled = false;
+            btncompanyadd.Enabled = btncompanyedit.Enabled = btncompanydelete.Enabled = false;
+            btndepartmentadd.Enabled = btndepartmentedit.Enabled = btndepartmentdelete.Enabled = false;
+            btnstaffmemberadd.Enabled = btnstaffmemberedit.Enabled = btnstaffmemberdelete.Enabled = false;
+            btnbillnew.Enabled = false;
+
+            btncategoryadd.Enabled = btncategoryedit.Enabled = btncategorydelete.Enabled = true;
+            btnitemadd.Enabled = btnitemedit.Enabled = btnitemdelete.Enabled = true;
+            btninventoryadd.Enabled = btninventoryedit.Enabled = btninventorydelete.Enabled = true;
+        }
+
+        private void billingClerkRights()
+        {
+            btnadduser.Enabled = btnedituser.Enabled = btndeleteuser.Enabled = false;
+            btncompanyadd.Enabled = btncompanyedit.Enabled = btncompanydelete.Enabled = false;
+            btncategoryadd.Enabled = btncategoryedit.Enabled = btncategorydelete.Enabled = false;
+            btnitemadd.Enabled = btnitemedit.Enabled = btnitemdelete.Enabled = false;
+            btninventoryadd.Enabled = btninventoryedit.Enabled = btninventorydelete.Enabled = false;
+            btndepartmentadd.Enabled = btndepartmentedit.Enabled = btndepartmentdelete.Enabled = false;
+            btnstaffmemberadd.Enabled = btnstaffmemberedit.Enabled = btnstaffmemberdelete.Enabled = false;
+
+            btnbillnew.Enabled = true;
+        }
+
         private void Form1_Load(object sender, EventArgs e)
         {
             RadMessageBox.SetThemeName("MaterialBlueGrey");
@@ -1005,11 +1058,19 @@ namespace GSMS
             // TODO: This line of code loads data into the 'superMarketMS_ProjectDataSet.Users' table. You can move, or remove it, as needed.
             if (LoginForm.usertype.ToLower() == "admin")
             {
-                btnedituser.Enabled = btndeleteuser.Enabled = btncompanyedit.Enabled = btncompanydelete.Enabled = btncategoryedit.Enabled = btncategorydelete.Enabled = btnitemedit.Enabled = btnitemdelete.Enabled = btninventoryedit.Enabled = btninventorydelete.Enabled = true;
+                adminRights();
+            }
+            else if (LoginForm.usertype.ToLower() == "manager")
+            {
+                managerRights();
+            }
+            else if (LoginForm.usertype.ToLower() == "stock administrator")
+            {
+                inventoryManagerRights();
             }
             else
             {
-                btnedituser.Enabled = btndeleteuser.Enabled = btncompanyedit.Enabled = btncompanydelete.Enabled = btncategoryedit.Enabled = btncategorydelete.Enabled = btnitemedit.Enabled = btnitemdelete.Enabled = btninventoryedit.Enabled = btninventorydelete.Enabled = false;
+                billingClerkRights();
             }
             getUserRecords();
             getCompanyRecords();
@@ -1320,147 +1381,151 @@ namespace GSMS
 
         private void gridviewusers_SelectionChanged(object sender, EventArgs e)
         {
-            bool isSelected = false;
-            for (int i = 0; i < gridviewusers.Rows.Count; i++)
+            if (LoginForm.usertype.ToLower() == "admin")
             {
-                if (gridviewusers.Rows[i].IsSelected)
+                bool isSelected = false;
+                for (int i = 0; i < gridviewusers.Rows.Count; i++)
                 {
-                    isSelected = true;
+                    if (gridviewusers.Rows[i].IsSelected)
+                    {
+                        isSelected = true;
+                    }
                 }
-            }
-            if (isSelected)
-            {
-                if (LoginForm.usertype.ToLower() == "admin")
+                if (isSelected)
                 {
                     btnedituser.Enabled = btndeleteuser.Enabled = true;
                 }
+                else { btnedituser.Enabled = btndeleteuser.Enabled = false; }
             }
-            else { btnedituser.Enabled = btndeleteuser.Enabled = false; }
         }
         private void gridviewcompany_SelectionChanged(object sender, EventArgs e)
         {
-            bool isSelected = false;
-            for (int i = 0; i < gridviewcompany.Rows.Count; i++)
+            if (LoginForm.usertype.ToLower() == "admin" || LoginForm.usertype.ToLower() == "manager")
             {
-                if (gridviewcompany.Rows[i].IsSelected)
+                bool isSelected = false;
+                for (int i = 0; i < gridviewcompany.Rows.Count; i++)
                 {
-                    isSelected = true;
+                    if (gridviewcompany.Rows[i].IsSelected)
+                    {
+                        isSelected = true;
+                    }
                 }
-            }
-            if (isSelected)
-            {
-                if (LoginForm.usertype.ToLower() == "admin")
+                if (isSelected)
                 {
                     btncompanydelete.Enabled = btncompanyedit.Enabled = true;
                 }
+                else { btncompanydelete.Enabled = btncompanyedit.Enabled = false; }
             }
-            else { btncompanydelete.Enabled = btncompanyedit.Enabled = false; }
         }
         private void gridviewcategory_SelectionChanged(object sender, EventArgs e)
         {
-            bool isSelected = false;
-            for (int i = 0; i < gridviewcategory.Rows.Count; i++)
+            if (LoginForm.usertype.ToLower() == "admin" || LoginForm.usertype.ToLower() == "stock administrator")
             {
-                if (gridviewcategory.Rows[i].IsSelected)
+                bool isSelected = false;
+                for (int i = 0; i < gridviewcategory.Rows.Count; i++)
                 {
-                    isSelected = true;
+                    if (gridviewcategory.Rows[i].IsSelected)
+                    {
+                        isSelected = true;
+                    }
                 }
-            }
-            if (isSelected)
-            {
-                if (LoginForm.usertype.ToLower() == "admin")
+                if (isSelected)
                 {
                     btncategorydelete.Enabled = btncategoryedit.Enabled = true;
                 }
+                else { btncategorydelete.Enabled = btncategoryedit.Enabled = false; }
             }
-            else { btncategorydelete.Enabled = btncategoryedit.Enabled = false; }
         }
 
         private void gridviewitem_SelectionChanged(object sender, EventArgs e)
         {
-            bool isSelected = false;
-            for (int i = 0; i < gridviewitem.Rows.Count; i++)
+            if (LoginForm.usertype.ToLower() == "admin" || LoginForm.usertype.ToLower() == "stock administrator")
             {
-                if (gridviewitem.Rows[i].IsSelected)
+                bool isSelected = false;
+                for (int i = 0; i < gridviewitem.Rows.Count; i++)
                 {
-                    isSelected = true;
+                    if (gridviewitem.Rows[i].IsSelected)
+                    {
+                        isSelected = true;
+                    }
                 }
-            }
-            if (isSelected)
-            {
-                if (LoginForm.usertype.ToLower() == "admin")
+                if (isSelected)
                 {
                     btnitemedit.Enabled = btnitemdelete.Enabled = true;
                 }
+                else { btnitemedit.Enabled = btnitemdelete.Enabled = false; }
             }
-            else { btnitemedit.Enabled = btnitemdelete.Enabled = false; }
         }
         private void gridviewinventory_SelectionChanged(object sender, EventArgs e)
         {
-            bool isSelected = false;
-            for (int i = 0; i < gridviewinventory.Rows.Count; i++)
+            if (LoginForm.usertype.ToLower() == "admin" || LoginForm.usertype.ToLower() == "stock administrator")
             {
-                if (gridviewinventory.Rows[i].IsSelected)
+                bool isSelected = false;
+                for (int i = 0; i < gridviewinventory.Rows.Count; i++)
                 {
-                    isSelected = true;
+                    if (gridviewinventory.Rows[i].IsSelected)
+                    {
+                        isSelected = true;
+                    }
                 }
-            }
-            if (isSelected)
-            {
-                if (LoginForm.usertype.ToLower() == "admin")
+                if (isSelected)
                 {
                     btninventoryedit.Enabled = btninventorydelete.Enabled = true;
                 }
+                else { btninventoryedit.Enabled = btninventorydelete.Enabled = false; }
             }
-            else { btninventoryedit.Enabled = btninventorydelete.Enabled = false; }
         }
 
         private void gridviewdepartment_SelectionChanged(object sender, EventArgs e)
         {
-            bool isSelected = false;
-            for (int i = 0; i < gridviewdepartment.Rows.Count; i++)
+            if (LoginForm.usertype.ToLower() == "admin" || LoginForm.usertype.ToLower() == "manager")
             {
-                if (gridviewdepartment.Rows[i].IsSelected)
+                bool isSelected = false;
+                for (int i = 0; i < gridviewdepartment.Rows.Count; i++)
                 {
-                    isSelected = true;
+                    if (gridviewdepartment.Rows[i].IsSelected)
+                    {
+                        isSelected = true;
+                    }
                 }
-            }
-            if (isSelected)
-            {
-                if (LoginForm.usertype.ToLower() == "admin")
+                if (isSelected)
                 {
                     btndepartmentedit.Enabled = btndepartmentdelete.Enabled = true;
                 }
+                else { btndepartmentedit.Enabled = btndepartmentdelete.Enabled = false; }
             }
-            else { btndepartmentedit.Enabled = btndepartmentdelete.Enabled = false; }
         }
 
         private void gridviewstaff_SelectionChanged(object sender, EventArgs e)
         {
-            bool isSelected = false;
-            for (int i = 0; i < gridviewstaff.Rows.Count; i++)
+            if (LoginForm.usertype.ToLower() == "admin" || LoginForm.usertype.ToLower() == "manager")
             {
-                if (gridviewstaff.Rows[i].IsSelected)
+                bool isSelected = false;
+                for (int i = 0; i < gridviewstaff.Rows.Count; i++)
                 {
-                    isSelected = true;
+                    if (gridviewstaff.Rows[i].IsSelected)
+                    {
+                        isSelected = true;
+                    }
                 }
-            }
-            if (isSelected)
-            {
-                if (LoginForm.usertype.ToLower() == "admin")
+                if (isSelected)
                 {
                     btnstaffmemberedit.Enabled = btnstaffmemberdelete.Enabled = true;
                 }
+                else { btnstaffmemberedit.Enabled = btnstaffmemberdelete.Enabled = false; }
             }
-            else { btnstaffmemberedit.Enabled = btnstaffmemberdelete.Enabled = false; }
         }
 
         private void btnbillnew_Click(object sender, EventArgs e)
         {
-            BillForm bf = new BillForm();
-            bf.ShowDialog();
-            getBillRecords();
-            getSales();
+            if (LoginForm.usertype.ToLower() == "admin" || LoginForm.usertype.ToLower() == "billing clerk")
+            {
+                BillForm bf = new BillForm();
+                bf.ShowDialog();
+                getBillRecords();
+                getSales();
+                getInventoryRecords();
+            }
         }
 
         private void gridviewusers_CellDoubleClick(object sender, GridViewCellEventArgs e)
@@ -1472,42 +1537,42 @@ namespace GSMS
         }
         private void gridviewcompany_CellDoubleClick(object sender, GridViewCellEventArgs e)
         {
-            if (LoginForm.usertype.ToLower() == "admin")
+            if (LoginForm.usertype.ToLower() == "admin" || LoginForm.usertype.ToLower() == "manager")
             {
                 editCompany();
             }
         }
         private void gridviewcategory_CellDoubleClick(object sender, GridViewCellEventArgs e)
         {
-            if (LoginForm.usertype.ToLower() == "admin")
+            if (LoginForm.usertype.ToLower() == "admin" || LoginForm.usertype.ToLower() == "stock administrator")
             {
                 editCategory();
             }
         }
         private void gridviewitem_CellDoubleClick(object sender, GridViewCellEventArgs e)
         {
-            if (LoginForm.usertype.ToLower() == "admin")
+            if (LoginForm.usertype.ToLower() == "admin" || LoginForm.usertype.ToLower() == "stock administrator")
             {
                 editItem();
             }
         }
         private void gridviewinventory_CellDoubleClick(object sender, GridViewCellEventArgs e)
         {
-            if (LoginForm.usertype.ToLower() == "admin")
+            if (LoginForm.usertype.ToLower() == "admin" || LoginForm.usertype.ToLower() == "stock administrator")
             {
                 editInventoryRecord();
             }
         }
         private void gridviewdepartment_CellDoubleClick(object sender, GridViewCellEventArgs e)
         {
-            if (LoginForm.usertype.ToLower() == "admin")
+            if (LoginForm.usertype.ToLower() == "admin" || LoginForm.usertype.ToLower() == "manager")
             {
                 editDepartment();
             }
         }
         private void gridviewstaff_CellDoubleClick(object sender, GridViewCellEventArgs e)
         {
-            if (LoginForm.usertype.ToLower() == "admin")
+            if (LoginForm.usertype.ToLower() == "admin" || LoginForm.usertype.ToLower() == "manager")
             {
                 editStaffMemebr();
             }
