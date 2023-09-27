@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SplashScreen2));
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.progressBar = new Telerik.WinControls.UI.RadProgressBar();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -107,7 +108,7 @@
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.PapayaWhip;
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox1.Image = global::GSMS.Properties.Resources.SplashScreenImage;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(843, 498);

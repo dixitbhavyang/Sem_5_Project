@@ -137,7 +137,7 @@
             // pictureLogo
             // 
             this.pictureLogo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureLogo.Image = global::GSMS.Properties.Resources.LogoDefaultImage;
+            this.pictureLogo.Image = ((System.Drawing.Image)(resources.GetObject("pictureLogo.Image")));
             this.pictureLogo.Location = new System.Drawing.Point(254, 213);
             this.pictureLogo.Name = "pictureLogo";
             this.tableLayoutPanel1.SetRowSpan(this.pictureLogo, 2);
@@ -165,7 +165,7 @@
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.White;
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox1.Image = global::GSMS.Properties.Resources.RegistrationFormImage;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(3, 3);
             this.pictureBox1.Name = "pictureBox1";
             this.tableLayoutPanel1.SetRowSpan(this.pictureBox1, 8);
