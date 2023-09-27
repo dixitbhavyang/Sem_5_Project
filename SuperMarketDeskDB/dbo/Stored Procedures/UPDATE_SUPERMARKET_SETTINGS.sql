@@ -1,0 +1,21 @@
+﻿CREATE PROC [dbo].[UPDATE_SUPERMARKET_SETTINGS]
+	@ID INT,
+	@NAME VARCHAR(100),
+	@ADDRESS TEXT,
+	@CITY VARCHAR(20),
+	@PINCODE VARCHAR(6),
+	@PHONE VARCHAR(10),
+	@EMAIL VARCHAR(200),
+	@LOGO VARCHAR(MAX)
+AS
+BEGIN
+	UPDATE SupermarketSettings SET
+		[Name] = @NAME,
+		[Address] = @ADDRESS,
+		[CIty] = @CITY,
+		[Pincode] = @PINCODE,
+		[Phone] = @PHONE,
+		[Email] = @EMAIL,
+		[Logo] = @LOGO
+	WHERE [Id] = @ID;
+END

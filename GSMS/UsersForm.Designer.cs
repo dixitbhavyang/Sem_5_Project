@@ -61,6 +61,7 @@
             this.edpcreateddate = new System.Windows.Forms.ErrorProvider(this.components);
             this.eprole = new System.Windows.Forms.ErrorProvider(this.components);
             this.validatorForTextBoxes = new Telerik.WinControls.UI.RadValidationProvider(this.components);
+            this.erpEmail = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.txtcity)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtmail)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtcontactnumber)).BeginInit();
@@ -78,6 +79,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.edpcreateddate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.eprole)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.validatorForTextBoxes)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.erpEmail)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
             // 
@@ -93,6 +95,7 @@
             this.txtcity.ThemeName = "Crystal";
             this.validatorForTextBoxes.SetValidationRule(this.txtcity, radValidationRule1);
             this.txtcity.TextChanged += new System.EventHandler(this.txtcity_TextChanged);
+            this.txtcity.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtcity_KeyPress);
             // 
             // txtmail
             // 
@@ -157,6 +160,7 @@
             this.txtlastname.ThemeName = "Crystal";
             this.validatorForTextBoxes.SetValidationRule(this.txtlastname, radValidationRule1);
             this.txtlastname.TextChanged += new System.EventHandler(this.txtlastname_TextChanged);
+            this.txtlastname.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtlastname_KeyPress);
             // 
             // txtfirstname
             // 
@@ -169,6 +173,7 @@
             this.txtfirstname.ThemeName = "Crystal";
             this.validatorForTextBoxes.SetValidationRule(this.txtfirstname, radValidationRule1);
             this.txtfirstname.TextChanged += new System.EventHandler(this.txtfirstname_TextChanged);
+            this.txtfirstname.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtfirstname_KeyPress);
             // 
             // tableLayoutPanel1
             // 
@@ -375,7 +380,7 @@
             // 
             this.tableLayoutPanel1.SetColumnSpan(this.pictureBox1, 2);
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox1.Image = global::GSMS.Properties.Resources.UsersFormImage;
+            this.pictureBox1.Image = global::GSMS.Properties.Resources.UsersFormImg;
             this.pictureBox1.Location = new System.Drawing.Point(3, 3);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(393, 247);
@@ -414,6 +419,11 @@
             radValidationRule1.Value = "";
             this.validatorForTextBoxes.ValidationRules.AddRange(new Telerik.WinControls.Data.FilterDescriptor[] {
             radValidationRule1});
+            // 
+            // erpEmail
+            // 
+            this.erpEmail.ContainerControl = this;
+            this.erpEmail.Icon = ((System.Drawing.Icon)(resources.GetObject("erpEmail.Icon")));
             // 
             // UsersForm
             // 
@@ -457,6 +467,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.edpcreateddate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.eprole)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.validatorForTextBoxes)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.erpEmail)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);
 
@@ -494,5 +505,6 @@
         public ComponentFactory.Krypton.Toolkit.KryptonComboBox dropdownrole;
         private System.Windows.Forms.PictureBox pictureBox1;
         private Telerik.WinControls.UI.RadValidationProvider validatorForTextBoxes;
+        private System.Windows.Forms.ErrorProvider erpEmail;
     }
 }

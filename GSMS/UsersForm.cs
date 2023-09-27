@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Telerik.WinControls.UI;
 using System.Data.SqlClient;
+using System.Text.RegularExpressions;
 
 namespace GSMS
 {
@@ -43,7 +44,7 @@ namespace GSMS
             else
             {
                 cmd.Parameters.AddWithValue("@CREATEDDATE", DateTime.Now.ToString("MM/dd/yyyy hh:mm:ss tt"));
-                cmd.Parameters.AddWithValue("@CREATEDBY", LoginForm.loggedInUserId);
+                cmd.Parameters.AddWithValue("@CREATEDBY", LogInForm2.loggedInUserId);
             }
             cmd.Parameters.AddWithValue("@FNAME", txtfirstname.Text);
             cmd.Parameters.AddWithValue("@LNAME", txtlastname.Text);
@@ -57,7 +58,7 @@ namespace GSMS
             }
             cmd.Parameters.AddWithValue("@GENDER", gender);
             cmd.Parameters.AddWithValue("@UPDATEDDATE", DateTime.Now.ToString("MM/dd/yyyy hh:mm:ss tt"));
-            cmd.Parameters.AddWithValue("@UPDATEDBY", LoginForm.loggedInUserId);
+            cmd.Parameters.AddWithValue("@UPDATEDBY", LogInForm2.loggedInUserId);
             cmd.Parameters.AddWithValue("@ROLE", role);
             cmd.Parameters.AddWithValue("@CITY", txtcity.Text);
             cmd.ExecuteNonQuery();
@@ -115,12 +116,20 @@ namespace GSMS
 
         private void txtmail_TextChanged(object sender, EventArgs e)
         {
+            string emailPattern = @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
+            Regex regex = new Regex(emailPattern);
+
             if (String.IsNullOrEmpty(txtmail.Text))
             {
                 validatorForTextBoxes.Validate(txtmail);
                 txtmail.Focus();
             }
-            else { validatorForTextBoxes.ClearErrorStatus(txtmail); }
+            else if (!regex.IsMatch(txtmail.Text))
+            {
+                erpEmail.SetError(txtmail, "Not a Valid Email address . . .");
+                txtmail.Focus();
+            }
+            else { validatorForTextBoxes.ClearErrorStatus(txtmail); erpEmail.Clear(); }
         }
 
         private void txtcity_TextChanged(object sender, EventArgs e)
@@ -143,6 +152,29 @@ namespace GSMS
             else { eprole.Clear(); }
         }
 
+        private void txtfirstname_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetter(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar) && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true; // Suppress the input if it's not a letter or white space
+            }
+        }
+
+        private void txtlastname_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetter(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar) && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true; // Suppress the input if it's not a letter or white space
+            }
+        }
+
+        private void txtcity_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetter(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar) && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true; // Suppress the input if it's not a letter or white space
+            }
+        }
         private void txtcontactnumber_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
@@ -303,5 +335,6 @@ namespace GSMS
                 Close();
             }
         }
+
     }
 }

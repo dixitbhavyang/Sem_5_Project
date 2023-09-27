@@ -1,0 +1,7 @@
+﻿CREATE PROC [dbo].[SELECT_USER_BASED_ON_REGISTRATION]
+@ID INT
+AS
+BEGIN
+	SELECT *FROM Users "U"
+	LEFT JOIN SupermarketSettings "SS" ON U.[CreatedBy] = SS.[Id];
+END

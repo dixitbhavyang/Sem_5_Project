@@ -1,0 +1,5 @@
+﻿CREATE PROC [dbo].[GET_WORKING_EMAIL]
+AS
+BEGIN
+	SELECT * FROM WorkingEmail;
+END

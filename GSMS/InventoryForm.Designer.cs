@@ -48,12 +48,12 @@
             this.kryptonLabel6 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.kryptonLabel7 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.btnadd = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.drpunit = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
             this.erpcompany = new System.Windows.Forms.ErrorProvider(this.components);
             this.erpcategory = new System.Windows.Forms.ErrorProvider(this.components);
             this.erpitem = new System.Windows.Forms.ErrorProvider(this.components);
             this.validatorForSpinEditor = new Telerik.WinControls.UI.RadValidationProvider(this.components);
             this.erpdrpunit = new System.Windows.Forms.ErrorProvider(this.components);
-            this.drpunit = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.spineditorquantity)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.spineditorminimumstock)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.spineditormaximumstock)).BeginInit();
@@ -62,12 +62,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.drpcompany)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.drpcategory)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.drpitem)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.drpunit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.erpcompany)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.erpcategory)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.erpitem)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.validatorForSpinEditor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.erpdrpunit)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.drpunit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
             // 
@@ -150,7 +150,7 @@
             this.tableLayoutPanel1.SetColumnSpan(this.pictureBox1, 2);
             this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox1.Image = global::GSMS.Properties.Resources.InventoryFormImage;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(3, 3);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(358, 227);
@@ -298,6 +298,26 @@
             this.btnadd.Values.Text = "Add";
             this.btnadd.Click += new System.EventHandler(this.btnadd_Click);
             // 
+            // drpunit
+            // 
+            this.drpunit.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.drpunit.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.drpunit.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.drpunit.DropDownWidth = 121;
+            this.drpunit.Items.AddRange(new object[] {
+            "Kg",
+            "Pieces",
+            "Ltr.",
+            "Carton",
+            "Box",
+            "Dozen"});
+            this.drpunit.Location = new System.Drawing.Point(147, 358);
+            this.drpunit.Name = "drpunit";
+            this.drpunit.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue;
+            this.drpunit.Size = new System.Drawing.Size(90, 19);
+            this.drpunit.StateCommon.ComboBox.Border.DrawBorders = ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.None;
+            this.drpunit.TabIndex = 8;
+            // 
             // erpcompany
             // 
             this.erpcompany.ContainerControl = this;
@@ -332,26 +352,6 @@
             this.erpdrpunit.ContainerControl = this;
             this.erpdrpunit.Icon = ((System.Drawing.Icon)(resources.GetObject("erpdrpunit.Icon")));
             // 
-            // drpunit
-            // 
-            this.drpunit.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.drpunit.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.drpunit.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.drpunit.DropDownWidth = 121;
-            this.drpunit.Items.AddRange(new object[] {
-            "Kg",
-            "Pieces",
-            "Ltr.",
-            "Carton",
-            "Box",
-            "Dozen"});
-            this.drpunit.Location = new System.Drawing.Point(147, 358);
-            this.drpunit.Name = "drpunit";
-            this.drpunit.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue;
-            this.drpunit.Size = new System.Drawing.Size(90, 19);
-            this.drpunit.StateCommon.ComboBox.Border.DrawBorders = ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.None;
-            this.drpunit.TabIndex = 8;
-            // 
             // InventoryForm
             // 
             this.AcceptButton = this.btnadd;
@@ -361,11 +361,14 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.MaximumSize = new System.Drawing.Size(366, 510);
+            this.MinimumSize = new System.Drawing.Size(366, 510);
             this.Name = "InventoryForm";
             // 
             // 
             // 
             this.RootElement.ApplyShapeToControl = true;
+            this.RootElement.MaxSize = new System.Drawing.Size(366, 510);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "";
             this.ThemeName = "MaterialBlueGrey";
@@ -379,12 +382,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.drpcompany)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.drpcategory)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.drpitem)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.drpunit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.erpcompany)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.erpcategory)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.erpitem)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.validatorForSpinEditor)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.erpdrpunit)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.drpunit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);
 

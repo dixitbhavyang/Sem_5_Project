@@ -66,6 +66,7 @@
             this.txtshortname.ThemeName = "Crystal";
             this.validatorForTextBoxes.SetValidationRule(this.txtshortname, radValidationRule1);
             this.txtshortname.TextChanged += new System.EventHandler(this.txtshortname_TextChanged);
+            this.txtshortname.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtshortname_KeyPress);
             // 
             // txtcategoryname
             // 
@@ -79,6 +80,7 @@
             this.txtcategoryname.ThemeName = "Crystal";
             this.validatorForTextBoxes.SetValidationRule(this.txtcategoryname, radValidationRule1);
             this.txtcategoryname.TextChanged += new System.EventHandler(this.txtcategoryname_TextChanged);
+            this.txtcategoryname.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtcategoryname_KeyPress);
             // 
             // tableLayoutPanel1
             // 
@@ -172,7 +174,7 @@
             // 
             this.tableLayoutPanel1.SetColumnSpan(this.pictureBox1, 2);
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox1.Image = global::GSMS.Properties.Resources.CategoryFormImage;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(3, 3);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(382, 170);

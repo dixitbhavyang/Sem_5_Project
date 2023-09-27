@@ -1,0 +1,32 @@
+﻿CREATE PROCEDURE [dbo].[SUPERMARKET_REGISTRATION] 
+@NAME VARCHAR(100),
+@ADDRESS TEXT,
+@CITY VARCHAR(20),
+@PINCODE VARCHAR(6),
+@PHONE VARCHAR(10),
+@EMAIL VARCHAR(200),
+@LOGO VARCHAR(MAX)
+AS
+BEGIN
+	INSERT INTO SupermarketSettings
+	(
+		[Name],
+		[Address],
+		[CIty],
+		[Pincode],
+		[Phone],
+		[Email],
+		[Logo]
+	)
+	VALUES
+	(
+		@NAME,
+		@ADDRESS,
+		@CITY,
+		@PINCODE,
+		@PHONE,
+		@EMAIL,
+		@LOGO
+	);
+	SELECT SCOPE_IDENTITY();
+END

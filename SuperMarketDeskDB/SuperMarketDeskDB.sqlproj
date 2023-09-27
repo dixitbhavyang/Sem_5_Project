@@ -69,7 +69,6 @@
     <Build Include="dbo\Tables\Inventory.sql" />
     <Build Include="dbo\Tables\CustomerBill.sql" />
     <Build Include="dbo\Tables\Customer.sql" />
-    <Build Include="dbo\Tables\CompanySettings.sql" />
     <Build Include="dbo\Tables\Company.sql" />
     <Build Include="dbo\Tables\Category.sql" />
     <Build Include="dbo\Stored Procedures\UPDATE_USER.sql" />
@@ -89,7 +88,6 @@
     <Build Include="dbo\Stored Procedures\EDIT_CATEGORY.sql" />
     <Build Include="dbo\Stored Procedures\DELETE_CATEGORY.sql" />
     <Build Include="dbo\Stored Procedures\SELECT_ITEMS.sql" />
-    <Build Include="dbo\Stored Procedures\SELECT_ACTIVE_USERS.sql" />
     <Build Include="dbo\Stored Procedures\SELECT_ACTIVE_ITEMS.sql" />
     <Build Include="dbo\Stored Procedures\SELECT_ACTIVE_COMPANIES.sql" />
     <Build Include="dbo\Stored Procedures\SELECT_ACTIVE_CATEGORIES.sql" />
@@ -126,6 +124,17 @@
     <Build Include="dbo\Stored Procedures\INSERT_CUSTOMER.sql" />
     <Build Include="dbo\Stored Procedures\INSERT_BILL.sql" />
     <Build Include="dbo\Stored Procedures\CHANGE_PASSWORD.sql" />
-    <Build Include="dbo\Stored Procedures\GET_ITEMS_GETTING_OUT_OF_STOCK.sql" />
+    <Build Include="dbo\Tables\SupermarketSettings.sql" />
+    <Build Include="dbo\Stored Procedures\UPDATE_SUPERMARKET_SETTINGS.sql" />
+    <Build Include="dbo\Stored Procedures\UPDATE_ADMIN.sql" />
+    <Build Include="dbo\Stored Procedures\SUPERMARKET_REGISTRATION.sql" />
+    <Build Include="dbo\Stored Procedures\SELECT_USER_BASED_ON_REGISTRATION.sql" />
+    <Build Include="dbo\Stored Procedures\SELECT_SUPERMARKET_SETTINGS.sql" />
+    <Build Include="dbo\Stored Procedures\DELETE_SUPERMARKET.sql" />
+    <Build Include="dbo\Tables\WorkingEmail.sql" />
+    <Build Include="dbo\Stored Procedures\RESET_PASSWORD.sql" />
+    <Build Include="dbo\Stored Procedures\GET_WORKING_EMAIL.sql" />
+    <Build Include="dbo\Stored Procedures\FIND_USER_BY_EMAIL.sql" />
+    <Build Include="dbo\Stored Procedures\CONFIGURE_EMAIL.sql" />
   </ItemGroup>
 </Project>

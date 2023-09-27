@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CompanyForm));
             Telerik.WinControls.UI.RadValidationRule radValidationRule1 = new Telerik.WinControls.UI.RadValidationRule();
             this.txtshortname = new Telerik.WinControls.UI.RadTextBox();
             this.txtcompanyname = new Telerik.WinControls.UI.RadTextBox();
@@ -62,6 +63,7 @@
             this.txtshortname.ThemeName = "Crystal";
             this.validatorForTextBoxes.SetValidationRule(this.txtshortname, radValidationRule1);
             this.txtshortname.TextChanged += new System.EventHandler(this.txtshortname_TextChanged);
+            this.txtshortname.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtshortname_KeyPress);
             // 
             // txtcompanyname
             // 
@@ -74,6 +76,7 @@
             this.txtcompanyname.ThemeName = "Crystal";
             this.validatorForTextBoxes.SetValidationRule(this.txtcompanyname, radValidationRule1);
             this.txtcompanyname.TextChanged += new System.EventHandler(this.txtcompanyname_TextChanged);
+            this.txtcompanyname.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtcompanyname_KeyPress);
             // 
             // txtaddress
             // 
@@ -163,7 +166,7 @@
             // 
             this.tableLayoutPanel1.SetColumnSpan(this.pictureBox1, 2);
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox1.Image = global::GSMS.Properties.Resources.CompanyFormImage;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(3, 3);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(382, 118);

@@ -36,13 +36,13 @@ namespace GSMS
             else
             {
                 cmd.Parameters.AddWithValue("@CREATEDDATE", DateTime.Now.ToString("MM/dd/yyyy hh:mm:ss tt"));
-                cmd.Parameters.AddWithValue("CREATEDBY", LoginForm.loggedInUserId);
+                cmd.Parameters.AddWithValue("CREATEDBY", LogInForm2.loggedInUserId);
             }
             cmd.Parameters.AddWithValue("@COMPANY_ID", drpselectcompany.SelectedValue);
             cmd.Parameters.AddWithValue("@NAME", txtcategoryname.Text);
             cmd.Parameters.AddWithValue("@SHORTNAME", txtshortname.Text);
             cmd.Parameters.AddWithValue("@UPDATEDDATE", DateTime.Now.ToString("MM/dd/yyyy hh:mm:ss tt"));
-            cmd.Parameters.AddWithValue("UPDATEDBY", LoginForm.loggedInUserId);
+            cmd.Parameters.AddWithValue("UPDATEDBY", LogInForm2.loggedInUserId);
             cmd.ExecuteNonQuery();
         }
 
@@ -147,6 +147,22 @@ namespace GSMS
                 drpselectcompany.Focus();
             }
             else { erpcomapny.Clear(); }
+        }
+
+        private void txtcategoryname_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetter(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar) && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true; // Suppress the input if it's not a letter or white space
+            }
+        }
+
+        private void txtshortname_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetter(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar) && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true; // Suppress the input if it's not a letter or white space
+            }
         }
     }
 }

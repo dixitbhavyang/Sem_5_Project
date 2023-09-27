@@ -10,6 +10,8 @@ using System.Windows.Forms;
 using Telerik.WinControls.UI;
 using System.Data.SqlClient;
 using Telerik.WinControls;
+using System.IO;
+using System.Text.RegularExpressions;
 
 namespace GSMS
 {
@@ -21,9 +23,74 @@ namespace GSMS
         DataTable dt = new DataTable();
         SqlDataAdapter da;
         public static int userId, companyId, categoryId, itemId, inventoryId, staffMemberId, departmentId;
+
+        string fileName = "";
+        byte[] ImageData;
+        int supermarketId;
+
         public MasterForm()
         {
             InitializeComponent();
+        }
+
+        private void chooseLogo()
+        {
+            fileLogo.OpenFileDialogForm.ThemeName = "MaterialBlueGrey";
+            fileLogo.OpenFileDialogForm.Text = "  Select Logo";
+            fileLogo.OpenFileDialogForm.StartPosition = FormStartPosition.CenterScreen;
+            fileLogo.OpenFileDialogForm.FileName = "Logo";
+            fileLogo.OpenFileDialogForm.Filter = "|Image Files|*.jpg;*.png";
+            DialogResult dr = fileLogo.ShowDialog();
+            fileName = pictureLogo.Image.ToString();
+            if (dr == DialogResult.OK)
+            {
+                pictureLogo.Image = new Bitmap(fileLogo.OpenFileDialogForm.FileName);
+                pictureLogo.SizeMode = PictureBoxSizeMode.Zoom;
+                pictureLogo.BorderStyle = BorderStyle.None;
+                fileName = fileLogo.OpenFileDialogForm.FileName;
+            }
+        }
+        public string imageToBase64()
+        {
+            MemoryStream ms = new MemoryStream();
+            pictureLogo.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
+            ImageData = ms.ToArray();
+            return Convert.ToBase64String(ImageData);
+        }
+        private void getSupermarketSettings()
+        {
+            cmd = new SqlCommand("SELECT_SUPERMARKET_SETTINGS", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            dr = cmd.ExecuteReader();
+            if (dr.HasRows)
+            {
+                dr.Read();
+                supermarketId = Convert.ToInt32(dr["Id"]);
+                txtName.Text = dr["Name"].ToString();
+                txtAddress.Text = dr["Address"].ToString();
+                txtCity.Text = dr["City"].ToString();
+                txtPincode.Text = dr["Pincode"].ToString();
+                txtEmail.Text = dr["Email"].ToString();
+                txtPhone.Text = dr["Phone"].ToString();
+
+                ImageData = Convert.FromBase64String(dr["Logo"].ToString());
+                MemoryStream ms = new MemoryStream(ImageData, 0, ImageData.Length);
+                pictureLogo.Image = Image.FromStream(ms);
+                dr.Close();
+
+                cmd = new SqlCommand("SELECT_USER_BASED_ON_REGISTRATION", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@ID", supermarketId);
+                dr = cmd.ExecuteReader();
+                if (dr.HasRows)
+                {
+                    dr.Read();
+                    txtUsername.Text = dr["Username"].ToString();
+                    txtPassword.Text = dr["Password"].ToString();
+                    txtConfirmPassword2.Text = dr["Password"].ToString();
+                }
+            }
+            dr.Close();
         }
 
         private void getUserRecords()
@@ -69,25 +136,7 @@ namespace GSMS
                 rowInfo.Cells[1].Value = item["FirstName"].ToString();
                 rowInfo.Cells[2].Value = item["LastName"].ToString();
                 rowInfo.Cells[3].Value = item["Username"].ToString();
-
-                if (LoginForm.usertype.ToLower() != "admin")
-                {
-                    // For Encrypt Password . . .
-                    string encrypted = "";
-                    byte[] b1;
-
-                    string original = item["Password"].ToString();
-                    int hashCode = original.GetHashCode();
-                    string withHash = original + hashCode.ToString();
-                    b1 = Encoding.BigEndianUnicode.GetBytes(withHash);
-                    encrypted = Convert.ToBase64String(b1);
-                    rowInfo.Cells[4].Value = encrypted.Substring(0, 4);
-                }
-                else
-                {
-                    rowInfo.Cells[4].Value = item["Password"].ToString();
-                }
-
+                rowInfo.Cells[4].Value = item["Password"].ToString();
                 rowInfo.Cells[5].Value = item["ContactNo"].ToString();
                 rowInfo.Cells[6].Value = item["Email"].ToString();
                 if (Convert.ToBoolean(item["Gender"]))
@@ -96,9 +145,9 @@ namespace GSMS
                 }
                 rowInfo.Cells[7].Value = gender;
                 rowInfo.Cells[8].Value = item["City"].ToString();
-                rowInfo.Cells[9].Value = Convert.ToDateTime(item["CreatedDate"]).ToString("dd/MMM/yyyy hh:mm:ss tt");
+                rowInfo.Cells[9].Value = Convert.ToDateTime(item["CreatedDate"]).ToString("dd/MMM/yyyy");
                 rowInfo.Cells[10].Value = item["Created By"].ToString();
-                rowInfo.Cells[11].Value = Convert.ToDateTime(item["UpdatedDate"]).ToString("dd/MMM/yyyy hh:mm:ss tt");
+                rowInfo.Cells[11].Value = Convert.ToDateTime(item["UpdatedDate"]).ToString("dd/MMM/yyyy");
                 rowInfo.Cells[12].Value = item["Updated By"].ToString();
                 rowInfo.Cells[13].Value = item["Role"].ToString();
                 if (Convert.ToBoolean(item["Status"]))
@@ -106,7 +155,6 @@ namespace GSMS
                     totalAvailableUsers++;
                     status = "Active";
                     rowInfo.Cells[14].Style.ForeColor = Color.Green;
-                    rowInfo.Cells[14].Style.BackColor = Color.Green;
                 }
                 else
                 {
@@ -115,7 +163,7 @@ namespace GSMS
                 rowInfo.Cells[14].Value = status;
                 if (item["LastLogIn"] != DBNull.Value)
                 {
-                    rowInfo.Cells[15].Value = Convert.ToDateTime(item["LastLogIn"]).ToString("dd/MMM/yyyy hh:mm:ss tt"); ;
+                    rowInfo.Cells[15].Value = Convert.ToDateTime(item["LastLogIn"]).ToString("dd/MMM/yyyy"); ;
                 }
                 else { rowInfo.Cells[15].Value = "Never Logged In"; }
 
@@ -167,9 +215,9 @@ namespace GSMS
                 rowInfo.Cells[0].Value = row["Id"].ToString();
                 rowInfo.Cells[1].Value = row["Name"].ToString();
                 rowInfo.Cells[2].Value = row["ShortName"].ToString();
-                rowInfo.Cells[3].Value = Convert.ToDateTime(row["CreatedDate"]).ToString("dd/MMM/yyyy hh:mm:ss tt");
+                rowInfo.Cells[3].Value = Convert.ToDateTime(row["CreatedDate"]).ToString("dd/MMM/yyyy");
                 rowInfo.Cells[4].Value = row["Created By"].ToString();
-                rowInfo.Cells[5].Value = Convert.ToDateTime(row["UpdatedDate"]).ToString("dd/MMM/yyyy hh:mm:ss tt");
+                rowInfo.Cells[5].Value = Convert.ToDateTime(row["UpdatedDate"]).ToString("dd/MMM/yyyy");
                 rowInfo.Cells[6].Value = row["Updated By"].ToString();
                 rowInfo.Cells[7].Value = row["Address"].ToString();
                 if (Convert.ToInt32(row["Status"]) == 1)
@@ -230,9 +278,9 @@ namespace GSMS
                 rowInfo.Cells[0].Value = row["Id"].ToString();
                 rowInfo.Cells[1].Value = row["Name"].ToString();
                 rowInfo.Cells[2].Value = row["ShortName"].ToString();
-                rowInfo.Cells[3].Value = Convert.ToDateTime(row["CreatedDate"]).ToString("dd/MMM/yyyy hh:mm:ss tt");
+                rowInfo.Cells[3].Value = Convert.ToDateTime(row["CreatedDate"]).ToString("dd/MMM/yyyy");
                 rowInfo.Cells[4].Value = row["Created By"].ToString();
-                rowInfo.Cells[5].Value = Convert.ToDateTime(row["UpdatedDate"]).ToString("dd/MMM/yyyy hh:mm:ss tt");
+                rowInfo.Cells[5].Value = Convert.ToDateTime(row["UpdatedDate"]).ToString("dd/MMM/yyyy");
                 rowInfo.Cells[6].Value = row["Updated By"].ToString();
                 rowInfo.Cells[7].Value = row["Company"].ToString();
                 if (Convert.ToInt32(row["Status"]) == 1)
@@ -321,9 +369,9 @@ namespace GSMS
                 rowInfo.Cells[5].Value = tax;
                 rowInfo.Cells[6].Value = row["Category"].ToString();
                 rowInfo.Cells[7].Value = row["Company"].ToString();
-                rowInfo.Cells[8].Value = Convert.ToDateTime(row["CreatedDate"]).ToString("dd/MMM/yyyy hh:mm:ss tt");
+                rowInfo.Cells[8].Value = Convert.ToDateTime(row["CreatedDate"]).ToString("dd/MMM/yyyy");
                 rowInfo.Cells[9].Value = row["Created By"].ToString();
-                rowInfo.Cells[10].Value = Convert.ToDateTime(row["UpdatedDate"]).ToString("dd/MMM/yyyy hh:mm:ss tt");
+                rowInfo.Cells[10].Value = Convert.ToDateTime(row["UpdatedDate"]).ToString("dd/MMM/yyyy");
                 rowInfo.Cells[11].Value = row["Updated By"].ToString();
                 if (Convert.ToInt32(row["Status"]) == 1)
                 {
@@ -392,9 +440,9 @@ namespace GSMS
                 rowInfo.Cells[3].Value = item["Item"].ToString();
                 rowInfo.Cells[4].Value = item["Quantity"].ToString();
                 rowInfo.Cells[5].Value = item["Unit"].ToString();
-                rowInfo.Cells[6].Value = Convert.ToDateTime(item["CreatedDate"]).ToString("dd/MMM/yyyy hh:mm:ss tt");
+                rowInfo.Cells[6].Value = Convert.ToDateTime(item["CreatedDate"]).ToString("dd/MMM/yyyy");
                 rowInfo.Cells[7].Value = item["Created By"].ToString();
-                rowInfo.Cells[8].Value = Convert.ToDateTime(item["LastUpdated"]).ToString("dd/MMM/yyyy hh:mm:ss tt");
+                rowInfo.Cells[8].Value = Convert.ToDateTime(item["LastUpdated"]).ToString("dd/MMM/yyyy");
                 rowInfo.Cells[9].Value = item["Updated By"].ToString();
                 rowInfo.Cells[10].Value = item["MinimumStock"].ToString();
                 rowInfo.Cells[11].Value = item["MaximumStock"].ToString();
@@ -455,9 +503,9 @@ namespace GSMS
                 rowInfo.Cells[2].Value = row["ShortName"].ToString();
                 rowInfo.Cells[3].Value = row["Phone"].ToString();
                 rowInfo.Cells[4].Value = row["Description"].ToString();
-                rowInfo.Cells[5].Value = Convert.ToDateTime(row["CreatedDate"]).ToString("dd/MMM/yyyy hh:mm:ss tt");
+                rowInfo.Cells[5].Value = Convert.ToDateTime(row["CreatedDate"]).ToString("dd/MMM/yyyy");
                 rowInfo.Cells[6].Value = row["Created By"].ToString();
-                rowInfo.Cells[7].Value = Convert.ToDateTime(row["LastUpdated"]).ToString("dd/MMM/yyyy hh:mm:ss tt");
+                rowInfo.Cells[7].Value = Convert.ToDateTime(row["LastUpdated"]).ToString("dd/MMM/yyyy");
                 rowInfo.Cells[8].Value = row["Updated By"].ToString();
                 if (Convert.ToInt32(row["Status"]) == 1)
                 {
@@ -538,9 +586,9 @@ namespace GSMS
                 rowInfo.Cells[7].Value = row["Department"].ToString();
                 rowInfo.Cells[8].Value = row["Salary"].ToString();
                 rowInfo.Cells[9].Value = Convert.ToDateTime(row["JoinDate"]).ToString("dd/MMM/yyyy");
-                rowInfo.Cells[10].Value = Convert.ToDateTime(row["CreatedDate"]).ToString("dd/MMM/yyyy hh:mm:ss tt");
+                rowInfo.Cells[10].Value = Convert.ToDateTime(row["CreatedDate"]).ToString("dd/MMM/yyyy");
                 rowInfo.Cells[11].Value = row["Created By"].ToString();
-                rowInfo.Cells[12].Value = Convert.ToDateTime(row["LastUpdated"]).ToString("dd/MMM/yyyy hh:mm:ss tt");
+                rowInfo.Cells[12].Value = Convert.ToDateTime(row["LastUpdated"]).ToString("dd/MMM/yyyy");
                 rowInfo.Cells[13].Value = row["Updated By"].ToString();
                 if (Convert.ToInt32(row["Status"]) == 1)
                 {
@@ -656,8 +704,8 @@ namespace GSMS
                 rowInfo.Cells[4].Value = row["Discount"].ToString();
                 rowInfo.Cells[5].Value = row["Tax"].ToString();
                 rowInfo.Cells[6].Value = row["PayableAmount"].ToString();
-                rowInfo.Cells[7].Value = Convert.ToDateTime(row["BillDate"]).ToString("dd/MM/yyyy hh:mm:ss tt");
-                rowInfo.Cells[8].Value = Convert.ToDateTime(row["CreatedDate"]).ToString("dd/MM/yyyy hh:mm:ss tt");
+                rowInfo.Cells[7].Value = Convert.ToDateTime(row["BillDate"]).ToString("dd/MMM/yyyy");
+                rowInfo.Cells[8].Value = Convert.ToDateTime(row["CreatedDate"]).ToString("dd/MMM/yyyy");
                 rowInfo.Cells[9].Value = row["Created By"].ToString();
                 gridviewbill.Rows.Add(rowInfo);
             }
@@ -700,7 +748,7 @@ namespace GSMS
                 rowInfo.Cells[3].Value = row["Category"].ToString();
                 rowInfo.Cells[4].Value = row["Item"].ToString();
                 rowInfo.Cells[5].Value = row["Quantity"].ToString() + " " + row["Unit"].ToString();
-                rowInfo.Cells[6].Value = Convert.ToDateTime(row["Date"]).ToString("dd/MM/yyyy hh:mm:ss tt");
+                rowInfo.Cells[6].Value = Convert.ToDateTime(row["Date"]).ToString("dd/MMM/yyyy");
                 gridviewsales.Rows.Add(rowInfo);
             }
             //gridviewsales.AutoSizeRows = true;
@@ -839,6 +887,7 @@ namespace GSMS
                 uf.ShowDialog();
                 getUserRecords();
             }
+            userId = 0;
         }
 
         private void editCompany()
@@ -1007,70 +1056,61 @@ namespace GSMS
             departmentId = 0;
         }
 
-        private void adminRights()
-        {
-            btnedituser.Enabled = btndeleteuser.Enabled = btncompanyedit.Enabled = btncompanydelete.Enabled = btncategoryedit.Enabled = btncategorydelete.Enabled = btnitemedit.Enabled = btnitemdelete.Enabled = btninventoryedit.Enabled = btninventorydelete.Enabled = true;
-        }
-
         private void managerRights()
         {
-            btnadduser.Enabled = btnedituser.Enabled = btndeleteuser.Enabled = false;
-            btncategoryadd.Enabled = btncategoryedit.Enabled = btncategorydelete.Enabled = false;
-            btnitemadd.Enabled = btnitemedit.Enabled = btnitemdelete.Enabled = false;
-            btninventoryadd.Enabled = btninventoryedit.Enabled = btninventorydelete.Enabled = false;
-            btnbillnew.Enabled = false;
-
-            btncompanyadd.Enabled = btncompanyedit.Enabled = btncompanydelete.Enabled = true;
-            btndepartmentadd.Enabled = btndepartmentedit.Enabled = btndepartmentdelete.Enabled = true;
-            btnstaffmemberadd.Enabled = btnstaffmemberedit.Enabled = btnstaffmemberdelete.Enabled = true;
+            radPageView1.Pages["pageuser"].Item.Visibility = ElementVisibility.Collapsed;
+            radPageView1.Pages["pagecategory"].Item.Visibility = ElementVisibility.Collapsed;
+            radPageView1.Pages["pageitem"].Item.Visibility = ElementVisibility.Collapsed;
+            radPageView1.Pages["pageinventory"].Item.Visibility = ElementVisibility.Collapsed;
+            radPageView1.Pages["pagecustomer"].Item.Visibility = ElementVisibility.Collapsed;
+            radPageView1.Pages["pagecustomerbill"].Item.Visibility = ElementVisibility.Collapsed;
+            radPageView1.Pages["pagesales"].Item.Visibility = ElementVisibility.Collapsed;
+            radPageView1.Pages["pageSupermarketSettings"].Item.Visibility = ElementVisibility.Collapsed;
         }
 
-        private void inventoryManagerRights()
+        private void stockAdministratorRights()
         {
-            btnadduser.Enabled = btnedituser.Enabled = btndeleteuser.Enabled = false;
-            btncompanyadd.Enabled = btncompanyedit.Enabled = btncompanydelete.Enabled = false;
-            btndepartmentadd.Enabled = btndepartmentedit.Enabled = btndepartmentdelete.Enabled = false;
-            btnstaffmemberadd.Enabled = btnstaffmemberedit.Enabled = btnstaffmemberdelete.Enabled = false;
-            btnbillnew.Enabled = false;
-
-            btncategoryadd.Enabled = btncategoryedit.Enabled = btncategorydelete.Enabled = true;
-            btnitemadd.Enabled = btnitemedit.Enabled = btnitemdelete.Enabled = true;
-            btninventoryadd.Enabled = btninventoryedit.Enabled = btninventorydelete.Enabled = true;
+            radPageView1.Pages["pageuser"].Item.Visibility = ElementVisibility.Collapsed;
+            radPageView1.Pages["pagecompany"].Item.Visibility = ElementVisibility.Collapsed;
+            radPageView1.Pages["pagedepartment"].Item.Visibility = ElementVisibility.Collapsed;
+            radPageView1.Pages["pagestaff"].Item.Visibility = ElementVisibility.Collapsed;
+            radPageView1.Pages["pagecustomer"].Item.Visibility = ElementVisibility.Collapsed;
+            radPageView1.Pages["pagecustomerbill"].Item.Visibility = ElementVisibility.Collapsed;
+            radPageView1.Pages["pagesales"].Item.Visibility = ElementVisibility.Collapsed;
+            radPageView1.Pages["pageSupermarketSettings"].Item.Visibility = ElementVisibility.Collapsed;
         }
 
         private void billingClerkRights()
         {
-            btnadduser.Enabled = btnedituser.Enabled = btndeleteuser.Enabled = false;
-            btncompanyadd.Enabled = btncompanyedit.Enabled = btncompanydelete.Enabled = false;
-            btncategoryadd.Enabled = btncategoryedit.Enabled = btncategorydelete.Enabled = false;
-            btnitemadd.Enabled = btnitemedit.Enabled = btnitemdelete.Enabled = false;
-            btninventoryadd.Enabled = btninventoryedit.Enabled = btninventorydelete.Enabled = false;
-            btndepartmentadd.Enabled = btndepartmentedit.Enabled = btndepartmentdelete.Enabled = false;
-            btnstaffmemberadd.Enabled = btnstaffmemberedit.Enabled = btnstaffmemberdelete.Enabled = false;
-
-            btnbillnew.Enabled = true;
+            radPageView1.Pages["pageuser"].Item.Visibility = ElementVisibility.Collapsed;
+            radPageView1.Pages["pagecompany"].Item.Visibility = ElementVisibility.Collapsed;
+            radPageView1.Pages["pagecategory"].Item.Visibility = ElementVisibility.Collapsed;
+            radPageView1.Pages["pageitem"].Item.Visibility = ElementVisibility.Collapsed;
+            radPageView1.Pages["pageinventory"].Item.Visibility = ElementVisibility.Collapsed;
+            radPageView1.Pages["pagedepartment"].Item.Visibility = ElementVisibility.Collapsed;
+            radPageView1.Pages["pagestaff"].Item.Visibility = ElementVisibility.Collapsed;
+            radPageView1.Pages["pageSupermarketSettings"].Item.Visibility = ElementVisibility.Collapsed;
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
             RadMessageBox.SetThemeName("MaterialBlueGrey");
             con.Open();
-            // TODO: This line of code loads data into the 'superMarketMS_ProjectDataSet.Users' table. You can move, or remove it, as needed.
-            if (LoginForm.usertype.ToLower() == "admin")
+            if (LogInForm2.usertype.ToLower() == "admin")
             {
-                adminRights();
+                radPageView1.Pages["pagesettings"].Item.Visibility = ElementVisibility.Collapsed;
             }
-            else if (LoginForm.usertype.ToLower() == "manager")
+            else if (LogInForm2.usertype.ToLower() == "billing clerk")
+            {
+                billingClerkRights();
+            }
+            else if (LogInForm2.usertype.ToLower() == "manager")
             {
                 managerRights();
             }
-            else if (LoginForm.usertype.ToLower() == "stock administrator")
+            else if (LogInForm2.usertype.ToLower() == "stock administrator")
             {
-                inventoryManagerRights();
-            }
-            else
-            {
-                billingClerkRights();
+                stockAdministratorRights();
             }
             getUserRecords();
             getCompanyRecords();
@@ -1082,6 +1122,7 @@ namespace GSMS
             getCustomerRecords();
             getBillRecords();
             getSales();
+            getSupermarketSettings();
         }
 
         private void radButton1_Click(object sender, EventArgs e)
@@ -1381,7 +1422,7 @@ namespace GSMS
 
         private void gridviewusers_SelectionChanged(object sender, EventArgs e)
         {
-            if (LoginForm.usertype.ToLower() == "admin")
+            if (LogInForm2.usertype.ToLower() == "admin")
             {
                 bool isSelected = false;
                 for (int i = 0; i < gridviewusers.Rows.Count; i++)
@@ -1400,7 +1441,7 @@ namespace GSMS
         }
         private void gridviewcompany_SelectionChanged(object sender, EventArgs e)
         {
-            if (LoginForm.usertype.ToLower() == "admin" || LoginForm.usertype.ToLower() == "manager")
+            if (LogInForm2.usertype.ToLower() == "admin" || LogInForm2.usertype.ToLower() == "manager")
             {
                 bool isSelected = false;
                 for (int i = 0; i < gridviewcompany.Rows.Count; i++)
@@ -1419,7 +1460,7 @@ namespace GSMS
         }
         private void gridviewcategory_SelectionChanged(object sender, EventArgs e)
         {
-            if (LoginForm.usertype.ToLower() == "admin" || LoginForm.usertype.ToLower() == "stock administrator")
+            if (LogInForm2.usertype.ToLower() == "admin" || LogInForm2.usertype.ToLower() == "stock administrator")
             {
                 bool isSelected = false;
                 for (int i = 0; i < gridviewcategory.Rows.Count; i++)
@@ -1439,7 +1480,7 @@ namespace GSMS
 
         private void gridviewitem_SelectionChanged(object sender, EventArgs e)
         {
-            if (LoginForm.usertype.ToLower() == "admin" || LoginForm.usertype.ToLower() == "stock administrator")
+            if (LogInForm2.usertype.ToLower() == "admin" || LogInForm2.usertype.ToLower() == "stock administrator")
             {
                 bool isSelected = false;
                 for (int i = 0; i < gridviewitem.Rows.Count; i++)
@@ -1458,7 +1499,7 @@ namespace GSMS
         }
         private void gridviewinventory_SelectionChanged(object sender, EventArgs e)
         {
-            if (LoginForm.usertype.ToLower() == "admin" || LoginForm.usertype.ToLower() == "stock administrator")
+            if (LogInForm2.usertype.ToLower() == "admin" || LogInForm2.usertype.ToLower() == "stock administrator")
             {
                 bool isSelected = false;
                 for (int i = 0; i < gridviewinventory.Rows.Count; i++)
@@ -1478,7 +1519,7 @@ namespace GSMS
 
         private void gridviewdepartment_SelectionChanged(object sender, EventArgs e)
         {
-            if (LoginForm.usertype.ToLower() == "admin" || LoginForm.usertype.ToLower() == "manager")
+            if (LogInForm2.usertype.ToLower() == "admin" || LogInForm2.usertype.ToLower() == "manager")
             {
                 bool isSelected = false;
                 for (int i = 0; i < gridviewdepartment.Rows.Count; i++)
@@ -1498,7 +1539,7 @@ namespace GSMS
 
         private void gridviewstaff_SelectionChanged(object sender, EventArgs e)
         {
-            if (LoginForm.usertype.ToLower() == "admin" || LoginForm.usertype.ToLower() == "manager")
+            if (LogInForm2.usertype.ToLower() == "admin" || LogInForm2.usertype.ToLower() == "manager")
             {
                 bool isSelected = false;
                 for (int i = 0; i < gridviewstaff.Rows.Count; i++)
@@ -1518,7 +1559,7 @@ namespace GSMS
 
         private void btnbillnew_Click(object sender, EventArgs e)
         {
-            if (LoginForm.usertype.ToLower() == "admin" || LoginForm.usertype.ToLower() == "billing clerk")
+            if (LogInForm2.usertype.ToLower() == "admin" || LogInForm2.usertype.ToLower() == "billing clerk")
             {
                 BillForm bf = new BillForm();
                 bf.ShowDialog();
@@ -1530,54 +1571,54 @@ namespace GSMS
 
         private void gridviewusers_CellDoubleClick(object sender, GridViewCellEventArgs e)
         {
-            if (LoginForm.usertype.ToLower() == "admin")
+            if (LogInForm2.usertype.ToLower() == "admin")
             {
                 editUser();
             }
         }
         private void gridviewcompany_CellDoubleClick(object sender, GridViewCellEventArgs e)
         {
-            if (LoginForm.usertype.ToLower() == "admin" || LoginForm.usertype.ToLower() == "manager")
+            if (LogInForm2.usertype.ToLower() == "admin" || LogInForm2.usertype.ToLower() == "manager")
             {
                 editCompany();
             }
         }
         private void gridviewcategory_CellDoubleClick(object sender, GridViewCellEventArgs e)
         {
-            if (LoginForm.usertype.ToLower() == "admin" || LoginForm.usertype.ToLower() == "stock administrator")
+            if (LogInForm2.usertype.ToLower() == "admin" || LogInForm2.usertype.ToLower() == "stock administrator")
             {
                 editCategory();
             }
         }
         private void gridviewitem_CellDoubleClick(object sender, GridViewCellEventArgs e)
         {
-            if (LoginForm.usertype.ToLower() == "admin" || LoginForm.usertype.ToLower() == "stock administrator")
+            if (LogInForm2.usertype.ToLower() == "admin" || LogInForm2.usertype.ToLower() == "stock administrator")
             {
                 editItem();
             }
         }
         private void gridviewinventory_CellDoubleClick(object sender, GridViewCellEventArgs e)
         {
-            if (LoginForm.usertype.ToLower() == "admin" || LoginForm.usertype.ToLower() == "stock administrator")
+            if (LogInForm2.usertype.ToLower() == "admin" || LogInForm2.usertype.ToLower() == "stock administrator")
             {
                 editInventoryRecord();
             }
         }
         private void gridviewdepartment_CellDoubleClick(object sender, GridViewCellEventArgs e)
         {
-            if (LoginForm.usertype.ToLower() == "admin" || LoginForm.usertype.ToLower() == "manager")
+            if (LogInForm2.usertype.ToLower() == "admin" || LogInForm2.usertype.ToLower() == "manager")
             {
                 editDepartment();
             }
         }
+
         private void gridviewstaff_CellDoubleClick(object sender, GridViewCellEventArgs e)
         {
-            if (LoginForm.usertype.ToLower() == "admin" || LoginForm.usertype.ToLower() == "manager")
+            if (LogInForm2.usertype.ToLower() == "admin" || LogInForm2.usertype.ToLower() == "manager")
             {
                 editStaffMemebr();
             }
         }
-
 
         private void txtCurrentPassword_TextChanged(object sender, EventArgs e)
         {
@@ -1659,7 +1700,7 @@ namespace GSMS
                 // CODE TO CHANGE PASSWORD . . .
                 cmd = new SqlCommand("LOG_IN", con);
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@USERNAME", LoginForm.username);
+                cmd.Parameters.AddWithValue("@USERNAME", LogInForm2.username);
                 cmd.Parameters.AddWithValue("@PASSWORD", txtCurrentPassword.Text);
                 dr = cmd.ExecuteReader();
                 if (dr.HasRows)
@@ -1682,5 +1723,323 @@ namespace GSMS
                 dr.Close();
             }
         }
+
+        private bool validateSupermarketSettingsControls()
+        {
+            if (string.IsNullOrEmpty(txtName.Text))
+            {
+                erpTxtAddress.Clear();
+                erpTxtCity.Clear();
+                erpTxtPincode.Clear();
+                erpTxtEmail.Clear();
+                erpTxtPhone.Clear();
+                erpTxtUsername.Clear();
+                erpTxtPassword.Clear();
+
+                erpTxtName.SetError(txtName, "It cannot be Empty . . .");
+                txtName.Focus();
+            }
+            else if (string.IsNullOrEmpty(txtAddress.Text))
+            {
+                erpTxtName.Clear();
+                erpTxtCity.Clear();
+                erpTxtPincode.Clear();
+                erpTxtEmail.Clear();
+                erpTxtPhone.Clear();
+                erpTxtUsername.Clear();
+                erpTxtPassword.Clear();
+
+                erpTxtAddress.SetError(txtAddress, "It cannot be empty . . .");
+                txtAddress.Focus();
+            }
+            else if (string.IsNullOrEmpty(txtCity.Text))
+            {
+                erpTxtName.Clear();
+                erpTxtAddress.Clear();
+                erpTxtPincode.Clear();
+                erpTxtEmail.Clear();
+                erpTxtPhone.Clear();
+                erpTxtUsername.Clear();
+                erpTxtPassword.Clear();
+
+                erpTxtCity.SetError(txtCity, "It cannot be Empty . . .");
+                txtCity.Focus();
+            }
+            else if (string.IsNullOrEmpty(txtPincode.Text))
+            {
+                erpTxtName.Clear();
+                erpTxtAddress.Clear();
+                erpTxtCity.Clear();
+                erpTxtEmail.Clear();
+                erpTxtPhone.Clear();
+                erpTxtUsername.Clear();
+                erpTxtPassword.Clear();
+
+                erpTxtPincode.SetError(txtPincode, "It cannot be Empty . . .");
+                txtPincode.Focus();
+            }
+            else if (string.IsNullOrEmpty(txtEmail.Text))
+            {
+                erpTxtName.Clear();
+                erpTxtAddress.Clear();
+                erpTxtCity.Clear();
+                erpTxtPincode.Clear();
+                erpTxtPhone.Clear();
+                erpTxtUsername.Clear();
+                erpTxtPassword.Clear();
+
+                erpTxtEmail.SetError(txtEmail, "It cannot be Empty . . .");
+                txtEmail.Focus();
+            }
+            else if (string.IsNullOrEmpty(txtPhone.Text))
+            {
+                erpTxtName.Clear();
+                erpTxtAddress.Clear();
+                erpTxtCity.Clear();
+                erpTxtPincode.Clear();
+                erpTxtEmail.Clear();
+                erpTxtUsername.Clear();
+                erpTxtPassword.Clear();
+
+                erpTxtPhone.SetError(txtPhone, "It cannot be Empty . . .");
+                txtPhone.Focus();
+            }
+            else if (string.IsNullOrEmpty(txtUsername.Text))
+            {
+                erpTxtName.Clear();
+                erpTxtAddress.Clear();
+                erpTxtCity.Clear();
+                erpTxtPincode.Clear();
+                erpTxtEmail.Clear();
+                erpTxtPhone.Clear();
+                erpTxtPassword.Clear();
+
+                erpTxtUsername.SetError(txtUsername, "It cannot be Empty . . .");
+                txtUsername.Focus();
+            }
+            else if (string.IsNullOrEmpty(txtPassword.Text))
+            {
+                erpTxtName.Clear();
+                erpTxtAddress.Clear();
+                erpTxtCity.Clear();
+                erpTxtPincode.Clear();
+                erpTxtEmail.Clear();
+                erpTxtPhone.Clear();
+                erpTxtUsername.Clear();
+
+                erpTxtPassword.SetError(txtPassword, "It cannot be Empty . . .");
+                txtPassword.Focus();
+            }
+            else if (string.IsNullOrEmpty(txtConfirmPassword2.Text))
+            {
+                erpTxtName.Clear();
+                erpTxtAddress.Clear();
+                erpTxtCity.Clear();
+                erpTxtPincode.Clear();
+                erpTxtEmail.Clear();
+                erpTxtPhone.Clear();
+                erpTxtUsername.Clear();
+                erpTxtPassword.Clear();
+
+                erpConfirmPassword.SetError(txtConfirmPassword2, "It cannot be Empty . . .");
+                txtConfirmPassword2.Focus();
+            }
+            else if (txtConfirmPassword2.Text != txtPassword.Text)
+            {
+                erpTxtName.Clear();
+                erpTxtAddress.Clear();
+                erpTxtCity.Clear();
+                erpTxtPincode.Clear();
+                erpTxtEmail.Clear();
+                erpTxtPhone.Clear();
+                erpTxtUsername.Clear();
+                erpTxtPassword.Clear();
+
+                erpConfirmPassword.SetError(txtConfirmPassword2, "Password does not match . . .");
+
+            }
+            else
+            {
+                return true;
+            }
+            return false;
+        }
+
+        private void txtName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetter(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar) && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true; // Suppress the input if it's not a letter or white space
+            }
+        }
+
+        private void txtCity_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetter(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar) && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true; // Suppress the input if it's not a letter or white space
+            }
+        }
+
+        private void txtName_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtName.Text))
+            {
+                erpTxtName.SetError(txtName, "It cannot be Empty . . .");
+                txtName.Focus();
+            }
+            else { erpTxtName.Clear(); }
+        }
+
+        private void txtAddress_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtAddress.Text))
+            {
+                erpTxtAddress.SetError(txtAddress, "It cannot be Empty . . .");
+                txtAddress.Focus();
+            }
+            else { erpTxtAddress.Clear(); }
+        }
+        private void txtCity_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtCity.Text))
+            {
+                erpTxtCity.SetError(txtCity, "It cannot be Empty . . .");
+                txtCity.Focus();
+            }
+            else { erpTxtCity.Clear(); }
+        }
+
+        private void txtPincode_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtPincode.Text))
+            {
+                erpTxtPincode.SetError(txtPincode, "It cannot be Empty . . .");
+                txtPincode.Focus();
+            }
+            else { erpTxtPincode.Clear(); }
+        }
+
+        private void txtEmail_TextChanged(object sender, EventArgs e)
+        {
+            string emailPattern = @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
+            Regex regex = new Regex(emailPattern);
+
+            if (string.IsNullOrEmpty(txtEmail.Text))
+            {
+                erpTxtEmail.SetError(txtEmail, "It cannot be Empty . . .");
+                txtEmail.Focus();
+            }
+            else if (!regex.IsMatch(txtEmail.Text))
+            {
+                erpTxtEmail.SetError(txtEmail, "Not a Valid Email address . . .");
+                txtEmail.Focus();
+            }
+            else { erpTxtEmail.Clear(); }
+        }
+
+        private void txtPhone_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtPhone.Text))
+            {
+                erpTxtPhone.SetError(txtPhone, "It cannot be Empty . . .");
+                txtPhone.Focus();
+            }
+            else { erpTxtPhone.Clear(); }
+        }
+
+        private void txtUsername_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtUsername.Text))
+            {
+                erpTxtUsername.SetError(txtUsername, "It cannot be Empty . . .");
+                txtUsername.Focus();
+            }
+            else { erpTxtUsername.Clear(); }
+        }
+
+        private void txtPassword_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtPassword.Text))
+            {
+                erpTxtPassword.SetError(txtPassword, "It cannot bet Empty . . .");
+                txtPassword.Focus();
+            }
+            else { erpTxtPassword.Clear(); }
+        }
+
+        private void txtConfirmPassword2_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtConfirmPassword2.Text))
+            {
+                erpConfirmPassword.SetError(txtConfirmPassword2, "It cannot be Empty . . .");
+                txtConfirmPassword2.Focus();
+            }
+            else { erpConfirmPassword.Clear(); }
+        }
+
+        private void chkShowPassword2_ToggleStateChanged(object sender, StateChangedEventArgs args)
+        {
+            if (chkShowPassword2.Checked)
+            {
+                txtPassword.UseSystemPasswordChar = txtConfirmPassword2.UseSystemPasswordChar = false;
+                txtPassword.PasswordChar = txtConfirmPassword2.PasswordChar = '\0';
+            }
+            else { txtPassword.UseSystemPasswordChar = txtConfirmPassword2.UseSystemPasswordChar = true; }
+        }
+
+        private void btnChooseLogo_Click(object sender, EventArgs e)
+        {
+            chooseLogo();
+        }
+
+        private void lblConfiureEmail_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            EmailConfigurationForm ecf = new EmailConfigurationForm();
+            ecf.ShowDialog();
+        }
+
+        private void btnSaveChanges_Click(object sender, EventArgs e)
+        {
+            if (validateSupermarketSettingsControls())
+            {
+                erpTxtName.Clear();
+                erpTxtAddress.Clear();
+                erpTxtCity.Clear();
+                erpTxtPincode.Clear();
+                erpTxtEmail.Clear();
+                erpTxtPhone.Clear();
+                erpTxtUsername.Clear();
+                erpTxtPassword.Clear();
+                erpConfirmPassword.Clear();
+
+                cmd = new SqlCommand("UPDATE_SUPERMARKET_SETTINGS", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@ID", supermarketId);
+                cmd.Parameters.AddWithValue("@NAME", txtName.Text);
+                cmd.Parameters.AddWithValue("@ADDRESS", txtAddress.Text);
+                cmd.Parameters.AddWithValue("@CITY", txtCity.Text);
+                cmd.Parameters.AddWithValue("@PINCODE", txtPincode.Text);
+                cmd.Parameters.AddWithValue("@EMAIL", txtEmail.Text);
+                cmd.Parameters.AddWithValue("@PHONE", txtPhone.Text);
+                cmd.Parameters.AddWithValue("@LOGO", imageToBase64());
+                int u = cmd.ExecuteNonQuery();
+                if (u > 0)
+                {
+                    cmd = new SqlCommand("UPDATE_ADMIN", con);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@ID", supermarketId);
+                    cmd.Parameters.AddWithValue("@USERNAME", txtUsername.Text);
+                    cmd.Parameters.AddWithValue("@PASSWORD", txtPassword.Text);
+                    int u2 = cmd.ExecuteNonQuery();
+                    if (u2 > 0)
+                    {
+                        RadMessageBox.Show("Changes Saved . . .");
+                        getSupermarketSettings();
+                    }
+                }
+            }
+        }
+
     }
 }

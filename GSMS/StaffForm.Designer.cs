@@ -60,6 +60,7 @@
             this.validatorForTextBoxes = new Telerik.WinControls.UI.RadValidationProvider(this.components);
             this.validatorForSpinEditor = new Telerik.WinControls.UI.RadValidationProvider(this.components);
             this.erpdepartment = new System.Windows.Forms.ErrorProvider(this.components);
+            this.erpEmail = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.txtmail)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtlastname)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtfirstname)).BeginInit();
@@ -75,6 +76,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.validatorForTextBoxes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.validatorForSpinEditor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.erpdepartment)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.erpEmail)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
             // 
@@ -105,6 +107,7 @@
             this.validatorForSpinEditor.SetValidationRule(this.txtlastname, null);
             this.validatorForTextBoxes.SetValidationRule(this.txtlastname, radValidationRule2);
             this.txtlastname.TextChanged += new System.EventHandler(this.txtlastname_TextChanged);
+            this.txtlastname.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtlastname_KeyPress);
             // 
             // txtfirstname
             // 
@@ -118,6 +121,7 @@
             this.validatorForSpinEditor.SetValidationRule(this.txtfirstname, null);
             this.validatorForTextBoxes.SetValidationRule(this.txtfirstname, radValidationRule2);
             this.txtfirstname.TextChanged += new System.EventHandler(this.txtfirstname_TextChanged);
+            this.txtfirstname.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtfirstname_KeyPress);
             // 
             // txtcontactnumber
             // 
@@ -427,6 +431,11 @@
             this.erpdepartment.ContainerControl = this;
             this.erpdepartment.Icon = ((System.Drawing.Icon)(resources.GetObject("erpdepartment.Icon")));
             // 
+            // erpEmail
+            // 
+            this.erpEmail.ContainerControl = this;
+            this.erpEmail.Icon = ((System.Drawing.Icon)(resources.GetObject("erpEmail.Icon")));
+            // 
             // StaffForm
             // 
             this.AcceptButton = this.btnaddstaffmember;
@@ -465,6 +474,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.validatorForTextBoxes)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.validatorForSpinEditor)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.erpdepartment)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.erpEmail)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);
 
@@ -500,5 +510,6 @@
         private System.Windows.Forms.ErrorProvider erpdepartment;
         public ComponentFactory.Krypton.Toolkit.KryptonComboBox drpdepartment;
         public Telerik.WinControls.UI.RadSpinEditor spineditorsalary;
+        private System.Windows.Forms.ErrorProvider erpEmail;
     }
 }

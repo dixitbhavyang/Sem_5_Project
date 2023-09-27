@@ -118,139 +118,163 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="UserEditImage" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\edit (6).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="StaffIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\icons8-badge-20.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="UserDeleteImage" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\delete-user (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="CompanyDeleteImage" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\delete (3).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="SalesIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\icons8-sales-20 (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="CompanyEditIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\pencil (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="CategoriesIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\icons8-broadcasting-20.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="LogInIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\icons8-login-16 (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="InventoryIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\icons8-trolley-20.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="UsersIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\icons8-users-20 (2).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="BillIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\icons8-bill-20 (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="CompaniesIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\icons8-group-of-companies-20.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="CompanyAddImage" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\add (3).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="CustomersIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\icons8-customers-20 (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ItemsIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\icons8-similar-items-20.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="SettingsIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\icons8-settings-20 (2).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="CompanyFormImage" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\35976.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="HomeIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\icons8-home-20.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="LoginFormImage" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\vecteezy_unlock-personal-password-account-security_.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="UserAddImage" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\add (4).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="UsersFormImage" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\4565.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="CategoryFormImage" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\5538772_2827397.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ItemFormImage" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\14449322_5464026.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="SplashScreenImage" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\13749522_2007.i504.004..isometric supermarket infographics.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ItemAddIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icons8-plus-math-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ItemDeleteIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icons8-cancel-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ItemEditIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icons8-pencil-drawing-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="InventoryAddRecordImage" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\box_1791537.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="InventoryDeleteRecordImage" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\remove-file_4807345.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="InventoryEditRecordImage" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\concept_8175979.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="InventoryFormImage" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\7401745_3657674.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ErrorProviderIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icons8_error_25_K2P_icon.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="CategoryAddImage" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\add-button (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="CategoryDeleteImage" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\cancel (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="CategoryEditImage" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\edit (11).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="StaffFormImage" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\8252028_3871744.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="StaffMemberAddImage" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\finger.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="StaffMemberDeleteImage" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\delete (4).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="StaffMemberEditImage" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\edit (7).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="DepartmentAddImage" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\add-button (2).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="DepartmentDeleteImage" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\cleaner.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="StaffIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\icons8-badge-20.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="UsersFormImage" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\4565.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CompaniesIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\icons8-group-of-companies-20.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CategoryDeleteImage" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cancel (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CategoryAddImage" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\add-button (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CompanyDeleteImage" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\delete (3).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SettingsIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\icons8-settings-20 (2).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ItemsIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\icons8-similar-items-20.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="HomeIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\icons8-home-20.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="InventoryAddRecordImage" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\box_1791537.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="DepartmentEditImage" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\paint-brush.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CategoriesIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\icons8-broadcasting-20.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="InventoryDeleteRecordImage" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\remove-file_4807345.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CustomersIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\icons8-customers-20 (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="InventoryIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\icons8-trolley-20.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CategoryFormImage" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\5538772_2827397.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="UserAddImage" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\add (4).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CompanyEditIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\pencil (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="LogInIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\icons8-login-16 (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="LogoDefaultImage" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\31530356_bird_2.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BillIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\icons8-bill-20 (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="DepartmentAddImage" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\add-button (2).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ChangePasswordImage" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\20602818_6325247.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="LogInFormImg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\13246826_5179440.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="UserDeleteImage" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\delete-user (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="UsersIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\icons8-users-20 (2).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SupermarketSettingsImg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\3797919_9984.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ForgetPasswordFormImg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\20602815_6333217.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="InventoryEditRecordImage" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\concept_8175979.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="UserEditImage" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\edit (6).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ItemAddIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icons8-plus-math-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="StaffFormImage" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\8252028_3871744.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SplashScreenImage" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\13749522_2007.i504.004..isometric supermarket infographics.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CompanyAddImage" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\add (3).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ItemEditIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icons8-pencil-drawing-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BillFormImage" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\8674921.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ItemDeleteIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icons8-cancel-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SalesIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\icons8-sales-20 (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="RegistrationFormImage" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\12469796_Wavy_REst-03_Single-11.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ItemFormImage" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\14449322_5464026.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ErrorProviderIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icons8_error_25_K2P_icon.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="InventoryFormImage" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\7401745_3657674.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="StaffMemberAddImage" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\finger.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="DepartmentFormImage" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\6375476_25456.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="CompanyFormImage" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\35976.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="StaffMemberEditImage" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\edit (7).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CategoryEditImage" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\edit (11).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="DepartmentIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-furniture-store-20.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="ChangePasswordImage" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\20602818_6325247.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="UsersFormImg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\4565.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="AppPasswordImg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Screenshot (188).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="EmailConfigurationImg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\7472011_3675555.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

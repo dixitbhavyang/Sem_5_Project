@@ -102,7 +102,7 @@ namespace GSMS
             else
             {
                 cmd.Parameters.AddWithValue("@CREATEDDATE", DateTime.Now.ToString("MM/dd/yyyy hh:mm:ss tt"));
-                cmd.Parameters.AddWithValue("CREATEDBY", LoginForm.loggedInUserId);
+                cmd.Parameters.AddWithValue("CREATEDBY", LogInForm2.loggedInUserId);
             }
             cmd.Parameters.AddWithValue("@COMPANYID", drpcompany.SelectedValue);
             cmd.Parameters.AddWithValue("@CATEGORYID", drpcategory.SelectedValue);
@@ -112,7 +112,7 @@ namespace GSMS
             cmd.Parameters.AddWithValue("@MINIMUMSTOCK", spineditorminimumstock.Value);
             cmd.Parameters.AddWithValue("@MAXIMUMSTOCK", spineditormaximumstock.Value);
             cmd.Parameters.AddWithValue("@LASTUPDATED", DateTime.Now.ToString("MM/dd/yyyy hh:mm:ss tt"));
-            cmd.Parameters.AddWithValue("@UPDATEDBY", LoginForm.loggedInUserId);
+            cmd.Parameters.AddWithValue("@UPDATEDBY", LogInForm2.loggedInUserId);
             cmd.ExecuteNonQuery();
         }
         private void InventoryForm_Load(object sender, EventArgs e)

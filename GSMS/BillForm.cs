@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using Telerik.WinControls.UI;
 using System.Data.SqlClient;
 using Telerik.WinControls;
+using System.Text.RegularExpressions;
 
 namespace GSMS
 {
@@ -73,7 +74,7 @@ namespace GSMS
             cmd.Parameters.AddWithValue("@PAYABLEAMOUNT", payableAmount);
             cmd.Parameters.AddWithValue("@BILLDATE", DateTime.Now.ToString("MM/dd/yyyy hh:mm:ss tt"));
             cmd.Parameters.AddWithValue("@CREATEDDATE", DateTime.Now.ToString("MM/dd/yyyy hh:mm:ss tt"));
-            cmd.Parameters.AddWithValue("@CREATEDBY", LoginForm.loggedInUserId);
+            cmd.Parameters.AddWithValue("@CREATEDBY", LogInForm2.loggedInUserId);
             int i = Convert.ToInt32(cmd.ExecuteScalar());
             return i;
         }
@@ -284,14 +285,23 @@ namespace GSMS
 
         private void txtmail_TextChanged(object sender, EventArgs e)
         {
+            string emailPattern = @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
+            Regex regex = new Regex(emailPattern);
+
             if (String.IsNullOrEmpty(txtmail.Text))
             {
                 validatorForTextBoxes.Validate(txtmail);
                 txtmail.Focus();
             }
+            else if (!regex.IsMatch(txtmail.Text))
+            {
+                erpEmail.SetError(txtmail, "Not a Valid Email address . . .");
+                txtmail.Focus();
+            }
             else
             {
                 validatorForTextBoxes.ClearErrorStatus(txtmail);
+                erpEmail.Clear();
             }
         }
 
@@ -605,6 +615,30 @@ namespace GSMS
                 validatorForTextBoxes.ClearErrorStatus(txtcontactnumber);
                 validatorForTextBoxes.ClearErrorStatus(txtmail);
                 validatorForTextBoxes.ClearErrorStatus(txtcity);
+            }
+        }
+
+        private void txtfirstname_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetter(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar) && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true; // Suppress the input if it's not a letter or white space
+            }
+        }
+
+        private void txtlastname_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetter(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar) && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true; // Suppress the input if it's not a letter or white space
+            }
+        }
+
+        private void txtcity_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetter(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar) && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true; // Suppress the input if it's not a letter or white space
             }
         }
 

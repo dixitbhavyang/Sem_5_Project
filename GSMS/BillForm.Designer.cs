@@ -30,9 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BillForm));
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition2 = new Telerik.WinControls.UI.TableViewDefinition();
-            Telerik.WinControls.UI.RadValidationRule radValidationRule3 = new Telerik.WinControls.UI.RadValidationRule();
-            Telerik.WinControls.UI.RadValidationRule radValidationRule4 = new Telerik.WinControls.UI.RadValidationRule();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition1 = new Telerik.WinControls.UI.TableViewDefinition();
+            Telerik.WinControls.UI.RadValidationRule radValidationRule2 = new Telerik.WinControls.UI.RadValidationRule();
+            Telerik.WinControls.UI.RadValidationRule radValidationRule1 = new Telerik.WinControls.UI.RadValidationRule();
             this.txtmail = new Telerik.WinControls.UI.RadTextBox();
             this.txtcontactnumber = new Telerik.WinControls.UI.RadTextBox();
             this.txtlastname = new Telerik.WinControls.UI.RadTextBox();
@@ -97,6 +97,7 @@
             this.validatorForTextBoxes = new Telerik.WinControls.UI.RadValidationProvider(this.components);
             this.erpitem = new System.Windows.Forms.ErrorProvider(this.components);
             this.validatorForSpinEditor = new Telerik.WinControls.UI.RadValidationProvider(this.components);
+            this.erpEmail = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.txtmail)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtcontactnumber)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtlastname)).BeginInit();
@@ -136,6 +137,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.validatorForTextBoxes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.erpitem)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.validatorForSpinEditor)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.erpEmail)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
             // 
@@ -150,8 +152,8 @@
             this.txtmail.Size = new System.Drawing.Size(229, 23);
             this.txtmail.TabIndex = 4;
             this.txtmail.ThemeName = "Crystal";
-            this.validatorForTextBoxes.SetValidationRule(this.txtmail, radValidationRule3);
             this.validatorForSpinEditor.SetValidationRule(this.txtmail, null);
+            this.validatorForTextBoxes.SetValidationRule(this.txtmail, radValidationRule2);
             this.txtmail.TextChanged += new System.EventHandler(this.txtmail_TextChanged);
             // 
             // txtcontactnumber
@@ -164,8 +166,8 @@
             this.txtcontactnumber.Size = new System.Drawing.Size(229, 23);
             this.txtcontactnumber.TabIndex = 3;
             this.txtcontactnumber.ThemeName = "Crystal";
-            this.validatorForTextBoxes.SetValidationRule(this.txtcontactnumber, radValidationRule3);
             this.validatorForSpinEditor.SetValidationRule(this.txtcontactnumber, null);
+            this.validatorForTextBoxes.SetValidationRule(this.txtcontactnumber, radValidationRule2);
             this.txtcontactnumber.TextChanged += new System.EventHandler(this.txtcontactnumber_TextChanged);
             this.txtcontactnumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtcontactnumber_KeyPress);
             // 
@@ -178,9 +180,10 @@
             this.txtlastname.Size = new System.Drawing.Size(229, 23);
             this.txtlastname.TabIndex = 2;
             this.txtlastname.ThemeName = "Crystal";
-            this.validatorForTextBoxes.SetValidationRule(this.txtlastname, radValidationRule3);
             this.validatorForSpinEditor.SetValidationRule(this.txtlastname, null);
+            this.validatorForTextBoxes.SetValidationRule(this.txtlastname, radValidationRule2);
             this.txtlastname.TextChanged += new System.EventHandler(this.txtlastname_TextChanged);
+            this.txtlastname.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtlastname_KeyPress);
             // 
             // txtfirstname
             // 
@@ -191,9 +194,10 @@
             this.txtfirstname.Size = new System.Drawing.Size(229, 23);
             this.txtfirstname.TabIndex = 1;
             this.txtfirstname.ThemeName = "Crystal";
-            this.validatorForTextBoxes.SetValidationRule(this.txtfirstname, radValidationRule3);
             this.validatorForSpinEditor.SetValidationRule(this.txtfirstname, null);
+            this.validatorForTextBoxes.SetValidationRule(this.txtfirstname, radValidationRule2);
             this.txtfirstname.TextChanged += new System.EventHandler(this.txtfirstname_TextChanged);
+            this.txtfirstname.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtfirstname_KeyPress);
             // 
             // txtcity
             // 
@@ -206,9 +210,10 @@
             this.txtcity.Size = new System.Drawing.Size(229, 23);
             this.txtcity.TabIndex = 6;
             this.txtcity.ThemeName = "Crystal";
-            this.validatorForTextBoxes.SetValidationRule(this.txtcity, radValidationRule3);
             this.validatorForSpinEditor.SetValidationRule(this.txtcity, null);
+            this.validatorForTextBoxes.SetValidationRule(this.txtcity, radValidationRule2);
             this.txtcity.TextChanged += new System.EventHandler(this.txtcity_TextChanged);
+            this.txtcity.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtcity_KeyPress);
             // 
             // spineditordiscount
             // 
@@ -227,7 +232,7 @@
             this.spineditordiscount.TabIndex = 10;
             this.spineditordiscount.ThemeName = "Crystal";
             this.spineditordiscount.ThousandsSeparator = true;
-            this.validatorForSpinEditor.SetValidationRule(this.spineditordiscount, radValidationRule4);
+            this.validatorForSpinEditor.SetValidationRule(this.spineditordiscount, radValidationRule1);
             this.validatorForTextBoxes.SetValidationRule(this.spineditordiscount, null);
             this.spineditordiscount.ValueChanged += new System.EventHandler(this.spineditordiscount_ValueChanged);
             // 
@@ -248,7 +253,7 @@
             this.spineditortax.TabIndex = 11;
             this.spineditortax.ThemeName = "Crystal";
             this.spineditortax.ThousandsSeparator = true;
-            this.validatorForSpinEditor.SetValidationRule(this.spineditortax, radValidationRule4);
+            this.validatorForSpinEditor.SetValidationRule(this.spineditortax, radValidationRule1);
             this.validatorForTextBoxes.SetValidationRule(this.spineditortax, null);
             this.spineditortax.ValueChanged += new System.EventHandler(this.spineditortax_ValueChanged);
             // 
@@ -267,8 +272,8 @@
             this.spineditorpaidamount.TabIndex = 13;
             this.spineditorpaidamount.ThemeName = "Crystal";
             this.spineditorpaidamount.ThousandsSeparator = true;
+            this.validatorForSpinEditor.SetValidationRule(this.spineditorpaidamount, radValidationRule1);
             this.validatorForTextBoxes.SetValidationRule(this.spineditorpaidamount, null);
-            this.validatorForSpinEditor.SetValidationRule(this.spineditorpaidamount, radValidationRule4);
             this.spineditorpaidamount.ValueChanged += new System.EventHandler(this.spineditorpaidamount_ValueChanged);
             // 
             // radPanel1
@@ -443,8 +448,8 @@
             this.spineditorpayableamount.TabIndex = 12;
             this.spineditorpayableamount.ThemeName = "Crystal";
             this.spineditorpayableamount.ThousandsSeparator = true;
-            this.validatorForTextBoxes.SetValidationRule(this.spineditorpayableamount, null);
             this.validatorForSpinEditor.SetValidationRule(this.spineditorpayableamount, null);
+            this.validatorForTextBoxes.SetValidationRule(this.spineditorpayableamount, null);
             // 
             // panel2
             // 
@@ -760,8 +765,8 @@
             this.spineditortotalamount.TabIndex = 9;
             this.spineditortotalamount.ThemeName = "Crystal";
             this.spineditortotalamount.ThousandsSeparator = true;
-            this.validatorForTextBoxes.SetValidationRule(this.spineditortotalamount, null);
             this.validatorForSpinEditor.SetValidationRule(this.spineditortotalamount, null);
+            this.validatorForTextBoxes.SetValidationRule(this.spineditortotalamount, null);
             // 
             // spineditorremainingamount
             // 
@@ -779,8 +784,8 @@
             this.spineditorremainingamount.TabIndex = 14;
             this.spineditorremainingamount.ThemeName = "Crystal";
             this.spineditorremainingamount.ThousandsSeparator = true;
-            this.validatorForTextBoxes.SetValidationRule(this.spineditorremainingamount, null);
             this.validatorForSpinEditor.SetValidationRule(this.spineditorremainingamount, null);
+            this.validatorForTextBoxes.SetValidationRule(this.spineditorremainingamount, null);
             // 
             // panel4
             // 
@@ -929,7 +934,7 @@
             this.gridviewpurchaseditems.MasterTemplate.CaseSensitive = true;
             this.gridviewpurchaseditems.MasterTemplate.PageSize = 5;
             this.gridviewpurchaseditems.MasterTemplate.ShowGroupedColumns = true;
-            this.gridviewpurchaseditems.MasterTemplate.ViewDefinition = tableViewDefinition2;
+            this.gridviewpurchaseditems.MasterTemplate.ViewDefinition = tableViewDefinition1;
             this.gridviewpurchaseditems.Name = "gridviewpurchaseditems";
             this.gridviewpurchaseditems.Size = new System.Drawing.Size(856, 223);
             this.gridviewpurchaseditems.TabIndex = 2;
@@ -941,17 +946,17 @@
             // validatorForTextBoxes
             // 
             this.validatorForTextBoxes.ValidationMode = Telerik.WinControls.UI.ValidationMode.Programmatically;
-            radValidationRule3.Controls.Add(this.txtmail);
-            radValidationRule3.Controls.Add(this.txtcontactnumber);
-            radValidationRule3.Controls.Add(this.txtlastname);
-            radValidationRule3.Controls.Add(this.txtfirstname);
-            radValidationRule3.Controls.Add(this.txtcity);
-            radValidationRule3.Operator = Telerik.WinControls.Data.FilterOperator.IsNotLike;
-            radValidationRule3.ToolTipText = "It Cannot Be Empty";
-            radValidationRule3.ToolTipTitle = "";
-            radValidationRule3.Value = "";
+            radValidationRule2.Controls.Add(this.txtmail);
+            radValidationRule2.Controls.Add(this.txtcontactnumber);
+            radValidationRule2.Controls.Add(this.txtlastname);
+            radValidationRule2.Controls.Add(this.txtfirstname);
+            radValidationRule2.Controls.Add(this.txtcity);
+            radValidationRule2.Operator = Telerik.WinControls.Data.FilterOperator.IsNotLike;
+            radValidationRule2.ToolTipText = "It Cannot Be Empty";
+            radValidationRule2.ToolTipTitle = "";
+            radValidationRule2.Value = "";
             this.validatorForTextBoxes.ValidationRules.AddRange(new Telerik.WinControls.Data.FilterDescriptor[] {
-            radValidationRule3});
+            radValidationRule2});
             // 
             // erpitem
             // 
@@ -961,16 +966,21 @@
             // validatorForSpinEditor
             // 
             this.validatorForSpinEditor.ValidationMode = Telerik.WinControls.UI.ValidationMode.Programmatically;
-            radValidationRule4.Controls.Add(this.spineditordiscount);
-            radValidationRule4.Controls.Add(this.spineditortax);
-            radValidationRule4.Controls.Add(this.spineditorpaidamount);
-            radValidationRule4.Operator = Telerik.WinControls.Data.FilterOperator.IsNotEqualTo;
-            radValidationRule4.PropertyName = "Value";
-            radValidationRule4.ToolTipText = "Value cannot be 0";
-            radValidationRule4.ToolTipTitle = "";
-            radValidationRule4.Value = 0;
+            radValidationRule1.Controls.Add(this.spineditordiscount);
+            radValidationRule1.Controls.Add(this.spineditortax);
+            radValidationRule1.Controls.Add(this.spineditorpaidamount);
+            radValidationRule1.Operator = Telerik.WinControls.Data.FilterOperator.IsNotEqualTo;
+            radValidationRule1.PropertyName = "Value";
+            radValidationRule1.ToolTipText = "Value cannot be 0";
+            radValidationRule1.ToolTipTitle = "";
+            radValidationRule1.Value = 0;
             this.validatorForSpinEditor.ValidationRules.AddRange(new Telerik.WinControls.Data.FilterDescriptor[] {
-            radValidationRule4});
+            radValidationRule1});
+            // 
+            // erpEmail
+            // 
+            this.erpEmail.ContainerControl = this;
+            this.erpEmail.Icon = ((System.Drawing.Icon)(resources.GetObject("erpEmail.Icon")));
             // 
             // BillForm
             // 
@@ -1039,6 +1049,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.validatorForTextBoxes)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.erpitem)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.validatorForSpinEditor)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.erpEmail)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);
 
@@ -1110,5 +1121,6 @@
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnitemadd;
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnclear;
         private Telerik.WinControls.UI.RadCheckBox chkIsExistingCustomer;
+        private System.Windows.Forms.ErrorProvider erpEmail;
     }
 }

@@ -29,15 +29,15 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Telerik.WinControls.UI.RadValidationRule radValidationRule2 = new Telerik.WinControls.UI.RadValidationRule();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ItemForm));
+            Telerik.WinControls.UI.RadValidationRule radValidationRule2 = new Telerik.WinControls.UI.RadValidationRule();
             Telerik.WinControls.UI.RadValidationRule radValidationRule1 = new Telerik.WinControls.UI.RadValidationRule();
             Telerik.WinControls.UI.RadValidationRuleWithTargetControl radValidationRuleWithTargetControl1 = new Telerik.WinControls.UI.RadValidationRuleWithTargetControl();
             this.txtitemname = new Telerik.WinControls.UI.RadTextBox();
             this.txtshortname = new Telerik.WinControls.UI.RadTextBox();
-            this.spineditortax = new Telerik.WinControls.UI.RadSpinEditor();
-            this.spineditordiscount = new Telerik.WinControls.UI.RadSpinEditor();
             this.spineditorprice = new Telerik.WinControls.UI.RadSpinEditor();
+            this.spineditordiscount = new Telerik.WinControls.UI.RadSpinEditor();
+            this.spineditortax = new Telerik.WinControls.UI.RadSpinEditor();
             this.materialBlueGreyTheme1 = new Telerik.WinControls.Themes.MaterialBlueGreyTheme();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -67,9 +67,9 @@
             this.erpcompany = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.txtitemname)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtshortname)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.spineditortax)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.spineditordiscount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.spineditorprice)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.spineditordiscount)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.spineditortax)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -100,6 +100,7 @@
             this.validatorForSpinEditor.SetValidationRule(this.txtitemname, null);
             this.validatorForTextBoxes.SetValidationRule(this.txtitemname, radValidationRule2);
             this.txtitemname.TextChanged += new System.EventHandler(this.txtitemname_TextChanged);
+            this.txtitemname.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtitemname_KeyPress);
             // 
             // txtshortname
             // 
@@ -114,27 +115,26 @@
             this.validatorForSpinEditor.SetValidationRule(this.txtshortname, null);
             this.validatorForTextBoxes.SetValidationRule(this.txtshortname, radValidationRule2);
             this.txtshortname.TextChanged += new System.EventHandler(this.txtshortname_TextChanged);
+            this.txtshortname.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtshortname_KeyPress);
             // 
-            // spineditortax
+            // spineditorprice
             // 
-            this.spineditortax.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.spineditortax.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.spineditortax.DecimalPlaces = 2;
-            this.spineditortax.Location = new System.Drawing.Point(0, 1);
-            this.spineditortax.Maximum = new decimal(new int[] {
+            this.spineditorprice.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.spineditorprice.Location = new System.Drawing.Point(132, 364);
+            this.spineditorprice.Maximum = new decimal(new int[] {
             100000,
             0,
             0,
             0});
-            this.spineditortax.Name = "spineditortax";
-            this.spineditortax.ShowBorder = false;
-            this.spineditortax.Size = new System.Drawing.Size(87, 24);
-            this.spineditortax.TabIndex = 6;
-            this.spineditortax.ThemeName = "Fluent";
-            this.spineditortax.ThousandsSeparator = true;
-            this.validatorForDiscount.SetValidationRule(this.spineditortax, null);
-            this.validatorForSpinEditor.SetValidationRule(this.spineditortax, null);
-            this.validatorForTextBoxes.SetValidationRule(this.spineditortax, null);
+            this.spineditorprice.Name = "spineditorprice";
+            this.spineditorprice.ShowBorder = false;
+            this.spineditorprice.Size = new System.Drawing.Size(87, 24);
+            this.spineditorprice.TabIndex = 4;
+            this.spineditorprice.ThemeName = "Fluent";
+            this.spineditorprice.ThousandsSeparator = true;
+            this.validatorForDiscount.SetValidationRule(this.spineditorprice, null);
+            this.validatorForSpinEditor.SetValidationRule(this.spineditorprice, radValidationRule1);
+            this.validatorForTextBoxes.SetValidationRule(this.spineditorprice, null);
             // 
             // spineditordiscount
             // 
@@ -157,24 +157,26 @@
             this.validatorForSpinEditor.SetValidationRule(this.spineditordiscount, null);
             this.validatorForTextBoxes.SetValidationRule(this.spineditordiscount, null);
             // 
-            // spineditorprice
+            // spineditortax
             // 
-            this.spineditorprice.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.spineditorprice.Location = new System.Drawing.Point(132, 364);
-            this.spineditorprice.Maximum = new decimal(new int[] {
+            this.spineditortax.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.spineditortax.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.spineditortax.DecimalPlaces = 2;
+            this.spineditortax.Location = new System.Drawing.Point(0, 1);
+            this.spineditortax.Maximum = new decimal(new int[] {
             100000,
             0,
             0,
             0});
-            this.spineditorprice.Name = "spineditorprice";
-            this.spineditorprice.ShowBorder = false;
-            this.spineditorprice.Size = new System.Drawing.Size(87, 24);
-            this.spineditorprice.TabIndex = 4;
-            this.spineditorprice.ThemeName = "Fluent";
-            this.spineditorprice.ThousandsSeparator = true;
-            this.validatorForDiscount.SetValidationRule(this.spineditorprice, null);
-            this.validatorForSpinEditor.SetValidationRule(this.spineditorprice, radValidationRule1);
-            this.validatorForTextBoxes.SetValidationRule(this.spineditorprice, null);
+            this.spineditortax.Name = "spineditortax";
+            this.spineditortax.ShowBorder = false;
+            this.spineditortax.Size = new System.Drawing.Size(87, 24);
+            this.spineditortax.TabIndex = 6;
+            this.spineditortax.ThemeName = "Fluent";
+            this.spineditortax.ThousandsSeparator = true;
+            this.validatorForDiscount.SetValidationRule(this.spineditortax, null);
+            this.validatorForSpinEditor.SetValidationRule(this.spineditortax, null);
+            this.validatorForTextBoxes.SetValidationRule(this.spineditortax, null);
             // 
             // tableLayoutPanel1
             // 
@@ -218,7 +220,7 @@
             // 
             this.tableLayoutPanel1.SetColumnSpan(this.pictureBox1, 2);
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox1.Image = global::GSMS.Properties.Resources.ItemFormImage;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(3, 3);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(347, 227);
@@ -482,9 +484,9 @@
             this.Load += new System.EventHandler(this.ItemForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.txtitemname)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtshortname)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.spineditortax)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.spineditordiscount)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.spineditorprice)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.spineditordiscount)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.spineditortax)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

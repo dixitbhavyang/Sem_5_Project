@@ -173,6 +173,24 @@
     <Compile Include="BillReportForm.Designer.cs">
       <DependentUpon>BillReportForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="EmailConfigurationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EmailConfigurationForm.Designer.cs">
+      <DependentUpon>EmailConfigurationForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ForgetPasswordForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ForgetPasswordForm.Designer.cs">
+      <DependentUpon>ForgetPasswordForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HowToCreateAppPasswordForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HowToCreateAppPasswordForm.Designer.cs">
+      <DependentUpon>HowToCreateAppPasswordForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="InventoryForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -185,11 +203,11 @@
     <Compile Include="ItemForm.Designer.cs">
       <DependentUpon>ItemForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="LoaderScreen.cs">
+    <Compile Include="LogInForm2.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="LoaderScreen.Designer.cs">
-      <DependentUpon>LoaderScreen.cs</DependentUpon>
+    <Compile Include="LogInForm2.Designer.cs">
+      <DependentUpon>LogInForm2.cs</DependentUpon>
     </Compile>
     <Compile Include="MasterForm.cs">
       <SubType>Form</SubType>
@@ -197,19 +215,18 @@
     <Compile Include="MasterForm.Designer.cs">
       <DependentUpon>MasterForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="LoginForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="LoginForm.Designer.cs">
-      <DependentUpon>LoginForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SplashScreen.cs">
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="SplashScreen2.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SplashScreen.Designer.cs">
-      <DependentUpon>SplashScreen.cs</DependentUpon>
+    <Compile Include="SplashScreen2.Designer.cs">
+      <DependentUpon>SplashScreen2.cs</DependentUpon>
     </Compile>
     <Compile Include="StaffForm.cs">
       <SubType>Form</SubType>
@@ -217,13 +234,11 @@
     <Compile Include="StaffForm.Designer.cs">
       <DependentUpon>StaffForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="SuperMarketMS_ProjectDataSet.cs">
-      <DependentUpon>SuperMarketMS_ProjectDataSet.xsd</DependentUpon>
+    <Compile Include="SupermarketRegistrationForm.cs">
+      <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SuperMarketMS_ProjectDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>SuperMarketMS_ProjectDataSet.xsd</DependentUpon>
+    <Compile Include="SupermarketRegistrationForm.Designer.cs">
+      <DependentUpon>SupermarketRegistrationForm.cs</DependentUpon>
     </Compile>
     <Compile Include="UsersForm.cs">
       <SubType>Form</SubType>
@@ -250,37 +265,41 @@
     <EmbeddedResource Include="BillReportForm.resx">
       <DependentUpon>BillReportForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="EmailConfigurationForm.resx">
+      <DependentUpon>EmailConfigurationForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ForgetPasswordForm.resx">
+      <DependentUpon>ForgetPasswordForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HowToCreateAppPasswordForm.resx">
+      <DependentUpon>HowToCreateAppPasswordForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="InventoryForm.resx">
       <DependentUpon>InventoryForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ItemForm.resx">
       <DependentUpon>ItemForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="LoaderScreen.resx">
-      <DependentUpon>LoaderScreen.cs</DependentUpon>
+    <EmbeddedResource Include="LogInForm2.resx">
+      <DependentUpon>LogInForm2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MasterForm.resx">
       <DependentUpon>MasterForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="LoginForm.resx">
-      <DependentUpon>LoginForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <EmbeddedResource Include="SplashScreen.resx">
-      <DependentUpon>SplashScreen.cs</DependentUpon>
+    <EmbeddedResource Include="SplashScreen2.resx">
+      <DependentUpon>SplashScreen2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="StaffForm.resx">
       <DependentUpon>StaffForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SupermarketRegistrationForm.resx">
+      <DependentUpon>SupermarketRegistrationForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UsersForm.resx">
       <DependentUpon>UsersForm.cs</DependentUpon>
@@ -337,17 +356,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="SuperMarketMS_ProjectDataSet.xsc">
-      <DependentUpon>SuperMarketMS_ProjectDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="SuperMarketMS_ProjectDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>SuperMarketMS_ProjectDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="SuperMarketMS_ProjectDataSet.xss">
-      <DependentUpon>SuperMarketMS_ProjectDataSet.xsd</DependentUpon>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -368,12 +376,20 @@
     <Content Include="Images\icons8_error_25_K2P_icon.ico" />
     <Content Include="Images\menu.png" />
     <Content Include="Images\write.png" />
+    <None Include="Resources\12469796_Wavy_REst-03_Single-11.jpg" />
+    <None Include="Resources\13246826_5179440.jpg" />
+    <None Include="Resources\20602815_6333217.jpg" />
     <Content Include="Resources\20602818_6325247.jpg" />
+    <None Include="Resources\31530356_bird_2.jpg" />
     <Content Include="Resources\35976.jpg" />
+    <None Include="Resources\3797919_9984.jpg" />
     <Content Include="Resources\4565.jpg" />
     <None Include="Resources\6375476_25456.jpg" />
+    <None Include="Resources\4565.png" />
     <Content Include="Resources\7401745_3657674.jpg" />
     <None Include="Resources\8252028_3871744.jpg" />
+    <None Include="Resources\8674921.jpg" />
+    <None Include="Resources\7472011_3675555.jpg" />
     <Content Include="Resources\add %283%29.png" />
     <Content Include="Resources\add %284%29.png" />
     <None Include="Resources\add-button %281%29.png" />
@@ -407,6 +423,7 @@
     <None Include="Resources\paint-brush.png" />
     <Content Include="Resources\pencil %281%29.png" />
     <Content Include="Resources\remove-file_4807345.png" />
+    <None Include="Resources\Screenshot %28188%29.png" />
     <Content Include="Resources\vecteezy_unlock-personal-password-account-security_.jpg" />
     <None Include="Resources\icons8-plus-math-24.png" />
     <None Include="Resources\icons8-pencil-drawing-24.png" />

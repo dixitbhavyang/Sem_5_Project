@@ -63,6 +63,26 @@ namespace GSMS.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap AppPasswordImg {
+            get {
+                object obj = ResourceManager.GetObject("AppPasswordImg", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap BillFormImage {
+            get {
+                object obj = ResourceManager.GetObject("BillFormImage", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap BillIcon {
             get {
                 object obj = ResourceManager.GetObject("BillIcon", resourceCulture);
@@ -241,12 +261,32 @@ namespace GSMS.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap EmailConfigurationImg {
+            get {
+                object obj = ResourceManager.GetObject("EmailConfigurationImg", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
         internal static System.Drawing.Icon ErrorProviderIcon {
             get {
                 object obj = ResourceManager.GetObject("ErrorProviderIcon", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ForgetPasswordFormImg {
+            get {
+                object obj = ResourceManager.GetObject("ForgetPasswordFormImg", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
@@ -363,9 +403,9 @@ namespace GSMS.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap LoginFormImage {
+        internal static System.Drawing.Bitmap LogInFormImg {
             get {
-                object obj = ResourceManager.GetObject("LoginFormImage", resourceCulture);
+                object obj = ResourceManager.GetObject("LogInFormImg", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -376,6 +416,26 @@ namespace GSMS.Properties {
         internal static System.Drawing.Bitmap LogInIcon {
             get {
                 object obj = ResourceManager.GetObject("LogInIcon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap LogoDefaultImage {
+            get {
+                object obj = ResourceManager.GetObject("LogoDefaultImage", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap RegistrationFormImage {
+            get {
+                object obj = ResourceManager.GetObject("RegistrationFormImage", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -463,6 +523,16 @@ namespace GSMS.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap SupermarketSettingsImg {
+            get {
+                object obj = ResourceManager.GetObject("SupermarketSettingsImg", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap UserAddImage {
             get {
                 object obj = ResourceManager.GetObject("UserAddImage", resourceCulture);
@@ -496,6 +566,16 @@ namespace GSMS.Properties {
         internal static System.Drawing.Bitmap UsersFormImage {
             get {
                 object obj = ResourceManager.GetObject("UsersFormImage", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap UsersFormImg {
+            get {
+                object obj = ResourceManager.GetObject("UsersFormImg", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
