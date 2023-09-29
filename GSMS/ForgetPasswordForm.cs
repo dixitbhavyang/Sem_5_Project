@@ -60,6 +60,11 @@ namespace GSMS
                 workingEmail = dr["Email"].ToString();
                 password = dr["Password"].ToString();
             }
+            else
+            {
+                RadMessageBox.SetThemeName("MaterialBlueGrey");
+                RadMessageBox.Show("Admin have to Configure Email in Settings . . .", "", MessageBoxButtons.OK, RadMessageIcon.Info);
+            }
             dr.Close();
             con.Close();
         }
@@ -100,7 +105,8 @@ namespace GSMS
             }
             catch (Exception ex)
             {
-                MessageBox.Show("An error occurred: " + ex.Message);
+                RadMessageBox.SetThemeName("MaterialBlueGrey");
+                RadMessageBox.Show("An error occurred: " + ex.Message);
             }
             return false;
         }

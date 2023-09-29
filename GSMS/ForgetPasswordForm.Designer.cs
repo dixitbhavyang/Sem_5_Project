@@ -119,8 +119,9 @@
             // 
             // chkShowPassword
             // 
+            this.chkShowPassword.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.chkShowPassword.Font = new System.Drawing.Font("Segoe UI", 7F);
-            this.chkShowPassword.Location = new System.Drawing.Point(187, 118);
+            this.chkShowPassword.Location = new System.Drawing.Point(3, 120);
             this.chkShowPassword.Name = "chkShowPassword";
             this.chkShowPassword.Size = new System.Drawing.Size(85, 16);
             this.chkShowPassword.TabIndex = 10;
@@ -137,7 +138,7 @@
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(85, 36);
             this.btnReset.TabIndex = 9;
-            this.btnReset.Text = "Reset";
+            this.btnReset.Text = "Save";
             this.btnReset.ThemeName = "MaterialBlueGrey";
             this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
@@ -211,9 +212,9 @@
             this.radLabel3.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.radLabel3.Location = new System.Drawing.Point(3, 16);
             this.radLabel3.Name = "radLabel3";
-            this.radLabel3.Size = new System.Drawing.Size(157, 21);
+            this.radLabel3.Size = new System.Drawing.Size(74, 21);
             this.radLabel3.TabIndex = 5;
-            this.radLabel3.Text = "Enter Four (4) Digit OTP :";
+            this.radLabel3.Text = "Enter OTP :";
             // 
             // btnSubmit
             // 
@@ -225,7 +226,7 @@
             this.btnSubmit.Name = "btnSubmit";
             this.btnSubmit.Size = new System.Drawing.Size(85, 36);
             this.btnSubmit.TabIndex = 6;
-            this.btnSubmit.Text = "Submit";
+            this.btnSubmit.Text = "Verify";
             this.btnSubmit.ThemeName = "MaterialBlueGrey";
             this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
             // 
@@ -337,16 +338,17 @@
             this.radLabel2.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.radLabel2.Location = new System.Drawing.Point(0, 31);
             this.radLabel2.Name = "radLabel2";
-            this.radLabel2.Size = new System.Drawing.Size(435, 21);
+            this.radLabel2.Size = new System.Drawing.Size(240, 21);
             this.radLabel2.TabIndex = 4;
-            this.radLabel2.Text = "Enter Your Email We will Send You an OTP . .";
+            this.radLabel2.Text = "Enter Your Email to Receive an OTP . . .";
             // 
             // txtEmail
             // 
             this.txtEmail.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.txtEmail.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
             this.txtEmail.Location = new System.Drawing.Point(3, 88);
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.NullText = "Email";
+            this.txtEmail.NullText = "abc@gmail.com";
             this.txtEmail.ShowNullText = true;
             this.txtEmail.Size = new System.Drawing.Size(269, 36);
             this.txtEmail.TabIndex = 0;

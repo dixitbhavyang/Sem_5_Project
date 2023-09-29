@@ -396,7 +396,7 @@
             this.radPageView1.ItemSizeMode = ((Telerik.WinControls.UI.PageViewItemSizeMode)((Telerik.WinControls.UI.PageViewItemSizeMode.EqualWidth | Telerik.WinControls.UI.PageViewItemSizeMode.EqualHeight)));
             this.radPageView1.Location = new System.Drawing.Point(0, 0);
             this.radPageView1.Name = "radPageView1";
-            this.radPageView1.SelectedPage = this.pagecustomerbill;
+            this.radPageView1.SelectedPage = this.pageSupermarketSettings;
             this.radPageView1.Size = new System.Drawing.Size(1283, 598);
             this.radPageView1.TabIndex = 0;
             this.radPageView1.ThemeName = "Office2019Gray";
@@ -411,7 +411,7 @@
             ((Telerik.WinControls.UI.RadPageViewNavigationViewElement)(this.radPageView1.GetChildAt(0))).Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             ((Telerik.WinControls.UI.RadPageViewNavigationViewElement)(this.radPageView1.GetChildAt(0))).Alignment = System.Drawing.ContentAlignment.TopLeft;
             ((Telerik.WinControls.UI.NavigationViewHeaderElement)(this.radPageView1.GetChildAt(0).GetChildAt(2))).ClipText = false;
-            ((Telerik.WinControls.UI.NavigationViewHeaderElement)(this.radPageView1.GetChildAt(0).GetChildAt(2))).Text = "Bill";
+            ((Telerik.WinControls.UI.NavigationViewHeaderElement)(this.radPageView1.GetChildAt(0).GetChildAt(2))).Text = "Settings";
             ((Telerik.WinControls.UI.NavigationViewHeaderElement)(this.radPageView1.GetChildAt(0).GetChildAt(2))).Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             ((Telerik.WinControls.UI.NavigationViewHeaderElement)(this.radPageView1.GetChildAt(0).GetChildAt(2))).CustomFontSize = 20F;
             ((Telerik.WinControls.UI.NavigationViewHeaderElement)(this.radPageView1.GetChildAt(0).GetChildAt(2))).Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
@@ -1754,6 +1754,7 @@
             // txtCity
             // 
             this.txtCity.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.txtCity.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtCity.Location = new System.Drawing.Point(553, 57);
             this.txtCity.Name = "txtCity";
             this.txtCity.NullText = "City";
@@ -1850,6 +1851,7 @@
             // txtEmail
             // 
             this.txtEmail.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.txtEmail.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
             this.txtEmail.Location = new System.Drawing.Point(160, 57);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.NullText = "Email";

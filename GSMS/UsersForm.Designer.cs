@@ -86,6 +86,7 @@
             // txtcity
             // 
             this.txtcity.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.txtcity.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtcity.Location = new System.Drawing.Point(156, 466);
             this.txtcity.MaxLength = 20;
             this.txtcity.Name = "txtcity";

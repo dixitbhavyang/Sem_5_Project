@@ -176,6 +176,7 @@
             // txtEmail
             // 
             this.txtEmail.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.txtEmail.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
             this.txtEmail.Location = new System.Drawing.Point(0, 18);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.NullText = "abc . . . .";
